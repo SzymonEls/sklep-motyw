@@ -5,7 +5,7 @@
 	"title": "Mapa dojazdu",
 	"category": "widgets",
 	"icon": "location-alt",
-	"description": "Mapa Google wycentrowana na sklepie (dane z witryna_store_info). Wczytuje się po kliknięciu albo automatycznie, zależnie od ustawień Opinie Google.",
+	"description": "Mapa Google wycentrowana na sklepie (dane z witryna_store_info). Wyświetla się od razu.",
 	"textdomain": "witryna",
 	"attributes": {
 		"zoom": {

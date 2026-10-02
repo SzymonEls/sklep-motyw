@@ -2,9 +2,8 @@
 /**
  * Map block: Google Maps centred on the store (keyless embed).
  *
- * The map is loaded by assets/js/google-reviews.js after a click, or right
- * away when automatic loading of Google content is allowed in the Customizer
- * (Opinie Google), because the browser then connects to Google.
+ * The map is always shown (the shop owner's choice): the browser connects to
+ * Google when the page is opened, which the privacy policy should mention.
  *
  * @package Witryna
  *
@@ -24,7 +23,6 @@ $witryna_embed  = 'https://maps.google.com/maps?' . http_build_query(
 		'output' => 'embed',
 	)
 );
-$witryna_auto   = witryna_google_config()['autoload'];
 $witryna_route  = 'https://www.google.com/maps/dir/?' . http_build_query(
 	array(
 		'api'                  => 1,
@@ -32,44 +30,20 @@ $witryna_route  = 'https://www.google.com/maps/dir/?' . http_build_query(
 		'destination_place_id' => witryna_google_config()['place_id'],
 	)
 );
-$witryna_privacy = get_privacy_policy_url();
-
-if ( ! $witryna_editor ) {
-	wp_enqueue_script( 'witryna-google-reviews' );
-}
-
 $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-map' ) );
 ?>
 <div <?php echo $witryna_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<div class="witryna-greviews witryna-map__box"
-		<?php if ( ! $witryna_editor ) : ?>
-		data-embed="<?php echo esc_url( $witryna_embed ); ?>"
-		data-map-title="<?php echo esc_attr( sprintf( /* translators: %s: store name. */ __( 'Mapa dojazdu: %s', 'witryna' ), witryna_store_info( 'name' ) ) ); ?>"
-		data-autoload="<?php echo $witryna_auto ? '1' : '0'; ?>"
-		<?php endif; ?>
-	>
-		<div class="witryna-greviews__slot"></div>
-		<p class="screen-reader-text witryna-greviews__status" role="status" aria-live="polite"
-			data-loading="<?php esc_attr_e( 'Wczytywanie mapy…', 'witryna' ); ?>"
-			data-failed="<?php esc_attr_e( 'Nie udało się wczytać mapy.', 'witryna' ); ?>"></p>
-
-		<div class="witryna-map__placeholder witryna-greviews__fallback">
+	<?php if ( $witryna_editor ) : ?>
+		<div class="witryna-map__placeholder">
 			<p class="witryna-map__address"><strong><?php echo esc_html( witryna_store_info( 'name' ) ); ?></strong><br><?php echo esc_html( witryna_store_address() ); ?></p>
-			<?php if ( ! $witryna_auto && ! $witryna_editor ) : ?>
-				<div class="witryna-greviews__consent">
-					<button type="button" class="wp-element-button witryna-greviews__load"><?php esc_html_e( 'Pokaż mapę', 'witryna' ); ?></button>
-					<p class="witryna-greviews__note">
-						<?php esc_html_e( 'Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności.', 'witryna' ); ?>
-						<?php if ( $witryna_privacy ) : ?>
-							<a href="<?php echo esc_url( $witryna_privacy ); ?>"><?php esc_html_e( 'Polityka prywatności', 'witryna' ); ?></a>
-						<?php endif; ?>
-					</p>
-				</div>
-			<?php endif; ?>
+			<p><?php esc_html_e( 'Tu na stronie wyświetli się mapa Google.', 'witryna' ); ?></p>
 		</div>
-		<div class="wp-block-buttons witryna-map__links">
-			<div class="wp-block-button is-style-arrow"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( witryna_store_map_url() ); ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Otwórz w Mapach Google', 'witryna' ); ?></a></div>
-			<div class="wp-block-button is-style-arrow"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $witryna_route ); ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Wyznacz trasę', 'witryna' ); ?></a></div>
-		</div>
+	<?php else : ?>
+		<iframe class="witryna-map__frame" src="<?php echo esc_url( $witryna_embed ); ?>" title="<?php echo esc_attr( sprintf( /* translators: %s: store name. */ __( 'Mapa dojazdu: %s', 'witryna' ), witryna_store_info( 'name' ) ) ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+	<?php endif; ?>
+	<p class="screen-reader-text"><?php echo esc_html( witryna_store_info( 'name' ) . ', ' . witryna_store_address() ); ?></p>
+	<div class="wp-block-buttons witryna-map__links">
+		<div class="wp-block-button is-style-arrow"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( witryna_store_map_url() ); ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Otwórz w Mapach Google', 'witryna' ); ?></a></div>
+		<div class="wp-block-button is-style-arrow"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $witryna_route ); ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Wyznacz trasę', 'witryna' ); ?></a></div>
 	</div>
 </div>

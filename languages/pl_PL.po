@@ -306,36 +306,20 @@ msgctxt "Style variation name"
 msgid "Surface section"
 msgstr "Sekcja na tle powierzchni"
 
+#: blocks/map/render.php:39
+msgid "Tu na stronie wyświetli się mapa Google."
+msgstr ""
+
 #. translators: %s: store name.
-#: blocks/map/render.php:47
+#: blocks/map/render.php:42
 msgid "Mapa dojazdu: %s"
 msgstr ""
 
-#: blocks/map/render.php:53
-msgid "Wczytywanie mapy…"
-msgstr ""
-
-#: blocks/map/render.php:54
-msgid "Nie udało się wczytać mapy."
-msgstr ""
-
-#: blocks/map/render.php:60
-msgid "Pokaż mapę"
-msgstr ""
-
-#: blocks/map/render.php:62 blocks/reviews/render.php:81
-msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
-msgstr ""
-
-#: blocks/map/render.php:64 blocks/reviews/render.php:83
-msgid "Polityka prywatności"
-msgstr ""
-
-#: blocks/map/render.php:71
+#: blocks/map/render.php:46
 msgid "Otwórz w Mapach Google"
 msgstr ""
 
-#: blocks/map/render.php:72 patterns/page-contact.php:37 patterns/store-visit.php:40
+#: blocks/map/render.php:47 patterns/page-contact.php:37 patterns/store-visit.php:40
 msgid "Wyznacz trasę"
 msgstr ""
 
@@ -377,6 +361,14 @@ msgstr ""
 
 #: blocks/reviews/render.php:79
 msgid "Pokaż opinie z Google"
+msgstr ""
+
+#: blocks/reviews/render.php:81
+msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
+msgstr ""
+
+#: blocks/reviews/render.php:83
+msgid "Polityka prywatności"
 msgstr ""
 
 #: blocks/reviews/render.php:90
