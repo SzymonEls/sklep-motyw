@@ -172,25 +172,32 @@ def category_of(detail):
 
 
 def variant_axis(names):
-	"""Splits variant names into a common prefix and the varying parts."""
-	split = [re.split(r'(?<=[,;])\s+|\s+(?=rozm)', n) for n in names]
-	prefix = []
-	for parts in zip(*split):
-		if len(set(parts)) == 1:
-			prefix.append(parts[0])
-		else:
-			break
-	options = [' '.join(parts[len(prefix):]).strip(' ,;') or name for parts, name in zip(split, names)]
-	if len(set(options)) != len(options):
-		options = names
-	options = [re.sub(r'^(rozm\.?|rozmiar)\s*', '', o, flags=re.I) for o in options]
+	"""Returns the variant attribute name and the varying part of each variant name."""
 	sizes = [SIZE_TOKEN.search(n) for n in names]
 	if all(sizes) and len({m.group(1).upper() for m in sizes}) == len(names):
 		return 'Rozmiar', [m.group(1).upper() for m in sizes]
-	if all(SIZE.match(o) for o in options):
+
+	# Drop the words all names share at the start and at the end.
+	words = [n.split() for n in names]
+	start = 0
+	while all(len(w) > start for w in words) and len({w[start] for w in words}) == 1:
+		start += 1
+	end = 0
+	unit = re.compile(r'^(og\.?|ogniw|cm|mm|m|l|ml|szt\.?|kg|g)[,.;]?$', re.I)
+	while all(len(w) > start + end for w in words) and len({w[-1 - end] for w in words}) == 1 and not unit.match(words[0][-1 - end]):
+		end += 1
+	options = [' '.join(w[start:len(w) - end]).strip(' ,;()') for w in words]
+	if not all(options) or len(set(options)) != len(options):
+		options = names
+	options = [re.sub(r'^(rozmiar|rozm\.?)\s*', '', o, flags=re.I) for o in options]
+	if all(re.search(r'\d+\s*og', o) for o in options):
+		label = 'Liczba ogniw'
+	elif all(SIZE.match(o) for o in options) or all(re.match(r'^\d{2,3}\s*[-–]\s*\d{2,3}$', o) for o in options):
 		label = 'Rozmiar'
 	elif all(re.search(r'\d\s*(cm|m|mm)\b', o) for o in options):
 		label = 'Długość'
+	elif all(re.search(r'\d\s*(l|ml)\b', o, re.I) for o in options):
+		label = 'Pojemność'
 	else:
 		label = 'Wariant'
 	return label, options
