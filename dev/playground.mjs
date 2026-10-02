@@ -7,9 +7,12 @@
  *
  *   npm start            start (or create) the site on http://127.0.0.1:9400
  *   npm run reset        delete the site and create a fresh one
+ *
+ * The demo imports up to six STIHL products per category. To import all of
+ * them, create the site with WITRYNA_DEMO_ALL=1 (e.g. WITRYNA_DEMO_ALL=1 npm run reset).
  */
 import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -37,7 +40,14 @@ const cli = [
 ];
 
 if ( isNew ) {
-	cli.push( `--blueprint=${ join( root, 'dev/blueprint.json' ) }` );
+	let blueprint = join( root, 'dev/blueprint.json' );
+	if ( process.env.WITRYNA_DEMO_ALL ) {
+		const data = JSON.parse( readFileSync( blueprint, 'utf8' ) );
+		data.steps.unshift( { step: 'defineWpConfigConsts', consts: { WITRYNA_DEMO_ALL: true } } );
+		blueprint = join( site, '..', 'witryna-blueprint-all.json' );
+		writeFileSync( blueprint, JSON.stringify( data ) );
+	}
+	cli.push( `--blueprint=${ blueprint }` );
 	console.log( 'Tworzę nowy sklep demo – pierwsze uruchomienie potrwa kilka minut…' );
 } else {
 	cli.push( '--wordpress-install-mode=do-not-attempt-installing' );

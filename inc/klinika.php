@@ -23,7 +23,7 @@ function witryna_store_info( $key = '' ) {
 		'phone'      => '603 047 842',
 		'phone_href' => '+48603047842',
 		'email'      => 'klinikatrawnika.czernica@gmail.com',
-		'street'     => 'ul. Miła 2',
+		'street'     => 'ul. Miła 1',
 		'city'       => '55-003 Czernica',
 		'nip'        => '866-158-80-81',
 		'hours'      => array(
@@ -34,8 +34,10 @@ function witryna_store_info( $key = '' ) {
 		'hours_short' => 'Pn–Pt 9–17, Sob 9–13',
 		'tiktok'      => 'https://www.tiktok.com/@klinikatrawnka.czernica',
 		'tiktok_name' => '@klinikatrawnka.czernica',
-		'google'      => 'https://maps.google.com/?cid=6246252236807402821',
-		'google_name' => 'KLINIKA TRAWNIKA - Autoryzowany dealer STIHL',
+		'google'            => 'https://www.google.com/maps?cid=6246252236807402821',
+		'google_name'       => 'KLINIKA TRAWNIKA - Autoryzowany dealer STIHL',
+		'google_place_id'   => 'ChIJpc45KqjfD0cRRfVkuFAlr1Y',
+		'google_review_url' => 'https://search.google.com/local/writereview?placeid=ChIJpc45KqjfD0cRRfVkuFAlr1Y',
 	);
 
 	/**
@@ -256,6 +258,10 @@ function witryna_google_request( $url, $fields, $body = array() ) {
 function witryna_google_place_id() {
 	$place_id = get_option( 'witryna_google_place_id', '' );
 
+	if ( ! $place_id ) {
+		$place_id = witryna_store_info( 'google_place_id' );
+	}
+
 	if ( $place_id ) {
 		return $place_id;
 	}
@@ -353,7 +359,7 @@ function witryna_google_place() {
 function witryna_google_review_url() {
 	$place = witryna_google_place();
 
-	return $place ? $place['review_url'] : witryna_store_info( 'google' );
+	return $place ? $place['review_url'] : witryna_store_info( 'google_review_url' );
 }
 
 /**

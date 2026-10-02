@@ -2,8 +2,10 @@
 /**
  * Demo store for the local Playground environment.
  *
- * Creates categories, products (simple and variable), reviews, blog posts,
- * pages, a navigation menu, shipping and payment methods and a sample order.
+ * Creates the Klinika Trawnika store: STIHL categories and products from
+ * stihl-products.json, blog posts, pages, a navigation menu, shipping and
+ * payment methods and a sample order. No reviews are created: the theme only
+ * shows real ones.
  * Run once on a fresh site: it is executed by dev/blueprint.json.
  *
  * @package Witryna
@@ -15,43 +17,16 @@ require_once ABSPATH . 'wp-admin/includes/file.php';
 require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/image.php';
 
-$witryna_demo_dir = __DIR__;
-
-/**
- * Imports an image from the demo folder into the media library.
- */
-function witryna_demo_image( $file, $title ) {
-	static $cache = array();
-	if ( isset( $cache[ $file ] ) ) {
-		return $cache[ $file ];
-	}
-	$src = __DIR__ . '/images/' . $file;
-	if ( ! file_exists( $src ) ) {
-		$src = get_theme_file_path( 'assets/images/' . $file );
-	}
-	$tmp = wp_tempnam( $file );
-	copy( $src, $tmp );
-	$id = media_handle_sideload( array( 'name' => $file, 'tmp_name' => $tmp ), 0, $title );
-	if ( is_wp_error( $id ) ) {
-		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-		error_log( 'Witryna demo: ' . $id->get_error_message() ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		return 0;
-	}
-	update_post_meta( $id, '_wp_attachment_image_alt', $title );
-	$cache[ $file ] = $id;
-	return $id;
-}
-
 /* ---------------------------------------------------------------------------
  * Store settings (Poland, PLN).
  * ------------------------------------------------------------------------ */
 $witryna_options = array(
-	'blogname'                                 => 'Witryna',
-	'blogdescription'                          => 'Ceramika i dodatki do domu',
+	'blogname'                                 => 'Klinika Trawnika',
+	'blogdescription'                          => 'Autoryzowany dealer STIHL – sklep i serwis',
 	'woocommerce_default_country'              => 'PL:',
-	'woocommerce_store_address'                => 'ul. Przykładowa 12',
-	'woocommerce_store_city'                   => 'Warszawa',
-	'woocommerce_store_postcode'               => '00-001',
+	'woocommerce_store_address'                => 'ul. Miła 1',
+	'woocommerce_store_city'                   => 'Czernica',
+	'woocommerce_store_postcode'               => '55-003',
 	'woocommerce_currency'                     => 'PLN',
 	'woocommerce_currency_pos'                 => 'right_space',
 	'woocommerce_price_thousand_sep'           => ' ',
@@ -60,6 +35,7 @@ $witryna_options = array(
 	'woocommerce_weight_unit'                  => 'kg',
 	'woocommerce_dimension_unit'               => 'cm',
 	'woocommerce_enable_reviews'               => 'yes',
+	'woocommerce_review_rating_verification_required' => 'yes',
 	'woocommerce_review_rating_verification_label' => 'yes',
 	'woocommerce_enable_review_rating'         => 'yes',
 	'woocommerce_calc_taxes'                   => 'no',
@@ -82,172 +58,149 @@ foreach ( $witryna_options as $witryna_key => $witryna_value ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Categories.
+ * STIHL categories and products from stihl-products.json.
+ *
+ * The JSON is made by dev/tools/stihl-products.py. By default up to six
+ * products per category are imported so the preview starts quickly; set
+ * WITRYNA_DEMO_ALL=1 (constant or environment variable) to import all.
+ * Prices are the STIHL list prices without promotions: a sale price would
+ * need the lowest price from the last 30 days (Omnibus), which a fresh demo
+ * does not have. Images are downloaded from stihl.pl during the import.
  * ------------------------------------------------------------------------ */
-$witryna_categories = array(
-	'wazony'    => array( 'Wazony', 'Ręcznie toczone wazony z kamionki i porcelany – od smukłych butelek po pękate amfory.', 'category-1.jpg' ),
-	'kuchnia'   => array( 'Kuchnia i stół', 'Kubki, misy, talerze i dzbanki do codziennego użytku i na wyjątkowe okazje.', 'category-3.jpg' ),
-	'oswietlenie' => array( 'Oświetlenie', 'Lampy i świece, które ocieplają wnętrze w długie wieczory.', 'category-2.jpg' ),
-	'dekoracje' => array( 'Dekoracje', 'Doniczki, dyfuzory i drobiazgi, które nadają wnętrzu charakter.', 'category-4.jpg' ),
-);
-$witryna_cat_ids = array();
-foreach ( $witryna_categories as $witryna_slug => list( $witryna_name, $witryna_desc, $witryna_img ) ) {
-	$witryna_term = term_exists( $witryna_slug, 'product_cat' );
-	if ( ! $witryna_term ) {
-		$witryna_term = wp_insert_term( $witryna_name, 'product_cat', array( 'slug' => $witryna_slug, 'description' => $witryna_desc ) );
-	}
-	$witryna_cat_ids[ $witryna_slug ] = (int) $witryna_term['term_id'];
-	update_term_meta( $witryna_cat_ids[ $witryna_slug ], 'thumbnail_id', witryna_demo_image( $witryna_img, $witryna_name ) );
-}
+$witryna_demo_all = ( defined( 'WITRYNA_DEMO_ALL' ) && WITRYNA_DEMO_ALL ) || getenv( 'WITRYNA_DEMO_ALL' );
+$witryna_per_cat  = $witryna_demo_all ? PHP_INT_MAX : 6;
+$witryna_catalog  = json_decode( (string) file_get_contents( __DIR__ . '/stihl-products.json' ), true );
+$witryna_catalog  = is_array( $witryna_catalog ) ? $witryna_catalog : array();
 
-/* ---------------------------------------------------------------------------
- * Colour attribute for the variable product.
- * ------------------------------------------------------------------------ */
-$witryna_attr_id = wc_attribute_taxonomy_id_by_name( 'pa_kolor' );
-if ( ! $witryna_attr_id ) {
-	$witryna_attr_id = wc_create_attribute( array( 'name' => 'Kolor', 'slug' => 'kolor', 'type' => 'select', 'order_by' => 'menu_order', 'has_archives' => false ) );
-}
-register_taxonomy( 'pa_kolor', array( 'product' ), array( 'hierarchical' => false, 'show_ui' => false, 'query_var' => true, 'rewrite' => false ) );
-$witryna_colors = array();
-foreach ( array( 'szalwia' => 'Szałwia', 'piasek' => 'Piasek', 'ocean' => 'Ocean' ) as $witryna_slug => $witryna_name ) {
-	$witryna_term = term_exists( $witryna_slug, 'pa_kolor' );
-	if ( ! $witryna_term ) {
-		$witryna_term = wp_insert_term( $witryna_name, 'pa_kolor', array( 'slug' => $witryna_slug ) );
-	}
-	$witryna_colors[ $witryna_slug ] = (int) $witryna_term['term_id'];
-}
-
-/* ---------------------------------------------------------------------------
- * Products.
- * ------------------------------------------------------------------------ */
-$witryna_lorem = '<p>Każdy egzemplarz powstaje ręcznie w niewielkiej pracowni, dlatego drobne różnice w kolorze szkliwa i fakturze są naturalną cechą produktu, a nie wadą.</p><p>Wykonane z wysokiej jakości kamionki wypalanej w temperaturze 1250°C. Szkliwo jest bezpieczne w kontakcie z żywnością i odporne na zarysowania.</p><h3>Pielęgnacja</h3><ul><li>Można myć w zmywarce w programie delikatnym.</li><li>Nie należy używać ostrych gąbek.</li><li>Unikaj gwałtownych zmian temperatury.</li></ul>';
-
-$witryna_products = array(
-	array( 'Wazon Amfora', 'wazony', '189', '149', 'amfora.jpg', array( 'amfora-2.jpg' ), 'Pękaty wazon z kamionki z ręcznie nakładanym, ciepłym szkliwem. Idealny na suche bukiety i gałązki.', array( 1.4, 24, 24, 30 ), 140, true, array( 'kamionka', 'bestseller' ) ),
-	array( 'Wazon Smukły', 'wazony', '129', '', 'smukly.jpg', array( 'smukly-2.jpg' ), 'Wysoki wazon o kształcie butelki. Pięknie wygląda z pojedynczą gałązką lub trawą pampasową.', array( 0.9, 11, 11, 34 ), 95, true, array( 'porcelana' ) ),
-	array( 'Wazon Kula', 'wazony', '159', '', 'kula.jpg', array( 'kula-2.jpg' ), 'Krągły wazon z piaskowej kamionki z charakterystycznymi drobinkami żelaza.', array( 1.6, 26, 26, 24 ), 60, false, array( 'kamionka' ) ),
-	array( 'Filiżanka Espresso', 'kuchnia', '79', '', 'espresso.jpg', array(), 'Zestaw filiżanki i spodka do espresso. Grube ścianki dłużej utrzymują temperaturę kawy.', array( 0.4, 12, 12, 6 ), 70, false, array( 'kawa' ) ),
-	array( 'Misa Fala', 'kuchnia', '99', '79', 'misa.jpg', array( 'misa-2.jpg' ), 'Głęboka misa z oceanicznym szkliwem – na sałatki, owoce albo poke bowl.', array( 0.8, 24, 24, 9 ), 110, true, array( 'kamionka', 'bestseller' ) ),
-	array( 'Talerze Len (komplet 3 szt.)', 'kuchnia', '149', '', 'talerz.jpg', array(), 'Komplet trzech płaskich talerzy w naturalnych odcieniach lnu.', array( 2.1, 27, 27, 3 ), 45, false, array( 'komplet' ) ),
-	array( 'Dzbanek Rosa', 'kuchnia', '139', '', 'dzbanek.jpg', array( 'dzbanek-2.jpg' ), 'Dzbanek o pojemności 1 litra z wygodnym uchem. Do wody, lemoniady albo kwiatów.', array( 1.1, 18, 14, 22 ), 38, false, array( 'kamionka' ) ),
-	array( 'Lampa Glob', 'oswietlenie', '349', '', 'lampa.jpg', array( 'lampa-2.jpg' ), 'Lampa stołowa z kloszem z matowego szkła i mosiężną podstawą. Daje ciepłe, rozproszone światło.', array( 2.4, 25, 25, 42 ), 52, true, array( 'mosiądz' ) ),
-	array( 'Świeca sojowa Bursztyn', 'oswietlenie', '69', '', 'swieca.jpg', array( 'swieca-2.jpg' ), 'Świeca z wosku sojowego o zapachu bursztynu i drzewa sandałowego. Czas palenia około 45 godzin.', array( 0.5, 9, 9, 10 ), 160, false, array( 'zapach', 'bestseller' ) ),
-	array( 'Dyfuzor Cedr', 'dekoracje', '89', '', 'dyfuzor.jpg', array(), 'Dyfuzor zapachowy z nutą cedru i wetywerii w butelce z ciemnego szkła.', array( 0.6, 8, 8, 30 ), 75, false, array( 'zapach' ) ),
-	array( 'Doniczka Terra', 'dekoracje', '119', '', 'doniczka.jpg', array( 'doniczka-2.jpg' ), 'Doniczka z otworem odpływowym i podstawką. Pasuje do roślin o średnicy do 18 cm.', array( 1.9, 20, 20, 17 ), 30, false, array( 'kamionka' ) ),
+$witryna_category_info = array(
+	'Kosiarki'                        => 'Kosiarki akumulatorowe, spalinowe i elektryczne STIHL, kosiarki mulczujące i traktorki ogrodowe.',
+	'Roboty koszące'                  => 'Roboty koszące iMOW, które same dbają o równy trawnik. Pomagamy dobrać model i przygotować trawnik do montażu.',
+	'Pilarki'                         => 'Pilarki łańcuchowe STIHL do ogrodu, drewna opałowego i prac leśnych oraz podkrzesywarki.',
+	'Kosy i podkaszarki'              => 'Kosy mechaniczne i podkaszarki do trawy, chwastów i zarośli.',
+	'Nożyce do żywopłotu'             => 'Akumulatorowe, spalinowe i elektryczne nożyce do żywopłotów.',
+	'KombiSystem'                     => 'Jeden napęd, wiele narzędzi: kosa, nożyce, podkrzesywarka, dmuchawa i inne.',
+	'Narzędzia ręczne'                => 'Siekiery, sekatory, piły ręczne i narzędzia leśne STIHL.',
+	'Przecinarki i pilarki do betonu' => 'Przecinarki i pilarki do cięcia betonu, kamienia i stali.',
+	'Uprawa gleby'                    => 'Wertykulatory, aeratory, glebogryzarki i świdry glebowe.',
+	'Opryskiwacze'                    => 'Opryskiwacze ręczne, plecakowe i spalinowe.',
+	'Myjki ciśnieniowe'               => 'Myjki wysokociśnieniowe STIHL do domu i firmy.',
+	'Dmuchawy i odkurzacze'           => 'Dmuchawy do liści, odkurzacze ogrodowe i odkurzacze przemysłowe.',
+	'Zamiatarki'                      => 'Zamiatarki ręczne do podjazdów, chodników i placów.',
+	'Rozdrabniacze'                   => 'Rozdrabniacze do gałęzi i odpadów ogrodowych.',
+	'Kompresory i pompy'              => 'Kompresory i pompy wodne STIHL.',
 );
 
+/**
+ * Returns the ID of a product category, creating it when needed.
+ */
+function witryna_demo_category( $name, $parent = 0, $description = '' ) {
+	// Short slugs ("kosiarki-akumulatorowe"); the parent's slug is added only
+	// when another parent already uses the name ("Akumulatorowe").
+	$slug = sanitize_title( $name );
+	$term = get_term_by( 'slug', $slug, 'product_cat' );
+	if ( $term && (int) $term->parent !== (int) $parent ) {
+		$slug = sanitize_title( get_term( $parent, 'product_cat' )->slug . '-' . $name );
+		$term = get_term_by( 'slug', $slug, 'product_cat' );
+	}
+	if ( $term ) {
+		return (int) $term->term_id;
+	}
+	$term = wp_insert_term( $name, 'product_cat', array( 'slug' => $slug, 'parent' => $parent, 'description' => $description ) );
+	return is_wp_error( $term ) ? 0 : (int) $term['term_id'];
+}
+
+/**
+ * Downloads an image from stihl.pl into the media library.
+ */
+function witryna_demo_remote_image( $url, $title ) {
+	static $cache = array();
+	if ( isset( $cache[ $url ] ) ) {
+		return $cache[ $url ];
+	}
+	$tmp = download_url( $url, 30 );
+	if ( is_wp_error( $tmp ) ) {
+		error_log( 'Witryna demo: ' . $url . ': ' . $tmp->get_error_message() ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+		return $cache[ $url ] = 0;
+	}
+	$id = media_handle_sideload( array( 'name' => 'stihl-' . basename( wp_parse_url( $url, PHP_URL_PATH ) ), 'tmp_name' => $tmp ), 0, $title );
+	if ( is_wp_error( $id ) ) {
+		@unlink( $tmp ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		error_log( 'Witryna demo: ' . $id->get_error_message() ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+		return $cache[ $url ] = 0;
+	}
+	update_post_meta( $id, '_wp_attachment_image_alt', $title );
+	return $cache[ $url ] = $id;
+}
+
+$witryna_cat_ids     = array();
+$witryna_per_leaf    = array();
 $witryna_product_ids = array();
-foreach ( $witryna_products as $witryna_i => list( $witryna_name, $witryna_cat, $witryna_regular, $witryna_sale, $witryna_img, $witryna_gallery, $witryna_short, $witryna_dims, $witryna_sales, $witryna_featured, $witryna_tags ) ) {
+foreach ( $witryna_catalog as $witryna_i => $witryna_item ) {
+	if ( empty( $witryna_item['price_regular'] ) ) {
+		continue;
+	}
+	$witryna_path = array_map( 'trim', explode( '>', $witryna_item['category'] ) );
+	$witryna_leaf = implode( ' > ', $witryna_path );
+	if ( ( $witryna_per_leaf[ $witryna_leaf ] ?? 0 ) >= $witryna_per_cat ) {
+		continue;
+	}
+
+	$witryna_parent = 0;
+	$witryna_terms  = array();
+	foreach ( $witryna_path as $witryna_depth => $witryna_name ) {
+		$witryna_key = implode( ' > ', array_slice( $witryna_path, 0, $witryna_depth + 1 ) );
+		if ( ! isset( $witryna_cat_ids[ $witryna_key ] ) ) {
+			$witryna_cat_ids[ $witryna_key ] = witryna_demo_category( $witryna_name, $witryna_parent, $witryna_parent ? '' : ( $witryna_category_info[ $witryna_name ] ?? '' ) );
+		}
+		$witryna_parent  = $witryna_cat_ids[ $witryna_key ];
+		$witryna_terms[] = $witryna_parent;
+	}
+
 	$witryna_product = new WC_Product_Simple();
-	$witryna_product->set_name( $witryna_name );
+	$witryna_product->set_name( $witryna_item['name'] );
 	$witryna_product->set_status( 'publish' );
-	$witryna_product->set_regular_price( $witryna_regular );
-	if ( $witryna_sale ) {
-		$witryna_product->set_sale_price( $witryna_sale );
+	$witryna_product->set_regular_price( $witryna_item['price_regular'] );
+	$witryna_product->set_short_description( $witryna_item['short_description'] );
+	$witryna_product->set_description( $witryna_item['description_html'] . sprintf( '<p><a href="%s" target="_blank" rel="noopener">Strona produktu na stihl.pl</a></p>', esc_url( $witryna_item['url'] ) ) );
+	$witryna_product->set_category_ids( $witryna_terms );
+	if ( $witryna_item['sku'] && ! wc_get_product_id_by_sku( $witryna_item['sku'] ) ) {
+		$witryna_product->set_sku( $witryna_item['sku'] );
 	}
-	$witryna_product->set_short_description( $witryna_short );
-	$witryna_product->set_description( $witryna_lorem );
-	$witryna_product->set_category_ids( array( $witryna_cat_ids[ $witryna_cat ] ) );
-	$witryna_product->set_image_id( witryna_demo_image( $witryna_img, $witryna_name ) );
-	$witryna_product->set_gallery_image_ids( array_map( static fn( $f ) => witryna_demo_image( $f, $witryna_name ), $witryna_gallery ) );
-	$witryna_product->set_weight( (string) $witryna_dims[0] );
-	$witryna_product->set_length( (string) $witryna_dims[1] );
-	$witryna_product->set_width( (string) $witryna_dims[2] );
-	$witryna_product->set_height( (string) $witryna_dims[3] );
-	$witryna_product->set_sku( 'WIT-' . str_pad( (string) ( $witryna_i + 1 ), 3, '0', STR_PAD_LEFT ) );
-	$witryna_product->set_featured( $witryna_featured );
-	$witryna_product->set_manage_stock( true );
-	$witryna_product->set_stock_quantity( 'Dyfuzor Cedr' === $witryna_name ? 0 : 5 + $witryna_i * 3 );
-	$witryna_product->set_stock_status( 'Dyfuzor Cedr' === $witryna_name ? 'outofstock' : 'instock' );
-	$witryna_product->set_date_created( time() - ( count( $witryna_products ) - $witryna_i ) * DAY_IN_SECONDS );
-	$witryna_product->save();
-	wp_set_object_terms( $witryna_product->get_id(), $witryna_tags, 'product_tag' );
-	update_post_meta( $witryna_product->get_id(), 'total_sales', $witryna_sales );
-	$witryna_product_ids[ $witryna_name ] = $witryna_product->get_id();
-}
 
-// Variable product: mug in three colours.
-$witryna_attribute = new WC_Product_Attribute();
-$witryna_attribute->set_id( $witryna_attr_id );
-$witryna_attribute->set_name( 'pa_kolor' );
-$witryna_attribute->set_options( array_values( $witryna_colors ) );
-$witryna_attribute->set_visible( true );
-$witryna_attribute->set_variation( true );
-
-$witryna_mug = new WC_Product_Variable();
-$witryna_mug->set_name( 'Kubek Poranek' );
-$witryna_mug->set_status( 'publish' );
-$witryna_mug->set_short_description( 'Kubek o pojemności 350 ml z wygodnym uchem i dwukolorowym szkliwem. Wybierz swój ulubiony kolor.' );
-$witryna_mug->set_description( $witryna_lorem );
-$witryna_mug->set_category_ids( array( $witryna_cat_ids['kuchnia'] ) );
-$witryna_mug->set_attributes( array( $witryna_attribute ) );
-$witryna_mug->set_image_id( witryna_demo_image( 'kubek-szalwia.jpg', 'Kubek Poranek' ) );
-$witryna_mug->set_gallery_image_ids( array( witryna_demo_image( 'kubek-zestaw.jpg', 'Kubek Poranek – zestaw' ), witryna_demo_image( 'kubek-piasek.jpg', 'Kubek Poranek' ), witryna_demo_image( 'kubek-ocean.jpg', 'Kubek Poranek' ) ) );
-$witryna_mug->set_weight( '0.45' );
-$witryna_mug->set_length( '12' );
-$witryna_mug->set_width( '9' );
-$witryna_mug->set_height( '10' );
-$witryna_mug->set_sku( 'WIT-KUB' );
-$witryna_mug->set_featured( true );
-$witryna_mug->set_date_created( time() );
-$witryna_mug->save();
-wp_set_object_terms( $witryna_mug->get_id(), array( 'kamionka', 'bestseller', 'kawa' ), 'product_tag' );
-update_post_meta( $witryna_mug->get_id(), 'total_sales', 210 );
-
-foreach ( array( 'szalwia' => array( '59', '49', 'kubek-szalwia.jpg' ), 'piasek' => array( '59', '', 'kubek-piasek.jpg' ), 'ocean' => array( '59', '', 'kubek-ocean.jpg' ) ) as $witryna_slug => list( $witryna_regular, $witryna_sale, $witryna_img ) ) {
-	$witryna_variation = new WC_Product_Variation();
-	$witryna_variation->set_parent_id( $witryna_mug->get_id() );
-	$witryna_variation->set_attributes( array( 'pa_kolor' => $witryna_slug ) );
-	$witryna_variation->set_regular_price( $witryna_regular );
-	if ( $witryna_sale ) {
-		$witryna_variation->set_sale_price( $witryna_sale );
+	$witryna_attributes = array();
+	foreach ( $witryna_item['attributes'] as $witryna_name => $witryna_value ) {
+		$witryna_attribute = new WC_Product_Attribute();
+		$witryna_attribute->set_name( $witryna_name );
+		$witryna_attribute->set_options( array( $witryna_value ) );
+		$witryna_attribute->set_visible( true );
+		$witryna_attribute->set_variation( false );
+		$witryna_attributes[] = $witryna_attribute;
 	}
-	$witryna_variation->set_image_id( witryna_demo_image( $witryna_img, 'Kubek Poranek' ) );
-	$witryna_variation->set_manage_stock( true );
-	$witryna_variation->set_stock_quantity( 'ocean' === $witryna_slug ? 2 : 15 );
-	$witryna_variation->set_sku( 'WIT-KUB-' . strtoupper( substr( $witryna_slug, 0, 3 ) ) );
-	$witryna_variation->save();
-}
-WC_Product_Variable::sync( $witryna_mug->get_id() );
-$witryna_product_ids['Kubek Poranek'] = $witryna_mug->get_id();
+	$witryna_product->set_attributes( $witryna_attributes );
 
-// Related products and upsells.
-update_post_meta( $witryna_product_ids['Wazon Amfora'], '_upsell_ids', array( $witryna_product_ids['Wazon Kula'], $witryna_product_ids['Wazon Smukły'] ) );
-
-/* ---------------------------------------------------------------------------
- * Reviews.
- * ------------------------------------------------------------------------ */
-$witryna_reviews = array(
-	array( 'Kubek Poranek', 'Anna', 5, 'Piękny kolor szkliwa i idealna pojemność na poranną kawę. Kupiłam drugi w prezencie.' ),
-	array( 'Kubek Poranek', 'Tomek', 5, 'Solidny, dobrze leży w dłoni. Przesyłka dotarła następnego dnia.' ),
-	array( 'Kubek Poranek', 'Marta', 4, 'Bardzo ładny, choć kolor na żywo jest odrobinę ciemniejszy niż na zdjęciu.' ),
-	array( 'Wazon Amfora', 'Kasia', 5, 'Wazon robi ogromne wrażenie. Starannie zapakowany, bez najmniejszej rysy.' ),
-	array( 'Wazon Amfora', 'Piotr', 5, 'Kupiony na prezent – obdarowana zachwycona. Polecam!' ),
-	array( 'Lampa Glob', 'Ola', 5, 'Daje bardzo przyjemne, ciepłe światło. Mosiężna podstawa wygląda luksusowo.' ),
-	array( 'Misa Fala', 'Michał', 4, 'Świetna na sałatki. Szkliwo ma piękną głębię.' ),
-	array( 'Świeca sojowa Bursztyn', 'Ewa', 5, 'Zapach jest subtelny i otulający, świeca pali się równo.' ),
-);
-foreach ( $witryna_reviews as $witryna_i => list( $witryna_product_name, $witryna_author, $witryna_rating, $witryna_text ) ) {
-	$witryna_comment = wp_insert_comment(
-		array(
-			'comment_post_ID'      => $witryna_product_ids[ $witryna_product_name ],
-			'comment_author'       => $witryna_author,
-			'comment_author_email' => sanitize_title( $witryna_author ) . '@example.com',
-			'comment_content'      => $witryna_text,
-			'comment_type'         => 'review',
-			'comment_approved'     => 1,
-			'comment_date'         => gmdate( 'Y-m-d H:i:s', time() - ( $witryna_i + 1 ) * 3 * DAY_IN_SECONDS ),
-		)
-	);
-	update_comment_meta( $witryna_comment, 'rating', $witryna_rating );
-	update_comment_meta( $witryna_comment, 'verified', 1 );
-}
-foreach ( array_unique( array_column( $witryna_reviews, 0 ) ) as $witryna_product_name ) {
-	$witryna_product = wc_get_product( $witryna_product_ids[ $witryna_product_name ] );
-	$witryna_product->set_rating_counts( WC_Comments::get_rating_counts_for_product( $witryna_product ) );
-	$witryna_product->set_average_rating( WC_Comments::get_average_rating_for_product( $witryna_product ) );
-	$witryna_product->set_review_count( WC_Comments::get_review_count_for_product( $witryna_product ) );
+	$witryna_images = array_slice( $witryna_item['images'], 0, $witryna_demo_all ? 4 : 2 );
+	$witryna_image  = $witryna_images ? witryna_demo_remote_image( array_shift( $witryna_images ), $witryna_item['name'] ) : 0;
+	$witryna_product->set_image_id( $witryna_image );
+	$witryna_product->set_gallery_image_ids( array_filter( array_map( static fn( $url ) => witryna_demo_remote_image( $url, $witryna_item['name'] ), $witryna_images ) ) );
+	$witryna_first = 0 === ( $witryna_per_leaf[ $witryna_leaf ] ?? 0 );
+	$witryna_product->set_featured( $witryna_first );
+	$witryna_product->set_stock_status( 'instock' );
+	// The theme marks products added in the last 30 days as new, so only
+	// products STIHL marks as new get a recent date.
+	$witryna_new = in_array( 'NOWOŚĆ', $witryna_item['badges'], true );
+	$witryna_product->set_date_created( time() - ( $witryna_new ? 1 : 90 ) * DAY_IN_SECONDS - $witryna_i * HOUR_IN_SECONDS );
+	// Demo only: the first product of each category fills the "Bestsellers" section.
+	$witryna_product->set_total_sales( $witryna_first ? max( 1, 500 - $witryna_i ) : 0 );
 	$witryna_product->save();
+
+	foreach ( $witryna_terms as $witryna_term_id ) {
+		if ( ! get_term_meta( $witryna_term_id, 'thumbnail_id', true ) && $witryna_image ) {
+			update_term_meta( $witryna_term_id, 'thumbnail_id', $witryna_image );
+		}
+	}
+
+	$witryna_per_leaf[ $witryna_leaf ] = ( $witryna_per_leaf[ $witryna_leaf ] ?? 0 ) + 1;
+	$witryna_product_ids[]             = $witryna_product->get_id();
 }
 
 /* ---------------------------------------------------------------------------
@@ -272,8 +225,12 @@ function witryna_demo_page( $title, $slug, $content = '', $template = '' ) {
 
 $witryna_home  = witryna_demo_page( 'Strona główna', 'strona-glowna' );
 $witryna_blog  = witryna_demo_page( 'Blog', 'blog' );
-$witryna_about = witryna_demo_page( 'O nas', 'o-nas', '<!-- wp:pattern {"slug":"witryna/page-about"} /-->', 'page-no-title' );
-$witryna_contact = witryna_demo_page( 'Kontakt', 'kontakt', '<!-- wp:pattern {"slug":"witryna/page-contact"} /-->', 'page-no-title' );
+// These slugs have their own templates (templates/page-<slug>.html).
+$witryna_service = witryna_demo_page( 'Serwis', 'serwis' );
+$witryna_reviews = witryna_demo_page( 'Opinie', 'opinie' );
+$witryna_social  = witryna_demo_page( 'Social media', 'social-media' );
+$witryna_about   = witryna_demo_page( 'O firmie', 'o-firmie' );
+$witryna_contact = witryna_demo_page( 'Kontakt', 'kontakt' );
 $witryna_terms = witryna_demo_page( 'Regulamin', 'regulamin', '<!-- wp:paragraph --><p>Tu znajdzie się regulamin sklepu internetowego.</p><!-- /wp:paragraph -->' );
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $witryna_home );
@@ -292,11 +249,29 @@ wp_update_post( array( 'ID' => wc_get_page_id( 'myaccount' ), 'post_title' => 'M
  * Blog posts.
  * ------------------------------------------------------------------------ */
 $witryna_posts = array(
-	array( 'Jak dobrać wazon do bukietu', 'Inspiracje', 'hero.jpg', 'Proporcje, kolory i kilka prostych zasad, dzięki którym każdy bukiet będzie wyglądał jak z kwiaciarni.' ),
-	array( 'Kamionka czy porcelana? Krótki przewodnik', 'Poradniki', 'story.jpg', 'Wyjaśniamy różnice między materiałami ceramicznymi i podpowiadamy, co sprawdzi się w Twojej kuchni.' ),
-	array( 'Jesienne nakrycie stołu w pięciu krokach', 'Inspiracje', 'promo.jpg', 'Ciepłe barwy, naturalne tkaniny i ceramika z charakterem – tak przygotujesz stół na długie wieczory.' ),
+	array(
+		'Przegląd kosiarki przed sezonem: co sprawdzić',
+		'Poradniki',
+		'Kosiarki',
+		'Kilka prostych czynności, dzięki którym kosiarka odpali bez problemu i równo skosi trawnik przez cały sezon.',
+		'<!-- wp:paragraph --><p>Zanim pierwszy raz w sezonie wyjedziesz kosiarką na trawnik, warto poświęcić jej pół godziny. Większość usterek, z którymi kosiarki trafiają do serwisu wiosną, wynika z zaniedbań po zimie.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Kosiarka spalinowa</h2><!-- /wp:heading --><!-- wp:list --><ul class="wp-block-list"><li>Wymień olej silnikowy i sprawdź jego poziom na płaskim podłożu.</li><li>Oczyść lub wymień filtr powietrza.</li><li>Sprawdź świecę zapłonową.</li><li>Zatankuj świeże paliwo. Stara benzyna to najczęstsza przyczyna problemów z rozruchem.</li></ul><!-- /wp:list --><!-- wp:heading --><h2 class="wp-block-heading">Każda kosiarka</h2><!-- /wp:heading --><!-- wp:list --><ul class="wp-block-list"><li>Naostrz albo wymień nóż. Tępy nóż szarpie trawę i zostawia brązowe końcówki.</li><li>Oczyść obudowę od spodu z zaschniętej trawy.</li><li>Sprawdź kosz, koła i linkę hamulca noża.</li></ul><!-- /wp:list --><!-- wp:paragraph --><p>Nie masz czasu albo narzędzi? Przegląd sezonowy zrobimy w naszym serwisie w Czernicy.</p><!-- /wp:paragraph -->',
+	),
+	array(
+		'Jak dobrać pilarkę do swoich potrzeb',
+		'Poradniki',
+		'Pilarki',
+		'Akumulatorowa czy spalinowa, jaka prowadnica i moc? Podpowiadamy, na co zwrócić uwagę przy wyborze pilarki.',
+		'<!-- wp:paragraph --><p>Dobra pilarka to taka, która pasuje do pracy, jaką chcesz wykonać. Do przycinania gałęzi w ogrodzie potrzebujesz innego sprzętu niż do cięcia drewna na opał.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Akumulatorowa</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Cicha, lekka i gotowa do pracy po naciśnięciu przycisku. Sprawdzi się przy przycinaniu drzew i krzewów, pracach przy domu i w miejscach, gdzie liczy się niski hałas.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Spalinowa</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Więcej mocy i dowolnie długa praca. To dobry wybór do cięcia drewna opałowego, ścinania drzew i prac na działce bez dostępu do prądu.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Długość prowadnicy</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Prowadnica powinna być dłuższa niż średnica drewna, które najczęściej tniesz. Do ogrodu zwykle wystarczy 30–35 cm, do drewna opałowego 35–40 cm.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Przyjedź do sklepu, a pomożemy dobrać model i pokażemy, jak bezpiecznie z niego korzystać.</p><!-- /wp:paragraph -->',
+	),
+	array(
+		'Robot koszący iMOW: na jaki trawnik?',
+		'Poradniki',
+		'Roboty koszące',
+		'Sprawdź, czy Twój ogród nadaje się dla robota koszącego i jak dobrać model do powierzchni trawnika.',
+		'<!-- wp:paragraph --><p>Robot koszący kosi codziennie po trochu, więc trawnik jest gęsty i zawsze równo przycięty, a Ty nie musisz o tym myśleć.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Powierzchnia i nachylenie</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Każdy model iMOW ma podaną maksymalną powierzchnię trawnika i nachylenie terenu. Wybierz model z zapasem, jeśli ogród ma dużo zakamarków albo wąskich przejść.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Przygotowanie ogrodu</h2><!-- /wp:heading --><!-- wp:list --><ul class="wp-block-list"><li>Zaplanuj miejsce na stację dokującą z dostępem do prądu.</li><li>Usuń z trawnika kamienie, gałęzie i zabawki.</li><li>Zastanów się, gdzie robot ma nie wjeżdżać: rabaty, oczko wodne, warzywnik.</li></ul><!-- /wp:list --><!-- wp:paragraph --><p>Pomagamy dobrać robota do ogrodu i zajmujemy się jego montażem.</p><!-- /wp:paragraph -->',
+	),
 );
-foreach ( $witryna_posts as $witryna_i => list( $witryna_title, $witryna_category, $witryna_img, $witryna_excerpt ) ) {
+foreach ( $witryna_posts as $witryna_i => list( $witryna_title, $witryna_category, $witryna_product_cat, $witryna_excerpt, $witryna_content ) ) {
 	$witryna_cat = term_exists( $witryna_category, 'category' );
 	if ( ! $witryna_cat ) {
 		$witryna_cat = wp_insert_term( $witryna_category, 'category' );
@@ -309,10 +284,15 @@ foreach ( $witryna_posts as $witryna_i => list( $witryna_title, $witryna_categor
 			'post_excerpt'  => $witryna_excerpt,
 			'post_date'     => gmdate( 'Y-m-d H:i:s', time() - ( $witryna_i + 1 ) * 5 * DAY_IN_SECONDS ),
 			'post_category' => array( (int) $witryna_cat['term_id'] ),
-			'post_content'  => '<!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">' . $witryna_excerpt . '</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Ceramika to materiał, który z czasem nabiera charakteru. Dobrze dobrana potrafi zmienić wnętrze bardziej niż nowe meble – wystarczy kilka przemyślanych przedmiotów.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Zacznij od światła</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Ustaw przedmioty tam, gdzie pada dzienne światło. Szkliwo pięknie odbija promienie słońca, a matowe powierzchnie podkreślą fakturę gliny.</p><!-- /wp:paragraph --><!-- wp:quote --><blockquote class="wp-block-quote"><!-- wp:paragraph --><p>Najpiękniejsze wnętrza powstają powoli, z przedmiotów, które naprawdę lubimy.</p><!-- /wp:paragraph --><cite>Zespół Witryny</cite></blockquote><!-- /wp:quote --><!-- wp:paragraph --><p>Nie bój się łączyć różnych kolorów i wysokości. Grupy nieparzystej liczby przedmiotów wyglądają naturalnie i swobodnie.</p><!-- /wp:paragraph -->',
+			'post_content'  => '<!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">' . $witryna_excerpt . '</p><!-- /wp:paragraph -->' . $witryna_content,
 		)
 	);
-	set_post_thumbnail( $witryna_post, witryna_demo_image( $witryna_img, $witryna_title ) );
+	if ( isset( $witryna_cat_ids[ $witryna_product_cat ] ) ) {
+		$witryna_thumbnail = (int) get_term_meta( $witryna_cat_ids[ $witryna_product_cat ], 'thumbnail_id', true );
+		if ( $witryna_thumbnail ) {
+			set_post_thumbnail( $witryna_post, $witryna_thumbnail );
+		}
+	}
 }
 
 /* ---------------------------------------------------------------------------
@@ -320,21 +300,15 @@ foreach ( $witryna_posts as $witryna_i => list( $witryna_title, $witryna_categor
  * ------------------------------------------------------------------------ */
 $witryna_shop_url = get_permalink( wc_get_page_id( 'shop' ) );
 $witryna_links    = '';
-foreach ( $witryna_cat_ids as $witryna_slug => $witryna_id ) {
-	$witryna_links .= sprintf( '<!-- wp:navigation-link {"label":"%s","type":"product_cat","id":%d,"url":"%s","kind":"taxonomy"} /-->', esc_attr( $witryna_categories[ $witryna_slug ][0] ), $witryna_id, esc_url( get_term_link( $witryna_id, 'product_cat' ) ) );
+foreach ( $witryna_cat_ids as $witryna_key => $witryna_id ) {
+	if ( false === strpos( $witryna_key, '>' ) ) {
+		$witryna_links .= sprintf( '<!-- wp:navigation-link {"label":"%s","type":"product_cat","id":%d,"url":"%s","kind":"taxonomy"} /-->', esc_attr( $witryna_key ), $witryna_id, esc_url( get_term_link( $witryna_id, 'product_cat' ) ) );
+	}
 }
-$witryna_menu = sprintf(
-	'<!-- wp:navigation-submenu {"label":"Sklep","url":"%1$s","kind":"custom"} -->%2$s<!-- /wp:navigation-submenu --><!-- wp:navigation-link {"label":"Nowości","url":"%3$s","kind":"custom"} /--><!-- wp:navigation-link {"label":"Blog","type":"page","id":%4$d,"url":"%5$s","kind":"post-type"} /--><!-- wp:navigation-link {"label":"O nas","type":"page","id":%6$d,"url":"%7$s","kind":"post-type"} /--><!-- wp:navigation-link {"label":"Kontakt","type":"page","id":%8$d,"url":"%9$s","kind":"post-type"} /-->',
-	esc_url( $witryna_shop_url ),
-	$witryna_links,
-	esc_url( add_query_arg( 'orderby', 'date', $witryna_shop_url ) ),
-	$witryna_blog,
-	esc_url( get_permalink( $witryna_blog ) ),
-	$witryna_about,
-	esc_url( get_permalink( $witryna_about ) ),
-	$witryna_contact,
-	esc_url( get_permalink( $witryna_contact ) )
-);
+$witryna_menu = sprintf( '<!-- wp:navigation-submenu {"label":"Sklep","url":"%1$s","kind":"custom"} -->%2$s<!-- /wp:navigation-submenu -->', esc_url( $witryna_shop_url ), $witryna_links );
+foreach ( array( 'Serwis' => $witryna_service, 'Opinie' => $witryna_reviews, 'Social media' => $witryna_social, 'O firmie' => $witryna_about, 'Kontakt' => $witryna_contact ) as $witryna_label => $witryna_page ) {
+	$witryna_menu .= sprintf( '<!-- wp:navigation-link {"label":"%s","type":"page","id":%d,"url":"%s","kind":"post-type"} /-->', esc_attr( $witryna_label ), $witryna_page, esc_url( get_permalink( $witryna_page ) ) );
+}
 wp_insert_post(
 	array(
 		'post_type'    => 'wp_navigation',
@@ -356,7 +330,7 @@ update_option( 'woocommerce_flat_rate_' . $witryna_flat . '_settings', array( 't
 $witryna_free = $witryna_zone->add_shipping_method( 'free_shipping' );
 update_option( 'woocommerce_free_shipping_' . $witryna_free . '_settings', array( 'title' => 'Darmowa dostawa', 'requires' => 'min_amount', 'min_amount' => '199' ) );
 $witryna_pickup = $witryna_zone->add_shipping_method( 'local_pickup' );
-update_option( 'woocommerce_local_pickup_' . $witryna_pickup . '_settings', array( 'title' => 'Odbiór w salonie', 'cost' => '0' ) );
+update_option( 'woocommerce_local_pickup_' . $witryna_pickup . '_settings', array( 'title' => 'Odbiór osobisty w Czernicy', 'cost' => '0' ) );
 
 update_option( 'woocommerce_bacs_settings', array( 'enabled' => 'yes', 'title' => 'Przelew tradycyjny', 'description' => 'Wpłać kwotę zamówienia na nasze konto. Wyślemy paczkę po zaksięgowaniu wpłaty.' ) );
 update_option( 'woocommerce_cod_settings', array( 'enabled' => 'yes', 'title' => 'Płatność przy odbiorze', 'description' => 'Zapłać kurierowi gotówką lub kartą.' ) );
@@ -378,8 +352,9 @@ if ( ! username_exists( 'klient' ) ) {
 			'phone'      => '500600700',
 		);
 		$witryna_order = wc_create_order( array( 'customer_id' => $witryna_customer_id ) );
-		$witryna_order->add_product( wc_get_product( $witryna_product_ids['Wazon Amfora'] ), 1 );
-		$witryna_order->add_product( wc_get_product( $witryna_product_ids['Świeca sojowa Bursztyn'] ), 2 );
+		foreach ( array_slice( $witryna_product_ids, 0, 2 ) as $witryna_product_id ) {
+			$witryna_order->add_product( wc_get_product( $witryna_product_id ), 1 );
+		}
 		$witryna_order->set_address( $witryna_address, 'billing' );
 		$witryna_order->set_address( $witryna_address, 'shipping' );
 		$witryna_order->set_payment_method( 'bacs' );
@@ -399,4 +374,4 @@ flush_rewrite_rules();
 delete_transient( 'wc_term_counts' );
 wc_delete_product_transients();
 
-echo "Witryna demo store is ready.\n";
+echo "Klinika Trawnika demo store is ready (" . count( $witryna_product_ids ) . " products).\n";
