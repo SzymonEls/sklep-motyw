@@ -396,9 +396,6 @@ ul.is-style-checklist li::before {
 
 /* Below 1024px the menu collapses into the overlay. */
 @media (max-width: 1023px) {
-	.witryna-header__inner.witryna-header__inner {
-		grid-template-columns: 1fr auto 1fr;
-	}
 
 	.witryna-header__nav {
 		grid-column: 1;
@@ -408,6 +405,22 @@ ul.is-style-checklist li::before {
 	.witryna-header__brand {
 		grid-column: 2;
 		justify-self: center;
+		min-width: 0;
+		text-align: center;
+	}
+
+	/* Long shop names ("Klinika Trawnika Czernica") wrap instead of covering the icons. */
+	.witryna-header__inner.witryna-header__inner {
+		grid-template-columns: auto minmax(0, 1fr) auto;
+	}
+
+	.witryna-header .wp-block-site-title {
+		line-height: 1.1;
+		overflow-wrap: anywhere;
+	}
+
+	.witryna-header .wp-block-site-title a {
+		white-space: normal;
 	}
 
 	.witryna-header__nav .wp-block-navigation__responsive-container-open:not(.always-shown) {
@@ -1255,4 +1268,10 @@ ul.is-style-checklist li::before {
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+@media (max-width: 480px) {
+	.witryna-header .wp-block-site-title {
+		font-size: clamp(1rem, 4.6vw, 1.25rem);
+	}
 }

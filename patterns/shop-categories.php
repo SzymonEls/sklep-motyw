@@ -14,7 +14,7 @@ $witryna_terms = witryna_featured_categories( 4 );
 $witryna_tiles = array();
 
 foreach ( $witryna_terms as $witryna_index => $witryna_term ) {
-	$witryna_thumbnail = (int) get_term_meta( $witryna_term->term_id, 'thumbnail_id', true );
+	$witryna_thumbnail = witryna_category_image_id( $witryna_term );
 	$witryna_link      = get_term_link( $witryna_term );
 	$witryna_tiles[]   = array(
 		'name'  => $witryna_term->name,

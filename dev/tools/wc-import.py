@@ -168,8 +168,17 @@ def payload(product, catalog, with_images=True):
 		'attributes': attributes,
 		'manage_stock': False,
 		'stock_status': 'instock',
+		# The theme marks products added in the last 30 days as new, so only
+		# products STIHL itself marks as new get today's date.
+		'date_created': (datetime.datetime.now() - datetime.timedelta(days=0 if 'NOWOŚĆ' in product.get('badges', []) else 90)).strftime('%Y-%m-%dT%H:%M:%S'),
 		'meta_data': [{'key': '_klinika_stihl_url', 'value': product['url']}, {'key': '_klinika_stihl_id', 'value': product['stihl_id']}] + ([{'key': '_klinika_stihl_device_number', 'value': product['device_number']}] if product.get('device_number') else []),
 	}
+	if product.get('variants'):
+		axis = product['variants']
+		data['type'] = 'variable'
+		data.pop('regular_price')
+		data.pop('sale_price')
+		data['attributes'].append({'name': axis['attribute'], 'options': [i['option'] for i in axis['items']], 'visible': True, 'variation': True, 'position': len(attributes)})
 	brand = catalog.brand_id()
 	if brand:
 		data['brands'] = [{'id': brand}]
@@ -178,7 +187,41 @@ def payload(product, catalog, with_images=True):
 	return data
 
 
+def sync_variations(shop, product, parent_id):
+	"""Creates or updates the variations of a variable product (by SKU)."""
+	axis = product['variants']
+	existing = {v['sku']: v['id'] for v in shop.all('products/%d/variations' % parent_id) if v.get('sku')}
+	create, update = [], []
+	for item in axis['items']:
+		variation = {
+			'sku': item['sku'],
+			'regular_price': item['price_regular'],
+			'sale_price': '',
+			'manage_stock': False,
+			'stock_status': 'instock',
+			'attributes': [{'name': axis['attribute'], 'option': item['option']}],
+			'meta_data': [{'key': '_klinika_stihl_device_number', 'value': item.get('device_number', '')}],
+		}
+		if item['sku'] in existing:
+			variation['id'] = existing[item['sku']]
+			update.append(variation)
+		else:
+			create.append(variation)
+	result = shop.call('POST', 'products/%d/variations/batch' % parent_id, {'create': create, 'update': update})
+	failed = [v for v in (result.get('create') or []) + (result.get('update') or []) if v.get('error')]
+	if failed:
+		raise ShopError(400, {'message': 'warianty: ' + '; '.join(v['error'].get('message', '') for v in failed)[:300]})
+
+
 def import_product(shop, catalog, product, force_images=False):
+	action, result = import_main(shop, catalog, product, force_images)
+	if product.get('variants'):
+		sync_variations(shop, product, result['id'])
+		action += ' (%d wariantów)' % len(product['variants']['items'])
+	return action, result
+
+
+def import_main(shop, catalog, product, force_images=False):
 	sku = sku_of(product)
 	existing = shop.call('GET', 'products?sku=%s&status=any' % urllib.parse.quote(sku))
 	existing = [p for p in existing if p.get('sku') == sku]
