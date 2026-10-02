@@ -67,8 +67,17 @@ npm install
 npm start      # http://127.0.0.1:9400 (dopisz ?dev-login=1, aby zalogować się jako admin)
 npm run reset  # nowy sklep od zera
 ```
-Pierwsze uruchomienie instaluje WordPressa, WooCommerce, polskie tłumaczenia i przykładowe
-produkty (kilka minut). Strona demo jest przechowywana w `node_modules/.cache/witryna-playground`.
+Pierwsze uruchomienie instaluje WordPressa, WooCommerce, polskie tłumaczenia i sklep Kliniki
+Trawnika z produktami STIHL (kilka minut). Strona demo jest przechowywana w `node_modules/.cache/witryna-playground`.
+
+Produkty pochodzą z `dev/demo/stihl-products.json` (kategorie stihl.pl, do których linkuje stara
+strona sklepu). Domyślnie importowanych jest do 6 produktów na kategorię, wszystkie:
+`WITRYNA_DEMO_ALL=1 npm run reset`. Zdjęcia są pobierane ze stihl.pl przy instalacji,
+ceny to ceny katalogowe STIHL bez promocji. Odświeżenie danych ze stihl.pl:
+```bash
+python3 dev/tools/stihl-products.py           # ok. 10 minut, 1 zapytanie na sekundę
+python3 dev/tools/stihl-products.py --images  # tylko ponowne sprawdzenie zdjęć promocyjnych
+```
 
 ## Tłumaczenia
 Teksty źródłowe są po angielsku, zgodnie z konwencją WordPressa.
