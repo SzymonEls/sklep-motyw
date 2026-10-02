@@ -12,7 +12,9 @@ The result is large, so it is written outside the repository (by default to
 
     python3 dev/tools/stihl-catalog.py fetch   download (resumable, ~1 request per second)
     python3 dev/tools/stihl-catalog.py build   build stihl-products.json from raw/
+    python3 dev/tools/stihl-catalog.py crawl   also walk every stihl.pl category tree and add missing products
     python3 dev/tools/stihl-catalog.py demo    write the preview subset to dev/demo/stihl-products.json
+    python3 dev/tools/stihl-catalog.py photos  save a local copy of the product photos to zdjecia/
 
 Product URLs come from stihl.pl/sitemap.xml (/pl/p/ machines, /pl/ap/
 accessories) and from the machine categories used by stihl-products.py.
@@ -23,6 +25,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 
@@ -269,15 +272,18 @@ def all_raw():
 def build():
 	products, seen = [], set()
 	for detail in all_raw():
-		if not detail.get('id') or detail['id'] in seen or not (detail.get('prices') or detail.get('variants')):
+		if not detail.get('id') or detail['id'] in seen:
 			continue
 		seen.add(detail['id'])
 		detail.setdefault('assets', [])
 		# Keep more photos than needed, so some remain after removing banners.
 		product = build_one(detail)
 		product['images'] = [sp.SITE + a['url'] for a in detail['assets'] if a.get('url', '').startswith('/content/dam/') and a.get('imageType') != 'ICONS'][:8]
-		if product.get('price_regular'):
-			products.append(product)
+		# Products without a price (e.g. sold only by dealers) are kept and marked;
+		# the importer skips them.
+		product['no_price'] = not product.get('price_regular')
+		product['dealer_only'] = bool(detail.get('isDealerSellOnly'))
+		products.append(product)
 
 	skus = set()
 	for product in products:
@@ -296,7 +302,7 @@ def build():
 		counts[product['category']] = counts.get(product['category'], 0) + 1
 	with open(os.path.join(OUT, 'mapping.json'), 'w', encoding='utf-8') as handle:
 		json.dump({'categories': counts}, handle, ensure_ascii=False, indent='\t')
-	print('Produkty: %d (z wariantami: %d)' % (len(products), sum(1 for p in products if p.get('variants'))))
+	print('Produkty: %d (z wariantami: %d, bez ceny: %d)' % (len(products), sum(1 for p in products if p.get('variants')), sum(1 for p in products if p['no_price'])))
 	for category in sorted(counts):
 		print('  %-60s %d' % (category, counts[category]))
 
@@ -311,7 +317,9 @@ def write_csv(products):
 		writer = csv.writer(handle)
 		writer.writerow(columns)
 		for p in products:
-			category = p['category'].replace(' > ', ' > ')
+			if p.get('no_price'):
+				continue
+			category = p['category']
 			images = ', '.join(p['images'][:3])
 			description = p['description_html'] + '<p><a href="%s">Strona produktu na stihl.pl</a></p>' % p['url']
 			if p.get('variants'):
@@ -347,6 +355,87 @@ def demo():
 	print('Demo: %d produktów' % len(products))
 
 
+def crawl():
+	"""Walks the category trees of all known categories and fetches missing products."""
+	roots = set()
+	for detail in all_raw():
+		primary = detail.get('primaryCategory') or {}
+		for value in (primary.get('code'), detail.get('parentCategoryId'), (primary.get('url') or '').rsplit('-', 1)[-1]):
+			if value and str(value).isdigit():
+				roots.add(str(value))
+	for path, _ in sp.CATEGORIES:
+		roots.add(path.rsplit('-', 1)[1])
+	# Top-level accessory, consumables, protective clothing and merchandise categories.
+	roots |= {'98280', '98281', '98284', '157727', '99386', '149120', '210387'}
+
+	seen, queue, categories = set(), sorted(roots), {}
+	while queue:
+		category = queue.pop(0)
+		if category in seen:
+			continue
+		seen.add(category)
+		try:
+			info = sp.request('%s/categories/%s?lang=pl-PL' % (sp.API, category))
+		except Exception:  # noqa: BLE001 - unknown or empty category.
+			continue
+		categories[category] = {'name': info.get('name'), 'url': info.get('url'), 'type': info.get('type'), 'children': [c['id'] for c in info.get('children') or []]}
+		queue += [str(c['id']) for c in info.get('children') or [] if c.get('type') != 'FAMILY_CATEGORY']
+	with open(os.path.join(OUT, 'categories.json'), 'w', encoding='utf-8') as handle:
+		json.dump(categories, handle, ensure_ascii=False, indent='\t')
+	print('kategorie: %d' % len(categories), file=sys.stderr)
+
+	known = {name[:-5] for name in os.listdir(RAW) if name.endswith('.json')}
+	added, errors = 0, []
+	for category in sorted(categories):
+		try:
+			items = sp.listing(category)
+		except Exception as error:  # noqa: BLE001
+			errors.append('%s: %s' % (category, error))
+			continue
+		for item in items:
+			product_id = str(item['id'])
+			if product_id in known:
+				continue
+			known.add(product_id)
+			try:
+				detail = sp.request('%s/products/%s?lang=pl-PL' % (sp.API, product_id))
+			except Exception as error:  # noqa: BLE001
+				errors.append('%s: %s' % (product_id, error))
+				continue
+			with open(raw_path(product_id), 'w', encoding='utf-8') as handle:
+				json.dump(detail, handle, ensure_ascii=False)
+			added += 1
+	print('Nowe produkty: %d, błędy: %d' % (added, len(errors)))
+	for error in errors:
+		print('  ' + error)
+
+
+def photos():
+	"""Saves the photos of stihl-products.json to zdjecia/ (a backup for uploads)."""
+	folder = os.path.join(OUT, 'zdjecia')
+	os.makedirs(folder, exist_ok=True)
+	with open(os.path.join(OUT, 'stihl-products.json'), encoding='utf-8') as handle:
+		products = json.load(handle)
+	urls = list(dict.fromkeys(url for p in products for url in p['images']))
+	done = errors = 0
+	for number, url in enumerate(urls):
+		target = os.path.join(folder, url.rsplit('/', 1)[-1])
+		if os.path.exists(target):
+			continue
+		try:
+			time.sleep(sp.DELAY / 2)
+			request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) KlinikaTrawnika-katalog/1.0'})
+			with urllib.request.urlopen(request, timeout=60) as response, open(target + '.part', 'wb') as handle:
+				handle.write(response.read())
+			os.replace(target + '.part', target)
+			done += 1
+		except Exception:  # noqa: BLE001
+			errors += 1
+		if number % 200 == 0:
+			print('zdjęcia: %d/%d' % (number, len(urls)), file=sys.stderr)
+	print('Zapisane zdjęcia: %d, błędy: %d, folder: %s' % (done, errors, folder))
+
+
 if __name__ == '__main__':
 	command = sys.argv[1] if len(sys.argv) > 1 else 'fetch'
-	{'fetch': fetch, 'build': build, 'demo': demo}[command]()
+	{'fetch': fetch, 'build': build, 'demo': demo, 'crawl': crawl, 'photos': photos}[command]()
