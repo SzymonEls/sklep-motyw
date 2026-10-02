@@ -3,7 +3,7 @@ return array(
 	'domain' => 'witryna',
 	'plural-forms' => 'nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);',
 	'language' => 'pl_PL',
-	'project-id-version' => 'Witryna 1.0.0',
+	'project-id-version' => 'Witryna 1.1.0',
 	'messages' => array(
 		'%s product' => '%s produkt' . "\0" . '%s produkty' . "\0" . '%s produktów',
 		'30-day free returns' => 'Bezpłatny zwrot do 30 dni',

@@ -243,7 +243,7 @@ POT_HEADER = r'''# Copyright (C) 2026 Witryna
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Witryna 1.0.0\n"
+"Project-Id-Version: Witryna 1.1.0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -354,7 +354,7 @@ def write_l10n_php(path, messages, header):
            "\t'domain' => 'witryna',",
            f"\t'plural-forms' => {php_str(meta.get('Plural-Forms', ''))},",
            f"\t'language' => {php_str(meta.get('Language', ''))},",
-           "\t'project-id-version' => 'Witryna 1.0.0',",
+           "\t'project-id-version' => 'Witryna 1.1.0',",
            "\t'messages' => array("]
     for k in sorted(messages):
         out.append(f"\t\t{php_str(k)} => {php_str(messages[k])},")
