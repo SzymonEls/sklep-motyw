@@ -21,7 +21,6 @@ return array(
 		'Border radius size name' . "\4" . 'Large' => 'Duży',
 		'Border radius size name' . "\4" . 'Medium' => 'Średni',
 		'Border radius size name' . "\4" . 'Small' => 'Mały',
-		'Brand: ' => 'Marka: ',
 		'Categories' => 'Kategorie',
 		'Category' => 'Kategoria',
 		'Choose courier delivery, a parcel locker or in-store pickup at checkout.' => 'Przy zamówieniu wybierzesz kuriera, paczkomat lub odbiór osobisty w salonie.',

@@ -19,13 +19,17 @@ $witryna_count    = max( 1, min( 50, (int) ( $attributes['shopCount'] ?? 20 ) ) 
 $witryna_reviews  = witryna_store_reviews( $witryna_count );
 $witryna_google   = witryna_google_config();
 $witryna_has_key  = $witryna_google['key'] && $witryna_google['place_id'];
+// Without an API key Google allows no review texts, only its map card with
+// the rating and the number of reviews (the keyless Maps embed).
+$witryna_embed    = $witryna_has_key ? '' : add_query_arg( array( 'hl' => 'pl', 'output' => 'embed' ), witryna_store_info( 'google' ) );
+$witryna_active   = ( $witryna_has_key || $witryna_embed ) && ! ( defined( 'REST_REQUEST' ) && REST_REQUEST );
 $witryna_editor   = defined( 'REST_REQUEST' ) && REST_REQUEST;
 $witryna_maps_url = witryna_store_info( 'google' );
 $witryna_write    = witryna_google_review_url();
 $witryna_verified = 'yes' === get_option( 'woocommerce_review_rating_verification_required' );
 $witryna_privacy  = get_privacy_policy_url();
 
-if ( $witryna_has_key && ! $witryna_editor ) {
+if ( $witryna_active ) {
 	wp_enqueue_script( 'witryna-google-reviews' );
 }
 
@@ -44,6 +48,11 @@ $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-revi
 		<?php endif; ?>
 
 		<div class="witryna-greviews"
+			<?php if ( $witryna_active && $witryna_embed ) : ?>
+			data-embed="<?php echo esc_url( $witryna_embed ); ?>"
+			data-map-title="<?php esc_attr_e( "Klinika Trawnika w Mapach Google: ocena i opinie", "witryna" ); ?>"
+			data-autoload="<?php echo $witryna_google['autoload'] ? '1' : '0'; ?>"
+			<?php endif; ?>
 			<?php if ( $witryna_has_key && ! $witryna_editor ) : ?>
 			data-key="<?php echo esc_attr( $witryna_google['key'] ); ?>"
 			data-place="<?php echo esc_attr( $witryna_google['place_id'] ); ?>"
@@ -65,9 +74,9 @@ $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-revi
 				</div>
 			</div>
 
-			<?php if ( $witryna_has_key && ! $witryna_editor && ! $witryna_google['autoload'] ) : ?>
+			<?php if ( $witryna_active && ! $witryna_google['autoload'] ) : ?>
 				<div class="witryna-greviews__consent">
-					<button type="button" class="wp-element-button witryna-greviews__load"><?php esc_html_e( 'Pokaż opinie z Google', 'witryna' ); ?></button>
+					<button type="button" class="wp-element-button witryna-greviews__load"><?php echo esc_html( $witryna_embed ? __( 'Pokaż ocenę w Mapach Google', 'witryna' ) : __( 'Pokaż opinie z Google', 'witryna' ) ); ?></button>
 					<p class="witryna-greviews__note">
 						<?php esc_html_e( 'Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności.', 'witryna' ); ?>
 						<?php if ( $witryna_privacy ) : ?>
@@ -75,6 +84,10 @@ $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-revi
 						<?php endif; ?>
 					</p>
 				</div>
+			<?php endif; ?>
+
+			<?php if ( $witryna_embed && $witryna_google['is_admin'] && ! $witryna_editor ) : ?>
+				<p class="witryna-greviews__admin"><?php esc_html_e( 'Widać tylko ocenę z Map Google. Aby pokazać tu treść opinii, wklej klucz API Google w Wygląd → Dostosuj → Opinie Google. Ten komunikat widzą tylko administratorzy.', 'witryna' ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $witryna_has_key && $witryna_google['is_admin'] && ! $witryna_editor ) : ?>

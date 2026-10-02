@@ -1275,3 +1275,11 @@ ul.is-style-checklist li::before {
 		font-size: clamp(1rem, 4.6vw, 1.25rem);
 	}
 }
+
+.witryna-greviews__map {
+	border: 0;
+	border-radius: var(--wp--custom--radius--media);
+	display: block;
+	height: 360px;
+	width: 100%;
+}

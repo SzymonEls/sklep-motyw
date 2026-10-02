@@ -10,7 +10,7 @@
 ( function () {
 	'use strict';
 
-	const boxes = Array.from( document.querySelectorAll( '.witryna-greviews[data-key][data-place]' ) );
+	const boxes = Array.from( document.querySelectorAll( '.witryna-greviews[data-key][data-place], .witryna-greviews[data-embed]' ) );
 	if ( ! boxes.length ) {
 		return;
 	}
@@ -99,6 +99,25 @@
 		}
 
 		const slot = box.querySelector( '.witryna-greviews__slot' );
+
+		if ( box.dataset.embed ) {
+			// No API key: Google's keyless map card with the rating and a link to the reviews.
+			const frame = document.createElement( 'iframe' );
+			frame.className = 'witryna-greviews__map';
+			frame.src = box.dataset.embed;
+			frame.title = box.dataset.mapTitle || 'Mapy Google';
+			frame.loading = 'lazy';
+			frame.referrerPolicy = 'no-referrer-when-downgrade';
+			frame.addEventListener( 'load', () => {
+				box.classList.remove( 'is-loading' );
+				box.classList.add( 'is-loaded' );
+				box.removeAttribute( 'aria-busy' );
+				status( box, '' );
+			} );
+			slot.appendChild( frame );
+			return;
+		}
+
 		// Loading the Maps script gets its own, longer limit.
 		const scriptTimer = window.setTimeout( () => fail( box ), 20000 );
 
