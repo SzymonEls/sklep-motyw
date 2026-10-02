@@ -1456,3 +1456,40 @@ input.wc-block-product-filter-checkbox-list__input:hover {
 		padding: var(--wp--preset--spacing--30);
 	}
 }
+
+/* Product photos (tools on a white background) are shown whole, not cropped. */
+.wc-block-product .wc-block-components-product-image img,
+.wc-block-product-gallery-large-image__image,
+.wc-block-woocommerce-product-gallery-large-image__image,
+.wc-block-product-gallery-thumbnails__thumbnail__image {
+	background-color: #fff;
+	object-fit: contain !important;
+}
+
+/* Tables in the product description (e.g. technical data). */
+.witryna-product-details .wp-block-accordion-panel table {
+	border-collapse: collapse;
+	font-size: var(--wp--preset--font-size--small);
+	width: 100%;
+}
+
+.witryna-product-details .wp-block-accordion-panel th,
+.witryna-product-details .wp-block-accordion-panel td {
+	border: 0;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	padding: 0.55rem 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.witryna-product-details .wp-block-accordion-panel th {
+	color: var(--wp--preset--color--muted);
+	font-weight: 400;
+	padding-right: 1rem;
+	width: 60%;
+}
+
+.witryna-product-details .wp-block-accordion-panel td {
+	color: var(--wp--preset--color--contrast);
+	font-weight: 600;
+}
