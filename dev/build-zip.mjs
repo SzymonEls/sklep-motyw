@@ -1,6 +1,12 @@
 /**
  * Builds dist/witryna.zip – the installable theme package.
  *
+ * The theme folder inside the package is "witryna". To replace a theme that
+ * is installed under another folder name (WordPress offers "Replace active
+ * with uploaded" only when the names match), pass it as an argument:
+ *
+ *   npm run build -- sklep-motyw     →  dist/sklep-motyw.zip
+ *
  * The repository root is the theme; only theme files are copied into the
  * package (development tools, demo content and node_modules are left out).
  */
@@ -11,7 +17,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = join( dirname( fileURLToPath( import.meta.url ) ), '..' );
 const dist = join( root, 'dist' );
-const stage = join( dist, 'witryna' );
+const name = ( process.argv[ 2 ] || 'witryna' ).replace( /[^a-z0-9_-]/gi, '' ) || 'witryna';
+const stage = join( dist, name );
 const entries = [
 	'style.css',
 	'theme.json',
@@ -29,7 +36,7 @@ const entries = [
 ];
 
 rmSync( stage, { recursive: true, force: true } );
-rmSync( join( dist, 'witryna.zip' ), { force: true } );
+rmSync( join( dist, name + '.zip' ), { force: true } );
 mkdirSync( stage, { recursive: true } );
 
 for ( const entry of entries ) {
@@ -41,6 +48,6 @@ for ( const entry of entries ) {
 	}
 }
 
-execFileSync( 'zip', [ '-rq', 'witryna.zip', 'witryna' ], { cwd: dist, stdio: 'inherit' } );
+execFileSync( 'zip', [ '-rq', name + '.zip', name ], { cwd: dist, stdio: 'inherit' } );
 rmSync( stage, { recursive: true, force: true } );
-console.log( 'dist/witryna.zip' );
+console.log( 'dist/' + name + '.zip' );
