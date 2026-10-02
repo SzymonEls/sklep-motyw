@@ -90,11 +90,13 @@
 			consent.hidden = true;
 			if ( fromClick ) {
 				// Keep the keyboard focus in the section after the button disappears.
-				const heading = box.closest( '.witryna-reviews__google' );
-				const target = heading && heading.querySelector( '.witryna-reviews__heading' );
-				if ( target ) {
-					target.focus();
+				const section = box.closest( '.witryna-reviews__google' );
+				let target = section && section.querySelector( '.witryna-reviews__heading' );
+				if ( ! target ) {
+					target = box;
+					box.setAttribute( 'tabindex', '-1' );
 				}
+				target.focus( { preventScroll: true } );
 			}
 		}
 

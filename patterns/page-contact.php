@@ -43,6 +43,10 @@ $witryna_info = witryna_store_info();
 <!-- wp:pattern {"slug":"witryna/store-visit"} /-->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:witryna/map {"align":"wide"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|20"},"border":{"radius":"var:preset|border-radius|medium"}},"backgroundColor":"surface","fontSize":"small","layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
 <div class="wp-block-group alignwide has-surface-background-color has-background has-small-font-size" style="border-radius:var(--wp--preset--border-radius--medium);padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":2,"fontSize":"medium"} -->
 <h2 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Dane firmy', 'witryna' ); ?></h2>

@@ -304,6 +304,39 @@ msgctxt "Style variation name"
 msgid "Surface section"
 msgstr ""
 
+#. translators: %s: store name.
+#: blocks/map/render.php:47
+msgid "Mapa dojazdu: %s"
+msgstr ""
+
+#: blocks/map/render.php:53
+msgid "Wczytywanie mapy…"
+msgstr ""
+
+#: blocks/map/render.php:54
+msgid "Nie udało się wczytać mapy."
+msgstr ""
+
+#: blocks/map/render.php:60
+msgid "Pokaż mapę"
+msgstr ""
+
+#: blocks/map/render.php:62 blocks/reviews/render.php:81
+msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
+msgstr ""
+
+#: blocks/map/render.php:64 blocks/reviews/render.php:83
+msgid "Polityka prywatności"
+msgstr ""
+
+#: blocks/map/render.php:71
+msgid "Otwórz w Mapach Google"
+msgstr ""
+
+#: blocks/map/render.php:72 patterns/page-contact.php:37 patterns/store-visit.php:40
+msgid "Wyznacz trasę"
+msgstr ""
+
 #: blocks/reviews/render.php:40
 msgid "Najpierw pokazujemy opinie z Google (wybór i kolejność ustala Google), a pod nimi opinie z naszego sklepu internetowego, od najnowszych. Nie filtrujemy opinii według oceny."
 msgstr ""
@@ -342,14 +375,6 @@ msgstr ""
 
 #: blocks/reviews/render.php:79
 msgid "Pokaż opinie z Google"
-msgstr ""
-
-#: blocks/reviews/render.php:81
-msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
-msgstr ""
-
-#: blocks/reviews/render.php:83
-msgid "Polityka prywatności"
 msgstr ""
 
 #: blocks/reviews/render.php:90
@@ -1271,16 +1296,12 @@ msgstr ""
 msgid "Pytanie o sprzęt, zamówienie albo serwis? Najszybciej złapiesz nas telefonicznie w godzinach otwarcia sklepu."
 msgstr ""
 
-#: patterns/page-contact.php:37 patterns/store-visit.php:40
-msgid "Wyznacz trasę"
-msgstr ""
-
-#: patterns/page-contact.php:48
+#: patterns/page-contact.php:52
 msgid "Dane firmy"
 msgstr ""
 
 #. translators: %s: tax ID.
-#: patterns/page-contact.php:52
+#: patterns/page-contact.php:56
 msgid "NIP: %s"
 msgstr ""
 

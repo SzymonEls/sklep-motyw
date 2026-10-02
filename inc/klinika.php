@@ -273,5 +273,6 @@ function witryna_register_reviews_block() {
 		)
 	);
 	register_block_type( get_theme_file_path( 'blocks/reviews' ) );
+	register_block_type( get_theme_file_path( 'blocks/map' ) );
 }
 add_action( 'init', 'witryna_register_reviews_block' );

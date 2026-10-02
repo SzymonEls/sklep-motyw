@@ -1283,3 +1283,55 @@ ul.is-style-checklist li::before {
 	height: 360px;
 	width: 100%;
 }
+
+/* Map block (Contact page). */
+.witryna-map__box {
+	gap: var(--wp--preset--spacing--30);
+}
+
+.witryna-map .witryna-greviews__map,
+.witryna-map__placeholder {
+	aspect-ratio: 16 / 9;
+	border-radius: var(--wp--custom--radius--card);
+	height: auto;
+	width: 100%;
+}
+
+.witryna-map__placeholder {
+	align-items: center;
+	background: var(--wp--preset--color--surface);
+	border: 1px solid var(--wp--preset--color--line);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--30);
+	justify-content: center;
+	padding: var(--wp--preset--spacing--40);
+	text-align: center;
+}
+
+.witryna-map__placeholder .witryna-greviews__note {
+	margin-inline: auto;
+}
+
+.witryna-map__address {
+	margin: 0;
+}
+
+.witryna-map__box.is-loading .witryna-map__placeholder,
+.witryna-map__box.is-loaded .witryna-map__placeholder {
+	display: none;
+}
+
+.witryna-map__links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.5rem;
+}
+
+@media (max-width: 600px) {
+	.witryna-map .witryna-greviews__map,
+	.witryna-map__placeholder {
+		aspect-ratio: 4 / 5;
+	}
+}
