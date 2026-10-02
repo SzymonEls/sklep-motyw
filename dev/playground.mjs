@@ -1,7 +1,8 @@
 /**
  * Starts a local WordPress + WooCommerce site with the Witryna theme.
  *
- * The site lives in .wordpress/ so products and settings survive restarts.
+ * The site lives in node_modules/.cache/witryna-playground so products and
+ * settings survive restarts (WordPress ignores node_modules inside themes).
  * The first start installs WordPress and WooCommerce and creates the demo store.
  *
  *   npm start            start (or create) the site on http://127.0.0.1:9400
@@ -13,7 +14,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join( dirname( fileURLToPath( import.meta.url ) ), '..' );
-const site = join( root, '.wordpress' );
+const site = join( root, 'node_modules', '.cache', 'witryna-playground' );
 const args = process.argv.slice( 2 );
 const port = process.env.PORT || '9400';
 
@@ -30,7 +31,7 @@ const cli = [
 	`--port=${ port }`,
 	'--php=8.3',
 	`--mount-before-install=${ site }:/wordpress`,
-	`--mount=${ join( root, 'witryna' ) }:/wordpress/wp-content/themes/witryna`,
+	`--mount=${ root }:/wordpress/wp-content/themes/witryna`,
 	`--mount=${ join( root, 'dev/plugins/witryna-dev' ) }:/wordpress/wp-content/plugins/witryna-dev`,
 	`--mount=${ join( root, 'dev/demo' ) }:/wordpress/wp-content/witryna-demo`,
 ];

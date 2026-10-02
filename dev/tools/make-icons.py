@@ -5,7 +5,7 @@ so every "stroke" is expressed as a filled shape with an even-odd hole.
 """
 import math, os
 
-OUT = os.path.join(os.path.dirname(__file__), '..', '..', 'witryna', 'assets', 'icons')
+OUT = os.path.join(os.path.dirname(__file__), '..', '..', 'assets', 'icons')
 W = 1.5  # stroke width
 
 def f(n):

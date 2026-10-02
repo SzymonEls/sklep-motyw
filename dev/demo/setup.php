@@ -27,7 +27,7 @@ function witryna_demo_image( $file, $title ) {
 	}
 	$src = __DIR__ . '/images/' . $file;
 	if ( ! file_exists( $src ) ) {
-		$src = WP_CONTENT_DIR . '/themes/witryna/assets/images/' . $file;
+		$src = get_theme_file_path( 'assets/images/' . $file );
 	}
 	$tmp = wp_tempnam( $file );
 	copy( $src, $tmp );

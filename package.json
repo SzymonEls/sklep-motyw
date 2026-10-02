@@ -7,7 +7,7 @@
     "start": "node dev/playground.mjs",
     "reset": "node dev/playground.mjs --reset",
     "build": "node dev/build-zip.mjs",
-    "images": "python3 dev/tools/render.py witryna/assets/images && python3 dev/tools/render-products.py dev/demo/images",
+    "images": "python3 dev/tools/render.py assets/images && python3 dev/tools/render-products.py dev/demo/images",
     "icons": "python3 dev/tools/make-icons.py"
   },
   "devDependencies": {

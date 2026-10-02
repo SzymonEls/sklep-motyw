@@ -16,7 +16,8 @@ import struct
 import sys
 from collections import OrderedDict
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'witryna'))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+THEME_PHP = ('functions.php', 'inc', 'patterns', 'templates', 'parts')
 LANG = os.path.join(ROOT, 'languages')
 DOMAIN = 'witryna'
 
@@ -85,7 +86,11 @@ class Catalog:
 
 
 def extract_php(cat):
-    for path in sorted(glob.glob(os.path.join(ROOT, '**', '*.php'), recursive=True)):
+    paths = []
+    for entry in THEME_PHP:
+        full = os.path.join(ROOT, entry)
+        paths += [full] if full.endswith('.php') else glob.glob(os.path.join(full, '**', '*.php'), recursive=True)
+    for path in sorted(paths):
         rel = os.path.relpath(path, ROOT)
         src = open(path, encoding='utf-8').read()
         # Pattern headers.
