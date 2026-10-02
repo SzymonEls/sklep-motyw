@@ -1223,3 +1223,36 @@ ul.is-style-checklist li::before {
 	gap: 0.75rem;
 	margin-top: 0.75rem;
 }
+
+.witryna-greviews__loading {
+	display: none;
+}
+
+.witryna-greviews.is-loading .witryna-greviews__loading {
+	color: var(--wp--preset--color--muted);
+	display: block;
+	font-size: var(--wp--preset--font-size--small);
+	margin: 0;
+	min-height: 6rem;
+}
+
+.witryna-reviews__heading:focus {
+	outline: none;
+}
+
+.witryna-reviews__heading:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 4px;
+}
+
+.witryna-greviews__status.screen-reader-text {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}

@@ -37,7 +37,7 @@ $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-revi
 	<?php endif; ?>
 
 	<section class="witryna-reviews__google" aria-labelledby="witryna-reviews-google-<?php echo esc_attr( $witryna_variant ); ?>">
-		<h3 class="witryna-reviews__heading" id="witryna-reviews-google-<?php echo esc_attr( $witryna_variant ); ?>"><?php esc_html_e( 'Opinie z Google', 'witryna' ); ?></h3>
+		<h3 class="witryna-reviews__heading" id="witryna-reviews-google-<?php echo esc_attr( $witryna_variant ); ?>" tabindex="-1"><?php esc_html_e( 'Opinie z Google', 'witryna' ); ?></h3>
 
 		<?php if ( $witryna_editor && $witryna_has_key ) : ?>
 			<p class="witryna-reviews__placeholder"><?php esc_html_e( 'Tu na stronie pojawią się opinie z Google, wczytane bezpośrednio przez Google.', 'witryna' ); ?></p>
@@ -52,6 +52,10 @@ $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-revi
 			<?php endif; ?>
 		>
 			<div class="witryna-greviews__slot"></div>
+			<p class="screen-reader-text witryna-greviews__status" role="status" aria-live="polite"
+				data-loading="<?php esc_attr_e( 'Wczytywanie opinii z Google…', 'witryna' ); ?>"
+				data-failed="<?php esc_attr_e( 'Nie udało się wczytać opinii z Google. Skorzystaj z linków do Map Google.', 'witryna' ); ?>"></p>
+			<p class="witryna-greviews__loading" aria-hidden="true"><?php esc_html_e( 'Wczytywanie opinii z Google…', 'witryna' ); ?></p>
 
 			<div class="witryna-greviews__fallback">
 				<p class="witryna-greviews__fallback-text"><?php esc_html_e( 'Opinie o nas przeczytasz w Mapach Google.', 'witryna' ); ?></p>
@@ -96,12 +100,17 @@ $witryna_wrapper = get_block_wrapper_attributes( array( 'class' => 'witryna-revi
 		<?php if ( $witryna_reviews ) : ?>
 			<ul class="witryna-reviews__list">
 				<?php foreach ( $witryna_reviews as $witryna_review ) : ?>
-					<?php $witryna_short = wp_trim_words( $witryna_review['text'], 40 ); ?>
+					<?php
+					$witryna_words = preg_split( '/[\n\r\t ]+/', wp_strip_all_tags( $witryna_review['text'] ), -1, PREG_SPLIT_NO_EMPTY );
+					$witryna_long  = count( $witryna_words ) > 40;
+					?>
 					<li class="witryna-review">
-						<p class="witryna-stars" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: rating. */ __( 'Ocena %d na 5', 'witryna' ), $witryna_review['rating'] ) ); ?>"><?php echo esc_html( witryna_stars( $witryna_review['rating'] ) ); ?></p>
+						<?php if ( $witryna_review['rating'] > 0 ) : ?>
+							<p class="witryna-stars" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: rating. */ __( 'Ocena %d na 5', 'witryna' ), $witryna_review['rating'] ) ); ?>"><?php echo esc_html( witryna_stars( $witryna_review['rating'] ) ); ?></p>
+						<?php endif; ?>
 						<p class="witryna-review__text">
-							<?php echo esc_html( $witryna_short ); ?>
-							<?php if ( $witryna_short !== $witryna_review['text'] ) : ?>
+							<?php echo esc_html( $witryna_long ? wp_trim_words( $witryna_review['text'], 40 ) : $witryna_review['text'] ); ?>
+							<?php if ( $witryna_long ) : ?>
 								<a href="<?php echo esc_url( $witryna_review['link'] ); ?>"><?php esc_html_e( 'Czytaj całość', 'witryna' ); ?></a>
 							<?php endif; ?>
 						</p>

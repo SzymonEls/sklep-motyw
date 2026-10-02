@@ -318,80 +318,88 @@ msgstr ""
 msgid "Tu na stronie pojawią się opinie z Google, wczytane bezpośrednio przez Google."
 msgstr ""
 
+#: blocks/reviews/render.php:56 blocks/reviews/render.php:58
+msgid "Wczytywanie opinii z Google…"
+msgstr ""
+
 #: blocks/reviews/render.php:57
+msgid "Nie udało się wczytać opinii z Google. Skorzystaj z linków do Map Google."
+msgstr ""
+
+#: blocks/reviews/render.php:61
 msgid "Opinie o nas przeczytasz w Mapach Google."
 msgstr ""
 
-#: blocks/reviews/render.php:59
+#: blocks/reviews/render.php:63
 msgid "Przeczytaj opinie w Google"
 msgstr ""
 
-#: blocks/reviews/render.php:60 patterns/page-reviews.php:34
+#: blocks/reviews/render.php:64 patterns/page-reviews.php:34
 msgid "Wystaw opinię w Google"
 msgstr ""
 
-#: blocks/reviews/render.php:66
+#: blocks/reviews/render.php:70
 msgid "Pokaż opinie z Google"
 msgstr ""
 
-#: blocks/reviews/render.php:68
+#: blocks/reviews/render.php:72
 msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
 msgstr ""
 
-#: blocks/reviews/render.php:70
+#: blocks/reviews/render.php:74
 msgid "Polityka prywatności"
 msgstr ""
 
-#: blocks/reviews/render.php:77
+#: blocks/reviews/render.php:81
 msgid "Nie udało się wczytać opinii z Google. Sprawdź klucz API, Place ID i limity w Google Cloud. Ten komunikat widzą tylko administratorzy."
 msgstr ""
 
-#: blocks/reviews/render.php:83
+#: blocks/reviews/render.php:87
 msgid "Opinie z Google pochodzą z naszej wizytówki w Mapach Google. Nie sprawdzamy, czy ich autorzy kupili u nas sprzęt lub korzystali z serwisu. To Google wybiera, które opinie tu widać, i ustala ich kolejność. My ich nie filtrujemy, nie zmieniamy i nie ukrywamy negatywnych."
 msgstr ""
 
-#: blocks/reviews/render.php:85
+#: blocks/reviews/render.php:89
 msgid "Wszystkie opinie w Mapach Google"
 msgstr ""
 
-#: blocks/reviews/render.php:87
+#: blocks/reviews/render.php:91
 msgid "Jak Google sprawdza opinie"
 msgstr ""
 
-#: blocks/reviews/render.php:94
+#: blocks/reviews/render.php:98
 msgid "Opinie z naszego sklepu internetowego"
 msgstr ""
 
 #. translators: %d: rating.
-#: blocks/reviews/render.php:101
+#: blocks/reviews/render.php:109
 msgid "Ocena %d na 5"
 msgstr ""
 
-#: blocks/reviews/render.php:105
+#: blocks/reviews/render.php:114
 msgid "Czytaj całość"
 msgstr ""
 
-#: blocks/reviews/render.php:111
+#: blocks/reviews/render.php:120
 msgid "Zweryfikowany zakup"
 msgstr ""
 
-#: blocks/reviews/render.php:119
+#: blocks/reviews/render.php:128
 msgid "W sklepie internetowym nie ma jeszcze opinii. Po zakupie możesz ocenić produkt na jego stronie."
 msgstr ""
 
-#: blocks/reviews/render.php:126
+#: blocks/reviews/render.php:135
 msgid "Opinie ze sklepu internetowego weryfikujemy: produkt może ocenić tylko klient, który kupił go w naszym sklepie. Sprawdzamy to automatycznie na podstawie zamówień. Publikujemy opinie pozytywne i negatywne, a odrzucamy tylko spam i treści niezgodne z prawem."
 msgstr ""
 
-#: blocks/reviews/render.php:128
+#: blocks/reviews/render.php:137
 msgid "Opinii ze sklepu internetowego nie weryfikujemy pod kątem zakupu. Oznaczenie „Zweryfikowany zakup” widnieje tylko przy opiniach klientów, u których znaleźliśmy zamówienie danego produktu. Publikujemy opinie pozytywne i negatywne, a odrzucamy tylko spam i treści niezgodne z prawem."
 msgstr ""
 
-#: blocks/reviews/render.php:137
+#: blocks/reviews/render.php:146
 msgid "Opinie z Google wybiera i porządkuje Google. Nie sprawdzamy, czy ich autorzy są naszymi klientami. Opinie ze sklepu pokazujemy bez filtrowania ocen."
 msgstr ""
 
-#: blocks/reviews/render.php:138
+#: blocks/reviews/render.php:147
 msgid "Jak weryfikujemy opinie"
 msgstr ""
 

@@ -37,7 +37,6 @@ function witryna_store_info( $key = '' ) {
 		'google'            => 'https://www.google.com/maps?cid=6246252236807402821',
 		'google_name'       => 'KLINIKA TRAWNIKA - Autoryzowany dealer STIHL',
 		'google_place_id'   => 'ChIJpc45KqjfD0cRRfVkuFAlr1Y',
-		'google_review_url' => 'https://search.google.com/local/writereview?placeid=ChIJpc45KqjfD0cRRfVkuFAlr1Y',
 	);
 
 	/**
@@ -114,6 +113,7 @@ function witryna_store_reviews( $number = 3, $min_rating = 1 ) {
 		'post_type' => 'product',
 		'type'      => 'review',
 		'status'    => 'approve',
+		'parent'    => 0,
 		'number'    => $number,
 		'orderby'   => 'comment_date_gmt',
 		'order'     => 'DESC',
