@@ -37,6 +37,8 @@ GLOBAL_ATTRIBUTES = (
 	'Długość prowadnicy', 'Długość listwy tnącej', 'Moc', 'Pojemność skokowa', 'Waga', 'Rozmiar', 'Długość',
 )
 MAX_IMAGES = 3
+DELAY = 8
+NETWORK = (0, 429, 500, 502, 503, 504)  # statuses that count towards the safety stop
 
 
 class Shop:
@@ -47,8 +49,9 @@ class Shop:
 		consumer_secret = next(line for line in lines if line.startswith('cs_'))
 		self.auth = 'Basic ' + base64.b64encode(('%s:%s' % (consumer_key, consumer_secret)).encode()).decode()
 		self.base = site.rstrip('/') + '/wp-json/wc/v3/'
+		self.failures = 0  # consecutive network errors, timeouts, 5xx and 429 answers
 
-	def call(self, method, path, body=None, timeout=180):
+	def call(self, method, path, body=None, timeout=180, retries=3):
 		data = json.dumps(body).encode() if body is not None else None
 		request = urllib.request.Request(self.base + path, data, method=method, headers={
 			'Authorization': self.auth,
@@ -56,23 +59,40 @@ class Shop:
 			'Accept': 'application/json',
 			'User-Agent': 'KlinikaTrawnika-import/1.0',
 		})
-		for attempt in range(4):
+		for attempt in range(retries):
+			if self.failures >= 3:
+				raise ShopError(0, {'message': 'sklep nie odpowiada (3 błędy z rzędu)'})
 			try:
 				with urllib.request.urlopen(request, timeout=timeout) as response:
-					return json.loads(response.read().decode('utf-8') or 'null')
+					result = json.loads(response.read().decode('utf-8') or 'null')
+				self.failures = 0
+				return result
 			except urllib.error.HTTPError as error:
 				payload = error.read().decode('utf-8', 'ignore')
-				if error.code in (429, 500, 502, 503, 504) and attempt < 3:
-					time.sleep(10 * (attempt + 1))
+				if error.code in NETWORK:
+					self.failures += 1
+				else:
+					self.failures = 0
+				if error.code in (429, 500, 502, 503, 504) and attempt < retries - 1 and self.failures < 3:
+					wait = (30, 60, 120)[min(attempt, 2)]
+					retry_after = error.headers.get('Retry-After', '')
+					if retry_after.isdigit():
+						wait = max(wait, min(int(retry_after), 600))
+					time.sleep(wait)
 					continue
 				try:
 					detail = json.loads(payload)
 				except ValueError:
 					detail = {'message': payload[:300]}
-				raise ShopError(error.code, detail) from None
-			except (urllib.error.URLError, TimeoutError) as error:
-				if attempt < 3:
-					time.sleep(10 * (attempt + 1))
+				if not isinstance(detail, dict):
+					detail = {'message': str(detail)[:300]}
+				detail.setdefault('message', detail.get('code', 'HTTP %d' % error.code))
+				retry_after = error.headers.get('Retry-After', '')
+				raise ShopError(error.code, detail, int(retry_after) if retry_after.isdigit() else 0) from None
+			except (urllib.error.URLError, TimeoutError, OSError) as error:
+				self.failures += 1
+				if attempt < retries - 1 and self.failures < 3:
+					time.sleep((30, 60, 120)[min(attempt, 2)])
 					continue
 				raise ShopError(0, {'message': str(error)}) from None
 
@@ -88,10 +108,11 @@ class Shop:
 
 
 class ShopError(Exception):
-	def __init__(self, status, detail):
+	def __init__(self, status, detail, retry_after=0):
 		super().__init__('%s %s' % (status, detail.get('code', '')))
 		self.status = status
 		self.detail = detail
+		self.retry_after = retry_after
 
 
 def slugify(value):
@@ -216,6 +237,7 @@ def sync_variations(shop, product, parent_id):
 def import_product(shop, catalog, product, force_images=False):
 	action, result = import_main(shop, catalog, product, force_images)
 	if product.get('variants'):
+		time.sleep(DELAY)
 		sync_variations(shop, product, result['id'])
 		action += ' (%d wariantów)' % len(product['variants']['items'])
 	return action, result
@@ -231,10 +253,20 @@ def import_main(shop, catalog, product, force_images=False):
 		return 'updated', shop.call('PUT', 'products/%d' % target['id'], data)
 	data = payload(product, catalog)
 	action = 'created'
-	for _ in range(3):
+	last = None
+	for attempt in range(3):
 		try:
-			return action, shop.call('POST', 'products', data)
+			# Never re-send a create blindly: WooCommerce may have saved the
+			# product although the answer did not arrive.
+			return action, shop.call('POST', 'products', data, retries=1)
 		except ShopError as error:
+			last = error
+			if error.status in NETWORK and shop.failures < 3:
+				time.sleep(max((30, 60, 120)[attempt], min(error.retry_after, 600)))
+				found = [p for p in shop.call('GET', 'products?sku=%s&status=any' % urllib.parse.quote(sku_of(product))) if p.get('sku') == sku_of(product)]
+				if found:
+					return action + '-after-timeout', found[0]
+				continue
 			detail = json.dumps(error.detail).lower()
 			if 'brands' in detail and 'brands' in data:
 				# The brand must never block the product: create it without one.
@@ -246,7 +278,7 @@ def import_main(shop, catalog, product, force_images=False):
 				action += '-without-images'
 			else:
 				raise
-	return action, shop.call('POST', 'products', data)
+	raise last
 
 
 def check(schema, value, path='product'):
@@ -303,6 +335,7 @@ def dry_run(shop, products):
 
 
 def main():
+	global MAX_IMAGES, DELAY
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--site', required=True)
 	parser.add_argument('--keys', required=True)
@@ -311,6 +344,8 @@ def main():
 	parser.add_argument('--skus', default='', help='comma-separated SKUs or stihl_ids to import')
 	parser.add_argument('--images', action='store_true', help='re-send images for existing products')
 	parser.add_argument('--again', action='store_true', help='also update products already in import-state.json')
+	parser.add_argument('--delay', type=float, default=DELAY, help='seconds after each product and variation batch (default 8)')
+	parser.add_argument('--max-images', type=int, default=MAX_IMAGES, help='photos per product (default 3)')
 	parser.add_argument('--dry-run', action='store_true', help='only validate the payloads against the REST schema (read-only)')
 	parser.add_argument('--background', action='store_true', help='detach and write the output to import.out next to the products file')
 	args = parser.parse_args()
@@ -337,6 +372,8 @@ def main():
 	if args.limit:
 		products = products[:args.limit]
 
+	MAX_IMAGES = args.max_images
+	DELAY = args.delay
 	shop = Shop(args.site, args.keys)
 	if args.dry_run:
 		dry_run(shop, products)
@@ -357,7 +394,7 @@ def main():
 			json.dump(state, handle, ensure_ascii=False, indent='\t')
 		os.replace(state_path + '.tmp', state_path)
 
-	done = errors = 0
+	done = errors = failures = 0
 	with open(log_path, 'a', encoding='utf-8') as log:
 		for number, product in enumerate(products, 1):
 			entry = {'time': datetime.datetime.now().isoformat(timespec='seconds'), 'sku': sku_of(product), 'name': product['name']}
@@ -367,15 +404,22 @@ def main():
 				state['done'][entry['sku']] = result['id']
 				state['errors'].pop(entry['sku'], None)
 				done += 1
+				failures = 0
 			except ShopError as error:
 				entry.update(action='error', status=error.status, error=error.detail.get('message', '')[:300])
 				state['errors'][entry['sku']] = entry['error']
 				errors += 1
+				failures = failures + 1 if error.status in NETWORK else 0
 			state['last'] = entry
 			save_state()
 			log.write(json.dumps(entry, ensure_ascii=False) + '\n')
 			log.flush()
 			print('%d/%d %s %s %s' % (number, len(products), entry['action'], entry['sku'], entry.get('link') or entry.get('error', '')), flush=True)
+			if failures >= 3:
+				print('STOP: sklep 3 razy z rzędu nie odpowiedział (timeout/5xx/429). Import zatrzymany, postęp zapisany w %s. '
+					'Gdy sklep znów działa, uruchom to samo polecenie, a import dokończy od tego miejsca.' % state_path, flush=True)
+				break
+			time.sleep(DELAY)
 	print('Gotowe: %d, błędy: %d (log: %s)' % (done, errors, log_path))
 
 
