@@ -895,3 +895,190 @@ ul.is-style-checklist li::before {
 		transform: none;
 	}
 }
+
+/* Klinika Trawnika: hardware store look
+   ========================================================================== */
+
+/* Eyebrows read as bold, accented labels. */
+.is-style-eyebrow {
+	color: var(--wp--preset--color--accent);
+	font-weight: 700;
+	opacity: 1;
+}
+
+.is-style-section-dark .is-style-eyebrow,
+.witryna-hero__eyebrow.witryna-hero__eyebrow {
+	color: var(--wp--preset--color--highlight);
+}
+
+/* Section headings get a short accent bar. */
+.witryna-section-head h2::after,
+.witryna-visit > .alignwide h2::after {
+	background: var(--wp--preset--color--accent);
+	content: "";
+	display: block;
+	height: 4px;
+	margin-top: 0.6rem;
+	width: 3rem;
+}
+
+/* Outline buttons on dark sections. */
+.is-style-section-dark .wp-block-button.is-style-outline > .wp-block-button__link {
+	color: var(--wp--preset--color--base);
+}
+
+.is-style-section-dark .wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+
+/* Top bar with store details. */
+.witryna-topbar__badge {
+	color: var(--wp--preset--color--highlight);
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.witryna-topbar__phone a {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.witryna-topbar .wp-block-social-links {
+	margin: 0;
+}
+
+/* Header: solid, with an accent line under it. */
+.witryna-header {
+	border-bottom: 3px solid var(--wp--preset--color--accent);
+}
+
+/* Hero. */
+.witryna-hero--tools {
+	background-image: linear-gradient(135deg, color-mix(in srgb, var(--wp--preset--color--accent) 18%, transparent) 0%, transparent 45%);
+}
+
+.witryna-hero__facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem 1.25rem;
+	margin-top: var(--wp--preset--spacing--20);
+	opacity: 0.85;
+}
+
+.witryna-hero__facts li + li::before {
+	color: var(--wp--preset--color--highlight);
+	content: "•";
+	margin-right: 1.25rem;
+}
+
+.witryna-hero__facts a {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.witryna-quick {
+	background: color-mix(in srgb, var(--wp--preset--color--base) 6%, transparent);
+	border: 1px solid color-mix(in srgb, var(--wp--preset--color--base) 16%, transparent);
+	border-radius: var(--wp--custom--radius--card);
+}
+
+.witryna-quick__list {
+	margin: 0;
+	width: 100%;
+}
+
+.witryna-quick__list li {
+	border-top: 1px solid color-mix(in srgb, var(--wp--preset--color--base) 14%, transparent);
+}
+
+.witryna-quick__list a {
+	align-items: center;
+	display: flex;
+	font-weight: 600;
+	justify-content: space-between;
+	padding: 0.85rem 0;
+	text-decoration: none;
+	transition: color var(--wp--custom--transition--fast), padding var(--wp--custom--transition--fast);
+}
+
+.witryna-quick__list a::after {
+	color: var(--wp--preset--color--highlight);
+	content: "→";
+}
+
+.witryna-quick__list a:hover {
+	color: var(--wp--preset--color--highlight);
+	padding-left: 0.35rem;
+}
+
+/* Benefit icons in the accent colour. */
+.witryna-usp__icon {
+	color: var(--wp--preset--color--accent);
+}
+
+/* Category tiles without a photo. */
+.witryna-category-card--plain {
+	border-bottom: 4px solid var(--wp--preset--color--accent);
+	transition: border-color var(--wp--custom--transition--base), transform var(--wp--custom--transition--base);
+}
+
+.witryna-category-card--plain:hover {
+	border-bottom-color: var(--wp--preset--color--highlight);
+	transform: translateY(-3px);
+}
+
+/* Cards: firmer outline and an accent edge on hover. */
+.is-style-card {
+	transition: border-color var(--wp--custom--transition--fast);
+}
+
+.witryna-service-card:hover {
+	border-color: var(--wp--preset--color--accent);
+}
+
+/* Numbered steps. */
+.witryna-step__number {
+	align-items: center;
+	background: var(--wp--preset--color--accent);
+	border-radius: var(--wp--custom--radius--badge);
+	color: #fff;
+	display: flex;
+	flex: 0 0 2.25rem;
+	font-weight: 700;
+	height: 2.25rem;
+	justify-content: center;
+	margin: 0;
+}
+
+.witryna-step h4 {
+	margin: 0;
+}
+
+/* Opening hours. */
+.witryna-hours {
+	margin: 0;
+	width: 100%;
+}
+
+.witryna-hours li {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	padding: 0.3rem 0;
+}
+
+.witryna-hours li + li {
+	border-top: 1px dashed var(--wp--preset--color--line);
+}
+
+/* TikTok embed. */
+.witryna-tiktok__embed {
+	margin-inline: auto;
+	max-width: 480px;
+}
+
+.witryna-tiktok__embed .wp-block-embed__wrapper > a {
+	font-weight: 700;
+}

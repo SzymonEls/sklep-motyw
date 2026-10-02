@@ -4,25 +4,37 @@
  * Slug: witryna/header
  * Categories: header
  * Block Types: core/template-part/header
- * Description: Announcement bar, logo, main menu, product search, customer account and mini cart.
+ * Description: Top bar with store details (STIHL dealer, address, hours, phone, TikTok), logo, main menu, product search, customer account and mini cart.
  *
  * @package Witryna
  */
 
 ?>
 <!-- wp:group {"className":"witryna-topbar is-style-section-dark","style":{"spacing":{"padding":{"top":"0.55rem","bottom":"0.55rem"}}},"fontSize":"x-small","layout":{"type":"constrained"}} -->
-<div class="wp-block-group witryna-topbar is-style-section-dark has-x-small-font-size" style="padding-top:0.55rem;padding-bottom:0.55rem"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
-<div class="wp-block-group alignwide"><!-- wp:paragraph -->
-<p><?php echo esc_html( sprintf( /* translators: %s: order value, e.g. 199 zł. */ __( 'Free delivery on orders over %s', 'witryna' ), witryna_price_label( 199 ) ) ); ?></p>
+<div class="wp-block-group witryna-topbar is-style-section-dark has-x-small-font-size" style="padding-top:0.55rem;padding-bottom:0.55rem"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group alignwide"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"className":"witryna-topbar__badge"} -->
+<p class="witryna-topbar__badge"><?php esc_html_e( 'Autoryzowany dealer STIHL', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"metadata":{"blockVisibility":{"viewport":{"mobile":false}}}} -->
-<p><?php esc_html_e( '30-day free returns', 'witryna' ); ?></p>
+<p><?php echo esc_html( witryna_store_address() ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"metadata":{"blockVisibility":{"viewport":{"mobile":false,"tablet":false}}}} -->
-<p><?php esc_html_e( 'Secure online payments', 'witryna' ); ?></p>
+<p><?php echo esc_html( witryna_store_info( 'hours_short' ) ); ?></p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"className":"witryna-topbar__phone"} -->
+<p class="witryna-topbar__phone"><a href="tel:<?php echo esc_attr( witryna_store_info( 'phone_href' ) ); ?>"><?php echo esc_html( sprintf( /* translators: %s: phone number. */ __( 'Zadzwoń: %s', 'witryna' ), witryna_store_info( 'phone' ) ) ); ?></a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:social-links {"iconColor":"base","iconColorValue":"#FFFFFF","size":"has-small-icon-size","className":"is-style-logos-only","metadata":{"blockVisibility":{"viewport":{"mobile":false}}}} -->
+<ul class="wp-block-social-links has-small-icon-size has-icon-color is-style-logos-only"><!-- wp:social-link {"url":"<?php echo esc_url( witryna_store_info( 'tiktok' ) ); ?>","service":"tiktok"} /--></ul>
+<!-- /wp:social-links --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 

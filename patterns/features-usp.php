@@ -3,37 +3,35 @@
  * Title: Store benefits
  * Slug: witryna/features-usp
  * Categories: witryna-shop, featured
- * Keywords: benefits, delivery, returns, payments, trust
+ * Keywords: benefits, dealer, service, pickup, advice, trust
  * Viewport Width: 1400
- * Description: Four short benefits with icons: delivery, returns, payments and customer support.
+ * Description: Four short benefits with icons: authorised STIHL dealer, own service, in-store pickup and expert advice.
  *
  * @package Witryna
  */
 
 $witryna_benefits = array(
 	array(
-		'icon'  => 'witryna/truck',
-		'title' => __( 'Fast, free delivery', 'witryna' ),
-		/* translators: %s: order value, e.g. 199 zł. */
-		'text'  => sprintf( __( 'On all orders over %s', 'witryna' ), witryna_price_label( 199 ) ),
+		'icon'  => 'witryna/shield',
+		'title' => __( 'Autoryzowany dealer STIHL', 'witryna' ),
+		'text'  => __( 'Oryginalny sprzęt, części i gwarancja producenta', 'witryna' ),
 	),
 	array(
-		'icon'  => 'witryna/return',
-		'title' => __( '30-day returns', 'witryna' ),
-		'text'  => __( 'Changed your mind? No problem', 'witryna' ),
+		'icon'  => 'witryna/wrench',
+		'title' => __( 'Własny serwis', 'witryna' ),
+		'text'  => __( 'Przeglądy i naprawy na miejscu w Czernicy', 'witryna' ),
 	),
 	array(
-		'icon'  => 'witryna/lock',
-		'title' => __( 'Secure payments', 'witryna' ),
-		'text'  => __( 'Cards, transfers and mobile wallets', 'witryna' ),
+		'icon'  => 'witryna/store',
+		'title' => __( 'Odbiór osobisty', 'witryna' ),
+		'text'  => __( 'Zamów online i odbierz sprzęt gotowy do pracy', 'witryna' ),
 	),
 	array(
 		'icon'  => 'witryna/chat',
-		'title' => __( 'Real people, real help', 'witryna' ),
-		'text'  => __( 'We reply within one business day', 'witryna' ),
+		'title' => __( 'Fachowe doradztwo', 'witryna' ),
+		'text'  => __( 'Dobierzemy sprzęt do Twojego ogrodu i budżetu', 'witryna' ),
 	),
-);
-?>
+);?>
 <!-- wp:group {"align":"full","className":"witryna-usp","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}},"border":{"top":{"color":"var:preset|color|line","width":"1px"},"bottom":{"color":"var:preset|color|line","width":"1px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull witryna-usp" style="border-top-color:var(--wp--preset--color--line);border-top-width:1px;border-bottom-color:var(--wp--preset--color--line);border-bottom-width:1px;padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"14rem"}} -->
 <div class="wp-block-group alignwide">

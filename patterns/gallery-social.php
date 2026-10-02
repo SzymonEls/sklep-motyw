@@ -1,44 +1,46 @@
 <?php
 /**
- * Title: Social media gallery
+ * Title: TikTok section
  * Slug: witryna/gallery-social
- * Categories: gallery
- * Keywords: instagram, social, gallery, photos, community
+ * Categories: gallery, call-to-action
+ * Keywords: tiktok, social, video, community
  * Viewport Width: 1400
- * Description: Grid of square photos with a link to your social media profile.
+ * Description: Dark section inviting visitors to the store's TikTok profile, with an embedded profile feed next to a follow button.
  *
  * @package Witryna
  */
 
+$witryna_tiktok = witryna_store_info( 'tiktok' );
 ?>
-<!-- wp:group {"align":"full","className":"witryna-social","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull witryna-social" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained","contentSize":"640px"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-eyebrow","style":{"typography":{"textAlign":"center"}}} -->
-<p class="is-style-eyebrow has-text-align-center">@witryna</p>
+<!-- wp:group {"align":"full","className":"witryna-social witryna-tiktok is-style-section-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull witryna-social witryna-tiktok is-style-section-dark" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|60"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","style":{"spacing":{"blockGap":"var:preset|spacing|30"}}} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:paragraph {"className":"is-style-eyebrow witryna-hero__eyebrow"} -->
+<p class="is-style-eyebrow witryna-hero__eyebrow"><?php esc_html_e( 'TikTok', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
-<h2 class="wp-block-heading has-text-align-center"><?php esc_html_e( 'Share your space with us', 'witryna' ); ?></h2>
+<!-- wp:heading -->
+<h2 class="wp-block-heading"><?php esc_html_e( 'Zobacz sprzęt w akcji', 'witryna' ); ?></h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}},"textColor":"muted"} -->
-<p class="has-text-align-center has-muted-color has-text-color"><?php esc_html_e( 'Tag your photos with #witryna and get featured in our gallery.', 'witryna' ); ?></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group -->
+<!-- wp:paragraph {"className":"witryna-soft"} -->
+<p class="witryna-soft"><?php esc_html_e( 'Na TikToku pokazujemy nowości STIHL, kulisy serwisu, naprawy krok po kroku i szybkie porady, jak dbać o kosiarkę, pilarkę i trawnik.', 'witryna' ); ?></p>
+<!-- /wp:paragraph -->
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"10rem"}} -->
-<div class="wp-block-group alignwide">
-<?php foreach ( array( 'social-1.jpg', 'social-2.jpg', 'social-3.jpg', 'social-4.jpg' ) as $witryna_photo ) : ?>
-<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-zoom","style":{"border":{"radius":"var:preset|border-radius|large"}}} -->
-<figure class="wp-block-image size-full has-custom-border is-style-zoom"><img src="<?php echo witryna_image( $witryna_photo ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>" alt="" style="border-radius:var(--wp--preset--border-radius--large);aspect-ratio:1;object-fit:cover"/></figure>
-<!-- /wp:image -->
-<?php endforeach; ?>
-</div>
-<!-- /wp:group -->
-
-<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://www.instagram.com/"><?php esc_html_e( 'Follow us on Instagram', 'witryna' ); ?></a></div>
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $witryna_tiktok ); ?>" target="_blank" rel="noreferrer noopener"><?php echo esc_html( sprintf( /* translators: %s: TikTok account name. */ __( 'Obserwuj %s', 'witryna' ), witryna_store_info( 'tiktok_name' ) ) ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:embed {"url":"<?php echo esc_url( $witryna_tiktok ); ?>","type":"rich","providerNameSlug":"tiktok","responsive":true,"className":"witryna-tiktok__embed"} -->
+<figure class="wp-block-embed is-type-rich is-provider-tiktok wp-block-embed-tiktok witryna-tiktok__embed"><div class="wp-block-embed__wrapper">
+<?php echo esc_url( $witryna_tiktok ); ?>
+
+</div></figure>
+<!-- /wp:embed --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
 <!-- /wp:group -->

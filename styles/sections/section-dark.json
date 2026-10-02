@@ -32,13 +32,13 @@
 			},
 			"button": {
 				"color": {
-					"background": "var(--wp--preset--color--base)",
-					"text": "var(--wp--preset--color--contrast)"
+					"background": "var(--wp--preset--color--accent)",
+					"text": "#FFFFFF"
 				},
 				":hover": {
 					"color": {
-						"background": "color-mix(in srgb, var(--wp--preset--color--base) 85%, var(--wp--preset--color--contrast))",
-						"text": "var(--wp--preset--color--contrast)"
+						"background": "color-mix(in srgb, var(--wp--preset--color--accent) 82%, #000)",
+						"text": "#FFFFFF"
 					}
 				}
 			}

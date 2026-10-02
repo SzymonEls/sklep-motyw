@@ -402,6 +402,36 @@ msgctxt "icon label"
 msgid "Phone"
 msgstr ""
 
+#: inc/icons.php:37
+msgctxt "icon label"
+msgid "Shield"
+msgstr ""
+
+#: inc/icons.php:38
+msgctxt "icon label"
+msgid "Wrench"
+msgstr ""
+
+#: inc/icons.php:39
+msgctxt "icon label"
+msgid "Shop"
+msgstr ""
+
+#: inc/icons.php:40
+msgctxt "icon label"
+msgid "Clock"
+msgstr ""
+
+#: inc/icons.php:41
+msgctxt "icon label"
+msgid "Map pin"
+msgstr ""
+
+#: inc/icons.php:42
+msgctxt "icon label"
+msgid "Star"
+msgstr ""
+
 #: inc/patterns.php:20
 msgid "Shop sections"
 msgstr ""
@@ -442,44 +472,52 @@ msgstr ""
 
 #: patterns/brand-story.php
 msgctxt "Pattern title"
-msgid "Brand story with numbers"
+msgid "About the store"
 msgstr ""
 
 #: patterns/brand-story.php
 msgctxt "Pattern description"
-msgid "Image next to the brand story and three key numbers."
+msgid "Short introduction of the store with three key facts and cards for home gardeners and business customers."
 msgstr ""
 
 #: patterns/brand-story.php:14
-msgid "orders shipped"
+msgid "autoryzowany dealer"
 msgstr ""
 
 #: patterns/brand-story.php:15
-msgid "average rating"
+msgid "sklep i serwis w jednym miejscu"
 msgstr ""
 
 #: patterns/brand-story.php:16
-msgid "dispatch time"
+msgid "kilka minut od Wrocławia"
 msgstr ""
 
-#: patterns/brand-story.php:23
-msgid "Ceramic pieces drying in the studio"
+#: patterns/brand-story.php:20
+msgid "Dla domu i ogrodu"
 msgstr ""
 
-#: patterns/brand-story.php:29
-msgid "Our story"
+#: patterns/brand-story.php:20
+msgid "Pomożemy dobrać kosiarkę, robota koszącego czy pilarkę do wielkości działki i budżetu. Pokażemy, jak bezpiecznie używać sprzętu."
 msgstr ""
 
-#: patterns/brand-story.php:33
-msgid "Designed with care, made to last"
+#: patterns/brand-story.php:21
+msgid "Dla firm"
 msgstr ""
 
-#: patterns/brand-story.php:37
-msgid "We started with a single kiln and a simple idea: everyday objects should be beautiful, honest and durable. Today we work with a dozen small studios, but every piece is still checked by hand before it reaches you."
+#: patterns/brand-story.php:21
+msgid "Obsługujemy firmy ogrodnicze, zarządców nieruchomości i gospodarstwa. Zapytaj o warunki współpracy i serwis floty."
 msgstr ""
 
-#: patterns/brand-story.php:58
-msgid "Read more about us"
+#: patterns/brand-story.php:28
+msgid "O nas"
+msgstr ""
+
+#: patterns/brand-story.php:32
+msgid "Nie kończymy na sprzedaży"
+msgstr ""
+
+#: patterns/brand-story.php:36
+msgid "Klinika Trawnika to sklep i serwis sprzętu ogrodowego i leśnego w Czernicy. Pomagamy wybrać odpowiedni model, uczymy, jak go używać, a potem dbamy o jego serwis."
 msgstr ""
 
 #: patterns/checkout-header.php
@@ -507,58 +545,66 @@ msgid "Introduction with a contact button next to an accordion with common store
 msgstr ""
 
 #: patterns/faq.php:15
-msgid "How long does delivery take?"
+msgid "Czy mogę odebrać zamówienie osobiście?"
 msgstr ""
 
 #: patterns/faq.php:16
-msgid "Orders placed on business days before 2 pm are shipped the same day. Courier and parcel locker deliveries usually arrive within 1–2 business days."
+msgid "Tak. Wybierz odbiór osobisty przy zamówieniu i przyjedź do sklepu w Czernicy w godzinach otwarcia, gdy potwierdzimy, że sprzęt czeka. Przy odbiorze pokażemy, jak go uruchomić i bezpiecznie używać."
 msgstr ""
 
 #: patterns/faq.php:19
-msgid "How can I return a product?"
+msgid "Czy serwisujecie sprzęt kupiony w innym sklepie?"
 msgstr ""
 
 #: patterns/faq.php:20
-msgid "You have 30 days to return any product without giving a reason. Log in to your account, choose the order and follow the return steps. We refund the payment within 5 business days."
+msgid "Tak. Serwisujemy sprzęt STIHL i wielu innych producentów. Zadzwoń z marką i modelem, a potwierdzimy, czy zajmiemy się Twoim urządzeniem."
 msgstr ""
 
 #: patterns/faq.php:23
-msgid "Which payment methods do you accept?"
+msgid "Ile kosztuje naprawa?"
 msgstr ""
 
 #: patterns/faq.php:24
-msgid "You can pay by card, fast bank transfer, mobile wallet or bank transfer. All payments are processed by certified payment operators."
+msgid "Ostateczną cenę podajemy po diagnozie, zanim zaczniemy naprawę. Bez Twojej zgody niczego nie naprawiamy."
 msgstr ""
 
 #: patterns/faq.php:27
-msgid "Can I change or cancel my order?"
+msgid "Kiedy najlepiej oddać kosiarkę na przegląd?"
 msgstr ""
 
 #: patterns/faq.php:28
-msgid "Yes, as long as the order has not been shipped. Write to us as soon as possible and include your order number."
+msgid "Zimą albo wczesną wiosną. W sezonie, od kwietnia do czerwca, czas oczekiwania na serwis jest dłuższy."
 msgstr ""
 
 #: patterns/faq.php:31
-msgid "Do you offer gift wrapping?"
+msgid "Czy odbieracie sprzęt do serwisu?"
 msgstr ""
 
 #: patterns/faq.php:32
-msgid "Every order is packed in recyclable paper. You can add a handwritten card for free by leaving a note at checkout."
+msgid "W okolicy Czernicy możemy odebrać sprzęt i odwieźć go po naprawie. Zadzwoń, żeby ustalić termin."
 msgstr ""
 
-#: patterns/faq.php:40
-msgid "Help centre"
+#: patterns/faq.php:35
+msgid "Jak zwrócić towar kupiony przez internet?"
+msgstr ""
+
+#: patterns/faq.php:36
+msgid "Masz 14 dni na odstąpienie od umowy zawartej przez internet bez podania przyczyny. Szczegóły znajdziesz w regulaminie sklepu."
 msgstr ""
 
 #: patterns/faq.php:44
-msgid "Questions? We have answers"
+msgid "Pytania i odpowiedzi"
 msgstr ""
 
 #: patterns/faq.php:48
-msgid "Could not find what you were looking for? Our team is happy to help with orders, products and returns."
+msgid "Najczęstsze pytania"
 msgstr ""
 
-#: patterns/faq.php:53
+#: patterns/faq.php:52
+msgid "Nie znalazłeś odpowiedzi? Zadzwoń albo napisz, chętnie pomożemy w wyborze sprzętu, zamówieniu i serwisie."
+msgstr ""
+
+#: patterns/faq.php:57
 msgid "Contact us"
 msgstr ""
 
@@ -569,42 +615,39 @@ msgstr ""
 
 #: patterns/features-usp.php
 msgctxt "Pattern description"
-msgid "Four short benefits with icons: delivery, returns, payments and customer support."
+msgid "Four short benefits with icons: authorised STIHL dealer, own service, in-store pickup and expert advice."
 msgstr ""
 
-#: patterns/features-usp.php:16
-msgid "Fast, free delivery"
+#: patterns/features-usp.php:16 patterns/header.php:17
+msgid "Autoryzowany dealer STIHL"
 msgstr ""
 
-#. translators: %s: order value, e.g. 199 zł.
-#: patterns/features-usp.php:18
-msgid "On all orders over %s"
+#: patterns/features-usp.php:17
+msgid "Oryginalny sprzęt, części i gwarancja producenta"
 msgstr ""
 
-#. translators: %s: order value, e.g. 199 zł.
+#: patterns/features-usp.php:21
+msgid "Własny serwis"
+msgstr ""
+
 #: patterns/features-usp.php:22
-msgid "30-day returns"
+msgid "Przeglądy i naprawy na miejscu w Czernicy"
 msgstr ""
 
-#. translators: %s: order value, e.g. 199 zł.
-#: patterns/features-usp.php:23
-msgid "Changed your mind? No problem"
+#: patterns/features-usp.php:26
+msgid "Odbiór osobisty"
 msgstr ""
 
 #: patterns/features-usp.php:27
-msgid "Secure payments"
+msgid "Zamów online i odbierz sprzęt gotowy do pracy"
 msgstr ""
 
-#: patterns/features-usp.php:28
-msgid "Cards, transfers and mobile wallets"
+#: patterns/features-usp.php:31
+msgid "Fachowe doradztwo"
 msgstr ""
 
 #: patterns/features-usp.php:32
-msgid "Real people, real help"
-msgstr ""
-
-#: patterns/features-usp.php:33
-msgid "We reply within one business day"
+msgid "Dobierzemy sprzęt do Twojego ogrodu i budżetu"
 msgstr ""
 
 #: patterns/footer.php
@@ -617,86 +660,95 @@ msgctxt "Pattern description"
 msgid "Dark footer with brand description, social links, store menus, contact details, legal links and payment methods."
 msgstr ""
 
-#: patterns/footer.php:23
-msgid "Thoughtfully chosen products for everyday life. Designed to last, packed with care and shipped quickly to your door."
+#: patterns/footer.php:24
+msgid "Autoryzowany dealer STIHL w Czernicy pod Wrocławiem. Sprzedaż, doradztwo i serwis sprzętu ogrodowego i leśnego."
 msgstr ""
 
-#: patterns/footer.php:39
+#: patterns/footer.php:34
 msgid "Shop"
 msgstr ""
 
-#: patterns/footer.php:43 patterns/shop-categories.php:52
+#: patterns/footer.php:38 patterns/shop-categories.php:52
 msgid "All products"
 msgstr ""
 
-#: patterns/footer.php:45 patterns/shop-new-arrivals.php:22
+#: patterns/footer.php:40 patterns/shop-new-arrivals.php:22
 msgid "New arrivals"
 msgstr ""
 
-#: patterns/footer.php:47 patterns/shop-bestsellers.php:22
+#: patterns/footer.php:42 patterns/shop-bestsellers.php:22
 msgid "Bestsellers"
 msgstr ""
 
-#: patterns/footer.php:49
+#: patterns/footer.php:44
 msgid "Top rated"
 msgstr ""
 
-#: patterns/footer.php:55
-msgid "Customer care"
+#: patterns/footer.php:50
+msgid "Obsługa klienta"
 msgstr ""
 
-#: patterns/footer.php:59
-msgid "Delivery and payment"
+#: patterns/footer.php:54 patterns/promo-split.php:32
+msgid "Serwis"
 msgstr ""
 
-#: patterns/footer.php:61
-msgid "Returns and complaints"
+#: patterns/footer.php:56 patterns/page-reviews.php:21
+msgid "Opinie klientów"
 msgstr ""
 
-#: patterns/footer.php:63
+#: patterns/footer.php:58 patterns/page-social.php:20
+msgid "Social media"
+msgstr ""
+
+#: patterns/footer.php:60
+msgid "Dostawa i płatność"
+msgstr ""
+
+#: patterns/footer.php:62
+msgid "Zwroty i reklamacje"
+msgstr ""
+
+#: patterns/footer.php:64
 msgid "Order status"
 msgstr ""
 
-#: patterns/footer.php:65
-msgid "Frequently asked questions"
-msgstr ""
-
-#: patterns/footer.php:71 patterns/page-contact.php:23
+#: patterns/footer.php:70
 msgid "Contact"
 msgstr ""
 
-#: patterns/footer.php:79 patterns/page-contact.php:17
-msgid "Monday to Friday, 9:00–17:00"
-msgstr ""
-
-#: patterns/footer.php:91
+#: patterns/footer.php:90
 msgid "Terms and conditions"
 msgstr ""
 
-#: patterns/footer.php:95
+#: patterns/footer.php:94
 msgid "Privacy policy"
 msgstr ""
 
 #: patterns/gallery-social.php
 msgctxt "Pattern title"
-msgid "Social media gallery"
+msgid "TikTok section"
 msgstr ""
 
 #: patterns/gallery-social.php
 msgctxt "Pattern description"
-msgid "Grid of square photos with a link to your social media profile."
+msgid "Dark section inviting visitors to the store's TikTok profile, with an embedded profile feed next to a follow button."
 msgstr ""
 
-#: patterns/gallery-social.php:21
-msgid "Share your space with us"
+#: patterns/gallery-social.php:19
+msgid "TikTok"
 msgstr ""
 
-#: patterns/gallery-social.php:25
-msgid "Tag your photos with #witryna and get featured in our gallery."
+#: patterns/gallery-social.php:23
+msgid "Zobacz sprzęt w akcji"
 msgstr ""
 
-#: patterns/gallery-social.php:41
-msgid "Follow us on Instagram"
+#: patterns/gallery-social.php:27
+msgid "Na TikToku pokazujemy nowości STIHL, kulisy serwisu, naprawy krok po kroku i szybkie porady, jak dbać o kosiarkę, pilarkę i trawnik."
+msgstr ""
+
+#. translators: %s: TikTok account name.
+#: patterns/gallery-social.php:32 patterns/page-social.php:33
+msgid "Obserwuj %s"
 msgstr ""
 
 #: patterns/header.php
@@ -706,32 +758,24 @@ msgstr ""
 
 #: patterns/header.php
 msgctxt "Pattern description"
-msgid "Announcement bar, logo, main menu, product search, customer account and mini cart."
+msgid "Top bar with store details (STIHL dealer, address, hours, phone, TikTok), logo, main menu, product search, customer account and mini cart."
 msgstr ""
 
-#. translators: %s: order value, e.g. 199 zł.
-#: patterns/header.php:16
-msgid "Free delivery on orders over %s"
+#. translators: %s: phone number.
+#: patterns/header.php:31 patterns/page-contact.php:33 patterns/page-service.php:59 patterns/page-service.php:178 patterns/promo-split.php:59
+msgid "Zadzwoń: %s"
 msgstr ""
 
-#: patterns/header.php:20
-msgid "30-day free returns"
-msgstr ""
-
-#: patterns/header.php:24
-msgid "Secure online payments"
-msgstr ""
-
-#: patterns/header.php:40 patterns/mobile-menu.php:20
+#: patterns/header.php:52 patterns/mobile-menu.php:20
 msgctxt "search label"
 msgid "Search products"
 msgstr ""
 
-#: patterns/header.php:40 patterns/mobile-menu.php:20
+#: patterns/header.php:52 patterns/mobile-menu.php:20
 msgid "Search products…"
 msgstr ""
 
-#: patterns/header.php:40 patterns/hidden-no-results.php:20 patterns/hidden-search.php:11 patterns/mobile-menu.php:20
+#: patterns/header.php:52 patterns/hidden-no-results.php:20 patterns/hidden-search.php:11 patterns/mobile-menu.php:20
 msgctxt "search button"
 msgid "Search"
 msgstr ""
@@ -764,53 +808,60 @@ msgstr ""
 
 #: patterns/hero-split.php
 msgctxt "Pattern title"
-msgid "Hero with product image"
+msgid "Hero with quick category links"
 msgstr ""
 
 #: patterns/hero-split.php
 msgctxt "Pattern description"
-msgid "Large headline, call to action buttons and social proof next to a tall product image with a floating label."
+msgid "Dark hero with headline, shop and service buttons, store details and a panel of quick links to the main equipment categories."
 msgstr ""
 
-#: patterns/hero-split.php:18
-msgid "New collection · Autumn 2026"
+#: patterns/hero-split.php:15 patterns/page-service.php:18 patterns/shop-categories.php:31
+msgid "Kosiarki"
 msgstr ""
 
-#: patterns/hero-split.php:22
-msgid "Objects for slow, beautiful days"
+#: patterns/hero-split.php:16 patterns/shop-categories.php:32
+msgid "Roboty koszące"
 msgstr ""
 
-#: patterns/hero-split.php:26
-msgid "Ceramics, light and home accessories made in small batches by independent studios. Pieces you will want to keep for years."
+#: patterns/hero-split.php:17 patterns/shop-categories.php:33
+msgid "Pilarki"
+msgstr ""
+
+#: patterns/hero-split.php:18 patterns/page-service.php:21 patterns/shop-categories.php:34
+msgid "Kosy i podkaszarki"
+msgstr ""
+
+#: patterns/hero-split.php:19
+msgid "Nożyce do żywopłotu"
+msgstr ""
+
+#: patterns/hero-split.php:20
+msgid "Części i eksploatacja"
+msgstr ""
+
+#: patterns/hero-split.php:27
+msgid "Autoryzowany dealer STIHL · Czernica k. Wrocławia"
 msgstr ""
 
 #: patterns/hero-split.php:31
-msgid "Shop the collection"
+msgid "Sprzęt ogrodowy ze sklepu, który go też naprawi"
 msgstr ""
 
 #: patterns/hero-split.php:35
-msgid "Browse categories"
+msgid "Kosiarki, pilarki, kosy i roboty koszące STIHL. Doradzimy, sprzedamy i zadbamy o serwis, żeby Twój sprzęt działał przez lata."
 msgstr ""
 
-#: patterns/hero-split.php:45
-msgid "4.9/5 from over 2,400 reviews"
+#: patterns/hero-split.php:40 patterns/page-reviews.php:78
+msgid "Przejdź do sklepu"
 msgstr ""
 
-#: patterns/hero-split.php:53
-msgid "Handmade ceramic vases on a sunlit shelf"
+#: patterns/hero-split.php:44 patterns/promo-split.php:55
+msgid "Zgłoś serwis"
 msgstr ""
 
-#: patterns/hero-split.php:58
-msgid "Bestseller"
-msgstr ""
-
-#: patterns/hero-split.php:62 patterns/testimonials.php:17
-msgid "Amfora stoneware vase"
-msgstr ""
-
-#. translators: %s: price.
 #: patterns/hero-split.php:66
-msgid "from %s"
+msgid "Czego szukasz?"
 msgstr ""
 
 #: patterns/hidden-404.php
@@ -1058,51 +1109,19 @@ msgstr ""
 
 #: patterns/page-about.php
 msgctxt "Pattern description"
-msgid "About page with an introduction, wide photo, brand values and a call to action."
+msgid "About page with an introduction, store facts, benefits and store visit details."
 msgstr ""
 
-#: patterns/page-about.php:16
-msgid "Responsibly made"
-msgstr ""
-
-#: patterns/page-about.php:16
-msgid "We choose durable materials and work with studios that pay fair wages and minimise waste."
-msgstr ""
-
-#: patterns/page-about.php:17
-msgid "Checked by hand"
-msgstr ""
-
-#: patterns/page-about.php:17
-msgid "Every item is inspected before shipping, so you receive exactly what you see in the photos."
-msgstr ""
-
-#: patterns/page-about.php:18
-msgid "Plastic-free packaging"
-msgstr ""
-
-#: patterns/page-about.php:18
-msgid "We pack orders in recycled paper and reuse boxes from our suppliers whenever possible."
+#: patterns/page-about.php:19
+msgid "O firmie"
 msgstr ""
 
 #: patterns/page-about.php:23
-msgid "About us"
+msgid "Sklep i serwis sprzętu ogrodowego w Czernicy"
 msgstr ""
 
 #: patterns/page-about.php:27
-msgid "We believe in fewer, better things"
-msgstr ""
-
-#: patterns/page-about.php:31
-msgid "Our shop began as a small market stall. Today we ship across the country, but our approach has not changed: we sell only what we would happily use at home ourselves."
-msgstr ""
-
-#: patterns/page-about.php:36
-msgid "Our studio with shelves full of ceramics"
-msgstr ""
-
-#: patterns/page-about.php:41
-msgid "What we stand for"
+msgid "Jesteśmy autoryzowanym dealerem marki STIHL, a w ofercie mamy też sprzęt innych sprawdzonych producentów. Wiemy, jak ważny jest sprawny sprzęt, gdy trzeba zadbać o trawnik, żywopłot czy drewno na zimę."
 msgstr ""
 
 #: patterns/page-contact.php
@@ -1112,47 +1131,32 @@ msgstr ""
 
 #: patterns/page-contact.php
 msgctxt "Pattern description"
-msgid "Contact cards, opening hours, company details and frequently asked questions."
+msgid "Contact page with address and map link, opening hours, phone and e-mail, company details and frequently asked questions."
 msgstr ""
 
-#: patterns/page-contact.php:16
-msgid "Email"
+#: patterns/page-contact.php:20
+msgid "Kontakt"
 msgstr ""
 
-#: patterns/page-contact.php:16
-msgid "We reply within one business day."
+#: patterns/page-contact.php:24
+msgid "Zadzwoń, napisz albo wpadnij"
 msgstr ""
 
-#: patterns/page-contact.php:17
-msgid "Phone"
+#: patterns/page-contact.php:28
+msgid "Pytanie o sprzęt, zamówienie albo serwis? Najszybciej złapiesz nas telefonicznie w godzinach otwarcia sklepu."
 msgstr ""
 
-#: patterns/page-contact.php:18
-msgid "Showroom"
+#: patterns/page-contact.php:37 patterns/store-visit.php:40
+msgid "Wyznacz trasę"
 msgstr ""
 
-#: patterns/page-contact.php:18
-msgid "ul. Przykładowa 12, 00-001 Warszawa"
+#: patterns/page-contact.php:48
+msgid "Dane firmy"
 msgstr ""
 
-#: patterns/page-contact.php:18
-msgid "Tuesday to Saturday, 11:00–19:00"
-msgstr ""
-
-#: patterns/page-contact.php:27
-msgid "We are here to help"
-msgstr ""
-
-#: patterns/page-contact.php:31
-msgid "Questions about an order, a product or a return? Get in touch the way that suits you best."
-msgstr ""
-
-#: patterns/page-contact.php:59
-msgid "Company details"
-msgstr ""
-
-#: patterns/page-contact.php:63
-msgid "Example Store Ltd.<br>ul. Przykładowa 12, 00-001 Warszawa<br>Tax ID (NIP): 000-000-00-00 · Company number (KRS): 0000000000"
+#. translators: %s: tax ID.
+#: patterns/page-contact.php:52
+msgid "NIP: %s"
 msgstr ""
 
 #: patterns/page-home.php
@@ -1162,7 +1166,234 @@ msgstr ""
 
 #: patterns/page-home.php
 msgctxt "Pattern description"
-msgid "Complete store home page: hero, benefits, categories, bestsellers, promotion, new arrivals, reviews, brand story and newsletter."
+msgid "Complete store home page: hero, benefits, categories, bestsellers, service, TikTok, reviews, about and store visit details."
+msgstr ""
+
+#: patterns/page-reviews.php
+msgctxt "Pattern title"
+msgid "Reviews page"
+msgstr ""
+
+#: patterns/page-reviews.php
+msgctxt "Pattern description"
+msgid "Reviews page listing real, approved product reviews from the shop with buttons to read and leave a review on Google."
+msgstr ""
+
+#: patterns/page-reviews.php:25
+msgid "Co mówią o nas klienci"
+msgstr ""
+
+#: patterns/page-reviews.php:29
+msgid "Pokazujemy wyłącznie prawdziwe opinie: wystawione w naszym sklepie internetowym i w Google. Kupiłeś u nas sprzęt albo oddałeś go do serwisu? Daj znać, jak było."
+msgstr ""
+
+#: patterns/page-reviews.php:35
+msgid "Wystaw opinię w Google"
+msgstr ""
+
+#. translators: %d: rating.
+#: patterns/page-reviews.php:50 patterns/testimonials.php:41
+msgid "Ocena %d na 5"
+msgstr ""
+
+#: patterns/page-reviews.php:69
+msgid "Tu pojawią się opinie z naszego sklepu"
+msgstr ""
+
+#: patterns/page-reviews.php:73
+msgid "Po zakupie możesz ocenić produkt na jego stronie w sklepie. Zapraszamy też do zostawienia opinii w Google i do obejrzenia naszego TikToka."
+msgstr ""
+
+#: patterns/page-reviews.php:82
+msgid "Zobacz nasz TikTok"
+msgstr ""
+
+#: patterns/page-service.php
+msgctxt "Pattern title"
+msgid "Service page"
+msgstr ""
+
+#: patterns/page-service.php
+msgctxt "Pattern description"
+msgid "Service page: intro with call to action, equipment serviced, scope of work, how a repair works and a service request section with phone and a pre-filled e-mail."
+msgstr ""
+
+#: patterns/page-service.php:18
+msgid "Spalinowe, akumulatorowe i elektryczne"
+msgstr ""
+
+#: patterns/page-service.php:19
+msgid "Traktorki ogrodowe"
+msgstr ""
+
+#: patterns/page-service.php:19
+msgid "Przeglądy, noże, paski i układ napędowy"
+msgstr ""
+
+#: patterns/page-service.php:20
+msgid "Pilarki łańcuchowe"
+msgstr ""
+
+#: patterns/page-service.php:20
+msgid "Ostrzenie, regulacja i naprawy silnika"
+msgstr ""
+
+#: patterns/page-service.php:21
+msgid "Głowice, wały, sprzęgła i gaźniki"
+msgstr ""
+
+#: patterns/page-service.php:22
+msgid "Nożyce i dmuchawy"
+msgstr ""
+
+#: patterns/page-service.php:22
+msgid "Ostrzenie listew i przeglądy silników"
+msgstr ""
+
+#: patterns/page-service.php:23
+msgid "Glebogryzarki"
+msgstr ""
+
+#: patterns/page-service.php:23
+msgid "Przygotowanie do sezonu i naprawy"
+msgstr ""
+
+#: patterns/page-service.php:27
+msgid "Przegląd sezonowy: olej, filtr powietrza, świeca, ostrzenie noża, regulacja"
+msgstr ""
+
+#: patterns/page-service.php:28 patterns/promo-split.php:15
+msgid "Ostrzenie łańcuchów i noży"
+msgstr ""
+
+#: patterns/page-service.php:29 patterns/promo-split.php:16
+msgid "Naprawy silników spalinowych"
+msgstr ""
+
+#: patterns/page-service.php:30 patterns/promo-split.php:17
+msgid "Diagnostyka sprzętu akumulatorowego"
+msgstr ""
+
+#: patterns/page-service.php:31
+msgid "Wymiana części na oryginalne"
+msgstr ""
+
+#: patterns/page-service.php:32
+msgid "Przygotowanie sprzętu do zimy i do sezonu"
+msgstr ""
+
+#: patterns/page-service.php:35 patterns/page-service.php:161
+msgid "Zgłoszenie serwisowe"
+msgstr ""
+
+#: patterns/page-service.php:42
+msgid "Serwis sprzętu ogrodowego"
+msgstr ""
+
+#: patterns/page-service.php:46
+msgid "Serwis kosiarek, pilarek i kos w Czernicy"
+msgstr ""
+
+#: patterns/page-service.php:50 patterns/promo-split.php:40
+msgid "Regularny przegląd to najtańszy sposób, żeby sprzęt działał długo i bez niespodzianek. Zajmujemy się wszystkim, od wymiany oleju po naprawę silnika."
+msgstr ""
+
+#: patterns/page-service.php:55 patterns/page-service.php:165
+msgid "Zgłoś sprzęt do serwisu"
+msgstr ""
+
+#: patterns/page-service.php:68
+msgid "Co serwisujemy"
+msgstr ""
+
+#: patterns/page-service.php:72
+msgid "STIHL i sprzęt innych producentów"
+msgstr ""
+
+#: patterns/page-service.php:99
+msgid "Zakres usług"
+msgstr ""
+
+#: patterns/page-service.php:103
+msgid "Od przeglądu po naprawę silnika"
+msgstr ""
+
+#: patterns/page-service.php:117
+msgid "Ostateczną cenę podajemy po diagnozie, zanim zaczniemy naprawę. Przeglądy najlepiej zlecać zimą lub wczesną wiosną: w sezonie czas oczekiwania jest dłuższy."
+msgstr ""
+
+#: patterns/page-service.php:124 patterns/promo-split.php:67
+msgid "Jak to działa"
+msgstr ""
+
+#: patterns/page-service.php:129 patterns/promo-split.php:22
+msgid "Zgłoś sprzęt"
+msgstr ""
+
+#: patterns/page-service.php:129
+msgid "Zadzwoń albo wyślij zgłoszenie poniżej."
+msgstr ""
+
+#: patterns/page-service.php:130 patterns/promo-split.php:23
+msgid "Przywieź lub umów odbiór"
+msgstr ""
+
+#: patterns/page-service.php:130 patterns/promo-split.php:23
+msgid "W okolicy Czernicy możemy odebrać sprzęt od Ciebie."
+msgstr ""
+
+#: patterns/page-service.php:131 patterns/promo-split.php:24
+msgid "Wycena przed naprawą"
+msgstr ""
+
+#: patterns/page-service.php:131 patterns/promo-split.php:24
+msgid "Po diagnozie dzwonimy z ceną. Naprawiamy po Twojej zgodzie."
+msgstr ""
+
+#: patterns/page-service.php:132 patterns/promo-split.php:25
+msgid "Odbierz sprawny sprzęt"
+msgstr ""
+
+#: patterns/page-service.php:132
+msgid "Odbierasz go u nas albo go odwozimy."
+msgstr ""
+
+#: patterns/page-service.php:169
+msgid "Podaj rodzaj sprzętu, markę i model oraz krótko opisz usterkę. Oddzwonimy, żeby ustalić termin i ewentualny odbiór."
+msgstr ""
+
+#: patterns/page-service.php:174
+msgid "Wyślij zgłoszenie e-mailem"
+msgstr ""
+
+#: patterns/page-social.php
+msgctxt "Pattern title"
+msgid "Social media page"
+msgstr ""
+
+#: patterns/page-social.php
+msgctxt "Pattern description"
+msgid "Social media page centred on the store's TikTok profile, with an embedded feed, follow button and a Google review invitation."
+msgstr ""
+
+#: patterns/page-social.php:24
+msgid "Zobacz nas na TikToku"
+msgstr ""
+
+#: patterns/page-social.php:28
+msgid "Pokazujemy sprzęt w akcji: nowości STIHL, kulisy serwisu, naprawy krok po kroku i szybkie porady, jak dbać o kosiarkę, pilarkę i trawnik. Zajrzyj, zanim przyjedziesz do sklepu."
+msgstr ""
+
+#: patterns/page-social.php:49
+msgid "Zostaw opinię"
+msgstr ""
+
+#: patterns/page-social.php:53
+msgid "Twoja opinia pomaga innym znaleźć dobry sklep i serwis w okolicy, a nam pokazuje, co robimy dobrze."
+msgstr ""
+
+#: patterns/page-social.php:58
+msgid "Przejdź do opinii"
 msgstr ""
 
 #: patterns/posts-latest.php
@@ -1185,36 +1416,32 @@ msgstr ""
 
 #: patterns/promo-split.php
 msgctxt "Pattern title"
-msgid "Promotion banner"
+msgid "Service promotion"
 msgstr ""
 
 #: patterns/promo-split.php
 msgctxt "Pattern description"
-msgid "Seasonal campaign with a large image and a call to action on a soft accent card."
+msgid "Service section with a short list of what the workshop does next to a card with the steps of a repair and call to action buttons."
+msgstr ""
+
+#: patterns/promo-split.php:14
+msgid "Przeglądy sezonowe kosiarek, pilarek i kos"
 msgstr ""
 
 #: patterns/promo-split.php:18
-msgid "Seasonal tableware arranged on a linen cloth"
+msgid "Oryginalne części STIHL"
 msgstr ""
 
-#: patterns/promo-split.php:26
-msgid "End of season"
+#: patterns/promo-split.php:22
+msgid "Zadzwoń albo wypełnij formularz na stronie serwisu."
 msgstr ""
 
-#: patterns/promo-split.php:30
-msgid "Up to 30% off selected favourites"
+#: patterns/promo-split.php:25
+msgid "Gotowy do pracy, sprawdzony na miejscu."
 msgstr ""
 
-#: patterns/promo-split.php:34
-msgid "Refresh your home for the colder months. Discounts apply automatically in the cart."
-msgstr ""
-
-#: patterns/promo-split.php:41
-msgid "Shop the sale"
-msgstr ""
-
-#: patterns/promo-split.php:46
-msgid "Offer valid while stocks last. Prices include VAT."
+#: patterns/promo-split.php:36
+msgid "Naprawimy to, co sprzedajemy, i nie tylko"
 msgstr ""
 
 #: patterns/shop-bestsellers.php
@@ -1242,7 +1469,7 @@ msgstr ""
 
 #: patterns/shop-categories.php
 msgctxt "Pattern description"
-msgid "Image tiles for the four most popular product categories. Category thumbnails are used when available."
+msgid "Tiles for the four most popular product categories. Category thumbnails are used when available, otherwise a dark tile."
 msgstr ""
 
 #. translators: %s: number of products.
@@ -1253,24 +1480,8 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: patterns/shop-categories.php:31
-msgid "Ceramics"
-msgstr ""
-
 #: patterns/shop-categories.php:31 patterns/shop-categories.php:32 patterns/shop-categories.php:33 patterns/shop-categories.php:34
-msgid "Explore"
-msgstr ""
-
-#: patterns/shop-categories.php:32
-msgid "Lighting"
-msgstr ""
-
-#: patterns/shop-categories.php:33
-msgid "Kitchen"
-msgstr ""
-
-#: patterns/shop-categories.php:34
-msgid "Decor"
+msgid "Zobacz"
 msgstr ""
 
 #: patterns/shop-categories.php:42
@@ -1278,7 +1489,7 @@ msgid "Categories"
 msgstr ""
 
 #: patterns/shop-categories.php:46
-msgid "Shop by category"
+msgid "Sprzęt do każdego ogrodu"
 msgstr ""
 
 #: patterns/shop-new-arrivals.php
@@ -1313,6 +1524,40 @@ msgstr ""
 msgid "On sale now"
 msgstr ""
 
+#: patterns/store-visit.php
+msgctxt "Pattern title"
+msgid "Visit the store"
+msgstr ""
+
+#: patterns/store-visit.php
+msgctxt "Pattern description"
+msgid "Store address with a map link, opening hours and phone number in three cards."
+msgstr ""
+
+#: patterns/store-visit.php:18
+msgid "Zapraszamy"
+msgstr ""
+
+#: patterns/store-visit.php:22
+msgid "Odwiedź nas w Czernicy"
+msgstr ""
+
+#: patterns/store-visit.php:31
+msgid "Adres"
+msgstr ""
+
+#: patterns/store-visit.php:49
+msgid "Godziny otwarcia"
+msgstr ""
+
+#: patterns/store-visit.php:67
+msgid "Telefon i e-mail"
+msgstr ""
+
+#: patterns/store-visit.php:75
+msgid "W godzinach otwarcia najszybciej złapiesz nas telefonicznie."
+msgstr ""
+
 #: patterns/testimonials.php
 msgctxt "Pattern title"
 msgid "Customer reviews"
@@ -1320,50 +1565,30 @@ msgstr ""
 
 #: patterns/testimonials.php
 msgctxt "Pattern description"
-msgid "Three customer reviews with star ratings on cards."
-msgstr ""
-
-#: patterns/testimonials.php:15
-msgid "The vase is even more beautiful in person. Carefully packed and delivered the next day. I am already planning my next order."
-msgstr ""
-
-#: patterns/testimonials.php:16
-msgid "Anna, Kraków"
+msgid "Real, approved product reviews from the shop (never invented ones) with buttons to read and leave a review on Google."
 msgstr ""
 
 #: patterns/testimonials.php:20
-msgid "Great quality and a really thoughtful selection. Customer service helped me choose the right lamp size within an hour."
+msgid "Opinie"
 msgstr ""
 
-#: patterns/testimonials.php:21
-msgid "Michał, Gdańsk"
+#: patterns/testimonials.php:24
+msgid "Co mówią nasi klienci"
 msgstr ""
 
-#: patterns/testimonials.php:22
-msgid "Globe table lamp"
-msgstr ""
-
-#: patterns/testimonials.php:25
-msgid "I bought a set of mugs as a gift and ended up keeping two for myself. Simple, elegant and perfect for everyday use."
-msgstr ""
-
-#: patterns/testimonials.php:26
-msgid "Kasia, Wrocław"
-msgstr ""
-
-#: patterns/testimonials.php:27
-msgid "Morning mug set"
-msgstr ""
-
-#: patterns/testimonials.php:34
-msgid "Reviews"
-msgstr ""
-
-#: patterns/testimonials.php:38
-msgid "Loved by over 2,400 customers"
+#: patterns/testimonials.php:29
+msgid "Kupiłeś u nas sprzęt albo oddałeś go do serwisu? Twoja opinia pomoże innym znaleźć dobry sklep i serwis w okolicy."
 msgstr ""
 
 #. translators: %s: product name.
-#: patterns/testimonials.php:62
-msgid "Verified purchase · %s"
+#: patterns/testimonials.php:55
+msgid "Zweryfikowany zakup · %s"
+msgstr ""
+
+#: patterns/testimonials.php:66
+msgid "Zobacz wszystkie opinie"
+msgstr ""
+
+#: patterns/testimonials.php:70
+msgid "Wystaw opinię"
 msgstr ""

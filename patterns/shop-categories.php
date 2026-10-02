@@ -5,7 +5,7 @@
  * Categories: witryna-shop
  * Keywords: categories, collections, tiles, grid
  * Viewport Width: 1400
- * Description: Image tiles for the four most popular product categories. Category thumbnails are used when available.
+ * Description: Tiles for the four most popular product categories. Category thumbnails are used when available, otherwise a dark tile.
  *
  * @package Witryna
  */
@@ -21,17 +21,17 @@ foreach ( $witryna_terms as $witryna_index => $witryna_term ) {
 		'url'   => is_wp_error( $witryna_link ) ? '#' : $witryna_link,
 		/* translators: %s: number of products. */
 		'count' => sprintf( _n( '%s product', '%s products', $witryna_term->count, 'witryna' ), number_format_i18n( $witryna_term->count ) ),
-		'image' => $witryna_thumbnail ? wp_get_attachment_image_url( $witryna_thumbnail, 'large' ) : get_theme_file_uri( 'assets/images/category-' . ( $witryna_index + 1 ) . '.jpg' ),
+		'image' => $witryna_thumbnail ? wp_get_attachment_image_url( $witryna_thumbnail, 'large' ) : '',
 	);
 }
 
 if ( empty( $witryna_tiles ) ) {
 	$witryna_shop  = witryna_store_url( 'shop', home_url( '/' ) );
 	$witryna_tiles = array(
-		array( 'name' => __( 'Ceramics', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Explore', 'witryna' ), 'image' => get_theme_file_uri( 'assets/images/category-1.jpg' ) ),
-		array( 'name' => __( 'Lighting', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Explore', 'witryna' ), 'image' => get_theme_file_uri( 'assets/images/category-2.jpg' ) ),
-		array( 'name' => __( 'Kitchen', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Explore', 'witryna' ), 'image' => get_theme_file_uri( 'assets/images/category-3.jpg' ) ),
-		array( 'name' => __( 'Decor', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Explore', 'witryna' ), 'image' => get_theme_file_uri( 'assets/images/category-4.jpg' ) ),
+		array( 'name' => __( 'Kosiarki', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Zobacz', 'witryna' ), 'image' => '' ),
+		array( 'name' => __( 'Roboty koszące', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Zobacz', 'witryna' ), 'image' => '' ),
+		array( 'name' => __( 'Pilarki', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Zobacz', 'witryna' ), 'image' => '' ),
+		array( 'name' => __( 'Kosy i podkaszarki', 'witryna' ), 'url' => $witryna_shop, 'count' => __( 'Zobacz', 'witryna' ), 'image' => '' ),
 	);
 }
 ?>
@@ -43,7 +43,7 @@ if ( empty( $witryna_tiles ) ) {
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading"><?php esc_html_e( 'Shop by category', 'witryna' ); ?></h2>
+<h2 class="wp-block-heading"><?php esc_html_e( 'Sprzęt do każdego ogrodu', 'witryna' ); ?></h2>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
@@ -57,8 +57,11 @@ if ( empty( $witryna_tiles ) ) {
 <!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"15rem"}} -->
 <div class="wp-block-group alignwide">
 <?php foreach ( $witryna_tiles as $witryna_tile ) : ?>
+<?php if ( $witryna_tile['image'] ) : ?>
 <!-- wp:cover {"url":"<?php echo esc_url( $witryna_tile['image'] ); ?>","dimRatio":100,"gradient":"shade-bottom","minHeight":420,"minHeightUnit":"px","contentPosition":"bottom left","className":"witryna-category-card is-style-zoom","style":{"border":{"radius":"var:preset|border-radius|large"},"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-cover has-custom-content-position is-position-bottom-left witryna-category-card is-style-zoom" style="border-radius:var(--wp--preset--border-radius--large);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);min-height:420px"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $witryna_tile['image'] ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim wp-block-cover__gradient-background has-background-gradient has-shade-bottom-gradient-background"></span><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"fontSize":"x-large"} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left witryna-category-card is-style-zoom" style="border-radius:var(--wp--preset--border-radius--large);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);min-height:420px"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $witryna_tile['image'] ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim wp-block-cover__gradient-background has-background-gradient has-shade-bottom-gradient-background"></span><?php else : ?>
+<!-- wp:cover {"dimRatio":100,"overlayColor":"contrast","minHeight":260,"minHeightUnit":"px","contentPosition":"bottom left","className":"witryna-category-card witryna-category-card--plain","style":{"border":{"radius":"var:preset|border-radius|medium"},"spacing":{"padding":{"top":"var:preset|spacing|30","right":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-cover has-custom-content-position is-position-bottom-left witryna-category-card witryna-category-card--plain" style="border-radius:var(--wp--preset--border-radius--medium);padding-top:var(--wp--preset--spacing--30);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30);padding-left:var(--wp--preset--spacing--30);min-height:260px"><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-100 has-background-dim"></span><?php endif; ?><div class="wp-block-cover__inner-container"><!-- wp:heading {"level":3,"fontSize":"x-large"} -->
 <h3 class="wp-block-heading has-x-large-font-size"><a href="<?php echo esc_url( $witryna_tile['url'] ); ?>"><?php echo esc_html( $witryna_tile['name'] ); ?></a></h3>
 <!-- /wp:heading -->
 

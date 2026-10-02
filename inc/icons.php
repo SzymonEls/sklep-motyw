@@ -34,6 +34,12 @@ function witryna_register_icons() {
 		'sparkle' => _x( 'Sparkle', 'icon label', 'witryna' ),
 		'heart'   => _x( 'Heart', 'icon label', 'witryna' ),
 		'phone'   => _x( 'Phone', 'icon label', 'witryna' ),
+		'shield'  => _x( 'Shield', 'icon label', 'witryna' ),
+		'wrench'  => _x( 'Wrench', 'icon label', 'witryna' ),
+		'store'   => _x( 'Shop', 'icon label', 'witryna' ),
+		'clock'   => _x( 'Clock', 'icon label', 'witryna' ),
+		'pin'     => _x( 'Map pin', 'icon label', 'witryna' ),
+		'star'    => _x( 'Star', 'icon label', 'witryna' ),
 	);
 
 	foreach ( $icons as $name => $label ) {

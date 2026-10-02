@@ -13,6 +13,7 @@ $witryna_shop    = witryna_store_url( 'shop', home_url( '/' ) );
 $witryna_orders  = function_exists( 'wc_get_account_endpoint_url' ) ? esc_url( wc_get_account_endpoint_url( 'orders' ) ) : '#';
 $witryna_privacy = get_privacy_policy_url() ? esc_url( get_privacy_policy_url() ) : '#';
 $witryna_terms   = witryna_store_url( 'terms' );
+$witryna_info    = witryna_store_info();
 ?>
 <!-- wp:group {"className":"witryna-footer is-style-section-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|60"}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group witryna-footer is-style-section-dark" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
@@ -20,17 +21,11 @@ $witryna_terms   = witryna_store_url( 'terms' );
 <div class="wp-block-column" style="flex-basis:34%"><!-- wp:site-title {"level":0,"fontSize":"xx-large"} /-->
 
 <!-- wp:paragraph {"className":"witryna-soft","style":{"typography":{"lineHeight":"1.6"}},"fontSize":"small"} -->
-<p class="witryna-soft has-small-font-size" style="line-height:1.6"><?php esc_html_e( 'Thoughtfully chosen products for everyday life. Designed to last, packed with care and shipped quickly to your door.', 'witryna' ); ?></p>
+<p class="witryna-soft has-small-font-size" style="line-height:1.6"><?php esc_html_e( 'Autoryzowany dealer STIHL w Czernicy pod Wrocławiem. Sprzedaż, doradztwo i serwis sprzętu ogrodowego i leśnego.', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:social-links {"className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|30"}}}} -->
-<ul class="wp-block-social-links is-style-logos-only"><!-- wp:social-link {"url":"https://www.instagram.com/","service":"instagram"} /-->
-
-<!-- wp:social-link {"url":"https://www.facebook.com/","service":"facebook"} /-->
-
-<!-- wp:social-link {"url":"https://www.tiktok.com/","service":"tiktok"} /-->
-
-<!-- wp:social-link {"url":"https://www.pinterest.com/","service":"pinterest"} /--></ul>
+<ul class="wp-block-social-links is-style-logos-only"><!-- wp:social-link {"url":"<?php echo esc_url( $witryna_info['tiktok'] ); ?>","service":"tiktok","label":"TikTok"} /--></ul>
 <!-- /wp:social-links --></div>
 <!-- /wp:column -->
 
@@ -52,17 +47,21 @@ $witryna_terms   = witryna_store_url( 'terms' );
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:heading {"level":2,"className":"is-style-eyebrow","fontSize":"x-small"} -->
-<h2 class="wp-block-heading is-style-eyebrow has-x-small-font-size"><?php esc_html_e( 'Customer care', 'witryna' ); ?></h2>
+<h2 class="wp-block-heading is-style-eyebrow has-x-small-font-size"><?php esc_html_e( 'Obsługa klienta', 'witryna' ); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:navigation {"overlayMenu":"never","className":"witryna-footer__menu","style":{"spacing":{"blockGap":"0.7rem"}},"fontSize":"small","layout":{"type":"flex","orientation":"vertical"}} -->
-<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Delivery and payment', 'witryna' ); ?>","url":"#","kind":"custom"} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Serwis', 'witryna' ); ?>","url":"<?php echo witryna_page_url( 'serwis' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>","kind":"custom"} /-->
 
-<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Returns and complaints', 'witryna' ); ?>","url":"#","kind":"custom"} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Opinie klientów', 'witryna' ); ?>","url":"<?php echo witryna_page_url( 'opinie' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Social media', 'witryna' ); ?>","url":"<?php echo witryna_page_url( 'social-media' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Dostawa i płatność', 'witryna' ); ?>","url":"<?php echo witryna_page_url( 'dostawa-i-platnosc' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>","kind":"custom"} /-->
+
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Zwroty i reklamacje', 'witryna' ); ?>","url":"<?php echo witryna_page_url( 'zwroty-i-reklamacje' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>","kind":"custom"} /-->
 
 <!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Order status', 'witryna' ); ?>","url":"<?php echo $witryna_orders; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above. ?>","kind":"custom"} /-->
-
-<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Frequently asked questions', 'witryna' ); ?>","url":"#","kind":"custom"} /-->
 <!-- /wp:navigation --></div>
 <!-- /wp:column -->
 
@@ -72,11 +71,11 @@ $witryna_terms   = witryna_store_url( 'terms' );
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size"><a href="mailto:hello@example.com">hello@example.com</a><br><a href="tel:+48123456789">+48 123 456 789</a></p>
+<p class="has-small-font-size"><?php echo esc_html( $witryna_info['company'] ); ?><br><?php echo esc_html( witryna_store_address() ); ?><br><a href="tel:<?php echo esc_attr( $witryna_info['phone_href'] ); ?>"><?php echo esc_html( $witryna_info['phone'] ); ?></a><br><a href="mailto:<?php echo esc_attr( antispambot( $witryna_info['email'] ) ); ?>"><?php echo esc_html( antispambot( $witryna_info['email'] ) ); ?></a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"witryna-soft","fontSize":"small"} -->
-<p class="witryna-soft has-small-font-size"><?php esc_html_e( 'Monday to Friday, 9:00–17:00', 'witryna' ); ?></p>
+<p class="witryna-soft has-small-font-size"><?php echo esc_html( $witryna_info['hours_short'] ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->

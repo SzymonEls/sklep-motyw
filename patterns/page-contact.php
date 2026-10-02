@@ -2,66 +2,56 @@
 /**
  * Title: Contact page
  * Slug: witryna/page-contact
- * Categories: witryna-pages, contact
- * Keywords: contact, address, phone, email, company details
+ * Categories: witryna-pages
+ * Keywords: contact, address, hours, phone, map, company details
  * Block Types: core/post-content
- * Post Types: page
+ * Post Types: page, wp_template
  * Viewport Width: 1400
- * Description: Contact cards, opening hours, company details and frequently asked questions.
+ * Description: Contact page with address and map link, opening hours, phone and e-mail, company details and frequently asked questions.
  *
  * @package Witryna
  */
 
-$witryna_contacts = array(
-	array( 'core/envelope', __( 'Email', 'witryna' ), '<a href="mailto:hello@example.com">hello@example.com</a>', __( 'We reply within one business day.', 'witryna' ) ),
-	array( 'witryna/phone', __( 'Phone', 'witryna' ), '<a href="tel:+48123456789">+48 123 456 789</a>', __( 'Monday to Friday, 9:00–17:00', 'witryna' ) ),
-	array( 'core/map-marker', __( 'Showroom', 'witryna' ), esc_html__( 'ul. Przykładowa 12, 00-001 Warszawa', 'witryna' ), __( 'Tuesday to Saturday, 11:00–19:00', 'witryna' ) ),
-);
+$witryna_info = witryna_store_info();
 ?>
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"},"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"760px"}} -->
-<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:paragraph {"className":"is-style-eyebrow"} -->
-<p class="is-style-eyebrow"><?php esc_html_e( 'Contact', 'witryna' ); ?></p>
+<!-- wp:group {"align":"full","className":"is-style-section-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull is-style-section-dark" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
+<div class="wp-block-group alignwide"><!-- wp:paragraph {"className":"is-style-eyebrow witryna-hero__eyebrow"} -->
+<p class="is-style-eyebrow witryna-hero__eyebrow"><?php esc_html_e( 'Kontakt', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"fontSize":"display"} -->
-<h1 class="wp-block-heading has-display-font-size"><?php esc_html_e( 'We are here to help', 'witryna' ); ?></h1>
+<h1 class="wp-block-heading has-display-font-size"><?php esc_html_e( 'Zadzwoń, napisz albo wpadnij', 'witryna' ); ?></h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"textColor":"muted","fontSize":"large"} -->
-<p class="has-muted-color has-text-color has-large-font-size"><?php esc_html_e( 'Questions about an order, a product or a return? Get in touch the way that suits you best.', 'witryna' ); ?></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"16rem"}} -->
-<div class="wp-block-group alignwide">
-<?php foreach ( $witryna_contacts as $witryna_contact ) : ?>
-<!-- wp:group {"className":"is-style-card","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group is-style-card"><!-- wp:icon {"icon":"<?php echo esc_attr( $witryna_contact[0] ); ?>","style":{"dimensions":{"width":"28px"}}} /-->
-
-<!-- wp:heading {"level":2,"fontSize":"large"} -->
-<h2 class="wp-block-heading has-large-font-size"><?php echo esc_html( $witryna_contact[1] ); ?></h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph -->
-<p><?php echo wp_kses_post( $witryna_contact[2] ); ?></p>
+<!-- wp:paragraph {"className":"witryna-soft","fontSize":"large"} -->
+<p class="witryna-soft has-large-font-size"><?php esc_html_e( 'Pytanie o sprzęt, zamówienie albo serwis? Najszybciej złapiesz nas telefonicznie w godzinach otwarcia sklepu.', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"textColor":"muted","fontSize":"small"} -->
-<p class="has-muted-color has-text-color has-small-font-size"><?php echo esc_html( $witryna_contact[3] ); ?></p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group -->
-<?php endforeach; ?>
-</div>
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="tel:<?php echo esc_attr( $witryna_info['phone_href'] ); ?>"><?php echo esc_html( sprintf( /* translators: %s: phone number. */ __( 'Zadzwoń: %s', 'witryna' ), $witryna_info['phone'] ) ); ?></a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( witryna_store_map_url() ); ?>" target="_blank" rel="noreferrer noopener"><?php esc_html_e( 'Wyznacz trasę', 'witryna' ); ?></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|20","margin":{"top":"var:preset|spacing|40"}},"border":{"radius":"var:preset|border-radius|large"}},"backgroundColor":"surface","fontSize":"small","layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
-<div class="wp-block-group alignwide has-surface-background-color has-background has-small-font-size" style="border-radius:var(--wp--preset--border-radius--large);margin-top:var(--wp--preset--spacing--40);padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":2,"fontSize":"medium"} -->
-<h2 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Company details', 'witryna' ); ?></h2>
+<!-- wp:pattern {"slug":"witryna/store-visit"} /-->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","right":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40"},"blockGap":"var:preset|spacing|20"},"border":{"radius":"var:preset|border-radius|medium"}},"backgroundColor":"surface","fontSize":"small","layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
+<div class="wp-block-group alignwide has-surface-background-color has-background has-small-font-size" style="border-radius:var(--wp--preset--border-radius--medium);padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:heading {"level":2,"fontSize":"medium"} -->
+<h2 class="wp-block-heading has-medium-font-size"><?php esc_html_e( 'Dane firmy', 'witryna' ); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"muted"} -->
-<p class="has-muted-color has-text-color"><?php echo wp_kses_post( __( 'Example Store Ltd.<br>ul. Przykładowa 12, 00-001 Warszawa<br>Tax ID (NIP): 000-000-00-00 · Company number (KRS): 0000000000', 'witryna' ) ); ?></p>
+<p class="has-muted-color has-text-color"><?php echo esc_html( $witryna_info['company'] ); ?><br><?php echo esc_html( witryna_store_address() ); ?><br><?php echo esc_html( sprintf( /* translators: %s: tax ID. */ __( 'NIP: %s', 'witryna' ), $witryna_info['nip'] ) ); ?></p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:pattern {"slug":"witryna/faq"} /-->
