@@ -19,7 +19,7 @@
 
 <!-- wp:search {"label":"<?php echo esc_attr_x( 'Search products', 'search label', 'witryna' ); ?>","showLabel":false,"placeholder":"<?php echo esc_attr__( 'Search products…', 'witryna' ); ?>","buttonText":"<?php echo esc_attr_x( 'Search', 'search button', 'witryna' ); ?>","buttonPosition":"button-inside","buttonUseIcon":true,"query":{"post_type":"product"},"className":"witryna-mobile-menu__search"} /-->
 
-<!-- wp:navigation {"overlayMenu":"never","className":"witryna-mobile-menu__nav","style":{"typography":{"fontWeight":"500","letterSpacing":"-0.03em","lineHeight":"1.15"},"spacing":{"blockGap":"0.9rem"}},"fontSize":"xx-large","fontFamily":"bricolage-grotesque","layout":{"type":"flex","orientation":"vertical"}} /-->
+<!-- wp:navigation {"overlayMenu":"never","submenuVisibility":"always","className":"witryna-mobile-menu__nav","style":{"typography":{"fontWeight":"500","letterSpacing":"-0.03em","lineHeight":"1.15"},"spacing":{"blockGap":"0.9rem"}},"fontSize":"xx-large","fontFamily":"bricolage-grotesque","layout":{"type":"flex","orientation":"vertical"}} /-->
 
 <!-- wp:group {"className":"witryna-mobile-menu__footer","style":{"spacing":{"blockGap":"var:preset|spacing|20","padding":{"top":"var:preset|spacing|30"}},"border":{"top":{"color":"var:preset|color|line","width":"1px"}}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group witryna-mobile-menu__footer" style="border-top-color:var(--wp--preset--color--line);border-top-width:1px;padding-top:var(--wp--preset--spacing--30)"><!-- wp:woocommerce/customer-account {"displayStyle":"icon_and_text","iconStyle":"line","iconClass":"wc-block-customer-account__account-icon","fontSize":"small"} /-->

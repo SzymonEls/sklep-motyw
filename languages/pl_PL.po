@@ -6,1364 +6,1366 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Domain: witryna\n"
 
 
 #: style.css
 msgctxt "Theme Name of the theme"
 msgid "Witryna"
-msgstr ""
+msgstr "Witryna"
 
 #: style.css
 msgctxt "Description of the theme"
 msgid "Witryna is a modern block theme designed for WooCommerce stores. It ships with a sticky header, a custom mobile menu, product filters, a refined single product layout, cart and checkout templates, five style variations (light, dark, elegant, organic and high-contrast) and dozens of ready-made patterns for home pages, promotions and content. Fonts are bundled locally, so no data is sent to third-party font services."
-msgstr ""
+msgstr "Witryna to nowoczesny motyw blokowy dla sklepów WooCommerce. Zawiera przyklejony nagłówek, własne menu mobilne, filtry produktów, dopracowany układ karty produktu, szablony koszyka i kasy, pięć wariantów stylu (jasny, ciemny, elegancki, naturalny i kontrastowy) oraz dziesiątki gotowych wzorców stron głównych, promocji i treści. Fonty są dołączone lokalnie, więc żadne dane nie trafiają do zewnętrznych usług z fontami."
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Extra small"
-msgstr ""
+msgstr "Bardzo mały"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Small"
-msgstr ""
+msgstr "Mały"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Medium"
-msgstr ""
+msgstr "Średni"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Large"
-msgstr ""
+msgstr "Duży"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Extra large"
-msgstr ""
+msgstr "Bardzo duży"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "2X large"
-msgstr ""
+msgstr "2X duży"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "3X large"
-msgstr ""
+msgstr "3X duży"
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Display"
-msgstr ""
+msgstr "Tytułowy"
 
 #: theme.json
 msgctxt "Font family name"
 msgid "Inter"
-msgstr ""
+msgstr "Inter"
 
 #: theme.json
 msgctxt "Font family name"
 msgid "Bricolage Grotesque"
-msgstr ""
+msgstr "Bricolage Grotesque"
 
 #: theme.json
 msgctxt "Font family name"
 msgid "Fraunces"
-msgstr ""
+msgstr "Fraunces"
 
 #: theme.json
 msgctxt "Font family name"
 msgid "Instrument Serif"
-msgstr ""
+msgstr "Instrument Serif"
 
 #: theme.json
 msgctxt "Font family name"
 msgid "System Sans-serif"
-msgstr ""
+msgstr "Systemowy bezszeryfowy"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Base"
-msgstr ""
+msgstr "Tło"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Surface"
-msgstr ""
+msgstr "Powierzchnia"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Line"
-msgstr ""
+msgstr "Linia"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Contrast"
-msgstr ""
+msgstr "Kontrast"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Muted"
-msgstr ""
+msgstr "Wyciszony"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Accent"
-msgstr ""
+msgstr "Akcent"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Accent soft"
-msgstr ""
+msgstr "Jasny akcent"
 
 #: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
 msgctxt "Color name"
 msgid "Highlight"
-msgstr ""
+msgstr "Wyróżnienie"
 
 #: theme.json
 msgctxt "Gradient name"
 msgid "Shade from bottom"
-msgstr ""
+msgstr "Cień od dołu"
 
 #: theme.json
 msgctxt "Gradient name"
 msgid "Surface to base"
-msgstr ""
+msgstr "Powierzchnia do tła"
 
 #: theme.json
 msgctxt "Gradient name"
 msgid "Accent glow"
-msgstr ""
+msgstr "Poświata akcentu"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "Tiny"
-msgstr ""
+msgstr "Minimalny"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "2X-Small"
-msgstr ""
+msgstr "2X mały"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "X-Small"
-msgstr ""
+msgstr "Bardzo mały"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "Small"
-msgstr ""
+msgstr "Mały"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "Medium"
-msgstr ""
+msgstr "Średni"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "Large"
-msgstr ""
+msgstr "Duży"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "X-Large"
-msgstr ""
+msgstr "Bardzo duży"
 
 #: theme.json
 msgctxt "Space size name"
 msgid "2X-Large"
-msgstr ""
+msgstr "2X duży"
 
 #: theme.json
 msgctxt "Aspect ratio name"
 msgid "Portrait - 4:5"
-msgstr ""
+msgstr "Pionowy – 4:5"
 
 #: theme.json
 msgctxt "Aspect ratio name"
 msgid "Landscape - 5:4"
-msgstr ""
+msgstr "Poziomy – 5:4"
 
 #: theme.json
 msgctxt "Shadow name"
 msgid "Subtle"
-msgstr ""
+msgstr "Delikatny"
 
 #: theme.json
 msgctxt "Shadow name"
 msgid "Soft"
-msgstr ""
+msgstr "Miękki"
 
 #: theme.json
 msgctxt "Shadow name"
 msgid "Elevated"
-msgstr ""
+msgstr "Uniesiony"
 
 #: theme.json
 msgctxt "Border radius size name"
 msgid "Small"
-msgstr ""
+msgstr "Mały"
 
 #: theme.json
 msgctxt "Border radius size name"
 msgid "Medium"
-msgstr ""
+msgstr "Średni"
 
 #: theme.json
 msgctxt "Border radius size name"
 msgid "Large"
-msgstr ""
+msgstr "Duży"
 
 #: theme.json
 msgctxt "Border radius size name"
 msgid "Extra large"
-msgstr ""
+msgstr "Bardzo duży"
 
 #: theme.json
 msgctxt "Border radius size name"
 msgid "Full"
-msgstr ""
+msgstr "Pełny"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Page without title"
-msgstr ""
+msgstr "Strona bez tytułu"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Landing page (no header & footer)"
-msgstr ""
+msgstr "Strona docelowa (bez nagłówka i stopki)"
 
 #: theme.json
 msgctxt "Custom template name"
 msgid "Wide page"
-msgstr ""
+msgstr "Szeroka strona"
 
 #: theme.json
 msgctxt "Template part name"
 msgid "Header"
-msgstr ""
+msgstr "Nagłówek"
 
 #: theme.json
 msgctxt "Template part name"
 msgid "Footer"
-msgstr ""
+msgstr "Stopka"
 
 #: theme.json
 msgctxt "Template part name"
 msgid "Checkout header"
-msgstr ""
+msgstr "Nagłówek kasy"
 
 #: theme.json
 msgctxt "Template part name"
 msgid "Mobile menu"
-msgstr ""
+msgstr "Menu mobilne"
 
 #: styles/atelier.json
 msgctxt "Style variation name"
 msgid "Atelier"
-msgstr ""
+msgstr "Atelier"
 
 #: styles/contrast.json
 msgctxt "Style variation name"
 msgid "Contrast"
-msgstr ""
+msgstr "Kontrast"
 
 #: styles/forest.json
 msgctxt "Style variation name"
 msgid "Forest"
-msgstr ""
+msgstr "Las"
 
 #: styles/night.json
 msgctxt "Style variation name"
 msgid "Night"
-msgstr ""
+msgstr "Noc"
 
 #: styles/sections/section-accent.json
 msgctxt "Style variation name"
 msgid "Accent section"
-msgstr ""
+msgstr "Sekcja akcentowa"
 
 #: styles/sections/section-dark.json
 msgctxt "Style variation name"
 msgid "Dark section"
-msgstr ""
+msgstr "Sekcja ciemna"
 
 #: styles/sections/section-soft.json
 msgctxt "Style variation name"
 msgid "Soft accent section"
-msgstr ""
+msgstr "Sekcja z jasnym akcentem"
 
 #: styles/sections/section-surface.json
 msgctxt "Style variation name"
 msgid "Surface section"
-msgstr ""
+msgstr "Sekcja na tle powierzchni"
 
 #: inc/block-styles.php:20 inc/block-styles.php:23
 msgctxt "block style"
 msgid "Eyebrow"
-msgstr ""
+msgstr "Nadtytuł"
 
 #: inc/block-styles.php:26
 msgctxt "block style"
 msgid "Checklist"
-msgstr ""
+msgstr "Lista z ptaszkami"
 
 #: inc/block-styles.php:27
 msgctxt "block style"
 msgid "No bullets"
-msgstr ""
+msgstr "Bez punktorów"
 
 #: inc/block-styles.php:30 inc/block-styles.php:33
 msgctxt "block style"
 msgid "Card"
-msgstr ""
+msgstr "Karta"
 
 #: inc/block-styles.php:36
 msgctxt "block style"
 msgid "Arrow link"
-msgstr ""
+msgstr "Link ze strzałką"
 
 #: inc/block-styles.php:39 inc/block-styles.php:42
 msgctxt "block style"
 msgid "Zoom on hover"
-msgstr ""
+msgstr "Powiększenie po najechaniu"
 
 #: inc/block-styles.php:45
 msgctxt "block style"
 msgid "Pills"
-msgstr ""
+msgstr "Etykiety"
 
 #: inc/block-styles.php:48
 msgctxt "block style"
 msgid "Underline on hover"
-msgstr ""
+msgstr "Podkreślenie po najechaniu"
 
 #: inc/icons.php:21
 msgid "Witryna"
-msgstr ""
+msgstr "Witryna"
 
 #: inc/icons.php:22
 msgid "Store icons bundled with the Witryna theme."
-msgstr ""
+msgstr "Ikony sklepowe dołączone do motywu Witryna."
 
 #: inc/icons.php:27
 msgctxt "icon label"
 msgid "Delivery truck"
-msgstr ""
+msgstr "Samochód dostawczy"
 
 #: inc/icons.php:28
 msgctxt "icon label"
 msgid "Returns"
-msgstr ""
+msgstr "Zwroty"
 
 #: inc/icons.php:29
 msgctxt "icon label"
 msgid "Padlock"
-msgstr ""
+msgstr "Kłódka"
 
 #: inc/icons.php:30
 msgctxt "icon label"
 msgid "Chat"
-msgstr ""
+msgstr "Czat"
 
 #: inc/icons.php:31
 msgctxt "icon label"
 msgid "Gift"
-msgstr ""
+msgstr "Prezent"
 
 #: inc/icons.php:32
 msgctxt "icon label"
 msgid "Leaf"
-msgstr ""
+msgstr "Liść"
 
 #: inc/icons.php:33
 msgctxt "icon label"
 msgid "Package"
-msgstr ""
+msgstr "Paczka"
 
 #: inc/icons.php:34
 msgctxt "icon label"
 msgid "Sparkle"
-msgstr ""
+msgstr "Iskierki"
 
 #: inc/icons.php:35
 msgctxt "icon label"
 msgid "Heart"
-msgstr ""
+msgstr "Serce"
 
 #: inc/icons.php:36
 msgctxt "icon label"
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: inc/patterns.php:20
 msgid "Shop sections"
-msgstr ""
+msgstr "Sekcje sklepu"
 
 #: inc/patterns.php:21
 msgid "Product grids, categories and store benefits."
-msgstr ""
+msgstr "Siatki produktów, kategorie i zalety sklepu."
 
 #: inc/patterns.php:28
 msgid "Full pages"
-msgstr ""
+msgstr "Całe strony"
 
 #: inc/patterns.php:29
 msgid "Complete page layouts built from Witryna patterns."
-msgstr ""
+msgstr "Gotowe układy stron zbudowane z wzorców Witryny."
 
 #: inc/setup.php:103
 msgid "Copyright notice"
-msgstr ""
+msgstr "Informacja o prawach autorskich"
 
 #. translators: 1: current year, 2: site title.
 #: inc/setup.php:118
 msgid "© %1$s %2$s. All rights reserved."
-msgstr ""
+msgstr "© %1$s %2$s. Wszelkie prawa zastrzeżone."
 
 #. translators: %d: discount percentage.
 #: inc/woocommerce.php:109
 msgid "−%d%%"
-msgstr ""
+msgstr "−%d%%"
 
 #: inc/woocommerce.php:153
 msgid "Sold out"
-msgstr ""
+msgstr "Wyprzedane"
 
 #: inc/woocommerce.php:164
 msgid "New"
-msgstr ""
+msgstr "Nowość"
 
 #: patterns/brand-story.php
 msgctxt "Pattern title"
 msgid "Brand story with numbers"
-msgstr ""
+msgstr "Historia marki z liczbami"
 
 #: patterns/brand-story.php
 msgctxt "Pattern description"
 msgid "Image next to the brand story and three key numbers."
-msgstr ""
+msgstr "Zdjęcie obok historii marki i trzech kluczowych liczb."
 
 #: patterns/brand-story.php:14
 msgid "orders shipped"
-msgstr ""
+msgstr "wysłanych zamówień"
 
 #: patterns/brand-story.php:15
 msgid "average rating"
-msgstr ""
+msgstr "średnia ocena"
 
 #: patterns/brand-story.php:16
 msgid "dispatch time"
-msgstr ""
+msgstr "czas wysyłki"
 
 #: patterns/brand-story.php:23
 msgid "Ceramic pieces drying in the studio"
-msgstr ""
+msgstr "Ceramika schnąca w pracowni"
 
 #: patterns/brand-story.php:29
 msgid "Our story"
-msgstr ""
+msgstr "Nasza historia"
 
 #: patterns/brand-story.php:33
 msgid "Designed with care, made to last"
-msgstr ""
+msgstr "Zaprojektowane z troską, zrobione na lata"
 
 #: patterns/brand-story.php:37
 msgid "We started with a single kiln and a simple idea: everyday objects should be beautiful, honest and durable. Today we work with a dozen small studios, but every piece is still checked by hand before it reaches you."
-msgstr ""
+msgstr "Zaczynaliśmy od jednego pieca i prostej idei: przedmioty codziennego użytku powinny być piękne, uczciwe i trwałe. Dziś współpracujemy z kilkunastoma małymi pracowniami, ale każdy przedmiot wciąż sprawdzamy ręcznie, zanim do Ciebie trafi."
 
 #: patterns/brand-story.php:58
 msgid "Read more about us"
-msgstr ""
+msgstr "Poznaj nas bliżej"
 
 #: patterns/checkout-header.php
 msgctxt "Pattern title"
 msgid "Checkout header"
-msgstr ""
+msgstr "Nagłówek kasy"
 
 #: patterns/checkout-header.php
 msgctxt "Pattern description"
 msgid "Distraction-free header for the checkout with a link back to the cart."
-msgstr ""
+msgstr "Nagłówek kasy bez rozpraszaczy, z linkiem powrotnym do koszyka."
 
 #: patterns/checkout-header.php:27
 msgid "Secure checkout"
-msgstr ""
+msgstr "Bezpieczne zakupy"
 
 #: patterns/faq.php
 msgctxt "Pattern title"
 msgid "Frequently asked questions"
-msgstr ""
+msgstr "Najczęściej zadawane pytania"
 
 #: patterns/faq.php
 msgctxt "Pattern description"
 msgid "Introduction with a contact button next to an accordion with common store questions."
-msgstr ""
+msgstr "Wstęp z przyciskiem kontaktu obok akordeonu z typowymi pytaniami o sklep."
 
 #: patterns/faq.php:15
 msgid "How long does delivery take?"
-msgstr ""
+msgstr "Jak długo trwa dostawa?"
 
 #: patterns/faq.php:16
 msgid "Orders placed on business days before 2 pm are shipped the same day. Courier and parcel locker deliveries usually arrive within 1–2 business days."
-msgstr ""
+msgstr "Zamówienia złożone w dni robocze do 14:00 wysyłamy tego samego dnia. Przesyłki kurierskie i do paczkomatów docierają zwykle w ciągu 1–2 dni roboczych."
 
 #: patterns/faq.php:19
 msgid "How can I return a product?"
-msgstr ""
+msgstr "Jak mogę zwrócić produkt?"
 
 #: patterns/faq.php:20
 msgid "You have 30 days to return any product without giving a reason. Log in to your account, choose the order and follow the return steps. We refund the payment within 5 business days."
-msgstr ""
+msgstr "Masz 30 dni na zwrot dowolnego produktu bez podawania przyczyny. Zaloguj się na swoje konto, wybierz zamówienie i postępuj zgodnie z instrukcją zwrotu. Pieniądze oddajemy w ciągu 5 dni roboczych."
 
 #: patterns/faq.php:23
 msgid "Which payment methods do you accept?"
-msgstr ""
+msgstr "Jakie metody płatności akceptujecie?"
 
 #: patterns/faq.php:24
 msgid "You can pay by card, fast bank transfer, mobile wallet or bank transfer. All payments are processed by certified payment operators."
-msgstr ""
+msgstr "Możesz zapłacić kartą, szybkim przelewem, portfelem mobilnym lub przelewem tradycyjnym. Wszystkie płatności obsługują certyfikowani operatorzy."
 
 #: patterns/faq.php:27
 msgid "Can I change or cancel my order?"
-msgstr ""
+msgstr "Czy mogę zmienić lub anulować zamówienie?"
 
 #: patterns/faq.php:28
 msgid "Yes, as long as the order has not been shipped. Write to us as soon as possible and include your order number."
-msgstr ""
+msgstr "Tak, dopóki zamówienie nie zostało wysłane. Napisz do nas jak najszybciej i podaj numer zamówienia."
 
 #: patterns/faq.php:31
 msgid "Do you offer gift wrapping?"
-msgstr ""
+msgstr "Czy pakujecie na prezent?"
 
 #: patterns/faq.php:32
 msgid "Every order is packed in recyclable paper. You can add a handwritten card for free by leaving a note at checkout."
-msgstr ""
+msgstr "Każde zamówienie pakujemy w papier nadający się do recyklingu. Odręczny bilecik dodamy bezpłatnie – wystarczy zostawić notatkę przy zamówieniu."
 
 #: patterns/faq.php:40
 msgid "Help centre"
-msgstr ""
+msgstr "Centrum pomocy"
 
 #: patterns/faq.php:44
 msgid "Questions? We have answers"
-msgstr ""
+msgstr "Masz pytania? Mamy odpowiedzi"
 
 #: patterns/faq.php:48
 msgid "Could not find what you were looking for? Our team is happy to help with orders, products and returns."
-msgstr ""
+msgstr "Nie ma tu odpowiedzi na Twoje pytanie? Nasz zespół chętnie pomoże w sprawie zamówień, produktów i zwrotów."
 
 #: patterns/faq.php:53
 msgid "Contact us"
-msgstr ""
+msgstr "Napisz do nas"
 
 #: patterns/features-usp.php
 msgctxt "Pattern title"
 msgid "Store benefits"
-msgstr ""
+msgstr "Zalety sklepu"
 
 #: patterns/features-usp.php
 msgctxt "Pattern description"
 msgid "Four short benefits with icons: delivery, returns, payments and customer support."
-msgstr ""
+msgstr "Cztery krótkie korzyści z ikonami: dostawa, zwroty, płatności i obsługa klienta."
 
 #: patterns/features-usp.php:16
 msgid "Fast, free delivery"
-msgstr ""
+msgstr "Szybka, darmowa dostawa"
 
 #. translators: %s: order value, e.g. 199 zł.
 #: patterns/features-usp.php:18
 msgid "On all orders over %s"
-msgstr ""
+msgstr "Dla zamówień od %s"
 
 #. translators: %s: order value, e.g. 199 zł.
 #: patterns/features-usp.php:22
 msgid "30-day returns"
-msgstr ""
+msgstr "30 dni na zwrot"
 
 #. translators: %s: order value, e.g. 199 zł.
 #: patterns/features-usp.php:23
 msgid "Changed your mind? No problem"
-msgstr ""
+msgstr "Zmiana zdania? Żaden problem"
 
 #: patterns/features-usp.php:27
 msgid "Secure payments"
-msgstr ""
+msgstr "Bezpieczne płatności"
 
 #: patterns/features-usp.php:28
 msgid "Cards, transfers and mobile wallets"
-msgstr ""
+msgstr "Karty, przelewy i portfele mobilne"
 
 #: patterns/features-usp.php:32
 msgid "Real people, real help"
-msgstr ""
+msgstr "Prawdziwi ludzie, prawdziwa pomoc"
 
 #: patterns/features-usp.php:33
 msgid "We reply within one business day"
-msgstr ""
+msgstr "Odpowiadamy w ciągu jednego dnia roboczego"
 
 #: patterns/footer.php
 msgctxt "Pattern title"
 msgid "Footer with store menus"
-msgstr ""
+msgstr "Stopka z menu sklepu"
 
 #: patterns/footer.php
 msgctxt "Pattern description"
 msgid "Dark footer with brand description, social links, store menus, contact details, legal links and payment methods."
-msgstr ""
+msgstr "Ciemna stopka z opisem marki, linkami do mediów społecznościowych, menu sklepu, danymi kontaktowymi, linkami prawnymi i metodami płatności."
 
 #: patterns/footer.php:23
 msgid "Thoughtfully chosen products for everyday life. Designed to last, packed with care and shipped quickly to your door."
-msgstr ""
+msgstr "Starannie wybrane produkty do codziennego życia. Zaprojektowane na lata, pakowane z troską i szybko wysyłane pod Twoje drzwi."
 
 #: patterns/footer.php:39
 msgid "Shop"
-msgstr ""
+msgstr "Sklep"
 
 #: patterns/footer.php:43 patterns/shop-categories.php:52
 msgid "All products"
-msgstr ""
+msgstr "Wszystkie produkty"
 
 #: patterns/footer.php:45 patterns/shop-new-arrivals.php:22
 msgid "New arrivals"
-msgstr ""
+msgstr "Nowości"
 
 #: patterns/footer.php:47 patterns/shop-bestsellers.php:22
 msgid "Bestsellers"
-msgstr ""
+msgstr "Bestsellery"
 
 #: patterns/footer.php:49
 msgid "Top rated"
-msgstr ""
+msgstr "Najwyżej oceniane"
 
 #: patterns/footer.php:55
 msgid "Customer care"
-msgstr ""
+msgstr "Obsługa klienta"
 
 #: patterns/footer.php:59
 msgid "Delivery and payment"
-msgstr ""
+msgstr "Dostawa i płatność"
 
 #: patterns/footer.php:61
 msgid "Returns and complaints"
-msgstr ""
+msgstr "Zwroty i reklamacje"
 
 #: patterns/footer.php:63
 msgid "Order status"
-msgstr ""
+msgstr "Status zamówienia"
 
 #: patterns/footer.php:65
 msgid "Frequently asked questions"
-msgstr ""
+msgstr "Częste pytania"
 
 #: patterns/footer.php:71 patterns/page-contact.php:23
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: patterns/footer.php:79 patterns/page-contact.php:17
 msgid "Monday to Friday, 9:00–17:00"
-msgstr ""
+msgstr "Od poniedziałku do piątku, 9:00–17:00"
 
 #: patterns/footer.php:91
 msgid "Terms and conditions"
-msgstr ""
+msgstr "Regulamin"
 
 #: patterns/footer.php:95
 msgid "Privacy policy"
-msgstr ""
+msgstr "Polityka prywatności"
 
 #: patterns/gallery-social.php
 msgctxt "Pattern title"
 msgid "Social media gallery"
-msgstr ""
+msgstr "Galeria z mediów społecznościowych"
 
 #: patterns/gallery-social.php
 msgctxt "Pattern description"
 msgid "Grid of square photos with a link to your social media profile."
-msgstr ""
+msgstr "Siatka kwadratowych zdjęć z linkiem do profilu w mediach społecznościowych."
 
 #: patterns/gallery-social.php:21
 msgid "Share your space with us"
-msgstr ""
+msgstr "Pokaż nam swoje wnętrze"
 
 #: patterns/gallery-social.php:25
 msgid "Tag your photos with #witryna and get featured in our gallery."
-msgstr ""
+msgstr "Oznacz zdjęcia tagiem #witryna, a pokażemy je w naszej galerii."
 
 #: patterns/gallery-social.php:41
 msgid "Follow us on Instagram"
-msgstr ""
+msgstr "Obserwuj nas na Instagramie"
 
 #: patterns/header.php
 msgctxt "Pattern title"
 msgid "Header with announcement bar"
-msgstr ""
+msgstr "Nagłówek z paskiem ogłoszeń"
 
 #: patterns/header.php
 msgctxt "Pattern description"
 msgid "Announcement bar, logo, main menu, product search, customer account and mini cart."
-msgstr ""
+msgstr "Pasek ogłoszeń, logo, menu główne, wyszukiwarka produktów, konto klienta i mini koszyk."
 
 #. translators: %s: order value, e.g. 199 zł.
 #: patterns/header.php:16
 msgid "Free delivery on orders over %s"
-msgstr ""
+msgstr "Darmowa dostawa od %s"
 
 #: patterns/header.php:20
 msgid "30-day free returns"
-msgstr ""
+msgstr "Bezpłatny zwrot do 30 dni"
 
 #: patterns/header.php:24
 msgid "Secure online payments"
-msgstr ""
+msgstr "Bezpieczne płatności online"
 
 #: patterns/header.php:40 patterns/mobile-menu.php:20
 msgctxt "search label"
 msgid "Search products"
-msgstr ""
+msgstr "Szukaj produktów"
 
 #: patterns/header.php:40 patterns/mobile-menu.php:20
 msgid "Search products…"
-msgstr ""
+msgstr "Szukaj produktów…"
 
 #: patterns/header.php:40 patterns/hidden-no-results.php:20 patterns/hidden-search.php:11 patterns/mobile-menu.php:20
 msgctxt "search button"
 msgid "Search"
-msgstr ""
+msgstr "Szukaj"
 
 #: patterns/hero-cover.php
 msgctxt "Pattern title"
 msgid "Hero with full-width image"
-msgstr ""
+msgstr "Hero ze zdjęciem na całą szerokość"
 
 #: patterns/hero-cover.php
 msgctxt "Pattern description"
 msgid "Full-width photo with a headline and buttons in the bottom left corner."
-msgstr ""
+msgstr "Zdjęcie na całą szerokość z nagłówkiem i przyciskami w lewym dolnym rogu."
 
 #: patterns/hero-cover.php:17
 msgid "The winter edit"
-msgstr ""
+msgstr "Zimowa selekcja"
 
 #: patterns/hero-cover.php:21
 msgid "Warm light for long evenings"
-msgstr ""
+msgstr "Ciepłe światło na długie wieczory"
 
 #: patterns/hero-cover.php:25
 msgid "Lamps, candles and textiles that make every room feel like home."
-msgstr ""
+msgstr "Lampy, świece i tekstylia, dzięki którym każde wnętrze staje się domem."
 
 #: patterns/hero-cover.php:30
 msgid "Discover the collection"
-msgstr ""
+msgstr "Odkryj kolekcję"
 
 #: patterns/hero-split.php
 msgctxt "Pattern title"
 msgid "Hero with product image"
-msgstr ""
+msgstr "Hero ze zdjęciem produktu"
 
 #: patterns/hero-split.php
 msgctxt "Pattern description"
 msgid "Large headline, call to action buttons and social proof next to a tall product image with a floating label."
-msgstr ""
+msgstr "Duży nagłówek, przyciski wezwania do działania i opinie klientów obok wysokiego zdjęcia produktu z pływającą etykietą."
 
 #: patterns/hero-split.php:18
 msgid "New collection · Autumn 2026"
-msgstr ""
+msgstr "Nowa kolekcja · Jesień 2026"
 
 #: patterns/hero-split.php:22
 msgid "Objects for slow, beautiful days"
-msgstr ""
+msgstr "Przedmioty na spokojne, piękne dni"
 
 #: patterns/hero-split.php:26
 msgid "Ceramics, light and home accessories made in small batches by independent studios. Pieces you will want to keep for years."
-msgstr ""
+msgstr "Ceramika, oświetlenie i dodatki do domu tworzone w krótkich seriach przez niezależne pracownie. Rzeczy, które zechcesz mieć na lata."
 
 #: patterns/hero-split.php:31
 msgid "Shop the collection"
-msgstr ""
+msgstr "Zobacz kolekcję"
 
 #: patterns/hero-split.php:35
 msgid "Browse categories"
-msgstr ""
+msgstr "Przeglądaj kategorie"
 
 #: patterns/hero-split.php:45
 msgid "4.9/5 from over 2,400 reviews"
-msgstr ""
+msgstr "4,9/5 na podstawie ponad 2400 opinii"
 
 #: patterns/hero-split.php:53
 msgid "Handmade ceramic vases on a sunlit shelf"
-msgstr ""
+msgstr "Ręcznie robione ceramiczne wazony na nasłonecznionej półce"
 
 #: patterns/hero-split.php:58
 msgid "Bestseller"
-msgstr ""
+msgstr "Bestseller"
 
 #: patterns/hero-split.php:62 patterns/testimonials.php:17
 msgid "Amfora stoneware vase"
-msgstr ""
+msgstr "Wazon Amfora z kamionki"
 
 #. translators: %s: price.
 #: patterns/hero-split.php:66
 msgid "from %s"
-msgstr ""
+msgstr "od %s"
 
 #: patterns/hidden-404.php
 msgctxt "Pattern title"
 msgid "404"
-msgstr ""
+msgstr "404"
 
 #: patterns/hidden-404.php:13
 msgid "Error 404"
-msgstr ""
+msgstr "Błąd 404"
 
 #: patterns/hidden-404.php:17
 msgid "This page went shopping"
-msgstr ""
+msgstr "Ta strona poszła na zakupy"
 
 #: patterns/hidden-404.php:21
 msgid "The page you are looking for does not exist or has been moved. Let us help you find something nice instead."
-msgstr ""
+msgstr "Strona, której szukasz, nie istnieje lub została przeniesiona. Pomożemy Ci znaleźć coś równie ładnego."
 
 #: patterns/hidden-404.php:26
 msgid "Go to the shop"
-msgstr ""
+msgstr "Przejdź do sklepu"
 
 #: patterns/hidden-404.php:30
 msgid "Back to home page"
-msgstr ""
+msgstr "Wróć na stronę główną"
 
 #: patterns/hidden-blog-heading.php
 msgctxt "Pattern title"
 msgid "Blog heading"
-msgstr ""
+msgstr "Nagłówek bloga"
 
 #: patterns/hidden-blog-heading.php:13 patterns/posts-latest.php:19
 msgid "Journal"
-msgstr ""
+msgstr "Blog"
 
 #: patterns/hidden-blog-heading.php:17
 msgid "Stories, guides and news from our studio"
-msgstr ""
+msgstr "Historie, poradniki i nowości z naszej pracowni"
 
 #: patterns/hidden-comments.php
 msgctxt "Pattern title"
 msgid "Comments"
-msgstr ""
+msgstr "Komentarze"
 
 #: patterns/hidden-no-results.php
 msgctxt "Pattern title"
 msgid "No results"
-msgstr ""
+msgstr "Brak wyników"
 
 #: patterns/hidden-no-results.php:13
 msgid "Nothing here yet"
-msgstr ""
+msgstr "Na razie nic tu nie ma"
 
 #: patterns/hidden-no-results.php:17
 msgid "We could not find anything matching your request. Try a different search or browse the shop."
-msgstr ""
+msgstr "Nie znaleźliśmy niczego, co pasuje do zapytania. Spróbuj wyszukać coś innego lub przejrzyj sklep."
 
 #: patterns/hidden-no-results.php:20 patterns/hidden-search.php:11
 msgctxt "search label"
 msgid "Search"
-msgstr ""
+msgstr "Szukaj"
 
 #: patterns/hidden-no-results.php:20 patterns/hidden-search.php:11
 msgid "Search…"
-msgstr ""
+msgstr "Szukaj…"
 
 #: patterns/hidden-post-meta.php
 msgctxt "Pattern title"
 msgid "Post meta"
-msgstr ""
+msgstr "Metadane wpisu"
 
 #: patterns/hidden-posts-grid.php
 msgctxt "Pattern title"
 msgid "Posts grid"
-msgstr ""
+msgstr "Siatka wpisów"
 
 #: patterns/hidden-product-details.php
 msgctxt "Pattern title"
 msgid "Product details accordion"
-msgstr ""
+msgstr "Akordeon ze szczegółami produktu"
 
 #: patterns/hidden-product-details.php
 msgctxt "Pattern description"
 msgid "Description, specifications and delivery information in an accordion."
-msgstr ""
+msgstr "Opis, specyfikacja i informacje o dostawie w akordeonie."
 
 #: patterns/hidden-product-details.php:16
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #: patterns/hidden-product-details.php:26
 msgid "Specifications"
-msgstr ""
+msgstr "Specyfikacja"
 
 #: patterns/hidden-product-details.php:36
 msgid "Delivery and returns"
-msgstr ""
+msgstr "Dostawa i zwroty"
 
 #: patterns/hidden-product-details.php:42
 msgid "Orders placed on business days before 2 pm are shipped the same day."
-msgstr ""
+msgstr "Zamówienia złożone w dni robocze do 14:00 wysyłamy tego samego dnia."
 
 #: patterns/hidden-product-details.php:46
 msgid "Choose courier delivery, a parcel locker or in-store pickup at checkout."
-msgstr ""
+msgstr "Przy zamówieniu wybierzesz kuriera, paczkomat lub odbiór osobisty w salonie."
 
 #: patterns/hidden-product-details.php:50
 msgid "You can return the product within 30 days without giving a reason."
-msgstr ""
+msgstr "Produkt możesz zwrócić w ciągu 30 dni bez podawania przyczyny."
 
 #: patterns/hidden-product-filters.php
 msgctxt "Pattern title"
 msgid "Product filters"
-msgstr ""
+msgstr "Filtry produktów"
 
 #: patterns/hidden-product-filters.php
 msgctxt "Pattern description"
 msgid "Category, price, attribute, rating and stock filters. On small screens they open in a drawer."
-msgstr ""
+msgstr "Filtry kategorii, ceny, atrybutów, oceny i dostępności. Na małych ekranach otwierają się w szufladzie."
 
 #: patterns/hidden-product-filters.php:19
 msgid "Filters"
-msgstr ""
+msgstr "Filtry"
 
 #: patterns/hidden-product-filters.php:30
 msgid "Clear filters"
-msgstr ""
+msgstr "Wyczyść filtry"
 
 #: patterns/hidden-product-filters.php:38
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 #: patterns/hidden-product-filters.php:48
 msgid "Price"
-msgstr ""
+msgstr "Cena"
 
 #: patterns/hidden-product-filters.php:70
 msgid "Rating"
-msgstr ""
+msgstr "Ocena"
 
 #: patterns/hidden-product-filters.php:80
 msgid "Availability"
-msgstr ""
+msgstr "Dostępność"
 
 #: patterns/hidden-product-meta.php
 msgctxt "Pattern title"
 msgid "Product meta"
-msgstr ""
+msgstr "Metadane produktu"
 
 #: patterns/hidden-product-meta.php:15
 msgid "Brand: "
-msgstr ""
+msgstr "Marka: "
 
 #: patterns/hidden-product-meta.php:17
 msgid "Tags: "
-msgstr ""
+msgstr "Tagi: "
 
 #: patterns/hidden-product-reviews.php
 msgctxt "Pattern title"
 msgid "Product reviews section"
-msgstr ""
+msgstr "Sekcja opinii o produkcie"
 
 #: patterns/hidden-product-trust.php
 msgctxt "Pattern title"
 msgid "Product trust badges"
-msgstr ""
+msgstr "Gwarancje przy produkcie"
 
 #: patterns/hidden-product-trust.php
 msgctxt "Pattern description"
 msgid "Delivery, returns and payment reassurance shown next to the add to cart button."
-msgstr ""
+msgstr "Informacje o dostawie, zwrotach i płatnościach wyświetlane przy przycisku dodawania do koszyka."
 
 #. translators: %s: order value, e.g. 199 zł.
 #: patterns/hidden-product-trust.php:17
 msgid "<strong>Free delivery</strong> on orders over %s, dispatched within 24 hours"
-msgstr ""
+msgstr "<strong>Darmowa dostawa</strong> od %s, wysyłka w ciągu 24 godzin"
 
 #: patterns/hidden-product-trust.php:25
 msgid "<strong>30 days</strong> to return or exchange, free of charge"
-msgstr ""
+msgstr "<strong>30 dni</strong> na bezpłatny zwrot lub wymianę"
 
 #: patterns/hidden-product-trust.php:33
 msgid "<strong>Secure payments</strong> by card, bank transfer or mobile wallet"
-msgstr ""
+msgstr "<strong>Bezpieczne płatności</strong> kartą, przelewem lub portfelem mobilnym"
 
 #: patterns/hidden-related-products.php
 msgctxt "Pattern title"
 msgid "Related products"
-msgstr ""
+msgstr "Powiązane produkty"
 
 #: patterns/hidden-related-products.php:14
 msgid "You may also like"
-msgstr ""
+msgstr "Może Ci się spodobać"
 
 #: patterns/hidden-search.php
 msgctxt "Pattern title"
 msgid "Search form"
-msgstr ""
+msgstr "Formularz wyszukiwania"
 
 #: patterns/mobile-menu.php
 msgctxt "Pattern title"
 msgid "Mobile menu"
-msgstr ""
+msgstr "Menu mobilne"
 
 #: patterns/mobile-menu.php
 msgctxt "Pattern description"
 msgid "Full-screen menu with large links, product search and quick links to the account."
-msgstr ""
+msgstr "Menu na cały ekran z dużymi linkami, wyszukiwarką produktów i szybkim dostępem do konta."
 
 #: patterns/mobile-menu.php:28
 msgid "Need help?"
-msgstr ""
+msgstr "Potrzebujesz pomocy?"
 
 #: patterns/newsletter.php
 msgctxt "Pattern title"
 msgid "Newsletter call to action"
-msgstr ""
+msgstr "Zachęta do zapisu na newsletter"
 
 #: patterns/newsletter.php
 msgctxt "Pattern description"
 msgid "Dark band encouraging visitors to join the newsletter. Replace the button with the form block of your newsletter plugin."
-msgstr ""
+msgstr "Ciemny pas zachęcający do zapisu na newsletter. Zastąp przycisk blokiem formularza z wtyczki do newslettera."
 
 #: patterns/newsletter.php:19
 msgid "Get 10% off your first order"
-msgstr ""
+msgstr "Odbierz 10% rabatu na pierwsze zamówienie"
 
 #: patterns/newsletter.php:23
 msgid "Join our newsletter to hear about new collections, studio stories and offers before anyone else."
-msgstr ""
+msgstr "Zapisz się do newslettera, a o nowych kolekcjach, historiach z pracowni i ofertach dowiesz się przed wszystkimi."
 
 #: patterns/newsletter.php:28
 msgid "Join the newsletter"
-msgstr ""
+msgstr "Zapisz się"
 
 #: patterns/newsletter.php:33
 msgid "No spam. You can unsubscribe at any time."
-msgstr ""
+msgstr "Zero spamu. Możesz wypisać się w każdej chwili."
 
 #: patterns/page-about.php
 msgctxt "Pattern title"
 msgid "About us page"
-msgstr ""
+msgstr "Strona „O nas”"
 
 #: patterns/page-about.php
 msgctxt "Pattern description"
 msgid "About page with an introduction, wide photo, brand values and a call to action."
-msgstr ""
+msgstr "Strona o firmie ze wstępem, szerokim zdjęciem, wartościami marki i wezwaniem do działania."
 
 #: patterns/page-about.php:16
 msgid "Responsibly made"
-msgstr ""
+msgstr "Odpowiedzialna produkcja"
 
 #: patterns/page-about.php:16
 msgid "We choose durable materials and work with studios that pay fair wages and minimise waste."
-msgstr ""
+msgstr "Wybieramy trwałe materiały i współpracujemy z pracowniami, które uczciwie płacą i ograniczają odpady."
 
 #: patterns/page-about.php:17
 msgid "Checked by hand"
-msgstr ""
+msgstr "Sprawdzone ręcznie"
 
 #: patterns/page-about.php:17
 msgid "Every item is inspected before shipping, so you receive exactly what you see in the photos."
-msgstr ""
+msgstr "Każdy przedmiot oglądamy przed wysyłką, więc dostajesz dokładnie to, co widzisz na zdjęciach."
 
 #: patterns/page-about.php:18
 msgid "Plastic-free packaging"
-msgstr ""
+msgstr "Opakowania bez plastiku"
 
 #: patterns/page-about.php:18
 msgid "We pack orders in recycled paper and reuse boxes from our suppliers whenever possible."
-msgstr ""
+msgstr "Pakujemy w papier z recyklingu i, gdy tylko się da, ponownie wykorzystujemy kartony od dostawców."
 
 #: patterns/page-about.php:23
 msgid "About us"
-msgstr ""
+msgstr "O nas"
 
 #: patterns/page-about.php:27
 msgid "We believe in fewer, better things"
-msgstr ""
+msgstr "Wierzymy w mniej, ale lepiej"
 
 #: patterns/page-about.php:31
 msgid "Our shop began as a small market stall. Today we ship across the country, but our approach has not changed: we sell only what we would happily use at home ourselves."
-msgstr ""
+msgstr "Nasz sklep zaczynał jako małe stoisko na targu. Dziś wysyłamy w całym kraju, ale podejście się nie zmieniło: sprzedajemy tylko to, czego sami chętnie używamy w domu."
 
 #: patterns/page-about.php:36
 msgid "Our studio with shelves full of ceramics"
-msgstr ""
+msgstr "Nasza pracownia z półkami pełnymi ceramiki"
 
 #: patterns/page-about.php:41
 msgid "What we stand for"
-msgstr ""
+msgstr "W co wierzymy"
 
 #: patterns/page-contact.php
 msgctxt "Pattern title"
 msgid "Contact page"
-msgstr ""
+msgstr "Strona kontaktowa"
 
 #: patterns/page-contact.php
 msgctxt "Pattern description"
 msgid "Contact cards, opening hours, company details and frequently asked questions."
-msgstr ""
+msgstr "Karty kontaktowe, godziny otwarcia, dane firmy i najczęściej zadawane pytania."
 
 #: patterns/page-contact.php:16
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: patterns/page-contact.php:16
 msgid "We reply within one business day."
-msgstr ""
+msgstr "Odpowiadamy w ciągu jednego dnia roboczego."
 
 #: patterns/page-contact.php:17
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: patterns/page-contact.php:18
 msgid "Showroom"
-msgstr ""
+msgstr "Salon"
 
 #: patterns/page-contact.php:18
 msgid "ul. Przykładowa 12, 00-001 Warszawa"
-msgstr ""
+msgstr "ul. Przykładowa 12, 00-001 Warszawa"
 
 #: patterns/page-contact.php:18
 msgid "Tuesday to Saturday, 11:00–19:00"
-msgstr ""
+msgstr "Od wtorku do soboty, 11:00–19:00"
 
 #: patterns/page-contact.php:27
 msgid "We are here to help"
-msgstr ""
+msgstr "Jesteśmy tu, by pomóc"
 
 #: patterns/page-contact.php:31
 msgid "Questions about an order, a product or a return? Get in touch the way that suits you best."
-msgstr ""
+msgstr "Pytania o zamówienie, produkt albo zwrot? Skontaktuj się z nami w najwygodniejszy sposób."
 
 #: patterns/page-contact.php:59
 msgid "Company details"
-msgstr ""
+msgstr "Dane firmy"
 
 #: patterns/page-contact.php:63
 msgid "Example Store Ltd.<br>ul. Przykładowa 12, 00-001 Warszawa<br>Tax ID (NIP): 000-000-00-00 · Company number (KRS): 0000000000"
-msgstr ""
+msgstr "Przykładowy Sklep sp. z o.o.<br>ul. Przykładowa 12, 00-001 Warszawa<br>NIP: 000-000-00-00 · KRS: 0000000000"
 
 #: patterns/page-home.php
 msgctxt "Pattern title"
 msgid "Store home page"
-msgstr ""
+msgstr "Strona główna sklepu"
 
 #: patterns/page-home.php
 msgctxt "Pattern description"
 msgid "Complete store home page: hero, benefits, categories, bestsellers, promotion, new arrivals, reviews, brand story and newsletter."
-msgstr ""
+msgstr "Kompletna strona główna sklepu: hero, korzyści, kategorie, bestsellery, promocja, nowości, opinie, historia marki i newsletter."
 
 #: patterns/posts-latest.php
 msgctxt "Pattern title"
 msgid "Latest journal posts"
-msgstr ""
+msgstr "Najnowsze wpisy z bloga"
 
 #: patterns/posts-latest.php
 msgctxt "Pattern description"
 msgid "Three most recent blog posts with images."
-msgstr ""
+msgstr "Trzy najnowsze wpisy z bloga ze zdjęciami."
 
 #: patterns/posts-latest.php:23
 msgid "Inspiration and guides"
-msgstr ""
+msgstr "Inspiracje i poradniki"
 
 #: patterns/posts-latest.php:29
 msgid "All articles"
-msgstr ""
+msgstr "Wszystkie artykuły"
 
 #: patterns/promo-split.php
 msgctxt "Pattern title"
 msgid "Promotion banner"
-msgstr ""
+msgstr "Baner promocyjny"
 
 #: patterns/promo-split.php
 msgctxt "Pattern description"
 msgid "Seasonal campaign with a large image and a call to action on a soft accent card."
-msgstr ""
+msgstr "Sezonowa kampania z dużym zdjęciem i wezwaniem do działania na karcie w kolorze akcentu."
 
 #: patterns/promo-split.php:18
 msgid "Seasonal tableware arranged on a linen cloth"
-msgstr ""
+msgstr "Sezonowa zastawa ułożona na lnianym obrusie"
 
 #: patterns/promo-split.php:26
 msgid "End of season"
-msgstr ""
+msgstr "Koniec sezonu"
 
 #: patterns/promo-split.php:30
 msgid "Up to 30% off selected favourites"
-msgstr ""
+msgstr "Do −30% na wybrane ulubione produkty"
 
 #: patterns/promo-split.php:34
 msgid "Refresh your home for the colder months. Discounts apply automatically in the cart."
-msgstr ""
+msgstr "Odśwież wnętrze na chłodniejsze miesiące. Rabaty naliczają się automatycznie w koszyku."
 
 #: patterns/promo-split.php:41
 msgid "Shop the sale"
-msgstr ""
+msgstr "Kupuj w promocji"
 
 #: patterns/promo-split.php:46
 msgid "Offer valid while stocks last. Prices include VAT."
-msgstr ""
+msgstr "Oferta ważna do wyczerpania zapasów. Ceny zawierają VAT."
 
 #: patterns/shop-bestsellers.php
 msgctxt "Pattern title"
 msgid "Bestsellers"
-msgstr ""
+msgstr "Bestsellery"
 
 #: patterns/shop-bestsellers.php
 msgctxt "Pattern description"
 msgid "Grid of the best selling products with a link to the full catalogue."
-msgstr ""
+msgstr "Siatka najlepiej sprzedających się produktów z linkiem do pełnego katalogu."
 
 #: patterns/shop-bestsellers.php:18
 msgid "Customer favourites"
-msgstr ""
+msgstr "Ulubione klientów"
 
 #: patterns/shop-bestsellers.php:28 patterns/shop-new-arrivals.php:28 patterns/shop-on-sale.php:28
 msgid "View all"
-msgstr ""
+msgstr "Zobacz wszystkie"
 
 #: patterns/shop-categories.php
 msgctxt "Pattern title"
 msgid "Shop by category"
-msgstr ""
+msgstr "Zakupy według kategorii"
 
 #: patterns/shop-categories.php
 msgctxt "Pattern description"
 msgid "Image tiles for the four most popular product categories. Category thumbnails are used when available."
-msgstr ""
+msgstr "Kafle ze zdjęciami czterech najpopularniejszych kategorii produktów. Jeśli kategorie mają miniatury, zostaną użyte."
 
 #. translators: %s: number of products.
 #: patterns/shop-categories.php:23
 msgid "%s product"
 msgid_plural "%s products"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s produkt"
+msgstr[1] "%s produkty"
+msgstr[2] "%s produktów"
 
 #: patterns/shop-categories.php:31
 msgid "Ceramics"
-msgstr ""
+msgstr "Ceramika"
 
 #: patterns/shop-categories.php:31 patterns/shop-categories.php:32 patterns/shop-categories.php:33 patterns/shop-categories.php:34
 msgid "Explore"
-msgstr ""
+msgstr "Zobacz"
 
 #: patterns/shop-categories.php:32
 msgid "Lighting"
-msgstr ""
+msgstr "Oświetlenie"
 
 #: patterns/shop-categories.php:33
 msgid "Kitchen"
-msgstr ""
+msgstr "Kuchnia"
 
 #: patterns/shop-categories.php:34
 msgid "Decor"
-msgstr ""
+msgstr "Dekoracje"
 
 #: patterns/shop-categories.php:42
 msgid "Categories"
-msgstr ""
+msgstr "Kategorie"
 
 #: patterns/shop-categories.php:46
 msgid "Shop by category"
-msgstr ""
+msgstr "Kupuj według kategorii"
 
 #: patterns/shop-new-arrivals.php
 msgctxt "Pattern title"
 msgid "New arrivals"
-msgstr ""
+msgstr "Nowości"
 
 #: patterns/shop-new-arrivals.php
 msgctxt "Pattern description"
 msgid "The newest products in the store."
-msgstr ""
+msgstr "Najnowsze produkty w sklepie."
 
 #: patterns/shop-new-arrivals.php:18
 msgid "Just landed"
-msgstr ""
+msgstr "Właśnie dotarły"
 
 #: patterns/shop-on-sale.php
 msgctxt "Pattern title"
 msgid "Products on sale"
-msgstr ""
+msgstr "Produkty w promocji"
 
 #: patterns/shop-on-sale.php
 msgctxt "Pattern description"
 msgid "Products that are currently discounted, on a soft accent background."
-msgstr ""
+msgstr "Produkty, które są obecnie przecenione, na jasnym tle w kolorze akcentu."
 
 #: patterns/shop-on-sale.php:18
 msgid "Limited time"
-msgstr ""
+msgstr "Tylko przez chwilę"
 
 #: patterns/shop-on-sale.php:22
 msgid "On sale now"
-msgstr ""
+msgstr "Teraz w promocji"
 
 #: patterns/testimonials.php
 msgctxt "Pattern title"
 msgid "Customer reviews"
-msgstr ""
+msgstr "Opinie klientów"
 
 #: patterns/testimonials.php
 msgctxt "Pattern description"
 msgid "Three customer reviews with star ratings on cards."
-msgstr ""
+msgstr "Trzy opinie klientów z oceną w gwiazdkach na kartach."
 
 #: patterns/testimonials.php:15
 msgid "The vase is even more beautiful in person. Carefully packed and delivered the next day. I am already planning my next order."
-msgstr ""
+msgstr "Wazon na żywo jest jeszcze piękniejszy. Starannie zapakowany i dostarczony następnego dnia. Już planuję kolejne zamówienie."
 
 #: patterns/testimonials.php:16
 msgid "Anna, Kraków"
-msgstr ""
+msgstr "Anna, Kraków"
 
 #: patterns/testimonials.php:20
 msgid "Great quality and a really thoughtful selection. Customer service helped me choose the right lamp size within an hour."
-msgstr ""
+msgstr "Świetna jakość i naprawdę przemyślany wybór. Obsługa w godzinę pomogła mi dobrać właściwy rozmiar lampy."
 
 #: patterns/testimonials.php:21
 msgid "Michał, Gdańsk"
-msgstr ""
+msgstr "Michał, Gdańsk"
 
 #: patterns/testimonials.php:22
 msgid "Globe table lamp"
-msgstr ""
+msgstr "Lampa stołowa Glob"
 
 #: patterns/testimonials.php:25
 msgid "I bought a set of mugs as a gift and ended up keeping two for myself. Simple, elegant and perfect for everyday use."
-msgstr ""
+msgstr "Kupiłam zestaw kubków na prezent, a dwa zostawiłam sobie. Proste, eleganckie i idealne na co dzień."
 
 #: patterns/testimonials.php:26
 msgid "Kasia, Wrocław"
-msgstr ""
+msgstr "Kasia, Wrocław"
 
 #: patterns/testimonials.php:27
 msgid "Morning mug set"
-msgstr ""
+msgstr "Zestaw kubków Poranek"
 
 #: patterns/testimonials.php:34
 msgid "Reviews"
-msgstr ""
+msgstr "Opinie"
 
 #: patterns/testimonials.php:38
 msgid "Loved by over 2,400 customers"
-msgstr ""
+msgstr "Pokochało nas ponad 2400 klientów"
 
 #. translators: %s: product name.
 #: patterns/testimonials.php:62
 msgid "Verified purchase · %s"
-msgstr ""
+msgstr "Zweryfikowany zakup · %s"

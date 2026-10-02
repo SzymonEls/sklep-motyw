@@ -38,6 +38,7 @@
 .wc-block-components-product-image__inner-container {
 	align-items: flex-start;
 	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 0.35rem;
 	inset: 0.75rem 0.75rem auto 0.75rem;
@@ -66,6 +67,10 @@
 	text-transform: none;
 }
 
+.witryna-badge {
+	order: 1;
+}
+
 .witryna-badge--new {
 	background-color: var(--wp--preset--color--highlight);
 	color: var(--wp--preset--color--contrast);
@@ -81,6 +86,14 @@
 .wc-block-components-product-sale-badge.aligncenter {
 	float: none;
 	margin: 0;
+}
+
+/* WooCommerce positions the sale badge absolutely; inside product cards it
+   flows next to the theme badges instead. */
+.wc-block-components-product-image .wc-block-components-product-image__inner-container .wc-block-components-product-sale-badge {
+	inset: auto;
+	position: static;
+	transform: none;
 }
 
 .wp-block-woocommerce-product-sale-badge {
@@ -1255,14 +1268,14 @@ input.wc-block-product-filter-checkbox-list__input:hover {
 	text-decoration: none;
 }
 
-.witryna-header .wp-block-woocommerce-customer-account a {
+.witryna-header__actions .wp-block-woocommerce-customer-account a {
 	height: 44px;
 	justify-content: center;
 	padding: 0;
 	width: 44px;
 }
 
-.witryna-header .wp-block-woocommerce-customer-account a:hover {
+.witryna-header__actions .wp-block-woocommerce-customer-account a:hover {
 	background-color: var(--wp--preset--color--surface);
 }
 

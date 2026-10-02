@@ -218,3 +218,25 @@ function witryna_breadcrumb_defaults( $defaults ) {
 	return $defaults;
 }
 add_filter( 'woocommerce_breadcrumb_defaults', 'witryna_breadcrumb_defaults' );
+
+/**
+ * Stops WooCommerce from inserting a second account icon and mini cart.
+ *
+ * On new stores WooCommerce hooks these blocks after the navigation block of
+ * every header. The header part of this theme loads a pattern that already
+ * contains both, which WooCommerce cannot detect, so the hook is removed.
+ *
+ * @param string[]                        $hooked_blocks Hooked block names.
+ * @param string                          $position      Relative position.
+ * @param string                          $anchor_block  Anchor block name.
+ * @param WP_Block_Template|WP_Post|array $context       Block context.
+ * @return string[]
+ */
+function witryna_unhook_header_blocks( $hooked_blocks, $position, $anchor_block, $context ) {
+	if ( 'after' !== $position || 'core/navigation' !== $anchor_block ) {
+		return $hooked_blocks;
+	}
+
+	return array_values( array_diff( $hooked_blocks, array( 'woocommerce/customer-account', 'woocommerce/mini-cart' ) ) );
+}
+add_filter( 'hooked_block_types', 'witryna_unhook_header_blocks', 20, 4 );

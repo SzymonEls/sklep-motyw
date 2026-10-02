@@ -444,7 +444,9 @@ ul.is-style-checklist li::before {
 }
 
 .witryna-header__search.wp-block-search__button-only .wp-block-search__button {
+	align-items: center;
 	background: transparent;
+	display: inline-flex;
 	border-radius: var(--wp--preset--border-radius--full);
 	color: inherit;
 	height: 44px;
@@ -531,11 +533,38 @@ ul.is-style-checklist li::before {
 	padding-block: 0.15rem;
 }
 
-.witryna-mobile-menu__nav .wp-block-navigation__submenu-container {
+/* Submenus are always expanded inside the mobile menu. */
+.witryna-mobile-menu__nav .wp-block-navigation-item.has-child .wp-block-navigation__submenu-container {
+	background: transparent !important;
 	border: 0 !important;
 	box-shadow: none;
 	font-size: var(--wp--preset--font-size--large);
-	padding: 0.5rem 0 0 1rem;
+	height: auto;
+	left: auto;
+	min-width: 0;
+	opacity: 1;
+	overflow: visible;
+	padding: 0.6rem 0 0.2rem 1rem;
+	position: static;
+	top: auto;
+	visibility: visible;
+	width: auto;
+}
+
+.witryna-mobile-menu__nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--muted);
+	padding: 0.25rem 0;
+}
+
+.witryna-mobile-menu__nav .wp-block-navigation__submenu-icon {
+	display: none;
+}
+
+/* The overlay covers the whole screen and scrolls when the menu is long. */
+.witryna-header__nav .wp-block-navigation__responsive-container.is-menu-open {
+	background-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+	overflow-y: auto;
 }
 
 .witryna-mobile-menu__footer {

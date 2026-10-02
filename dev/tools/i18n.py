@@ -330,7 +330,18 @@ def write_mo(path, messages):
 
 
 def php_str(s):
-    return "'" + s.replace('\\', '\\\\').replace("'", "\\'") + "'"
+    """PHP string literal. Context (\\x04) and plural (\\x00) separators are written
+    as "\\4" and "\\0", so the file stays plain text."""
+    out, buf = [], ''
+    for ch in s:
+        if ch in '\x00\x04':
+            out.append("'" + buf.replace('\\', '\\\\').replace("'", "\\'") + "'")
+            out.append('"\\0"' if ch == '\x00' else '"\\4"')
+            buf = ''
+        else:
+            buf += ch
+    out.append("'" + buf.replace('\\', '\\\\').replace("'", "\\'") + "'")
+    return ' . '.join(out)
 
 
 def write_l10n_php(path, messages, header):
