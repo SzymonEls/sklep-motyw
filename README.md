@@ -59,4 +59,4 @@ produkty (kilka minut). Strona demo jest przechowywana w `node_modules/.cache/wi
 ## Tłumaczenia
 Teksty źródłowe są po angielsku, zgodnie z konwencją WordPressa.
 `npm run i18n` odświeża `languages/witryna.pot`, aktualizuje pliki `.po`
-i kompiluje `.mo` oraz `.l10n.php`.
+i kompiluje `.mo` oraz `.l10n.php`!
