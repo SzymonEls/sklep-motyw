@@ -1,0 +1,1361 @@
+# Copyright (C) 2026 Witryna
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Witryna 1.0.0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: witryna\n"
+
+
+#: style.css
+msgctxt "Theme Name of the theme"
+msgid "Witryna"
+msgstr ""
+
+#: style.css
+msgctxt "Description of the theme"
+msgid "Witryna is a modern block theme designed for WooCommerce stores. It ships with a sticky header, a custom mobile menu, product filters, a refined single product layout, cart and checkout templates, five style variations (light, dark, elegant, organic and high-contrast) and dozens of ready-made patterns for home pages, promotions and content. Fonts are bundled locally, so no data is sent to third-party font services."
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "2X large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "3X large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Inter"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Bricolage Grotesque"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Fraunces"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Instrument Serif"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Sans-serif"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Base"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Line"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Accent soft"
+msgstr ""
+
+#: theme.json styles/atelier.json styles/contrast.json styles/forest.json styles/night.json
+msgctxt "Color name"
+msgid "Highlight"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Shade from bottom"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Surface to base"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Accent glow"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Tiny"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2X-Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "X-Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2X-Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Aspect ratio name"
+msgid "Portrait - 4:5"
+msgstr ""
+
+#: theme.json
+msgctxt "Aspect ratio name"
+msgid "Landscape - 5:4"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Subtle"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Soft"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Elevated"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Extra large"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Full"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page without title"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Landing page (no header & footer)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Wide page"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Checkout header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Mobile menu"
+msgstr ""
+
+#: styles/atelier.json
+msgctxt "Style variation name"
+msgid "Atelier"
+msgstr ""
+
+#: styles/contrast.json
+msgctxt "Style variation name"
+msgid "Contrast"
+msgstr ""
+
+#: styles/forest.json
+msgctxt "Style variation name"
+msgid "Forest"
+msgstr ""
+
+#: styles/night.json
+msgctxt "Style variation name"
+msgid "Night"
+msgstr ""
+
+#: styles/sections/section-accent.json
+msgctxt "Style variation name"
+msgid "Accent section"
+msgstr ""
+
+#: styles/sections/section-dark.json
+msgctxt "Style variation name"
+msgid "Dark section"
+msgstr ""
+
+#: styles/sections/section-soft.json
+msgctxt "Style variation name"
+msgid "Soft accent section"
+msgstr ""
+
+#: styles/sections/section-surface.json
+msgctxt "Style variation name"
+msgid "Surface section"
+msgstr ""
+
+#: inc/block-styles.php:20 inc/block-styles.php:23
+msgctxt "block style"
+msgid "Eyebrow"
+msgstr ""
+
+#: inc/block-styles.php:26
+msgctxt "block style"
+msgid "Checklist"
+msgstr ""
+
+#: inc/block-styles.php:27
+msgctxt "block style"
+msgid "No bullets"
+msgstr ""
+
+#: inc/block-styles.php:30 inc/block-styles.php:33
+msgctxt "block style"
+msgid "Card"
+msgstr ""
+
+#: inc/block-styles.php:36
+msgctxt "block style"
+msgid "Arrow link"
+msgstr ""
+
+#: inc/block-styles.php:39 inc/block-styles.php:42
+msgctxt "block style"
+msgid "Zoom on hover"
+msgstr ""
+
+#: inc/block-styles.php:45
+msgctxt "block style"
+msgid "Pills"
+msgstr ""
+
+#: inc/block-styles.php:48
+msgctxt "block style"
+msgid "Underline on hover"
+msgstr ""
+
+#: inc/icons.php:21
+msgid "Witryna"
+msgstr ""
+
+#: inc/icons.php:22
+msgid "Store icons bundled with the Witryna theme."
+msgstr ""
+
+#: inc/icons.php:27
+msgctxt "icon label"
+msgid "Delivery truck"
+msgstr ""
+
+#: inc/icons.php:28
+msgctxt "icon label"
+msgid "Returns"
+msgstr ""
+
+#: inc/icons.php:29
+msgctxt "icon label"
+msgid "Padlock"
+msgstr ""
+
+#: inc/icons.php:30
+msgctxt "icon label"
+msgid "Chat"
+msgstr ""
+
+#: inc/icons.php:31
+msgctxt "icon label"
+msgid "Gift"
+msgstr ""
+
+#: inc/icons.php:32
+msgctxt "icon label"
+msgid "Leaf"
+msgstr ""
+
+#: inc/icons.php:33
+msgctxt "icon label"
+msgid "Package"
+msgstr ""
+
+#: inc/icons.php:34
+msgctxt "icon label"
+msgid "Sparkle"
+msgstr ""
+
+#: inc/icons.php:35
+msgctxt "icon label"
+msgid "Heart"
+msgstr ""
+
+#: inc/icons.php:36
+msgctxt "icon label"
+msgid "Phone"
+msgstr ""
+
+#: inc/patterns.php:20
+msgid "Shop sections"
+msgstr ""
+
+#: inc/patterns.php:21
+msgid "Product grids, categories and store benefits."
+msgstr ""
+
+#: inc/patterns.php:28
+msgid "Full pages"
+msgstr ""
+
+#: inc/patterns.php:29
+msgid "Complete page layouts built from Witryna patterns."
+msgstr ""
+
+#: inc/setup.php:103
+msgid "Copyright notice"
+msgstr ""
+
+#. translators: 1: current year, 2: site title.
+#: inc/setup.php:118
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#. translators: %d: discount percentage.
+#: inc/woocommerce.php:109
+msgid "−%d%%"
+msgstr ""
+
+#: patterns/brand-story.php
+msgctxt "Pattern title"
+msgid "Brand story with numbers"
+msgstr ""
+
+#: patterns/brand-story.php
+msgctxt "Pattern description"
+msgid "Image next to the brand story and three key numbers."
+msgstr ""
+
+#: patterns/brand-story.php:14
+msgid "orders shipped"
+msgstr ""
+
+#: patterns/brand-story.php:15
+msgid "average rating"
+msgstr ""
+
+#: patterns/brand-story.php:16
+msgid "dispatch time"
+msgstr ""
+
+#: patterns/brand-story.php:23
+msgid "Ceramic pieces drying in the studio"
+msgstr ""
+
+#: patterns/brand-story.php:29
+msgid "Our story"
+msgstr ""
+
+#: patterns/brand-story.php:33
+msgid "Designed with care, made to last"
+msgstr ""
+
+#: patterns/brand-story.php:37
+msgid "We started with a single kiln and a simple idea: everyday objects should be beautiful, honest and durable. Today we work with a dozen small studios, but every piece is still checked by hand before it reaches you."
+msgstr ""
+
+#: patterns/brand-story.php:58
+msgid "Read more about us"
+msgstr ""
+
+#: patterns/checkout-header.php
+msgctxt "Pattern title"
+msgid "Checkout header"
+msgstr ""
+
+#: patterns/checkout-header.php
+msgctxt "Pattern description"
+msgid "Distraction-free header for the checkout with a link back to the cart."
+msgstr ""
+
+#: patterns/checkout-header.php:27
+msgid "Secure checkout"
+msgstr ""
+
+#: patterns/faq.php
+msgctxt "Pattern title"
+msgid "Frequently asked questions"
+msgstr ""
+
+#: patterns/faq.php
+msgctxt "Pattern description"
+msgid "Introduction with a contact button next to an accordion with common store questions."
+msgstr ""
+
+#: patterns/faq.php:15
+msgid "How long does delivery take?"
+msgstr ""
+
+#: patterns/faq.php:16
+msgid "Orders placed on business days before 2 pm are shipped the same day. Courier and parcel locker deliveries usually arrive within 1–2 business days."
+msgstr ""
+
+#: patterns/faq.php:19
+msgid "How can I return a product?"
+msgstr ""
+
+#: patterns/faq.php:20
+msgid "You have 30 days to return any product without giving a reason. Log in to your account, choose the order and follow the return steps. We refund the payment within 5 business days."
+msgstr ""
+
+#: patterns/faq.php:23
+msgid "Which payment methods do you accept?"
+msgstr ""
+
+#: patterns/faq.php:24
+msgid "You can pay by card, fast bank transfer, mobile wallet or bank transfer. All payments are processed by certified payment operators."
+msgstr ""
+
+#: patterns/faq.php:27
+msgid "Can I change or cancel my order?"
+msgstr ""
+
+#: patterns/faq.php:28
+msgid "Yes, as long as the order has not been shipped. Write to us as soon as possible and include your order number."
+msgstr ""
+
+#: patterns/faq.php:31
+msgid "Do you offer gift wrapping?"
+msgstr ""
+
+#: patterns/faq.php:32
+msgid "Every order is packed in recyclable paper. You can add a handwritten card for free by leaving a note at checkout."
+msgstr ""
+
+#: patterns/faq.php:40
+msgid "Help centre"
+msgstr ""
+
+#: patterns/faq.php:44
+msgid "Questions? We have answers"
+msgstr ""
+
+#: patterns/faq.php:48
+msgid "Could not find what you were looking for? Our team is happy to help with orders, products and returns."
+msgstr ""
+
+#: patterns/faq.php:53
+msgid "Contact us"
+msgstr ""
+
+#: patterns/features-usp.php
+msgctxt "Pattern title"
+msgid "Store benefits"
+msgstr ""
+
+#: patterns/features-usp.php
+msgctxt "Pattern description"
+msgid "Four short benefits with icons: delivery, returns, payments and customer support."
+msgstr ""
+
+#: patterns/features-usp.php:16
+msgid "Fast, free delivery"
+msgstr ""
+
+#. translators: %s: order value, e.g. 199 zł.
+#: patterns/features-usp.php:18
+msgid "On all orders over %s"
+msgstr ""
+
+#. translators: %s: order value, e.g. 199 zł.
+#: patterns/features-usp.php:22
+msgid "30-day returns"
+msgstr ""
+
+#. translators: %s: order value, e.g. 199 zł.
+#: patterns/features-usp.php:23
+msgid "Changed your mind? No problem"
+msgstr ""
+
+#: patterns/features-usp.php:27
+msgid "Secure payments"
+msgstr ""
+
+#: patterns/features-usp.php:28
+msgid "Cards, transfers and mobile wallets"
+msgstr ""
+
+#: patterns/features-usp.php:32
+msgid "Real people, real help"
+msgstr ""
+
+#: patterns/features-usp.php:33
+msgid "We reply within one business day"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer with store menus"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern description"
+msgid "Dark footer with brand description, social links, store menus, contact details, legal links and payment methods."
+msgstr ""
+
+#: patterns/footer.php:23
+msgid "Thoughtfully chosen products for everyday life. Designed to last, packed with care and shipped quickly to your door."
+msgstr ""
+
+#: patterns/footer.php:39
+msgid "Shop"
+msgstr ""
+
+#: patterns/footer.php:43 patterns/shop-categories.php:52
+msgid "All products"
+msgstr ""
+
+#: patterns/footer.php:45 patterns/shop-new-arrivals.php:22
+msgid "New arrivals"
+msgstr ""
+
+#: patterns/footer.php:47 patterns/shop-bestsellers.php:22
+msgid "Bestsellers"
+msgstr ""
+
+#: patterns/footer.php:49
+msgid "Top rated"
+msgstr ""
+
+#: patterns/footer.php:55
+msgid "Customer care"
+msgstr ""
+
+#: patterns/footer.php:59
+msgid "Delivery and payment"
+msgstr ""
+
+#: patterns/footer.php:61
+msgid "Returns and complaints"
+msgstr ""
+
+#: patterns/footer.php:63
+msgid "Order status"
+msgstr ""
+
+#: patterns/footer.php:65
+msgid "Frequently asked questions"
+msgstr ""
+
+#: patterns/footer.php:71 patterns/page-contact.php:23
+msgid "Contact"
+msgstr ""
+
+#: patterns/footer.php:79 patterns/page-contact.php:17
+msgid "Monday to Friday, 9:00–17:00"
+msgstr ""
+
+#: patterns/footer.php:91
+msgid "Terms and conditions"
+msgstr ""
+
+#: patterns/footer.php:95
+msgid "Privacy policy"
+msgstr ""
+
+#: patterns/gallery-social.php
+msgctxt "Pattern title"
+msgid "Social media gallery"
+msgstr ""
+
+#: patterns/gallery-social.php
+msgctxt "Pattern description"
+msgid "Grid of square photos with a link to your social media profile."
+msgstr ""
+
+#: patterns/gallery-social.php:21
+msgid "Share your space with us"
+msgstr ""
+
+#: patterns/gallery-social.php:25
+msgid "Tag your photos with #witryna and get featured in our gallery."
+msgstr ""
+
+#: patterns/gallery-social.php:41
+msgid "Follow us on Instagram"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header with announcement bar"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern description"
+msgid "Announcement bar, logo, main menu, product search, customer account and mini cart."
+msgstr ""
+
+#. translators: %s: order value, e.g. 199 zł.
+#: patterns/header.php:16
+msgid "Free delivery on orders over %s"
+msgstr ""
+
+#: patterns/header.php:20
+msgid "30-day free returns"
+msgstr ""
+
+#: patterns/header.php:24
+msgid "Secure online payments"
+msgstr ""
+
+#: patterns/header.php:40 patterns/mobile-menu.php:20
+msgctxt "search label"
+msgid "Search products"
+msgstr ""
+
+#: patterns/header.php:40 patterns/mobile-menu.php:20
+msgid "Search products…"
+msgstr ""
+
+#: patterns/header.php:40 patterns/hidden-no-results.php:20 patterns/hidden-search.php:11 patterns/mobile-menu.php:20
+msgctxt "search button"
+msgid "Search"
+msgstr ""
+
+#: patterns/hero-cover.php
+msgctxt "Pattern title"
+msgid "Hero with full-width image"
+msgstr ""
+
+#: patterns/hero-cover.php
+msgctxt "Pattern description"
+msgid "Full-width photo with a headline and buttons in the bottom left corner."
+msgstr ""
+
+#: patterns/hero-cover.php:17
+msgid "The winter edit"
+msgstr ""
+
+#: patterns/hero-cover.php:21
+msgid "Warm light for long evenings"
+msgstr ""
+
+#: patterns/hero-cover.php:25
+msgid "Lamps, candles and textiles that make every room feel like home."
+msgstr ""
+
+#: patterns/hero-cover.php:30
+msgid "Discover the collection"
+msgstr ""
+
+#: patterns/hero-split.php
+msgctxt "Pattern title"
+msgid "Hero with product image"
+msgstr ""
+
+#: patterns/hero-split.php
+msgctxt "Pattern description"
+msgid "Large headline, call to action buttons and social proof next to a tall product image with a floating label."
+msgstr ""
+
+#: patterns/hero-split.php:18
+msgid "New collection · Autumn 2026"
+msgstr ""
+
+#: patterns/hero-split.php:22
+msgid "Objects for slow, beautiful days"
+msgstr ""
+
+#: patterns/hero-split.php:26
+msgid "Ceramics, light and home accessories made in small batches by independent studios. Pieces you will want to keep for years."
+msgstr ""
+
+#: patterns/hero-split.php:31
+msgid "Shop the collection"
+msgstr ""
+
+#: patterns/hero-split.php:35
+msgid "Browse categories"
+msgstr ""
+
+#: patterns/hero-split.php:45
+msgid "4.9/5 from over 2,400 reviews"
+msgstr ""
+
+#: patterns/hero-split.php:53
+msgid "Handmade ceramic vases on a sunlit shelf"
+msgstr ""
+
+#: patterns/hero-split.php:58
+msgid "Bestseller"
+msgstr ""
+
+#: patterns/hero-split.php:62 patterns/testimonials.php:17
+msgid "Amfora stoneware vase"
+msgstr ""
+
+#. translators: %s: price.
+#: patterns/hero-split.php:66
+msgid "from %s"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr ""
+
+#: patterns/hidden-404.php:13
+msgid "Error 404"
+msgstr ""
+
+#: patterns/hidden-404.php:17
+msgid "This page went shopping"
+msgstr ""
+
+#: patterns/hidden-404.php:21
+msgid "The page you are looking for does not exist or has been moved. Let us help you find something nice instead."
+msgstr ""
+
+#: patterns/hidden-404.php:26
+msgid "Go to the shop"
+msgstr ""
+
+#: patterns/hidden-404.php:30
+msgid "Back to home page"
+msgstr ""
+
+#: patterns/hidden-blog-heading.php
+msgctxt "Pattern title"
+msgid "Blog heading"
+msgstr ""
+
+#: patterns/hidden-blog-heading.php:13 patterns/posts-latest.php:19
+msgid "Journal"
+msgstr ""
+
+#: patterns/hidden-blog-heading.php:17
+msgid "Stories, guides and news from our studio"
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern title"
+msgid "Comments"
+msgstr ""
+
+#: patterns/hidden-no-results.php
+msgctxt "Pattern title"
+msgid "No results"
+msgstr ""
+
+#: patterns/hidden-no-results.php:13
+msgid "Nothing here yet"
+msgstr ""
+
+#: patterns/hidden-no-results.php:17
+msgid "We could not find anything matching your request. Try a different search or browse the shop."
+msgstr ""
+
+#: patterns/hidden-no-results.php:20 patterns/hidden-search.php:11
+msgctxt "search label"
+msgid "Search"
+msgstr ""
+
+#: patterns/hidden-no-results.php:20 patterns/hidden-search.php:11
+msgid "Search…"
+msgstr ""
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Post meta"
+msgstr ""
+
+#: patterns/hidden-posts-grid.php
+msgctxt "Pattern title"
+msgid "Posts grid"
+msgstr ""
+
+#: patterns/hidden-product-details.php
+msgctxt "Pattern title"
+msgid "Product details accordion"
+msgstr ""
+
+#: patterns/hidden-product-details.php
+msgctxt "Pattern description"
+msgid "Description, specifications and delivery information in an accordion."
+msgstr ""
+
+#: patterns/hidden-product-details.php:16
+msgid "Description"
+msgstr ""
+
+#: patterns/hidden-product-details.php:26
+msgid "Specifications"
+msgstr ""
+
+#: patterns/hidden-product-details.php:36
+msgid "Delivery and returns"
+msgstr ""
+
+#: patterns/hidden-product-details.php:42
+msgid "Orders placed on business days before 2 pm are shipped the same day."
+msgstr ""
+
+#: patterns/hidden-product-details.php:46
+msgid "Choose courier delivery, a parcel locker or in-store pickup at checkout."
+msgstr ""
+
+#: patterns/hidden-product-details.php:50
+msgid "You can return the product within 30 days without giving a reason."
+msgstr ""
+
+#: patterns/hidden-product-filters.php
+msgctxt "Pattern title"
+msgid "Product filters"
+msgstr ""
+
+#: patterns/hidden-product-filters.php
+msgctxt "Pattern description"
+msgid "Category, price, attribute, rating and stock filters. On small screens they open in a drawer."
+msgstr ""
+
+#: patterns/hidden-product-filters.php:19
+msgid "Filters"
+msgstr ""
+
+#: patterns/hidden-product-filters.php:30
+msgid "Clear filters"
+msgstr ""
+
+#: patterns/hidden-product-filters.php:38
+msgid "Category"
+msgstr ""
+
+#: patterns/hidden-product-filters.php:48
+msgid "Price"
+msgstr ""
+
+#: patterns/hidden-product-filters.php:70
+msgid "Rating"
+msgstr ""
+
+#: patterns/hidden-product-filters.php:80
+msgid "Availability"
+msgstr ""
+
+#: patterns/hidden-product-meta.php
+msgctxt "Pattern title"
+msgid "Product meta"
+msgstr ""
+
+#: patterns/hidden-product-meta.php:15
+msgid "Brand: "
+msgstr ""
+
+#: patterns/hidden-product-meta.php:17
+msgid "Tags: "
+msgstr ""
+
+#: patterns/hidden-product-reviews.php
+msgctxt "Pattern title"
+msgid "Product reviews section"
+msgstr ""
+
+#: patterns/hidden-product-trust.php
+msgctxt "Pattern title"
+msgid "Product trust badges"
+msgstr ""
+
+#: patterns/hidden-product-trust.php
+msgctxt "Pattern description"
+msgid "Delivery, returns and payment reassurance shown next to the add to cart button."
+msgstr ""
+
+#. translators: %s: order value, e.g. 199 zł.
+#: patterns/hidden-product-trust.php:17
+msgid "<strong>Free delivery</strong> on orders over %s, dispatched within 24 hours"
+msgstr ""
+
+#: patterns/hidden-product-trust.php:25
+msgid "<strong>30 days</strong> to return or exchange, free of charge"
+msgstr ""
+
+#: patterns/hidden-product-trust.php:33
+msgid "<strong>Secure payments</strong> by card, bank transfer or mobile wallet"
+msgstr ""
+
+#: patterns/hidden-related-products.php
+msgctxt "Pattern title"
+msgid "Related products"
+msgstr ""
+
+#: patterns/hidden-related-products.php:14
+msgid "You may also like"
+msgstr ""
+
+#: patterns/hidden-search.php
+msgctxt "Pattern title"
+msgid "Search form"
+msgstr ""
+
+#: patterns/mobile-menu.php
+msgctxt "Pattern title"
+msgid "Mobile menu"
+msgstr ""
+
+#: patterns/mobile-menu.php
+msgctxt "Pattern description"
+msgid "Full-screen menu with large links, product search and quick links to the account."
+msgstr ""
+
+#: patterns/mobile-menu.php:28
+msgid "Need help?"
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern title"
+msgid "Newsletter call to action"
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern description"
+msgid "Dark band encouraging visitors to join the newsletter. Replace the button with the form block of your newsletter plugin."
+msgstr ""
+
+#: patterns/newsletter.php:19
+msgid "Get 10% off your first order"
+msgstr ""
+
+#: patterns/newsletter.php:23
+msgid "Join our newsletter to hear about new collections, studio stories and offers before anyone else."
+msgstr ""
+
+#: patterns/newsletter.php:28
+msgid "Join the newsletter"
+msgstr ""
+
+#: patterns/newsletter.php:33
+msgid "No spam. You can unsubscribe at any time."
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern title"
+msgid "About us page"
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern description"
+msgid "About page with an introduction, wide photo, brand values and a call to action."
+msgstr ""
+
+#: patterns/page-about.php:16
+msgid "Responsibly made"
+msgstr ""
+
+#: patterns/page-about.php:16
+msgid "We choose durable materials and work with studios that pay fair wages and minimise waste."
+msgstr ""
+
+#: patterns/page-about.php:17
+msgid "Checked by hand"
+msgstr ""
+
+#: patterns/page-about.php:17
+msgid "Every item is inspected before shipping, so you receive exactly what you see in the photos."
+msgstr ""
+
+#: patterns/page-about.php:18
+msgid "Plastic-free packaging"
+msgstr ""
+
+#: patterns/page-about.php:18
+msgid "We pack orders in recycled paper and reuse boxes from our suppliers whenever possible."
+msgstr ""
+
+#: patterns/page-about.php:23
+msgid "About us"
+msgstr ""
+
+#: patterns/page-about.php:27
+msgid "We believe in fewer, better things"
+msgstr ""
+
+#: patterns/page-about.php:31
+msgid "Our shop began as a small market stall. Today we ship across the country, but our approach has not changed: we sell only what we would happily use at home ourselves."
+msgstr ""
+
+#: patterns/page-about.php:36
+msgid "Our studio with shelves full of ceramics"
+msgstr ""
+
+#: patterns/page-about.php:41
+msgid "What we stand for"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern title"
+msgid "Contact page"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern description"
+msgid "Contact cards, opening hours, company details and frequently asked questions."
+msgstr ""
+
+#: patterns/page-contact.php:16
+msgid "Email"
+msgstr ""
+
+#: patterns/page-contact.php:16
+msgid "We reply within one business day."
+msgstr ""
+
+#: patterns/page-contact.php:17
+msgid "Phone"
+msgstr ""
+
+#: patterns/page-contact.php:18
+msgid "Showroom"
+msgstr ""
+
+#: patterns/page-contact.php:18
+msgid "ul. Przykładowa 12, 00-001 Warszawa"
+msgstr ""
+
+#: patterns/page-contact.php:18
+msgid "Tuesday to Saturday, 11:00–19:00"
+msgstr ""
+
+#: patterns/page-contact.php:27
+msgid "We are here to help"
+msgstr ""
+
+#: patterns/page-contact.php:31
+msgid "Questions about an order, a product or a return? Get in touch the way that suits you best."
+msgstr ""
+
+#: patterns/page-contact.php:59
+msgid "Company details"
+msgstr ""
+
+#: patterns/page-contact.php:63
+msgid "Example Store Ltd.<br>ul. Przykładowa 12, 00-001 Warszawa<br>Tax ID (NIP): 000-000-00-00 · Company number (KRS): 0000000000"
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern title"
+msgid "Store home page"
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern description"
+msgid "Complete store home page: hero, benefits, categories, bestsellers, promotion, new arrivals, reviews, brand story and newsletter."
+msgstr ""
+
+#: patterns/posts-latest.php
+msgctxt "Pattern title"
+msgid "Latest journal posts"
+msgstr ""
+
+#: patterns/posts-latest.php
+msgctxt "Pattern description"
+msgid "Three most recent blog posts with images."
+msgstr ""
+
+#: patterns/posts-latest.php:23
+msgid "Inspiration and guides"
+msgstr ""
+
+#: patterns/posts-latest.php:29
+msgid "All articles"
+msgstr ""
+
+#: patterns/promo-split.php
+msgctxt "Pattern title"
+msgid "Promotion banner"
+msgstr ""
+
+#: patterns/promo-split.php
+msgctxt "Pattern description"
+msgid "Seasonal campaign with a large image and a call to action on a soft accent card."
+msgstr ""
+
+#: patterns/promo-split.php:18
+msgid "Seasonal tableware arranged on a linen cloth"
+msgstr ""
+
+#: patterns/promo-split.php:26
+msgid "End of season"
+msgstr ""
+
+#: patterns/promo-split.php:30
+msgid "Up to 30% off selected favourites"
+msgstr ""
+
+#: patterns/promo-split.php:34
+msgid "Refresh your home for the colder months. Discounts apply automatically in the cart."
+msgstr ""
+
+#: patterns/promo-split.php:41
+msgid "Shop the sale"
+msgstr ""
+
+#: patterns/promo-split.php:46
+msgid "Offer valid while stocks last. Prices include VAT."
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgctxt "Pattern title"
+msgid "Bestsellers"
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgctxt "Pattern description"
+msgid "Grid of the best selling products with a link to the full catalogue."
+msgstr ""
+
+#: patterns/shop-bestsellers.php:18
+msgid "Customer favourites"
+msgstr ""
+
+#: patterns/shop-bestsellers.php:28 patterns/shop-new-arrivals.php:28 patterns/shop-on-sale.php:28
+msgid "View all"
+msgstr ""
+
+#: patterns/shop-categories.php
+msgctxt "Pattern title"
+msgid "Shop by category"
+msgstr ""
+
+#: patterns/shop-categories.php
+msgctxt "Pattern description"
+msgid "Image tiles for the four most popular product categories. Category thumbnails are used when available."
+msgstr ""
+
+#. translators: %s: number of products.
+#: patterns/shop-categories.php:23
+msgid "%s product"
+msgid_plural "%s products"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: patterns/shop-categories.php:31
+msgid "Ceramics"
+msgstr ""
+
+#: patterns/shop-categories.php:31 patterns/shop-categories.php:32 patterns/shop-categories.php:33 patterns/shop-categories.php:34
+msgid "Explore"
+msgstr ""
+
+#: patterns/shop-categories.php:32
+msgid "Lighting"
+msgstr ""
+
+#: patterns/shop-categories.php:33
+msgid "Kitchen"
+msgstr ""
+
+#: patterns/shop-categories.php:34
+msgid "Decor"
+msgstr ""
+
+#: patterns/shop-categories.php:42
+msgid "Categories"
+msgstr ""
+
+#: patterns/shop-categories.php:46
+msgid "Shop by category"
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgctxt "Pattern title"
+msgid "New arrivals"
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgctxt "Pattern description"
+msgid "The newest products in the store."
+msgstr ""
+
+#: patterns/shop-new-arrivals.php:18
+msgid "Just landed"
+msgstr ""
+
+#: patterns/shop-on-sale.php
+msgctxt "Pattern title"
+msgid "Products on sale"
+msgstr ""
+
+#: patterns/shop-on-sale.php
+msgctxt "Pattern description"
+msgid "Products that are currently discounted, on a soft accent background."
+msgstr ""
+
+#: patterns/shop-on-sale.php:18
+msgid "Limited time"
+msgstr ""
+
+#: patterns/shop-on-sale.php:22
+msgid "On sale now"
+msgstr ""
+
+#: patterns/testimonials.php
+msgctxt "Pattern title"
+msgid "Customer reviews"
+msgstr ""
+
+#: patterns/testimonials.php
+msgctxt "Pattern description"
+msgid "Three customer reviews with star ratings on cards."
+msgstr ""
+
+#: patterns/testimonials.php:15
+msgid "The vase is even more beautiful in person. Carefully packed and delivered the next day. I am already planning my next order."
+msgstr ""
+
+#: patterns/testimonials.php:16
+msgid "Anna, Kraków"
+msgstr ""
+
+#: patterns/testimonials.php:20
+msgid "Great quality and a really thoughtful selection. Customer service helped me choose the right lamp size within an hour."
+msgstr ""
+
+#: patterns/testimonials.php:21
+msgid "Michał, Gdańsk"
+msgstr ""
+
+#: patterns/testimonials.php:22
+msgid "Globe table lamp"
+msgstr ""
+
+#: patterns/testimonials.php:25
+msgid "I bought a set of mugs as a gift and ended up keeping two for myself. Simple, elegant and perfect for everyday use."
+msgstr ""
+
+#: patterns/testimonials.php:26
+msgid "Kasia, Wrocław"
+msgstr ""
+
+#: patterns/testimonials.php:27
+msgid "Morning mug set"
+msgstr ""
+
+#: patterns/testimonials.php:34
+msgid "Reviews"
+msgstr ""
+
+#: patterns/testimonials.php:38
+msgid "Loved by over 2,400 customers"
+msgstr ""
+
+#. translators: %s: product name.
+#: patterns/testimonials.php:62
+msgid "Verified purchase · %s"
+msgstr ""

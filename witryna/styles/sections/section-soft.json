@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Soft accent section",
+	"slug": "section-soft",
+	"blockTypes": [
+		"core/group",
+		"core/columns",
+		"core/column",
+		"core/cover"
+	],
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--accent-soft)",
+			"text": "var(--wp--preset--color--contrast)"
+		}
+	}
+}

@@ -1,0 +1,111 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Contrast",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"color": "#FFFFFF",
+					"name": "Base",
+					"slug": "base"
+				},
+				{
+					"color": "#F2F2F2",
+					"name": "Surface",
+					"slug": "surface"
+				},
+				{
+					"color": "#0A0A0A",
+					"name": "Line",
+					"slug": "line"
+				},
+				{
+					"color": "#0A0A0A",
+					"name": "Contrast",
+					"slug": "contrast"
+				},
+				{
+					"color": "#575757",
+					"name": "Muted",
+					"slug": "muted"
+				},
+				{
+					"color": "#1E3BFF",
+					"name": "Accent",
+					"slug": "accent"
+				},
+				{
+					"color": "#E4E8FF",
+					"name": "Accent soft",
+					"slug": "accent-soft"
+				},
+				{
+					"color": "#FFE500",
+					"name": "Highlight",
+					"slug": "highlight"
+				}
+			]
+		},
+		"custom": {
+			"radius": {
+				"button": "0px",
+				"input": "0px",
+				"card": "0px",
+				"media": "0px",
+				"badge": "0px"
+			},
+			"font": {
+				"heading-weight": "700",
+				"heading-tracking": "-0.045em"
+			}
+		}
+	},
+	"styles": {
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontWeight": "700",
+					"letterSpacing": "-0.045em",
+					"lineHeight": "1"
+				}
+			},
+			"button": {
+				"typography": {
+					"textTransform": "uppercase",
+					"letterSpacing": "0.06em",
+					"fontWeight": "700"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--accent)",
+						"text": "var(--wp--preset--color--base)"
+					}
+				}
+			},
+			"link": {
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--accent)"
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/site-title": {
+				"typography": {
+					"fontWeight": "800",
+					"textTransform": "uppercase",
+					"letterSpacing": "-0.02em"
+				}
+			},
+			"core/navigation": {
+				"typography": {
+					"textTransform": "uppercase",
+					"letterSpacing": "0.04em",
+					"fontWeight": "600"
+				}
+			}
+		}
+	}
+}

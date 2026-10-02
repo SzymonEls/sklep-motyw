@@ -1,0 +1,107 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Forest",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"color": "#F6F5EF",
+					"name": "Base",
+					"slug": "base"
+				},
+				{
+					"color": "#ECEADF",
+					"name": "Surface",
+					"slug": "surface"
+				},
+				{
+					"color": "#DAD7C8",
+					"name": "Line",
+					"slug": "line"
+				},
+				{
+					"color": "#1C2A1F",
+					"name": "Contrast",
+					"slug": "contrast"
+				},
+				{
+					"color": "#5B6559",
+					"name": "Muted",
+					"slug": "muted"
+				},
+				{
+					"color": "#2F6B45",
+					"name": "Accent",
+					"slug": "accent"
+				},
+				{
+					"color": "#DCE8D7",
+					"name": "Accent soft",
+					"slug": "accent-soft"
+				},
+				{
+					"color": "#F2C14E",
+					"name": "Highlight",
+					"slug": "highlight"
+				}
+			]
+		},
+		"custom": {
+			"font": {
+				"heading": "var(--wp--preset--font-family--fraunces)",
+				"heading-weight": "500",
+				"heading-tracking": "-0.02em"
+			}
+		}
+	},
+	"styles": {
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--fraunces)",
+					"fontWeight": "500",
+					"letterSpacing": "-0.02em",
+					"lineHeight": "1.08"
+				}
+			},
+			"h1": {
+				"typography": {
+					"letterSpacing": "-0.03em"
+				}
+			},
+			"h2": {
+				"typography": {
+					"letterSpacing": "-0.025em"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--accent)",
+					"text": "var(--wp--preset--color--base)"
+				},
+				":hover": {
+					"color": {
+						"background": "var(--wp--preset--color--contrast)",
+						"text": "var(--wp--preset--color--base)"
+					}
+				}
+			}
+		},
+		"blocks": {
+			"core/site-title": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--fraunces)",
+					"fontWeight": "600",
+					"letterSpacing": "-0.03em"
+				}
+			},
+			"core/pullquote": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--fraunces)",
+					"fontWeight": "400"
+				}
+			}
+		}
+	}
+}

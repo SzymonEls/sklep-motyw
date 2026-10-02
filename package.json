@@ -1,0 +1,17 @@
+{
+  "name": "sklep-motyw",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Witryna – nowoczesny motyw blokowy WordPress dla sklepów WooCommerce",
+  "scripts": {
+    "start": "node dev/playground.mjs",
+    "reset": "node dev/playground.mjs --reset",
+    "build": "node dev/build-zip.mjs",
+    "images": "python3 dev/tools/render.py witryna/assets/images && python3 dev/tools/render-products.py dev/demo/images",
+    "icons": "python3 dev/tools/make-icons.py"
+  },
+  "devDependencies": {
+    "@wp-playground/cli": "^3.1.56",
+    "playwright-core": "^1.63.0"
+  }
+}

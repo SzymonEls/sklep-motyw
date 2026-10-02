@@ -1,0 +1,39 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "activatePlugin",
+			"pluginPath": "witryna-dev/witryna-dev.php"
+		},
+		{
+			"step": "activateTheme",
+			"themeFolderName": "witryna"
+		},
+		{
+			"step": "setSiteLanguage",
+			"language": "pl_PL"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require '/wordpress/wp-load.php'; require '/wordpress/wp-content/witryna-demo/setup.php';"
+		}
+	]
+}
