@@ -23,7 +23,7 @@ function witryna_store_info( $key = '' ) {
 		'phone'      => '603 047 842',
 		'phone_href' => '+48603047842',
 		'email'      => 'klinikatrawnika.czernica@gmail.com',
-		'street'     => 'ul. Miła 1',
+		'street'     => 'ul. Miła 2',
 		'city'       => '55-003 Czernica',
 		'nip'        => '866-158-80-81',
 		'hours'      => array(
@@ -34,7 +34,8 @@ function witryna_store_info( $key = '' ) {
 		'hours_short' => 'Pn–Pt 9–17, Sob 9–13',
 		'tiktok'      => 'https://www.tiktok.com/@klinikatrawnka.czernica',
 		'tiktok_name' => '@klinikatrawnka.czernica',
-		'google'      => '',
+		'google'      => 'https://maps.google.com/?cid=6246252236807402821',
+		'google_name' => 'KLINIKA TRAWNIKA - Autoryzowany dealer STIHL',
 	);
 
 	/**
@@ -66,6 +67,12 @@ function witryna_store_address() {
  * @return string
  */
 function witryna_store_map_url() {
+	$google = witryna_store_info( 'google' );
+
+	if ( $google ) {
+		return $google;
+	}
+
 	return 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode( witryna_store_info( 'name' ) . ' ' . witryna_store_address() );
 }
 
@@ -144,4 +151,227 @@ function witryna_stars( $rating ) {
 	$rating = max( 0, min( 5, (int) $rating ) );
 
 	return str_repeat( '★', $rating ) . str_repeat( '☆', 5 - $rating );
+}
+
+/**
+ * Registers the Google reviews settings in the Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Customizer instance.
+ */
+function witryna_google_customize( $wp_customize ) {
+	$wp_customize->add_section(
+		'witryna_google',
+		array(
+			'title'       => __( 'Opinie Google', 'witryna' ),
+			'description' => __( 'Opinie z wizytówki Google są pobierane przez Google Places API. Wklej klucz API z Google Cloud (z włączonym Places API (New)). Identyfikator miejsca zostanie znaleziony automatycznie, jeśli pole zostawisz puste.', 'witryna' ),
+			'priority'    => 160,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'witryna_google_api_key',
+		array(
+			'type'              => 'option',
+			'capability'        => 'manage_options',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'witryna_google_api_key',
+		array(
+			'label'   => __( 'Klucz Google Places API', 'witryna' ),
+			'section' => 'witryna_google',
+			'type'    => 'text',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'witryna_google_place_id',
+		array(
+			'type'              => 'option',
+			'capability'        => 'manage_options',
+			'sanitize_callback' => 'sanitize_text_field',
+		)
+	);
+	$wp_customize->add_control(
+		'witryna_google_place_id',
+		array(
+			'label'   => __( 'Identyfikator miejsca (Place ID, opcjonalnie)', 'witryna' ),
+			'section' => 'witryna_google',
+			'type'    => 'text',
+		)
+	);
+}
+add_action( 'customize_register', 'witryna_google_customize' );
+
+/**
+ * Clears cached Google data when the settings change.
+ */
+function witryna_google_flush() {
+	delete_transient( 'witryna_google_place' );
+	delete_option( 'witryna_google_found_place_id' );
+}
+add_action( 'update_option_witryna_google_api_key', 'witryna_google_flush' );
+add_action( 'update_option_witryna_google_place_id', 'witryna_google_flush' );
+
+/**
+ * Sends a request to Google Places API (New).
+ *
+ * @param string $url    Endpoint URL.
+ * @param string $fields Field mask.
+ * @param array  $body   JSON body for a POST request; empty for GET.
+ * @return array|null Decoded response or null on failure.
+ */
+function witryna_google_request( $url, $fields, $body = array() ) {
+	$args = array(
+		'timeout' => 8,
+		'headers' => array(
+			'X-Goog-Api-Key'   => get_option( 'witryna_google_api_key', '' ),
+			'X-Goog-FieldMask' => $fields,
+			'Content-Type'     => 'application/json',
+		),
+	);
+
+	if ( $body ) {
+		$args['body'] = wp_json_encode( $body );
+		$response     = wp_remote_post( $url, $args );
+	} else {
+		$response = wp_remote_get( $url, $args );
+	}
+
+	if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+		return null;
+	}
+
+	$data = json_decode( wp_remote_retrieve_body( $response ), true );
+
+	return is_array( $data ) ? $data : null;
+}
+
+/**
+ * Returns the Google place ID of the store, looking it up once when not set.
+ *
+ * @return string
+ */
+function witryna_google_place_id() {
+	$place_id = get_option( 'witryna_google_place_id', '' );
+
+	if ( $place_id ) {
+		return $place_id;
+	}
+
+	$place_id = get_option( 'witryna_google_found_place_id', '' );
+
+	if ( $place_id || ! get_option( 'witryna_google_api_key' ) ) {
+		return $place_id;
+	}
+
+	$data = witryna_google_request(
+		'https://places.googleapis.com/v1/places:searchText',
+		'places.id',
+		array(
+			'textQuery'    => witryna_store_info( 'google_name' ) . ', ' . witryna_store_address(),
+			'languageCode' => 'pl',
+		)
+	);
+
+	if ( ! empty( $data['places'][0]['id'] ) ) {
+		$place_id = sanitize_text_field( $data['places'][0]['id'] );
+		update_option( 'witryna_google_found_place_id', $place_id, false );
+	}
+
+	return $place_id;
+}
+
+/**
+ * Returns the store's Google rating and newest reviews.
+ *
+ * Google returns at most five reviews. The result is cached for 12 hours.
+ *
+ * @return array{rating: float, count: int, url: string, review_url: string, reviews: array[]}|array Empty array when unavailable.
+ */
+function witryna_google_place() {
+	if ( ! get_option( 'witryna_google_api_key' ) ) {
+		return array();
+	}
+
+	$cached = get_transient( 'witryna_google_place' );
+
+	if ( false !== $cached ) {
+		return $cached;
+	}
+
+	$place    = array();
+	$place_id = witryna_google_place_id();
+	$data     = $place_id ? witryna_google_request(
+		'https://places.googleapis.com/v1/places/' . rawurlencode( $place_id ) . '?languageCode=pl',
+		'rating,userRatingCount,googleMapsUri,reviews'
+	) : null;
+
+	if ( $data ) {
+		$reviews = array();
+
+		foreach ( isset( $data['reviews'] ) ? $data['reviews'] : array() as $review ) {
+			$text = isset( $review['text']['text'] ) ? $review['text']['text'] : ( isset( $review['originalText']['text'] ) ? $review['originalText']['text'] : '' );
+
+			if ( '' === trim( $text ) ) {
+				continue;
+			}
+
+			$reviews[] = array(
+				'author'     => isset( $review['authorAttribution']['displayName'] ) ? $review['authorAttribution']['displayName'] : '',
+				'author_url' => isset( $review['authorAttribution']['uri'] ) ? $review['authorAttribution']['uri'] : '',
+				'text'       => wp_trim_words( $text, 40 ),
+				'rating'     => isset( $review['rating'] ) ? (int) $review['rating'] : 5,
+				'product'    => __( 'Opinia z Google', 'witryna' ),
+				'date'       => isset( $review['relativePublishTimeDescription'] ) ? $review['relativePublishTimeDescription'] : '',
+				'verified'   => false,
+				'source'     => 'google',
+			);
+		}
+
+		$place = array(
+			'rating'     => isset( $data['rating'] ) ? (float) $data['rating'] : 0,
+			'count'      => isset( $data['userRatingCount'] ) ? (int) $data['userRatingCount'] : 0,
+			'url'        => isset( $data['googleMapsUri'] ) ? $data['googleMapsUri'] : witryna_store_info( 'google' ),
+			'review_url' => 'https://search.google.com/local/writereview?placeid=' . rawurlencode( $place_id ),
+			'reviews'    => $reviews,
+		);
+	}
+
+	// Cache failures for an hour so a wrong key does not slow every page down.
+	set_transient( 'witryna_google_place', $place, $place ? 12 * HOUR_IN_SECONDS : HOUR_IN_SECONDS );
+
+	return $place;
+}
+
+/**
+ * Returns the URL where visitors can leave a Google review.
+ *
+ * @return string
+ */
+function witryna_google_review_url() {
+	$place = witryna_google_place();
+
+	return $place ? $place['review_url'] : witryna_store_info( 'google' );
+}
+
+/**
+ * Returns reviews to show on the site: Google reviews first, then shop reviews.
+ *
+ * @param int $number     Maximum number of reviews.
+ * @param int $min_rating Lowest rating to include (1–5).
+ * @return array[]
+ */
+function witryna_all_reviews( $number = 3, $min_rating = 4 ) {
+	$place  = witryna_google_place();
+	$google = array();
+
+	foreach ( $place ? $place['reviews'] : array() as $review ) {
+		if ( $review['rating'] >= $min_rating ) {
+			$google[] = $review;
+		}
+	}
+
+	return array_slice( array_merge( $google, witryna_store_reviews( $number, $min_rating ) ), 0, $number );
 }

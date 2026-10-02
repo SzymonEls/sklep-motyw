@@ -55,7 +55,7 @@ $witryna_info = witryna_store_info();
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-arrow"} -->
-<div class="wp-block-button is-style-arrow"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $witryna_info['google'] ? $witryna_info['google'] : witryna_page_url( 'opinie' ) ); ?>"><?php esc_html_e( 'Przejdź do opinii', 'witryna' ); ?></a></div>
+<div class="wp-block-button is-style-arrow"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( witryna_page_url( 'opinie' ) ); ?>"><?php esc_html_e( 'Przejdź do opinii', 'witryna' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
