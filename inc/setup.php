@@ -120,11 +120,3 @@ function witryna_copyright_binding() {
 		esc_html( get_bloginfo( 'name' ) )
 	);
 }
-
-/**
- * Temporary marker for testing automatic updates from GitHub. Safe to remove.
- */
-function witryna_update_test_marker() {
-	echo "<!-- witryna-test-aktualizacji: 1 -->\n";
-}
-add_action( 'wp_head', 'witryna_update_test_marker' );
