@@ -44,7 +44,6 @@ return array(
 		'Customer favourites' => 'Ulubione klientów',
 		'Delivery and returns' => 'Dostawa i zwroty',
 		'Description' => 'Opis',
-		'Description of the theme' . "\4" . 'Witryna is a modern block theme designed for WooCommerce stores. It ships with a sticky header, a custom mobile menu, product filters, a refined single product layout, cart and checkout templates, five style variations (light, dark, elegant, organic and high-contrast) and dozens of ready-made patterns for home pages, promotions and content. Fonts are bundled locally, so no data is sent to third-party font services.' => 'Witryna to nowoczesny motyw blokowy dla sklepów WooCommerce. Zawiera przyklejony nagłówek, własne menu mobilne, filtry produktów, dopracowany układ karty produktu, szablony koszyka i kasy, pięć wariantów stylu (jasny, ciemny, elegancki, naturalny i kontrastowy) oraz dziesiątki gotowych wzorców stron głównych, promocji i treści. Fonty są dołączone lokalnie, więc żadne dane nie trafiają do zewnętrznych usług z fontami.',
 		'Discover the collection' => 'Odkryj kolekcję',
 		'Error 404' => 'Błąd 404',
 		'Filters' => 'Filtry',

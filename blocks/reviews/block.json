@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "witryna/reviews",
+	"title": "Opinie klientów",
+	"category": "widgets",
+	"icon": "star-filled",
+	"description": "Opinie z Google (wyświetlane przez Google w przeglądarce) i opinie ze sklepu internetowego, z informacją o weryfikacji opinii.",
+	"textdomain": "witryna",
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"enum": [ "home", "page" ],
+			"default": "page"
+		},
+		"shopCount": {
+			"type": "number",
+			"default": 20
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "file:./editor.js",
+	"render": "file:./render.php"
+}
