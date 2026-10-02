@@ -19,6 +19,7 @@ const entries = [
 	'readme.txt',
 	'screenshot.png',
 	'assets',
+	'blocks',
 	'inc',
 	'languages',
 	'parts',

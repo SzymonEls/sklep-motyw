@@ -17,7 +17,7 @@ import sys
 from collections import OrderedDict
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-THEME_PHP = ('functions.php', 'inc', 'patterns', 'templates', 'parts')
+THEME_PHP = ('functions.php', 'inc', 'blocks', 'patterns', 'templates', 'parts')
 LANG = os.path.join(ROOT, 'languages')
 DOMAIN = 'witryna'
 

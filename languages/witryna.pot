@@ -16,7 +16,7 @@ msgstr ""
 
 #: style.css
 msgctxt "Description of the theme"
-msgid "Witryna is a modern block theme designed for WooCommerce stores. It ships with a sticky header, a custom mobile menu, product filters, a refined single product layout, cart and checkout templates, five style variations (light, dark, elegant, organic and high-contrast) and dozens of ready-made patterns for home pages, promotions and content. Fonts are bundled locally, so no data is sent to third-party font services."
+msgid "Witryna is a modern block theme designed for WooCommerce stores. It ships with a sticky header, a custom mobile menu, product filters, a refined single product layout, cart and checkout templates, five style variations (light, dark, elegant, organic and high-contrast) and dozens of ready-made patterns for home pages, promotions and content. Fonts are bundled locally, so no data is sent to third-party font services. [Test aktualizacji 1]"
 msgstr ""
 
 #: theme.json
@@ -304,6 +304,95 @@ msgctxt "Style variation name"
 msgid "Surface section"
 msgstr ""
 
+#: blocks/reviews/render.php:36
+msgid "Najpierw pokazujemy opinie z Google (wybór i kolejność ustala Google), a pod nimi opinie z naszego sklepu internetowego, od najnowszych. Nie filtrujemy opinii według oceny."
+msgstr ""
+
+#: blocks/reviews/render.php:40
+msgid "Opinie z Google"
+msgstr ""
+
+#: blocks/reviews/render.php:43
+msgid "Tu na stronie pojawią się opinie z Google, wczytane bezpośrednio przez Google."
+msgstr ""
+
+#: blocks/reviews/render.php:57
+msgid "Opinie o nas przeczytasz w Mapach Google."
+msgstr ""
+
+#: blocks/reviews/render.php:59
+msgid "Przeczytaj opinie w Google"
+msgstr ""
+
+#: blocks/reviews/render.php:60 patterns/page-reviews.php:34
+msgid "Wystaw opinię w Google"
+msgstr ""
+
+#: blocks/reviews/render.php:66
+msgid "Pokaż opinie z Google"
+msgstr ""
+
+#: blocks/reviews/render.php:68
+msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
+msgstr ""
+
+#: blocks/reviews/render.php:70
+msgid "Polityka prywatności"
+msgstr ""
+
+#: blocks/reviews/render.php:77
+msgid "Nie udało się wczytać opinii z Google. Sprawdź klucz API, Place ID i limity w Google Cloud. Ten komunikat widzą tylko administratorzy."
+msgstr ""
+
+#: blocks/reviews/render.php:83
+msgid "Opinie z Google pochodzą z naszej wizytówki w Mapach Google. Nie sprawdzamy, czy ich autorzy kupili u nas sprzęt lub korzystali z serwisu. To Google wybiera, które opinie tu widać, i ustala ich kolejność. My ich nie filtrujemy, nie zmieniamy i nie ukrywamy negatywnych."
+msgstr ""
+
+#: blocks/reviews/render.php:85
+msgid "Wszystkie opinie w Mapach Google"
+msgstr ""
+
+#: blocks/reviews/render.php:87
+msgid "Jak Google sprawdza opinie"
+msgstr ""
+
+#: blocks/reviews/render.php:94
+msgid "Opinie z naszego sklepu internetowego"
+msgstr ""
+
+#. translators: %d: rating.
+#: blocks/reviews/render.php:101
+msgid "Ocena %d na 5"
+msgstr ""
+
+#: blocks/reviews/render.php:105
+msgid "Czytaj całość"
+msgstr ""
+
+#: blocks/reviews/render.php:111
+msgid "Zweryfikowany zakup"
+msgstr ""
+
+#: blocks/reviews/render.php:119
+msgid "W sklepie internetowym nie ma jeszcze opinii. Po zakupie możesz ocenić produkt na jego stronie."
+msgstr ""
+
+#: blocks/reviews/render.php:126
+msgid "Opinie ze sklepu internetowego weryfikujemy: produkt może ocenić tylko klient, który kupił go w naszym sklepie. Sprawdzamy to automatycznie na podstawie zamówień. Publikujemy opinie pozytywne i negatywne, a odrzucamy tylko spam i treści niezgodne z prawem."
+msgstr ""
+
+#: blocks/reviews/render.php:128
+msgid "Opinii ze sklepu internetowego nie weryfikujemy pod kątem zakupu. Oznaczenie „Zweryfikowany zakup” widnieje tylko przy opiniach klientów, u których znaleźliśmy zamówienie danego produktu. Publikujemy opinie pozytywne i negatywne, a odrzucamy tylko spam i treści niezgodne z prawem."
+msgstr ""
+
+#: blocks/reviews/render.php:137
+msgid "Opinie z Google wybiera i porządkuje Google. Nie sprawdzamy, czy ich autorzy są naszymi klientami. Opinie ze sklepu pokazujemy bez filtrowania ocen."
+msgstr ""
+
+#: blocks/reviews/render.php:138
+msgid "Jak weryfikujemy opinie"
+msgstr ""
+
 #: inc/block-styles.php:20 inc/block-styles.php:23
 msgctxt "block style"
 msgid "Eyebrow"
@@ -430,6 +519,30 @@ msgstr ""
 #: inc/icons.php:42
 msgctxt "icon label"
 msgid "Star"
+msgstr ""
+
+#: inc/klinika.php:212
+msgid "Opinie Google"
+msgstr ""
+
+#: inc/klinika.php:219
+msgid "Klucz API Google (przeglądarkowy)"
+msgstr ""
+
+#: inc/klinika.php:220
+msgid "Ten klucz będzie widoczny w kodzie strony. W Google Cloud ogranicz go do domeny sklepu (Witryny) i do Maps JavaScript API oraz Places UI Kit."
+msgstr ""
+
+#: inc/klinika.php:225
+msgid "Identyfikator miejsca (Place ID)"
+msgstr ""
+
+#: inc/klinika.php:231
+msgid "Wczytuj opinie Google automatycznie"
+msgstr ""
+
+#: inc/klinika.php:232
+msgid "Zaznacz, gdy polityka prywatności (i baner cookies, jeśli jest) obejmuje Mapy Google. Bez tego opinie wczytają się po kliknięciu przycisku."
 msgstr ""
 
 #: inc/patterns.php:20
@@ -692,7 +805,7 @@ msgstr ""
 msgid "Serwis"
 msgstr ""
 
-#: patterns/footer.php:56 patterns/page-reviews.php:21
+#: patterns/footer.php:56 patterns/page-reviews.php:20
 msgid "Opinie klientów"
 msgstr ""
 
@@ -852,7 +965,7 @@ msgstr ""
 msgid "Kosiarki, pilarki, kosy i roboty koszące STIHL. Doradzimy, sprzedamy i zadbamy o serwis, żeby Twój sprzęt działał przez lata."
 msgstr ""
 
-#: patterns/hero-split.php:40 patterns/page-reviews.php:78
+#: patterns/hero-split.php:40
 msgid "Przejdź do sklepu"
 msgstr ""
 
@@ -1176,36 +1289,15 @@ msgstr ""
 
 #: patterns/page-reviews.php
 msgctxt "Pattern description"
-msgid "Reviews page listing real, approved product reviews from the shop with buttons to read and leave a review on Google."
+msgid "Reviews page: Google reviews (shown by Google), the newest shop reviews with any rating and information on how reviews are verified."
 msgstr ""
 
-#: patterns/page-reviews.php:25
+#: patterns/page-reviews.php:24
 msgid "Co mówią o nas klienci"
 msgstr ""
 
-#: patterns/page-reviews.php:29
-msgid "Pokazujemy wyłącznie prawdziwe opinie: wystawione w naszym sklepie internetowym i w Google. Kupiłeś u nas sprzęt albo oddałeś go do serwisu? Daj znać, jak było."
-msgstr ""
-
-#: patterns/page-reviews.php:35
-msgid "Wystaw opinię w Google"
-msgstr ""
-
-#. translators: %d: rating.
-#: patterns/page-reviews.php:50 patterns/testimonials.php:41
-msgid "Ocena %d na 5"
-msgstr ""
-
-#: patterns/page-reviews.php:69
-msgid "Tu pojawią się opinie z naszego sklepu"
-msgstr ""
-
-#: patterns/page-reviews.php:73
-msgid "Po zakupie możesz ocenić produkt na jego stronie w sklepie. Zapraszamy też do zostawienia opinii w Google i do obejrzenia naszego TikToka."
-msgstr ""
-
-#: patterns/page-reviews.php:82
-msgid "Zobacz nasz TikTok"
+#: patterns/page-reviews.php:28
+msgid "Tu znajdziesz opinie o Klinice Trawnika z Google i z naszego sklepu internetowego. Kupiłeś u nas sprzęt albo oddałeś go do serwisu? Daj znać, jak było."
 msgstr ""
 
 #: patterns/page-service.php
@@ -1565,30 +1657,21 @@ msgstr ""
 
 #: patterns/testimonials.php
 msgctxt "Pattern description"
-msgid "Real, approved product reviews from the shop (never invented ones) with buttons to read and leave a review on Google."
+msgid "Google reviews (shown by Google) and the newest shop reviews with any rating, with a note on how reviews are verified."
 msgstr ""
 
-#: patterns/testimonials.php:20
+#: patterns/testimonials.php:18
 msgid "Opinie"
 msgstr ""
 
-#: patterns/testimonials.php:24
+#: patterns/testimonials.php:22
 msgid "Co mówią nasi klienci"
 msgstr ""
 
-#: patterns/testimonials.php:29
-msgid "Kupiłeś u nas sprzęt albo oddałeś go do serwisu? Twoja opinia pomoże innym znaleźć dobry sklep i serwis w okolicy."
-msgstr ""
-
-#. translators: %s: product name.
-#: patterns/testimonials.php:55
-msgid "Zweryfikowany zakup · %s"
-msgstr ""
-
-#: patterns/testimonials.php:66
+#: patterns/testimonials.php:30
 msgid "Zobacz wszystkie opinie"
 msgstr ""
 
-#: patterns/testimonials.php:70
+#: patterns/testimonials.php:34
 msgid "Wystaw opinię"
 msgstr ""
