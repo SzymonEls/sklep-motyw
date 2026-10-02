@@ -141,6 +141,49 @@ icons['phone'] = ('Phone', [
     "M7 4.25C6.6 4.23 6.25 4.53 6.25 4.92C6.38 12.62 11.38 17.62 19.08 17.75C19.47 17.75 19.77 17.4 19.75 17L19.6 15.28L16.97 14.41L15.07 16.67L14.12 16.27C11.6 15.15 8.85 12.4 7.73 9.88L7.33 8.93L9.59 7.03L8.72 4.4Z",
 ])
 
+# Shield with a check mark (authorised dealer).
+icons['shield'] = ('Shield', [
+    "M12 2.5L20 5.5V11C20 16 16.6 19.9 12 21.5C7.4 19.9 4 16 4 11V5.5Z"
+    "M12 4.1L18.5 6.54V11C18.5 15.1 15.8 18.4 12 19.9C8.2 18.4 5.5 15.1 5.5 11V6.54Z",
+    bar(8.4, 11.9, 11.2, 14.7),
+    bar(10.67, 15.23, 16.1, 9.8),
+])
+
+# Wrench (service).
+def rotated_rect(x0, y0, x1, y1, w):
+    dx, dy = x1-x0, y1-y0; L = math.hypot(dx, dy); nx, ny = -dy/L*w/2, dx/L*w/2
+    return [(x0+nx, y0+ny), (x1+nx, y1+ny), (x1-nx, y1-ny), (x0-nx, y0-ny)]
+
+icons['wrench'] = ('Wrench', [
+    arc_band(16, 8, 4.25, 15, 255),
+    outline_polygon(rotated_rect(4.6, 19.4, 12.6, 11.4, 3.5)[::-1]),
+])
+
+# Shop front.
+icons['store'] = ('Shop', [
+    outline_polygon([(5, 3.75), (19, 3.75), (21, 9.5), (3, 9.5)]),
+    frame(4.75, 9.5, 19.25, 20.25, 0),
+    frame(10, 14, 14, 20.25, 0),
+])
+
+# Clock (opening hours).
+icons['clock'] = ('Clock', [
+    ring(12, 12, 8.5),
+    "M11.25 6.75H12.75V11.25H16V12.75H11.25Z",
+])
+
+# Map pin (address).
+icons['pin'] = ('Map pin', [
+    "M12 21.5C12 21.5 4.75 14.6 4.75 9.25A7.25 7.25 0 0 1 19.25 9.25C19.25 14.6 12 21.5 12 21.5Z"
+    "M12 19.4C10.9 18.3 6.25 13.3 6.25 9.25A5.75 5.75 0 0 1 17.75 9.25C17.75 13.3 13.1 18.3 12 19.4Z",
+    ring(12, 9.25, 2.25),
+])
+
+# Star (reviews).
+icons['star'] = ('Star', [
+    poly([(12, 2.75), (14.6, 8.6), (21, 9.2), (16.2, 13.5), (17.6, 19.8), (12, 16.5), (6.4, 19.8), (7.8, 13.5), (3, 9.2), (9.4, 8.6)]),
+])
+
 os.makedirs(OUT, exist_ok=True)
 for name, (label, paths) in icons.items():
     body = ''.join(f'<path fill-rule="evenodd" d="{d}"/>' for d in paths)

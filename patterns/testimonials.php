@@ -2,54 +2,47 @@
 /**
  * Title: Customer reviews
  * Slug: witryna/testimonials
- * Categories: testimonials
- * Keywords: reviews, testimonials, opinions, social proof
+ * Categories: testimonials, witryna-shop
+ * Keywords: reviews, testimonials, opinions, google, social proof
  * Viewport Width: 1400
- * Description: Three customer reviews with star ratings on cards.
+ * Description: Real, approved product reviews from the shop (never invented ones) with buttons to read and leave a review on Google.
  *
  * @package Witryna
  */
 
-$witryna_reviews = array(
-	array(
-		'quote'   => __( 'The vase is even more beautiful in person. Carefully packed and delivered the next day. I am already planning my next order.', 'witryna' ),
-		'author'  => __( 'Anna, Kraków', 'witryna' ),
-		'product' => __( 'Amfora stoneware vase', 'witryna' ),
-	),
-	array(
-		'quote'   => __( 'Great quality and a really thoughtful selection. Customer service helped me choose the right lamp size within an hour.', 'witryna' ),
-		'author'  => __( 'Michał, Gdańsk', 'witryna' ),
-		'product' => __( 'Globe table lamp', 'witryna' ),
-	),
-	array(
-		'quote'   => __( 'I bought a set of mugs as a gift and ended up keeping two for myself. Simple, elegant and perfect for everyday use.', 'witryna' ),
-		'author'  => __( 'Kasia, Wrocław', 'witryna' ),
-		'product' => __( 'Morning mug set', 'witryna' ),
-	),
-);
+$witryna_reviews = witryna_store_reviews( 3 );
+$witryna_google  = witryna_store_info( 'google' );
+$witryna_more    = $witryna_google ? $witryna_google : witryna_page_url( 'opinie' );
 ?>
-<!-- wp:group {"align":"full","className":"witryna-testimonials","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"blockGap":"var:preset|spacing|50"}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull witryna-testimonials has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained","contentSize":"640px"}} -->
+<!-- wp:group {"align":"full","className":"witryna-testimonials","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"blockGap":"var:preset|spacing|50"}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull witryna-testimonials has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained","contentSize":"640px"}} -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-eyebrow","style":{"typography":{"textAlign":"center"}}} -->
-<p class="is-style-eyebrow has-text-align-center"><?php esc_html_e( 'Reviews', 'witryna' ); ?></p>
+<p class="is-style-eyebrow has-text-align-center"><?php esc_html_e( 'Opinie', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"style":{"typography":{"textAlign":"center"}}} -->
-<h2 class="wp-block-heading has-text-align-center"><?php esc_html_e( 'Loved by over 2,400 customers', 'witryna' ); ?></h2>
-<!-- /wp:heading --></div>
+<h2 class="wp-block-heading has-text-align-center"><?php esc_html_e( 'Co mówią nasi klienci', 'witryna' ); ?></h2>
+<!-- /wp:heading -->
+
+<?php if ( empty( $witryna_reviews ) ) : ?>
+<!-- wp:paragraph {"textColor":"muted","style":{"typography":{"textAlign":"center"}}} -->
+<p class="has-text-align-center has-muted-color has-text-color"><?php esc_html_e( 'Kupiłeś u nas sprzęt albo oddałeś go do serwisu? Twoja opinia pomoże innym znaleźć dobry sklep i serwis w okolicy.', 'witryna' ); ?></p>
+<!-- /wp:paragraph -->
+<?php endif; ?></div>
 <!-- /wp:group -->
 
+<?php if ( $witryna_reviews ) : ?>
 <!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"18rem"}} -->
 <div class="wp-block-group alignwide">
 <?php foreach ( $witryna_reviews as $witryna_review ) : ?>
 <!-- wp:group {"className":"is-style-card","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"backgroundColor":"base","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch","verticalAlignment":"space-between"}} -->
 <div class="wp-block-group is-style-card has-base-background-color has-background"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"witryna-stars","textColor":"accent"} -->
-<p class="witryna-stars has-accent-color has-text-color">★★★★★</p>
+<p class="witryna-stars has-accent-color has-text-color" aria-label="<?php echo esc_attr( sprintf( /* translators: %d: rating. */ __( 'Ocena %d na 5', 'witryna' ), $witryna_review['rating'] ) ); ?>"><?php echo esc_html( witryna_stars( $witryna_review['rating'] ) ); ?></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"fontSize":"large"} -->
-<p class="has-large-font-size"><?php echo esc_html( $witryna_review['quote'] ); ?></p>
+<!-- wp:paragraph -->
+<p><?php echo esc_html( $witryna_review['text'] ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -59,11 +52,22 @@ $witryna_reviews = array(
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"muted","fontSize":"x-small"} -->
-<p class="has-muted-color has-text-color has-x-small-font-size"><?php echo esc_html( sprintf( /* translators: %s: product name. */ __( 'Verified purchase · %s', 'witryna' ), $witryna_review['product'] ) ); ?></p>
+<p class="has-muted-color has-text-color has-x-small-font-size"><?php echo esc_html( $witryna_review['verified'] ? sprintf( /* translators: %s: product name. */ __( 'Zweryfikowany zakup · %s', 'witryna' ), $witryna_review['product'] ) : $witryna_review['product'] ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 <?php endforeach; ?>
 </div>
-<!-- /wp:group --></div>
+<!-- /wp:group -->
+<?php endif; ?>
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $witryna_more ); ?>"><?php esc_html_e( 'Zobacz wszystkie opinie', 'witryna' ); ?></a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} -->
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( $witryna_google ? $witryna_google : witryna_page_url( 'opinie' ) ); ?>"><?php esc_html_e( 'Wystaw opinię', 'witryna' ); ?></a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:group -->

@@ -25,7 +25,7 @@
 <div class="wp-block-group witryna-mobile-menu__footer" style="border-top-color:var(--wp--preset--color--line);border-top-width:1px;padding-top:var(--wp--preset--spacing--30)"><!-- wp:woocommerce/customer-account {"displayStyle":"icon_and_text","iconStyle":"line","iconClass":"wc-block-customer-account__account-icon","fontSize":"small"} /-->
 
 <!-- wp:paragraph {"textColor":"muted","fontSize":"small"} -->
-<p class="has-muted-color has-text-color has-small-font-size"><?php esc_html_e( 'Need help?', 'witryna' ); ?> <a href="mailto:hello@example.com">hello@example.com</a></p>
+<p class="has-muted-color has-text-color has-small-font-size"><?php esc_html_e( 'Need help?', 'witryna' ); ?> <a href="tel:<?php echo esc_attr( witryna_store_info( 'phone_href' ) ); ?>"><?php echo esc_html( witryna_store_info( 'phone' ) ); ?></a><br><?php echo esc_html( witryna_store_info( 'hours_short' ) ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->

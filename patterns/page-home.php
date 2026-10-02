@@ -7,7 +7,7 @@
  * Block Types: core/post-content
  * Post Types: page, wp_template
  * Viewport Width: 1400
- * Description: Complete store home page: hero, benefits, categories, bestsellers, promotion, new arrivals, reviews, brand story and newsletter.
+ * Description: Complete store home page: hero, benefits, categories, bestsellers, service, TikTok, reviews, about and store visit details.
  *
  * @package Witryna
  */
@@ -23,10 +23,10 @@
 
 <!-- wp:pattern {"slug":"witryna/promo-split"} /-->
 
-<!-- wp:pattern {"slug":"witryna/shop-new-arrivals"} /-->
+<!-- wp:pattern {"slug":"witryna/gallery-social"} /-->
 
 <!-- wp:pattern {"slug":"witryna/testimonials"} /-->
 
 <!-- wp:pattern {"slug":"witryna/brand-story"} /-->
 
-<!-- wp:pattern {"slug":"witryna/newsletter"} /-->
+<!-- wp:pattern {"slug":"witryna/store-visit"} /-->

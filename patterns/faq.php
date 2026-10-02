@@ -12,24 +12,28 @@
 
 $witryna_faq = array(
 	array(
-		__( 'How long does delivery take?', 'witryna' ),
-		__( 'Orders placed on business days before 2 pm are shipped the same day. Courier and parcel locker deliveries usually arrive within 1–2 business days.', 'witryna' ),
+		__( 'Czy mogę odebrać zamówienie osobiście?', 'witryna' ),
+		__( 'Tak. Wybierz odbiór osobisty przy zamówieniu i przyjedź do sklepu w Czernicy w godzinach otwarcia, gdy potwierdzimy, że sprzęt czeka. Przy odbiorze pokażemy, jak go uruchomić i bezpiecznie używać.', 'witryna' ),
 	),
 	array(
-		__( 'How can I return a product?', 'witryna' ),
-		__( 'You have 30 days to return any product without giving a reason. Log in to your account, choose the order and follow the return steps. We refund the payment within 5 business days.', 'witryna' ),
+		__( 'Czy serwisujecie sprzęt kupiony w innym sklepie?', 'witryna' ),
+		__( 'Tak. Serwisujemy sprzęt STIHL i wielu innych producentów. Zadzwoń z marką i modelem, a potwierdzimy, czy zajmiemy się Twoim urządzeniem.', 'witryna' ),
 	),
 	array(
-		__( 'Which payment methods do you accept?', 'witryna' ),
-		__( 'You can pay by card, fast bank transfer, mobile wallet or bank transfer. All payments are processed by certified payment operators.', 'witryna' ),
+		__( 'Ile kosztuje naprawa?', 'witryna' ),
+		__( 'Ostateczną cenę podajemy po diagnozie, zanim zaczniemy naprawę. Bez Twojej zgody niczego nie naprawiamy.', 'witryna' ),
 	),
 	array(
-		__( 'Can I change or cancel my order?', 'witryna' ),
-		__( 'Yes, as long as the order has not been shipped. Write to us as soon as possible and include your order number.', 'witryna' ),
+		__( 'Kiedy najlepiej oddać kosiarkę na przegląd?', 'witryna' ),
+		__( 'Zimą albo wczesną wiosną. W sezonie, od kwietnia do czerwca, czas oczekiwania na serwis jest dłuższy.', 'witryna' ),
 	),
 	array(
-		__( 'Do you offer gift wrapping?', 'witryna' ),
-		__( 'Every order is packed in recyclable paper. You can add a handwritten card for free by leaving a note at checkout.', 'witryna' ),
+		__( 'Czy odbieracie sprzęt do serwisu?', 'witryna' ),
+		__( 'W okolicy Czernicy możemy odebrać sprzęt i odwieźć go po naprawie. Zadzwoń, żeby ustalić termin.', 'witryna' ),
+	),
+	array(
+		__( 'Jak zwrócić towar kupiony przez internet?', 'witryna' ),
+		__( 'Masz 14 dni na odstąpienie od umowy zawartej przez internet bez podania przyczyny. Szczegóły znajdziesz w regulaminie sklepu.', 'witryna' ),
 	),
 );
 ?>
@@ -37,20 +41,20 @@ $witryna_faq = array(
 <div class="wp-block-group alignfull witryna-faq" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|70"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"38%","style":{"spacing":{"blockGap":"var:preset|spacing|30"}}} -->
 <div class="wp-block-column" style="flex-basis:38%"><!-- wp:paragraph {"className":"is-style-eyebrow"} -->
-<p class="is-style-eyebrow"><?php esc_html_e( 'Help centre', 'witryna' ); ?></p>
+<p class="is-style-eyebrow"><?php esc_html_e( 'Pytania i odpowiedzi', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
-<h2 class="wp-block-heading"><?php esc_html_e( 'Questions? We have answers', 'witryna' ); ?></h2>
+<h2 class="wp-block-heading"><?php esc_html_e( 'Najczęstsze pytania', 'witryna' ); ?></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"muted"} -->
-<p class="has-muted-color has-text-color"><?php esc_html_e( 'Could not find what you were looking for? Our team is happy to help with orders, products and returns.', 'witryna' ); ?></p>
+<p class="has-muted-color has-text-color"><?php esc_html_e( 'Nie znalazłeś odpowiedzi? Zadzwoń albo napisz, chętnie pomożemy w wyborze sprzętu, zamówieniu i serwisie.', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="mailto:hello@example.com"><?php esc_html_e( 'Contact us', 'witryna' ); ?></a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo witryna_page_url( 'kontakt' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in helper. ?>"><?php esc_html_e( 'Contact us', 'witryna' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column -->

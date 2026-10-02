@@ -6,6 +6,20 @@ Motyw blokowy (Full Site Editing) dla WordPress 7.0+ i WooCommerce 10+
 Katalog główny repozytorium **jest motywem** (`style.css`, `theme.json`, `templates/`…),
 więc można go instalować bezpośrednio z GitHuba.
 
+## Klinika Trawnika
+
+Od wersji 1.2.0 motyw jest dopasowany do sklepu Klinika Trawnika (dealer STIHL, Czernica):
+grafitowo-pomarańczowa paleta, ostrzejsze rogi, pasek z adresem, godzinami, telefonem i TikTokiem.
+
+- **Dane sklepu** (telefon, e-mail, adres, NIP, godziny, TikTok, link do opinii Google) są w jednym
+  miejscu: `inc/klinika.php` → `witryna_store_info()`. Można je też nadpisać filtrem `witryna_store_info`.
+- **Strony** dostają gotowy układ automatycznie po slugu (szablony `templates/page-{slug}.html`):
+  `serwis`, `kontakt`, `opinie`, `social-media`, `o-firmie`. Wystarczy utworzyć pustą stronę o takim
+  adresie. Treść wpisana w edytorze pojawia się pod gotowym układem (np. formularz zgłoszenia serwisu).
+- **Opinie**: sekcje pokazują wyłącznie prawdziwe, zatwierdzone opinie produktów z WooCommerce
+  (`witryna_store_reviews()`), nigdy przykładowe.
+- Nowe ikony: `shield`, `wrench`, `store`, `clock`, `pin`, `star` (`npm run icons`).
+
 ## Instalacja
 
 **Z GitHuba (bez wtyczek)**
