@@ -240,3 +240,20 @@ function witryna_unhook_header_blocks( $hooked_blocks, $position, $anchor_block,
 	return array_values( array_diff( $hooked_blocks, array( 'woocommerce/customer-account', 'woocommerce/mini-cart' ) ) );
 }
 add_filter( 'hooked_block_types', 'witryna_unhook_header_blocks', 20, 4 );
+
+/**
+ * Shows the order status in the account orders table as a coloured badge.
+ *
+ * The modifier class carries the status slug, so custom statuses added by
+ * plugins get the neutral colour until they are styled.
+ *
+ * @param WC_Order $order Order.
+ */
+function witryna_account_order_status( $order ) {
+	printf(
+		'<span class="witryna-order-status witryna-order-status--%1$s">%2$s</span>',
+		esc_attr( sanitize_html_class( $order->get_status() ) ),
+		esc_html( wc_get_order_status_name( $order->get_status() ) )
+	);
+}
+add_action( 'woocommerce_my_account_my_orders_column_order-status', 'witryna_account_order_status' );
