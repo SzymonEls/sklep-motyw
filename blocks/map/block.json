@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "witryna/map",
+	"title": "Mapa dojazdu",
+	"category": "widgets",
+	"icon": "location-alt",
+	"description": "Mapa Google wycentrowana na sklepie (dane z witryna_store_info). Wyświetla się od razu.",
+	"textdomain": "witryna",
+	"attributes": {
+		"zoom": {
+			"type": "number",
+			"default": 16
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "file:./editor.js",
+	"render": "file:./render.php"
+}

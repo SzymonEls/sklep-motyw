@@ -105,6 +105,47 @@ function witryna_featured_categories( $number = 4 ) {
 }
 
 /**
+ * Returns the image of a product category: its thumbnail or, when it has
+ * none (e.g. categories created by an import), the photo of one of its products.
+ *
+ * @param WP_Term $term Product category.
+ * @return int Attachment ID or 0.
+ */
+function witryna_category_image_id( $term ) {
+	$thumbnail = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
+
+	if ( $thumbnail || ! function_exists( 'wc_get_products' ) ) {
+		return $thumbnail;
+	}
+
+	$cached = get_transient( 'witryna_cat_image_' . $term->term_id );
+	if ( false !== $cached ) {
+		return (int) $cached;
+	}
+
+	$products = wc_get_products(
+		array(
+			'status'   => 'publish',
+			'limit'    => 5,
+			'category' => array( $term->slug ),
+			'orderby'  => 'popularity',
+			'return'   => 'objects',
+		)
+	);
+	$image    = 0;
+	foreach ( $products as $product ) {
+		if ( $product->get_image_id() ) {
+			$image = (int) $product->get_image_id();
+			break;
+		}
+	}
+
+	set_transient( 'witryna_cat_image_' . $term->term_id, $image, $image ? DAY_IN_SECONDS : HOUR_IN_SECONDS );
+
+	return $image;
+}
+
+/**
  * Returns the product card markup shared by product collection patterns.
  *
  * Keep it in sync with the card used in templates/archive-product.html.

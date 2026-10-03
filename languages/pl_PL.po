@@ -306,92 +306,125 @@ msgctxt "Style variation name"
 msgid "Surface section"
 msgstr "Sekcja na tle powierzchni"
 
-#: blocks/reviews/render.php:36
-msgid "Najpierw pokazujemy opinie z Google (wybór i kolejność ustala Google), a pod nimi opinie z naszego sklepu internetowego, od najnowszych. Nie filtrujemy opinii według oceny."
+#: blocks/map/render.php:39
+msgid "Tu na stronie wyświetli się mapa Google."
+msgstr ""
+
+#. translators: %s: store name.
+#: blocks/map/render.php:42
+msgid "Mapa dojazdu: %s"
+msgstr ""
+
+#: blocks/map/render.php:46
+msgid "Otwórz w Mapach Google"
+msgstr ""
+
+#: blocks/map/render.php:47 patterns/page-contact.php:37 patterns/store-visit.php:40
+msgid "Wyznacz trasę"
 msgstr ""
 
 #: blocks/reviews/render.php:40
+msgid "Najpierw pokazujemy opinie z Google (wybór i kolejność ustala Google), a pod nimi opinie z naszego sklepu internetowego, od najnowszych. Nie filtrujemy opinii według oceny."
+msgstr ""
+
+#: blocks/reviews/render.php:44
 msgid "Opinie z Google"
 msgstr ""
 
-#: blocks/reviews/render.php:43
+#: blocks/reviews/render.php:47
 msgid "Tu na stronie pojawią się opinie z Google, wczytane bezpośrednio przez Google."
 msgstr ""
 
-#: blocks/reviews/render.php:57
-msgid "Opinie o nas przeczytasz w Mapach Google."
-msgstr ""
-
-#: blocks/reviews/render.php:59
-msgid "Przeczytaj opinie w Google"
-msgstr ""
-
-#: blocks/reviews/render.php:60 patterns/page-reviews.php:34
-msgid "Wystaw opinię w Google"
+#: blocks/reviews/render.php:65 blocks/reviews/render.php:67
+msgid "Wczytywanie opinii z Google…"
 msgstr ""
 
 #: blocks/reviews/render.php:66
-msgid "Pokaż opinie z Google"
-msgstr ""
-
-#: blocks/reviews/render.php:68
-msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
+msgid "Nie udało się wczytać opinii z Google. Skorzystaj z linków do Map Google."
 msgstr ""
 
 #: blocks/reviews/render.php:70
-msgid "Polityka prywatności"
+msgid "Opinie o nas przeczytasz w Mapach Google."
 msgstr ""
 
-#: blocks/reviews/render.php:77
-msgid "Nie udało się wczytać opinii z Google. Sprawdź klucz API, Place ID i limity w Google Cloud. Ten komunikat widzą tylko administratorzy."
+#: blocks/reviews/render.php:72
+msgid "Przeczytaj opinie w Google"
+msgstr ""
+
+#: blocks/reviews/render.php:73 patterns/page-reviews.php:34
+msgid "Wystaw opinię w Google"
+msgstr ""
+
+#: blocks/reviews/render.php:79
+msgid "Pokaż ocenę w Mapach Google"
+msgstr ""
+
+#: blocks/reviews/render.php:79
+msgid "Pokaż opinie z Google"
+msgstr ""
+
+#: blocks/reviews/render.php:81
+msgid "Po kliknięciu Twoja przeglądarka połączy się z serwerami Google (Mapy Google), które otrzymają m.in. Twój adres IP. Szczegóły w polityce prywatności."
 msgstr ""
 
 #: blocks/reviews/render.php:83
-msgid "Opinie z Google pochodzą z naszej wizytówki w Mapach Google. Nie sprawdzamy, czy ich autorzy kupili u nas sprzęt lub korzystali z serwisu. To Google wybiera, które opinie tu widać, i ustala ich kolejność. My ich nie filtrujemy, nie zmieniamy i nie ukrywamy negatywnych."
+msgid "Polityka prywatności"
 msgstr ""
 
-#: blocks/reviews/render.php:85
-msgid "Wszystkie opinie w Mapach Google"
-msgstr ""
-
-#: blocks/reviews/render.php:87
-msgid "Jak Google sprawdza opinie"
+#: blocks/reviews/render.php:90
+msgid "Widać tylko ocenę z Map Google. Aby pokazać tu treść opinii, wklej klucz API Google w Wygląd → Dostosuj → Opinie Google. Ten komunikat widzą tylko administratorzy."
 msgstr ""
 
 #: blocks/reviews/render.php:94
+msgid "Nie udało się wczytać opinii z Google. Sprawdź klucz API, Place ID i limity w Google Cloud. Ten komunikat widzą tylko administratorzy."
+msgstr ""
+
+#: blocks/reviews/render.php:100
+msgid "Opinie z Google pochodzą z naszej wizytówki w Mapach Google. Nie sprawdzamy, czy ich autorzy kupili u nas sprzęt lub korzystali z serwisu. To Google wybiera, które opinie tu widać, i ustala ich kolejność. My ich nie filtrujemy, nie zmieniamy i nie ukrywamy negatywnych."
+msgstr ""
+
+#: blocks/reviews/render.php:102
+msgid "Wszystkie opinie w Mapach Google"
+msgstr ""
+
+#: blocks/reviews/render.php:104
+msgid "Jak Google sprawdza opinie"
+msgstr ""
+
+#: blocks/reviews/render.php:111
 msgid "Opinie z naszego sklepu internetowego"
 msgstr ""
 
 #. translators: %d: rating.
-#: blocks/reviews/render.php:101
+#: blocks/reviews/render.php:122
 msgid "Ocena %d na 5"
 msgstr ""
 
-#: blocks/reviews/render.php:105
+#: blocks/reviews/render.php:127
 msgid "Czytaj całość"
 msgstr ""
 
-#: blocks/reviews/render.php:111
+#: blocks/reviews/render.php:133
 msgid "Zweryfikowany zakup"
 msgstr ""
 
-#: blocks/reviews/render.php:119
+#: blocks/reviews/render.php:141
 msgid "W sklepie internetowym nie ma jeszcze opinii. Po zakupie możesz ocenić produkt na jego stronie."
 msgstr ""
 
-#: blocks/reviews/render.php:126
+#: blocks/reviews/render.php:148
 msgid "Opinie ze sklepu internetowego weryfikujemy: produkt może ocenić tylko klient, który kupił go w naszym sklepie. Sprawdzamy to automatycznie na podstawie zamówień. Publikujemy opinie pozytywne i negatywne, a odrzucamy tylko spam i treści niezgodne z prawem."
 msgstr ""
 
-#: blocks/reviews/render.php:128
+#: blocks/reviews/render.php:150
 msgid "Opinii ze sklepu internetowego nie weryfikujemy pod kątem zakupu. Oznaczenie „Zweryfikowany zakup” widnieje tylko przy opiniach klientów, u których znaleźliśmy zamówienie danego produktu. Publikujemy opinie pozytywne i negatywne, a odrzucamy tylko spam i treści niezgodne z prawem."
 msgstr ""
 
-#: blocks/reviews/render.php:137
+#: blocks/reviews/render.php:159
 msgid "Opinie z Google wybiera i porządkuje Google. Nie sprawdzamy, czy ich autorzy są naszymi klientami. Opinie ze sklepu pokazujemy bez filtrowania ocen."
 msgstr ""
 
-#: blocks/reviews/render.php:138
+#: blocks/reviews/render.php:160
 msgid "Jak weryfikujemy opinie"
 msgstr ""
 
@@ -571,6 +604,752 @@ msgstr "Informacja o prawach autorskich"
 #: inc/setup.php:118
 msgid "© %1$s %2$s. All rights reserved."
 msgstr "© %1$s %2$s. Wszelkie prawa zastrzeżone."
+
+#: inc/store-setup.php:770
+msgid "Strona główna i blog"
+msgstr ""
+
+#: inc/store-setup.php:771
+msgid "Tytuły stron sklepu"
+msgstr ""
+
+#: inc/store-setup.php:772
+msgid "Nazwa i opis witryny"
+msgstr ""
+
+#: inc/store-setup.php:773
+msgid "Adres sklepu"
+msgstr ""
+
+#: inc/store-setup.php:774
+msgid "Opinie tylko od zweryfikowanych klientów"
+msgstr ""
+
+#: inc/store-setup.php:775
+msgid "Menu główne"
+msgstr ""
+
+#: inc/store-setup.php:776
+msgid "Poradniki z podglądu na blogu"
+msgstr ""
+
+#: inc/store-setup.php:777
+msgid "Przykładowe treści WordPressa"
+msgstr ""
+
+#. translators: %s: name of the step, e.g. Adres sklepu.
+#: inc/store-setup.php:791
+msgid "%s – pominięto, bo wtyczka WooCommerce nie jest włączona."
+msgstr ""
+
+#: inc/store-setup.php:811 patterns/shop-categories.php:31 patterns/shop-categories.php:32 patterns/shop-categories.php:33 patterns/shop-categories.php:34
+msgid "Zobacz"
+msgstr ""
+
+#: inc/store-setup.php:816
+msgid "Edytuj"
+msgstr ""
+
+#: inc/store-setup.php:838
+msgid "Nieznana strona."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:847
+msgid "Strona „%s” już istnieje."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:851
+msgid "Strona „%s” już istnieje, ale nie jest opublikowana. Opublikuj ją w edytorze."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:858
+msgid "Strona „%s” jest w koszu. Przywróć ją z kosza, zamiast tworzyć nową."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:862 inc/store-setup.php:1351 inc/store-setup.php:1507
+msgid "Kosz stron"
+msgstr ""
+
+#. translators: 1: page title, 2: address, e.g. /serwis/.
+#: inc/store-setup.php:869
+msgid "Nie utworzono strony „%1$s”: adres %2$s jest zajęty, np. przez plik o tej nazwie w bibliotece mediów."
+msgstr ""
+
+#. translators: 1: page title, 2: error message.
+#: inc/store-setup.php:888
+msgid "Nie udało się utworzyć strony „%1$s”: %2$s"
+msgstr ""
+
+#: inc/store-setup.php:893
+msgid "Utworzono szkic strony „Regulamin”. Wklej do niego treść regulaminu, opublikuj stronę i wybierz ją w WooCommerce → Ustawienia → Zaawansowane."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:895
+msgid "Utworzono szkic strony „%s”. Uzupełnij go i opublikuj stronę."
+msgstr ""
+
+#. translators: 1: page title, 2: address, e.g. /serwis/.
+#: inc/store-setup.php:901
+msgid "Utworzono stronę „%1$s” (%2$s)."
+msgstr ""
+
+#: inc/store-setup.php:962
+msgid "Strona główna i blog są już ustawione."
+msgstr ""
+
+#: inc/store-setup.php:966
+msgid "Nie zmieniono strony głównej: potrzebne są opublikowane strony „Strona główna” i „Blog”."
+msgstr ""
+
+#: inc/store-setup.php:976
+msgid "Stroną główną jest teraz „Strona główna”, a wpisy są na stronie „Blog”."
+msgstr ""
+
+#: inc/store-setup.php:980
+msgid "Zobacz stronę główną"
+msgstr ""
+
+#: inc/store-setup.php:984
+msgid "Zobacz blog"
+msgstr ""
+
+#: inc/store-setup.php:1029
+msgid "Nie zmieniono tytułów: brak stron WooCommerce. Utwórz je w WooCommerce → Status → Narzędzia."
+msgstr ""
+
+#. translators: %s: list of errors.
+#: inc/store-setup.php:1057
+msgid "Nie udało się zmienić tytułów: %s"
+msgstr ""
+
+#: inc/store-setup.php:1061
+msgid "Tytuły stron sklepu są już takie jak w podglądzie."
+msgstr ""
+
+#. translators: %s: list of page titles.
+#: inc/store-setup.php:1065
+msgid "Zmieniono tytuły stron sklepu: %s."
+msgstr ""
+
+#: inc/store-setup.php:1078
+msgid "Nieznany krok."
+msgstr ""
+
+#. translators: 1: site title, 2: tagline.
+#: inc/store-setup.php:1096
+msgid "Nazwa witryny to teraz „%1$s”, a opis „%2$s”."
+msgstr ""
+
+#. translators: 1: site title, 2: tagline.
+#: inc/store-setup.php:1097
+msgid "Nazwa i opis witryny są już takie jak w podglądzie."
+msgstr ""
+
+#. translators: %s: store address.
+#: inc/store-setup.php:1101
+msgid "Adres sklepu w WooCommerce: %s."
+msgstr ""
+
+#. translators: %s: store address.
+#: inc/store-setup.php:1102
+msgid "Adres sklepu jest już wpisany."
+msgstr ""
+
+#. translators: %s: store address.
+#: inc/store-setup.php:1105
+msgid "Opinie mogą teraz wystawiać tylko klienci, którzy kupili produkt. Ich opinie mają oznaczenie „zweryfikowany właściciel” i ocenę w gwiazdkach."
+msgstr ""
+
+#: inc/store-setup.php:1106
+msgid "Opinie są już ustawione jak w podglądzie."
+msgstr ""
+
+#. translators: 1: name of the menu chosen in the header, 2: name of the main menu.
+#: inc/store-setup.php:1154
+msgid "Nagłówek ma w Edytorze wybrane menu „%1$s”. Aby pokazać „%2$s”, otwórz Wygląd → Edytor, zaznacz w nagłówku blok Nawigacja i w jego ustawieniach wybierz menu „%2$s”."
+msgstr ""
+
+#. translators: %s: menu name.
+#: inc/store-setup.php:1171
+msgid "Menu „%s” już istnieje."
+msgstr ""
+
+#: inc/store-setup.php:1182
+msgid "Nie utworzono menu: nie ma sklepu ani stron, do których mogłoby prowadzić."
+msgstr ""
+
+#. translators: %s: error message.
+#: inc/store-setup.php:1199
+msgid "Nie udało się utworzyć menu: %s"
+msgstr ""
+
+#: inc/store-setup.php:1205
+msgid "Sklep"
+msgstr ""
+
+#. translators: %s: menu name.
+#: inc/store-setup.php:1215
+msgid "Utworzono menu „%s”."
+msgstr ""
+
+#. translators: %s: menu name.
+#: inc/store-setup.php:1217
+msgid "Utworzono menu „%s”. Jest już widoczne w nagłówku."
+msgstr ""
+
+#. translators: %s: list of page titles.
+#: inc/store-setup.php:1220
+msgid "W menu pominięto strony, których nie ma lub które nie są opublikowane: %s."
+msgstr ""
+
+#: inc/store-setup.php:1223
+msgid "Bezpośrednie odnośniki są ustawione na „Prosty”, więc linki w menu zapisały się w postaci ?page_id=… Jeśli potem wybierzesz „Nazwa wpisu”, popraw w Edytorze linki w menu, zwłaszcza „Sklep”."
+msgstr ""
+
+#: inc/store-setup.php:1239
+msgid "Edytuj menu"
+msgstr ""
+
+#: inc/store-setup.php:1243 inc/store-setup.php:1638
+msgid "Wygląd → Edytor → Nawigacja"
+msgstr ""
+
+#. translators: %s: post title.
+#: inc/store-setup.php:1264
+msgid "Wpis „%s” jest w koszu – możesz go przywrócić."
+msgstr ""
+
+#. translators: %s: post title.
+#. translators: %s: list of titles.
+#: inc/store-setup.php:1264 inc/store-setup.php:1347
+msgid "Kosz wpisów"
+msgstr ""
+
+#. translators: %s: post title.
+#: inc/store-setup.php:1267
+msgid "Wpis „%s” już istnieje."
+msgstr ""
+
+#. translators: 1: post title, 2: error message.
+#: inc/store-setup.php:1294
+msgid "Nie udało się dodać wpisu „%1$s”: %2$s"
+msgstr ""
+
+#. translators: %s: post title.
+#: inc/store-setup.php:1315
+msgid "Dodano wpis „%s”."
+msgstr ""
+
+#: inc/store-setup.php:1336
+msgid "Nie ma już przykładowych treści WordPressa."
+msgstr ""
+
+#. translators: %s: list of titles.
+#: inc/store-setup.php:1343
+msgid "Przeniesiono do kosza: %s. W razie potrzeby możesz je stamtąd przywrócić."
+msgstr ""
+
+#: inc/store-setup.php:1449
+msgid "WooCommerce → Ustawienia → Zaawansowane"
+msgstr ""
+
+#: inc/store-setup.php:1463
+msgid "Stronę główną układa motyw (sekcje, kategorie, bestsellery), więc ta strona może zostać pusta."
+msgstr ""
+
+#: inc/store-setup.php:1464
+msgid "Tu pojawią się wpisy z bloga."
+msgstr ""
+
+#: inc/store-setup.php:1465
+msgid "Po opublikowaniu wybierz tę stronę w WooCommerce → Ustawienia → Zaawansowane, aby link „Regulamin” w stopce i przy zamówieniu prowadził do niej."
+msgstr ""
+
+#: inc/store-setup.php:1467
+msgid "Gotowy układ z motywu pojawi się sam. Tekst wpisany w edytorze pokaże się pod nim."
+msgstr ""
+
+#: inc/store-setup.php:1474
+msgid "Utworzy szkic strony „Regulamin” z tymczasowym tekstem. Klienci go nie zobaczą, dopóki nie wkleisz regulaminu i nie opublikujesz strony."
+msgstr ""
+
+#. translators: 1: page title, 2: address, e.g. /serwis/.
+#: inc/store-setup.php:1476
+msgid "Utworzy stronę „%1$s” pod adresem %2$s."
+msgstr ""
+
+#. translators: %s: address, e.g. /serwis/.
+#: inc/store-setup.php:1484
+msgid "Jest (%s)."
+msgstr ""
+
+#. translators: %s: post status, e.g. Szkic.
+#: inc/store-setup.php:1493
+msgid "Jest, ale nie jest opublikowana (%s). Opublikuj ją w edytorze."
+msgstr ""
+
+#: inc/store-setup.php:1496
+msgid "Wklej do niej swój regulamin, a po opublikowaniu wybierz ją w WooCommerce → Ustawienia → Zaawansowane."
+msgstr ""
+
+#: inc/store-setup.php:1503
+msgid "Jest w koszu. Przywróć ją (Strony → Kosz), zamiast tworzyć nową."
+msgstr ""
+
+#. translators: %s: address, e.g. /serwis/.
+#: inc/store-setup.php:1515
+msgid "Adres %s jest zajęty przez coś innego, np. plik o tej nazwie w bibliotece mediów. Zmień tamten adres i wróć tutaj."
+msgstr ""
+
+#: inc/store-setup.php:1519
+msgid "Brak."
+msgstr ""
+
+#. translators: 1: page title, 2: its address, 3: address the layout needs.
+#: inc/store-setup.php:1526
+msgid "Masz już stronę „%1$s” pod adresem %2$s. Gotowy układ działa tylko pod adresem %3$s – zmień adres tamtej strony na %3$s albo zaznacz ten krok, aby utworzyć nową."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:1548
+msgid "Regulamin sklepu jest już wybrany w WooCommerce: „%s”."
+msgstr ""
+
+#. translators: 1: page title, 2: its address.
+#: inc/store-setup.php:1553
+msgid "Masz już stronę „%1$s” (%2$s). Jeśli to Twój regulamin, wybierz ją w WooCommerce → Ustawienia → Zaawansowane."
+msgstr ""
+
+#: inc/store-setup.php:1560
+msgid "Masz już własną stronę główną (Ustawienia → Czytanie), więc ta strona nie jest zaznaczona."
+msgstr ""
+
+#: inc/store-setup.php:1577
+msgid "Stroną główną będzie „Strona główna” z układem motywu, a wpisy pojawią się na stronie „Blog”."
+msgstr ""
+
+#: inc/store-setup.php:1581
+msgid "Ustawienia → Czytanie"
+msgstr ""
+
+#: inc/store-setup.php:1588
+msgid "Ustawione."
+msgstr ""
+
+#: inc/store-setup.php:1594
+msgid "Strona główna pokazuje najnowsze wpisy."
+msgstr ""
+
+#. translators: 1: front page title, 2: posts page title or "brak".
+#: inc/store-setup.php:1598
+msgid "Stroną główną jest „%1$s”, strona z wpisami: %2$s."
+msgstr ""
+
+#. translators: 1: front page title, 2: posts page title or "brak".
+#: inc/store-setup.php:1600
+msgid "brak"
+msgstr ""
+
+#: inc/store-setup.php:1602
+msgid "Masz już własną stronę główną, więc ten krok nie jest zaznaczony."
+msgstr ""
+
+#: inc/store-setup.php:1606
+msgid "Wymaga stron „Strona główna” i „Blog” (w tabeli wyżej)."
+msgstr ""
+
+#. translators: %s: list of product categories.
+#: inc/store-setup.php:1631
+msgid "Utworzy menu „Menu główne” jak w podglądzie: Sklep (z kategoriami: %s), Serwis, Opinie, Social media, O firmie, Kontakt."
+msgstr ""
+
+#. translators: %s: list of product categories.
+#: inc/store-setup.php:1632
+msgid "na razie żadna kategoria nie ma produktów"
+msgstr ""
+
+#: inc/store-setup.php:1634
+msgid "Menu powstaje jednorazowo. Kategorie, w których produkty pojawią się później, dodasz w Edytorze."
+msgstr ""
+
+#. translators: %s: menu name.
+#: inc/store-setup.php:1646
+msgid "Jest menu „%s”."
+msgstr ""
+
+#: inc/store-setup.php:1656
+msgid "Nie ma menu, więc nagłówek pokazuje listę wszystkich stron."
+msgstr ""
+
+#. translators: %s: menu name.
+#: inc/store-setup.php:1659
+msgid "W nagłówku jest automatyczne menu „%s” z listą wszystkich stron."
+msgstr ""
+
+#. translators: %s: menu name.
+#: inc/store-setup.php:1662
+msgid "W nagłówku jest Twoje menu „%s”."
+msgstr ""
+
+#. translators: %s: list of menu names.
+#: inc/store-setup.php:1670
+msgid "Masz też menu: %s."
+msgstr ""
+
+#: inc/store-setup.php:1673
+msgid "Jeśli zaznaczysz ten krok, powstanie nowe menu „Menu główne”. Obecne menu zostanie bez zmian."
+msgstr ""
+
+#: inc/store-setup.php:1674
+msgid "Jeśli zaznaczysz ten krok, powstanie nowe menu „Menu główne” i to ono pojawi się w nagłówku. Obecne menu zostanie – możesz do niego wrócić w Edytorze."
+msgstr ""
+
+#: inc/store-setup.php:1683
+msgid "Bezpośrednie odnośniki są ustawione na „Prosty”, więc ten krok nie jest zaznaczony. Najpierw wybierz „Nazwa wpisu” (Ustawienia → Bezpośrednie odnośniki), a potem utwórz menu – linki zapisane teraz miałyby postać ?page_id=… i po zmianie link „Sklep” prowadziłby w złe miejsce."
+msgstr ""
+
+#. translators: %s: permalink structure, e.g. /%postname%/.
+#: inc/store-setup.php:1686 inc/store-setup.php:2065
+msgid "Ustawienia → Bezpośrednie odnośniki"
+msgstr ""
+
+#: inc/store-setup.php:1727
+msgid "(puste)"
+msgstr ""
+
+#. translators: 1: site title, 2: tagline.
+#: inc/store-setup.php:1733
+msgid "Zmieni nazwę witryny na „%1$s” i opis na „%2$s”."
+msgstr ""
+
+#. translators: 1: site title, 2: tagline.
+#: inc/store-setup.php:1736
+msgid "Nazwa: %1$s, opis: %2$s."
+msgstr ""
+
+#: inc/store-setup.php:1743
+msgid "Ustawienia → Ogólne"
+msgstr ""
+
+#: inc/store-setup.php:1758
+msgid "Masz już własną nazwę lub opis, więc ten krok nie jest zaznaczony."
+msgstr ""
+
+#. translators: %s: store address.
+#: inc/store-setup.php:1781
+msgid "Wpisze adres %s w ustawieniach WooCommerce (e-maile, wysyłka, podatki)."
+msgstr ""
+
+#: inc/store-setup.php:1786
+msgid "WooCommerce → Ustawienia → Ogólne"
+msgstr ""
+
+#: inc/store-setup.php:1805
+msgid "Brak adresu."
+msgstr ""
+
+#. translators: %s: store address.
+#: inc/store-setup.php:1808
+msgid "Zastąpi obecny adres adresem %s (e-maile, wysyłka, podatki)."
+msgstr ""
+
+#: inc/store-setup.php:1809
+msgid "Adres jest już wpisany, więc ten krok nie jest zaznaczony."
+msgstr ""
+
+#: inc/store-setup.php:1827
+msgid "opinie"
+msgstr ""
+
+#: inc/store-setup.php:1828
+msgid "tylko od kupujących"
+msgstr ""
+
+#: inc/store-setup.php:1829
+msgid "oznaczenie „zweryfikowany właściciel”"
+msgstr ""
+
+#: inc/store-setup.php:1830
+msgid "oceny w gwiazdkach"
+msgstr ""
+
+#: inc/store-setup.php:1839
+msgid "tak"
+msgstr ""
+
+#: inc/store-setup.php:1839
+msgid "nie"
+msgstr ""
+
+#: inc/store-setup.php:1846
+msgid "Włączy opinie i oceny w gwiazdkach. Opinie wystawią tylko klienci, którzy kupili produkt, z oznaczeniem „zweryfikowany właściciel”. Strona /opinie poinformuje, że opinie są weryfikowane."
+msgstr ""
+
+#: inc/store-setup.php:1853
+msgid "WooCommerce → Ustawienia → Produkty"
+msgstr ""
+
+#: inc/store-setup.php:1859
+msgid "Opinie, oceny w gwiazdkach lub oznaczenie są u Ciebie wyłączone, więc ten krok nie jest zaznaczony."
+msgstr ""
+
+#. translators: %s: list of page titles.
+#: inc/store-setup.php:1905
+msgid "Zmieni tytuły stron WooCommerce na: %s."
+msgstr ""
+
+#: inc/store-setup.php:1912
+msgid "Niektóre tytuły zmieniono już ręcznie, więc ten krok nie jest zaznaczony."
+msgstr ""
+
+#. translators: %s: list of page titles.
+#: inc/store-setup.php:1921
+msgid "Brakuje stron WooCommerce: %s. Utwórz je w WooCommerce → Status → Narzędzia → Utwórz domyślne strony WooCommerce."
+msgstr ""
+
+#: inc/store-setup.php:1924
+msgid "WooCommerce → Status → Narzędzia"
+msgstr ""
+
+#. translators: %s: list of post titles.
+#: inc/store-setup.php:1944
+msgid "Doda wpisy w kategorii Poradniki: %s."
+msgstr ""
+
+#. translators: %s: list of post titles.
+#: inc/store-setup.php:1945
+msgid "Wpisy wspominają o usługach sklepu: przeglądzie sezonowym w serwisie w Czernicy, pomocy w doborze pilarki i montażu robotów koszących. Sprawdź, czy to zgadza się z ofertą, zanim je zostawisz."
+msgstr ""
+
+#: inc/store-setup.php:1946
+msgid "Nie ma ich jeszcze."
+msgstr ""
+
+#. translators: %s: list of post titles.
+#: inc/store-setup.php:1951
+msgid "Są już: %s."
+msgstr ""
+
+#: inc/store-setup.php:1973
+msgid "Przeniesie do kosza wpis „Witaj, świecie!” i stronę „Przykładowa strona”. Można je przywrócić z kosza."
+msgstr ""
+
+#: inc/store-setup.php:1974
+msgid "Nie ma ich już."
+msgstr ""
+
+#. translators: %s: post title.
+#: inc/store-setup.php:1985
+msgid "Edytuj „%s”"
+msgstr ""
+
+#. translators: %s: list of titles.
+#: inc/store-setup.php:1989
+msgid "Są: %s."
+msgstr ""
+
+#: inc/store-setup.php:2032
+msgid "Produkty, kategorie, płatności (PayU), wysyłka i tryb „Wkrótce dostępny” nie są zmieniane."
+msgstr ""
+
+#: inc/store-setup.php:2043
+msgid "Sklep jest w trybie „Wkrótce dostępny”: klienci nie widzą stron sklepu. Wyłącz go, gdy wszystko będzie gotowe."
+msgstr ""
+
+#: inc/store-setup.php:2043
+msgid "Sklep jest w trybie „Wkrótce dostępny”: klienci widzą tylko stronę zapowiedzi. Wyłącz go, gdy wszystko będzie gotowe."
+msgstr ""
+
+#: inc/store-setup.php:2044
+msgid "Sklep jest widoczny dla wszystkich (tryb „Wkrótce dostępny” jest wyłączony)."
+msgstr ""
+
+#: inc/store-setup.php:2049
+msgid "WooCommerce → Ustawienia → Widoczność witryny"
+msgstr ""
+
+#: inc/store-setup.php:2058
+msgid "Bezpośrednie odnośniki są ustawione na „Prosty” (adresy typu ?page_id=12). Wybierz „Nazwa wpisu”, aby adresy wyglądały jak /serwis/."
+msgstr ""
+
+#. translators: %s: permalink structure, e.g. /%postname%/.
+#: inc/store-setup.php:2060
+msgid "Bezpośrednie odnośniki: %s."
+msgstr ""
+
+#: inc/store-setup.php:2074
+msgid "Nie wybrano strony z polityką prywatności."
+msgstr ""
+
+#: inc/store-setup.php:2079
+msgid "Ustawienia → Prywatność"
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:2086
+msgid "Polityka prywatności („%s”) jest szkicem. Uzupełnij ją i opublikuj."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:2093
+msgid "Polityka prywatności („%s”) jest opublikowana."
+msgstr ""
+
+#: inc/store-setup.php:2103
+msgid "W WooCommerce nie wybrano opublikowanej strony z regulaminem, więc link „Regulamin” w stopce nigdzie nie prowadzi. Wybierz ją, gdy regulamin będzie gotowy."
+msgstr ""
+
+#: inc/store-setup.php:2112 patterns/footer.php:60
+msgid "Dostawa i płatność"
+msgstr ""
+
+#: inc/store-setup.php:2113 patterns/footer.php:62
+msgid "Zwroty i reklamacje"
+msgstr ""
+
+#. translators: 1: page title, 2: address, e.g. /dostawa-i-platnosc/.
+#: inc/store-setup.php:2120
+msgid "Stopka ma link do strony „%1$s” (%2$s), której nie ma lub która nie jest opublikowana. Utwórz i opublikuj stronę pod tym adresem albo zmień stopkę w Edytorze."
+msgstr ""
+
+#: inc/store-setup.php:2125
+msgid "Dodaj stronę"
+msgstr ""
+
+#: inc/store-setup.php:2140 inc/store-setup.php:2247
+msgid "Ustaw sklep jak w podglądzie"
+msgstr ""
+
+#: inc/store-setup.php:2141 inc/store-setup.php:2450
+msgid "Ustaw sklep"
+msgstr ""
+
+#: inc/store-setup.php:2182
+msgid "Utworzono"
+msgstr ""
+
+#: inc/store-setup.php:2183
+msgid "Zmieniono"
+msgstr ""
+
+#: inc/store-setup.php:2184
+msgid "Bez zmian"
+msgstr ""
+
+#: inc/store-setup.php:2185
+msgid "Błąd"
+msgstr ""
+
+#: inc/store-setup.php:2190
+msgid "Zakończono, ale nie wszystko się udało:"
+msgstr ""
+
+#: inc/store-setup.php:2190
+msgid "Gotowe. Oto wynik:"
+msgstr ""
+
+#: inc/store-setup.php:2193
+msgid "Nic nie było zaznaczone, więc nic się nie zmieniło."
+msgstr ""
+
+#: inc/store-setup.php:2228
+msgid "Strony"
+msgstr ""
+
+#: inc/store-setup.php:2229
+msgid "Strona główna i menu"
+msgstr ""
+
+#: inc/store-setup.php:2230
+msgid "Dane sklepu"
+msgstr ""
+
+#: inc/store-setup.php:2231
+msgid "Opcjonalnie"
+msgstr ""
+
+#: inc/store-setup.php:2253
+msgid "To narzędzie uzupełnia sklep o to, co jest w podglądzie motywu: strony, menu, stronę główną i podstawowe dane sklepu. Niczego nie usuwa – przykładowe treści WordPressa przenosi do kosza tylko wtedy, gdy zaznaczysz ten krok. Zaznaczone są kroki, które dodają brakujące rzeczy albo zmieniają ustawienia różniące się od podglądu, więc przed kliknięciem porównaj kolumny „Co się stanie” i „Stan obecny”. Narzędzie możesz uruchomić ponownie: to, co jest gotowe, zostaje bez zmian."
+msgstr ""
+
+#: inc/store-setup.php:2274
+msgid "Wykonać?"
+msgstr ""
+
+#: inc/store-setup.php:2275
+msgid "Krok"
+msgstr ""
+
+#: inc/store-setup.php:2276
+msgid "Co się stanie"
+msgstr ""
+
+#: inc/store-setup.php:2277
+msgid "Stan obecny"
+msgstr ""
+
+#: inc/store-setup.php:2302
+msgid "Gotowe"
+msgstr ""
+
+#: inc/store-setup.php:2302
+msgid "Do zrobienia ręcznie"
+msgstr ""
+
+#: inc/store-setup.php:2311
+msgid "Narzędzie tego nie zmieni – zobacz obok, co możesz zrobić."
+msgstr ""
+
+#: inc/store-setup.php:2313
+msgid "Nic do zrobienia."
+msgstr ""
+
+#: inc/store-setup.php:2323
+msgid "Bez zmian – do sprawdzenia"
+msgstr ""
+
+#: inc/store-setup.php:2332
+msgid "Zastosuj zaznaczone"
+msgstr ""
+
+#: inc/store-setup.php:2334
+msgid "Narzędzie zrobiło już wszystko, co mogło. Kroki oznaczone „Do zrobienia ręcznie” wykonaj samodzielnie – podpowiedzi są w kolumnie „Stan obecny”."
+msgstr ""
+
+#: inc/store-setup.php:2336
+msgid "Wszystko jest już ustawione jak w podglądzie."
+msgstr ""
+
+#: inc/store-setup.php:2364 inc/store-setup.php:2462
+msgid "Nie masz uprawnień do zmiany ustawień sklepu."
+msgstr ""
+
+#: inc/store-setup.php:2374
+msgid "Ustawianie sklepu już trwa (np. po podwójnym kliknięciu). Odczekaj chwilę i odśwież tę stronę."
+msgstr ""
+
+#. translators: %s: page title.
+#: inc/store-setup.php:2410
+msgid "%s (w koszu)"
+msgstr ""
+
+#: inc/store-setup.php:2417
+msgid "menu główne"
+msgstr ""
+
+#. translators: %s: list of missing pages and the menu.
+#: inc/store-setup.php:2448
+msgid "Motyw: w sklepie brakuje stron lub menu z podglądu (%s). Sprawdź i dodaj je na ekranie Wygląd → Ustaw sklep."
+msgstr ""
+
+#: inc/store-setup.php:2452
+msgid "Nie pokazuj więcej"
+msgstr ""
 
 #. translators: %d: discount percentage.
 #: inc/woocommerce.php:109
@@ -813,14 +1592,6 @@ msgstr ""
 
 #: patterns/footer.php:58 patterns/page-social.php:20
 msgid "Social media"
-msgstr ""
-
-#: patterns/footer.php:60
-msgid "Dostawa i płatność"
-msgstr ""
-
-#: patterns/footer.php:62
-msgid "Zwroty i reklamacje"
 msgstr ""
 
 #: patterns/footer.php:64
@@ -1128,10 +1899,6 @@ msgid "Product meta"
 msgstr "Metadane produktu"
 
 #: patterns/hidden-product-meta.php:15
-msgid "Brand: "
-msgstr "Marka: "
-
-#: patterns/hidden-product-meta.php:17
 msgid "Tags: "
 msgstr "Tagi: "
 
@@ -1261,16 +2028,12 @@ msgstr ""
 msgid "Pytanie o sprzęt, zamówienie albo serwis? Najszybciej złapiesz nas telefonicznie w godzinach otwarcia sklepu."
 msgstr ""
 
-#: patterns/page-contact.php:37 patterns/store-visit.php:40
-msgid "Wyznacz trasę"
-msgstr ""
-
-#: patterns/page-contact.php:48
+#: patterns/page-contact.php:52
 msgid "Dane firmy"
 msgstr ""
 
 #. translators: %s: tax ID.
-#: patterns/page-contact.php:52
+#: patterns/page-contact.php:56
 msgid "NIP: %s"
 msgstr ""
 
@@ -1573,10 +2336,6 @@ msgid_plural "%s products"
 msgstr[0] "%s produkt"
 msgstr[1] "%s produkty"
 msgstr[2] "%s produktów"
-
-#: patterns/shop-categories.php:31 patterns/shop-categories.php:32 patterns/shop-categories.php:33 patterns/shop-categories.php:34
-msgid "Zobacz"
-msgstr ""
 
 #: patterns/shop-categories.php:42
 msgid "Categories"

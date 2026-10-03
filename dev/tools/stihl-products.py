@@ -145,6 +145,22 @@ def text(value):
 	return tidy(html.unescape(value))
 
 
+ALLOWED_TAGS = ('p', 'strong', 'b', 'em', 'i', 'ul', 'ol', 'li', 'h3', 'h4', 'br', 'sup', 'sub')
+
+
+def clean_html(value):
+	"""Keeps simple formatting tags (without attributes) and drops everything else, e.g. links."""
+	value = re.sub(r'<h[12]\b[^>]*>', '<h3>', value or '', flags=re.I)
+	value = re.sub(r'</h[12]>', '</h3>', value, flags=re.I)
+
+	def tag(match):
+		name = match.group(2).lower()
+		return '<%s%s>' % (match.group(1), name) if name in ALLOWED_TAGS else ''
+	value = re.sub(r'<(/?)([a-zA-Z0-9]+)\b[^>]*>', tag, value)
+	value = re.sub(r'<p>\s*(&nbsp;|\s)*</p>', '', value)
+	return re.sub(r'[ \t]+', ' ', value).strip()
+
+
 def shorten(value, limit=300):
 	if len(value) <= limit:
 		return value
@@ -172,9 +188,10 @@ def price(amount):
 	return '%.2f' % (amount / 100) if amount else None
 
 
-def build(item, detail, source, category):
+def build(item, detail, source, category, full=False):
+	"""Builds a product record. full=True keeps the whole description (for the live shop)."""
 	name = detail.get('name') or item['name']
-	prices = {p['type']: p['amount'] for p in detail.get('prices') or item.get('prices') or []}
+	prices = {p.get('type'): p.get('amount') for p in detail.get('prices') or item.get('prices') or [] if p.get('type')}
 	regular = prices.get('RRP') or prices.get('BUY')
 	buy = prices.get('BUY')
 	features = detail.get('features') or []
@@ -204,7 +221,10 @@ def build(item, detail, source, category):
 	highlights = [text(h) for h in detail.get('highlights') or item.get('highlights') or [] if text(h)]
 	parts = []
 	if detail.get('description'):
-		parts.append('<p>' + html.escape(shorten(text(detail['description']), 900)) + '</p>')
+		if full:
+			parts.append(clean_html(detail['description']))
+		else:
+			parts.append('<p>' + html.escape(shorten(text(detail['description']), 900)) + '</p>')
 	if highlights:
 		parts.append('<h3>Najważniejsze cechy</h3><ul>' + ''.join('<li>' + html.escape(h) + '</li>' for h in highlights) + '</ul>')
 	if features:
@@ -218,7 +238,10 @@ def build(item, detail, source, category):
 	short = clean_summary(text(summary)) or text(detail.get('headline')) or (highlights[0] if highlights else '')
 
 	variants = detail.get('variants') or []
-	sku = variants[0].get('manufacturerAID', '') if len(variants) == 1 else detail.get('masterVariantId', '')
+	# The STIHL order number shown on stihl.pl (e.g. 1148 200 0361) is the
+	# variant's "sku"; "manufacturerAID" is the bare device number.
+	sku = (variants[0].get('sku') or variants[0].get('id', '')) if len(variants) == 1 else detail.get('masterVariantId', '')
+	device_number = variants[0].get('manufacturerAID', '') if len(variants) == 1 else ''
 
 	images = []
 	for asset in detail.get('assets') or item.get('assets') or []:
@@ -238,6 +261,7 @@ def build(item, detail, source, category):
 		'price_regular': price(regular),
 		'price_promo': price(buy) if buy and regular and buy < regular else None,
 		'sku': sku or '',
+		'device_number': device_number,
 		'stihl_id': str(item['id']),
 		'short_description': shorten(short),
 		'description_html': ''.join(parts),
