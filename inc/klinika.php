@@ -276,3 +276,123 @@ function witryna_register_reviews_block() {
 	register_block_type( get_theme_file_path( 'blocks/map' ) );
 }
 add_action( 'init', 'witryna_register_reviews_block' );
+
+/**
+ * Sanitizes the hero photo dimming (percent).
+ *
+ * @param mixed $value Value.
+ * @return int
+ */
+function witryna_hero_sanitize_dim( $value ) {
+	return min( 90, max( 30, absint( $value ) ) );
+}
+
+/**
+ * Registers the home page hero photo settings in the Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Customizer instance.
+ */
+function witryna_hero_customize( $wp_customize ) {
+	$wp_customize->add_section(
+		'witryna_hero',
+		array(
+			'title'       => __( 'Zdjęcie na stronie głównej', 'witryna' ),
+			'description' => __( 'Zdjęcie w tle pierwszej sekcji strony głównej, pod napisem i listą kategorii. Najlepiej poziome, co najmniej 1920 px szerokości. Bez zdjęcia sekcja ma grafitowe tło.', 'witryna' ),
+			'priority'    => 155,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'witryna_hero_image',
+		array(
+			'default'           => 0,
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'witryna_hero_image',
+			array(
+				'label'     => __( 'Zdjęcie w tle', 'witryna' ),
+				'section'   => 'witryna_hero',
+				'mime_type' => 'image',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'witryna_hero_dim',
+		array(
+			'default'           => 70,
+			'sanitize_callback' => 'witryna_hero_sanitize_dim',
+		)
+	);
+	$wp_customize->add_control(
+		'witryna_hero_dim',
+		array(
+			'label'       => __( 'Przyciemnienie zdjęcia', 'witryna' ),
+			'description' => __( 'Mocniejsze przyciemnienie poprawia czytelność białego tekstu.', 'witryna' ),
+			'section'     => 'witryna_hero',
+			'type'        => 'range',
+			'input_attrs' => array(
+				'min'  => 30,
+				'max'  => 90,
+				'step' => 5,
+			),
+		)
+	);
+}
+add_action( 'customize_register', 'witryna_hero_customize' );
+
+/**
+ * Puts the photo chosen in the Customizer behind the home page hero.
+ *
+ * Works on the rendered block, so it also applies after the home page has
+ * been edited in the site editor, as long as the hero keeps its class.
+ *
+ * @param string $block_content Block HTML.
+ * @param array  $block         Block.
+ * @return string
+ */
+function witryna_hero_photo( $block_content, $block ) {
+	$image_id = absint( get_theme_mod( 'witryna_hero_image' ) );
+	if ( ! $image_id || ! preg_match( '/(^|\s)witryna-hero--tools(\s|$)/', $block['attrs']['className'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	// On phones the hero is tall and narrow, so the cropped photo needs more pixels than the screen width.
+	$image = wp_get_attachment_image(
+		$image_id,
+		'full',
+		false,
+		array(
+			'class'         => 'witryna-hero__photo',
+			'alt'           => '',
+			'sizes'         => '(max-width: 781px) 200vw, 100vw',
+			'loading'       => false,
+			'fetchpriority' => 'high',
+			'decoding'      => 'async',
+		)
+	);
+
+	$tags = new WP_HTML_Tag_Processor( $block_content );
+	if ( ! $image || ! $tags->next_tag() ) {
+		return $block_content;
+	}
+
+	$dim   = witryna_hero_sanitize_dim( get_theme_mod( 'witryna_hero_dim', 70 ) ) / 100;
+	$style = $tags->get_attribute( 'style' );
+	$tags->add_class( 'has-witryna-photo' );
+	$tags->set_attribute( 'style', '--witryna-hero-dim:' . $dim . ';' . ( is_string( $style ) ? $style : '' ) );
+
+	return preg_replace_callback(
+		'/^\s*<[^>]+>/',
+		static function ( $match ) use ( $image ) {
+			return $match[0] . $image;
+		},
+		$tags->get_updated_html(),
+		1
+	);
+}
+add_filter( 'render_block_core/group', 'witryna_hero_photo', 10, 2 );

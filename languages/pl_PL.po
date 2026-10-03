@@ -580,6 +580,26 @@ msgstr ""
 msgid "Zaznacz, gdy polityka prywatności (i baner cookies, jeśli jest) obejmuje Mapy Google. Bez tego opinie wczytają się po kliknięciu przycisku."
 msgstr ""
 
+#: inc/klinika.php:299
+msgid "Zdjęcie na stronie głównej"
+msgstr ""
+
+#: inc/klinika.php:300
+msgid "Zdjęcie w tle pierwszej sekcji strony głównej, pod napisem i listą kategorii. Najlepiej poziome, co najmniej 1920 px szerokości. Bez zdjęcia sekcja ma grafitowe tło."
+msgstr ""
+
+#: inc/klinika.php:317
+msgid "Zdjęcie w tle"
+msgstr ""
+
+#: inc/klinika.php:334
+msgid "Przyciemnienie zdjęcia"
+msgstr ""
+
+#: inc/klinika.php:335
+msgid "Mocniejsze przyciemnienie poprawia czytelność białego tekstu."
+msgstr ""
+
 #: inc/patterns.php:20
 msgid "Shop sections"
 msgstr "Sekcje sklepu"

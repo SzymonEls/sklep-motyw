@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WITRYNA_VERSION', '1.2.3' );
+define( 'WITRYNA_VERSION', '1.2.4' );
 
 require_once get_template_directory() . '/inc/setup.php';
 require_once get_template_directory() . '/inc/block-styles.php';

@@ -19,6 +19,10 @@ grafitowo-pomarańczowa paleta, ostrzejsze rogi, pasek z adresem, godzinami, tel
 - **Opinie**: blok `witryna/reviews` (strona główna i /opinie) pokazuje opinie z Google (wyświetla je
   sam Google, patrz niżej) i zatwierdzone opinie produktów z WooCommerce, od najnowszych, z każdą
   oceną, nigdy przykładowe. Na /opinie jest też informacja, czy i jak opinie są weryfikowane.
+- **Zdjęcie w tle strony głównej**: *Wygląd → Dostosuj → Zdjęcie na stronie głównej*. Wybrane
+  zdjęcie pojawia się za napisem i listą kategorii w pierwszej sekcji, przyciemnione (suwak
+  „Przyciemnienie zdjęcia”), żeby biały tekst był czytelny. Najlepiej poziome, co najmniej 1920 px
+  szerokości. Bez zdjęcia sekcja ma grafitowe tło.
 - Nowe ikony: `shield`, `wrench`, `store`, `clock`, `pin`, `star` (`npm run icons`).
 
 ## Opinie Google
