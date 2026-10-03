@@ -562,6 +562,30 @@ function witryna_setup_shop_page_id() {
 }
 
 /**
+ * Returns the attributes of a menu link to a product category.
+ *
+ * Used when the menu is created and when categories are added to it later,
+ * so both links look the same.
+ *
+ * @param WP_Term $term Product category.
+ * @return array|null Null when the category has no address.
+ */
+function witryna_setup_category_link_attrs( $term ) {
+	$url = get_term_link( $term );
+	if ( is_wp_error( $url ) ) {
+		return null;
+	}
+
+	return array(
+		'label' => esc_html( $term->name ),
+		'type'  => 'product_cat',
+		'id'    => (int) $term->term_id,
+		'url'   => esc_url_raw( $url ),
+		'kind'  => 'taxonomy',
+	);
+}
+
+/**
  * Returns the block markup of the main menu, the same as in the preview.
  *
  * "Sklep" opens a submenu with the top-level product categories, followed by
@@ -580,21 +604,10 @@ function witryna_setup_menu_markup( $page_ids, $category_order = array() ) {
 	if ( $shop_id ) {
 		$links = '';
 		foreach ( witryna_setup_menu_categories( $category_order ) as $term ) {
-			$url = get_term_link( $term );
-			if ( is_wp_error( $url ) ) {
-				continue;
+			$attrs = witryna_setup_category_link_attrs( $term );
+			if ( $attrs ) {
+				$links .= get_comment_delimited_block_content( 'core/navigation-link', $attrs, '' );
 			}
-			$links .= get_comment_delimited_block_content(
-				'core/navigation-link',
-				array(
-					'label' => esc_html( $term->name ),
-					'type'  => 'product_cat',
-					'id'    => (int) $term->term_id,
-					'url'   => esc_url_raw( $url ),
-					'kind'  => 'taxonomy',
-				),
-				''
-			);
 		}
 		$markup .= get_comment_delimited_block_content(
 			'core/navigation-submenu',
@@ -644,6 +657,206 @@ function witryna_setup_find_menu() {
 	}
 
 	return null;
+}
+
+/**
+ * Returns an address in a form that can be compared.
+ *
+ * The scheme and a trailing slash are left out, so http:// and https://
+ * links to the same place count as one.
+ *
+ * @param string $url Address.
+ * @return string
+ */
+function witryna_setup_normalize_url( $url ) {
+	return strtolower( untrailingslashit( (string) preg_replace( '#^https?://#i', '', trim( (string) $url ) ) ) );
+}
+
+/**
+ * Returns the label of a menu item as plain text.
+ *
+ * @param array $block Parsed block.
+ * @return string
+ */
+function witryna_setup_block_label( $block ) {
+	$label = isset( $block['attrs']['label'] ) ? (string) $block['attrs']['label'] : '';
+
+	return trim( html_entity_decode( wp_strip_all_tags( $label ), ENT_QUOTES, 'UTF-8' ) );
+}
+
+/**
+ * Compares two names in Polish alphabetical order (Ł after L, Ś after S).
+ *
+ * @param string $a First name.
+ * @param string $b Second name.
+ * @return int Less than 0 when $a comes first, more than 0 when $b does.
+ */
+function witryna_setup_compare_names( $a, $b ) {
+	static $collator = null;
+
+	if ( null === $collator && class_exists( 'Collator' ) ) {
+		$collator = new Collator( 'pl_PL' );
+	}
+	if ( $collator ) {
+		return (int) $collator->compare( $a, $b );
+	}
+
+	return strcasecmp( remove_accents( $a ), remove_accents( $b ) );
+}
+
+/**
+ * Returns the position of the "Sklep" submenu among the top-level menu items.
+ *
+ * The submenu is found by the shop page (ID or address) or by its label,
+ * so a submenu renamed or pointed elsewhere by the owner still counts if
+ * one of them matches.
+ *
+ * @param array[] $blocks Parsed blocks of the menu.
+ * @return int|null Null when the menu has no such submenu.
+ */
+function witryna_setup_find_shop_submenu( $blocks ) {
+	$shop_id  = witryna_setup_shop_page_id();
+	$shop_url = $shop_id ? witryna_setup_normalize_url( get_permalink( $shop_id ) ) : '';
+
+	foreach ( $blocks as $i => $block ) {
+		if ( 'core/navigation-submenu' !== $block['blockName'] ) {
+			continue;
+		}
+		$attrs = $block['attrs'];
+		// Only a link to a page counts here: term IDs can equal the shop page ID.
+		if ( $shop_id && isset( $attrs['kind'], $attrs['id'] ) && 'post-type' === $attrs['kind'] && (int) $attrs['id'] === $shop_id ) {
+			return $i;
+		}
+		if ( '' !== $shop_url && ! empty( $attrs['url'] ) && witryna_setup_normalize_url( $attrs['url'] ) === $shop_url ) {
+			return $i;
+		}
+		if ( 'sklep' === mb_strtolower( witryna_setup_block_label( $block ) ) ) {
+			return $i;
+		}
+	}
+
+	return null;
+}
+
+/**
+ * Tells whether a submenu already links to a product category.
+ *
+ * Only the direct items of the submenu are checked.
+ *
+ * @param array   $submenu Parsed submenu block.
+ * @param WP_Term $term    Product category.
+ * @return bool
+ */
+function witryna_setup_submenu_has_category( $submenu, $term ) {
+	$url = get_term_link( $term );
+	$url = is_wp_error( $url ) ? '' : witryna_setup_normalize_url( $url );
+
+	foreach ( $submenu['innerBlocks'] as $block ) {
+		if ( ! in_array( $block['blockName'], array( 'core/navigation-link', 'core/navigation-submenu' ), true ) ) {
+			continue;
+		}
+		$attrs = $block['attrs'];
+		if ( isset( $attrs['kind'], $attrs['type'], $attrs['id'] ) && 'taxonomy' === $attrs['kind'] && 'product_cat' === $attrs['type'] && (int) $attrs['id'] === (int) $term->term_id ) {
+			return true;
+		}
+		if ( '' !== $url && ! empty( $attrs['url'] ) && witryna_setup_normalize_url( $attrs['url'] ) === $url ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Returns the categories with products that the "Sklep" submenu lacks.
+ *
+ * @param WP_Post $menu Navigation menu.
+ * @return array{blocks: array[], submenu: int|null, missing: WP_Term[]}
+ *               Parsed blocks, position of the submenu (null when there is
+ *               none) and the missing categories, by name.
+ */
+function witryna_setup_menu_missing_categories( $menu ) {
+	$blocks  = parse_blocks( $menu->post_content );
+	$submenu = witryna_setup_find_shop_submenu( $blocks );
+	$missing = array();
+
+	if ( null !== $submenu ) {
+		foreach ( witryna_setup_menu_categories() as $term ) {
+			if ( witryna_setup_category_link_attrs( $term ) && ! witryna_setup_submenu_has_category( $blocks[ $submenu ], $term ) ) {
+				$missing[] = $term;
+			}
+		}
+		// The database may sort "Ł" after "Z".
+		usort(
+			$missing,
+			static function ( $a, $b ) {
+				return witryna_setup_compare_names( html_entity_decode( $a->name, ENT_QUOTES, 'UTF-8' ), html_entity_decode( $b->name, ENT_QUOTES, 'UTF-8' ) );
+			}
+		);
+	}
+
+	return array(
+		'blocks'  => $blocks,
+		'submenu' => $submenu,
+		'missing' => $missing,
+	);
+}
+
+/**
+ * Adds a link to a product category to a submenu, keeping the name order.
+ *
+ * The link goes before the first category link whose name comes after it,
+ * else right after the last category link, else at the end. Other items
+ * are kept as they are.
+ *
+ * @param array $submenu Parsed submenu block.
+ * @param array $attrs   Link attributes, see witryna_setup_category_link_attrs().
+ * @return array The submenu.
+ */
+function witryna_setup_insert_category_link( $submenu, $attrs ) {
+	$label    = html_entity_decode( $attrs['label'], ENT_QUOTES, 'UTF-8' );
+	$position = null;
+	$last     = null;
+
+	foreach ( $submenu['innerBlocks'] as $i => $block ) {
+		if ( ! isset( $block['attrs']['type'] ) || 'product_cat' !== $block['attrs']['type'] ) {
+			continue;
+		}
+		if ( witryna_setup_compare_names( witryna_setup_block_label( $block ), $label ) > 0 ) {
+			$position = $i;
+			break;
+		}
+		$last = $i;
+	}
+	if ( null === $position ) {
+		$position = null === $last ? count( $submenu['innerBlocks'] ) : $last + 1;
+	}
+
+	// innerContent has one null per inner block, in the same order.
+	$nulls = array_keys( $submenu['innerContent'], null, true );
+	if ( isset( $nulls[ $position ] ) ) {
+		$content_position = $nulls[ $position ];
+	} else {
+		$content_position = $nulls ? end( $nulls ) + 1 : count( $submenu['innerContent'] );
+	}
+
+	array_splice(
+		$submenu['innerBlocks'],
+		$position,
+		0,
+		array(
+			array(
+				'blockName'    => 'core/navigation-link',
+				'attrs'        => $attrs,
+				'innerBlocks'  => array(),
+				'innerHTML'    => '',
+				'innerContent' => array(),
+			),
+		)
+	);
+	array_splice( $submenu['innerContent'], $content_position, 0, array( null ) );
+
+	return $submenu;
 }
 
 /**
@@ -1155,24 +1368,21 @@ function witryna_setup_header_ref_hint( $ref, $menu ) {
 }
 
 /**
- * Creates the main menu of the preview, unless the same menu already exists.
+ * Creates the main menu of the preview, or completes it if it exists.
  *
  * The new menu is the newest one, so the header shows it straight away
- * (unless a menu was chosen in the header in the Site Editor).
+ * (unless a menu was chosen in the header in the Site Editor). When the
+ * menu exists, see witryna_setup_complete_menu().
  *
  * @param int[] $category_order Optional order of the categories, see witryna_setup_menu_categories().
+ *                              Not used when the menu exists.
  * @return array Result.
  */
 function witryna_setup_apply_menu( $category_order = array() ) {
 	$ref      = witryna_setup_header_menu_ref();
 	$existing = witryna_setup_find_menu();
 	if ( $existing ) {
-		/* translators: %s: menu name. */
-		$message = sprintf( __( 'Menu „%s” już istnieje.', 'witryna' ), $existing->post_title );
-		if ( $ref && (int) $existing->ID !== $ref ) {
-			$message .= ' ' . witryna_setup_header_ref_hint( $ref, $existing->post_title );
-		}
-		return witryna_setup_result( 'menu', 'skipped', $message, witryna_setup_menu_links( $existing->ID ) );
+		return witryna_setup_complete_menu( $existing, $ref );
 	}
 
 	$page_ids = witryna_setup_page_ids();
@@ -1224,6 +1434,58 @@ function witryna_setup_apply_menu( $category_order = array() ) {
 	}
 
 	return witryna_setup_result( 'menu', 'created', $message, witryna_setup_menu_links( $id ) );
+}
+
+/**
+ * Adds to the "Sklep" submenu the categories that got products later.
+ *
+ * Only links to missing categories are added. Everything else in the menu,
+ * also links added by hand, stays as it is.
+ *
+ * @param WP_Post $menu The main menu.
+ * @param int     $ref  ID of the menu chosen in the header, see witryna_setup_header_menu_ref().
+ * @return array Result.
+ */
+function witryna_setup_complete_menu( $menu, $ref ) {
+	$hint  = $ref && (int) $menu->ID !== $ref ? ' ' . witryna_setup_header_ref_hint( $ref, $menu->post_title ) : '';
+	$links = witryna_setup_menu_links( $menu->ID );
+	$state = witryna_setup_menu_missing_categories( $menu );
+
+	if ( null === $state['submenu'] ) {
+		/* translators: %s: menu name. */
+		return witryna_setup_result( 'menu', 'skipped', sprintf( __( 'Menu „%s” już istnieje, ale nie ma w nim podmenu „Sklep”. Kategorie sklepu dodaj do menu w Edytorze.', 'witryna' ), $menu->post_title ) . $hint, $links );
+	}
+
+	if ( ! $state['missing'] ) {
+		/* translators: %s: menu name. */
+		return witryna_setup_result( 'menu', 'skipped', sprintf( __( 'Menu „%s” już istnieje.', 'witryna' ), $menu->post_title ) . $hint, $links );
+	}
+
+	$blocks  = $state['blocks'];
+	$submenu = $state['submenu'];
+	foreach ( $state['missing'] as $term ) {
+		$blocks[ $submenu ] = witryna_setup_insert_category_link( $blocks[ $submenu ], witryna_setup_category_link_attrs( $term ) );
+	}
+
+	$id = wp_update_post(
+		wp_slash(
+			array(
+				'ID'           => (int) $menu->ID,
+				'post_content' => serialize_blocks( $blocks ),
+			)
+		),
+		true
+	);
+
+	if ( is_wp_error( $id ) ) {
+		/* translators: %s: error message. */
+		return witryna_setup_result( 'menu', 'error', sprintf( __( 'Nie udało się uzupełnić menu: %s', 'witryna' ), $id->get_error_message() ), $links );
+	}
+
+	$names = html_entity_decode( implode( ', ', wp_list_pluck( $state['missing'], 'name' ) ), ENT_QUOTES, 'UTF-8' );
+
+	/* translators: %s: list of product categories. */
+	return witryna_setup_result( 'menu', 'updated', sprintf( __( 'Dopisano do podmenu „Sklep” kategorie: %s.', 'witryna' ), $names ) . $hint, $links );
 }
 
 /**
@@ -1621,6 +1883,7 @@ function witryna_setup_menu_row() {
 	$header      = $ref ? get_post( $ref ) : ( $navigations ? $navigations[0] : null );
 	$existing    = witryna_setup_find_menu();
 	$categories  = $existing ? array() : wp_list_pluck( witryna_setup_menu_categories(), 'name' );
+	$completion  = $existing ? witryna_setup_menu_missing_categories( $existing ) : null;
 
 	$row = array(
 		'section' => 'home',
@@ -1631,7 +1894,7 @@ function witryna_setup_menu_row() {
 			__( 'Utworzy menu „Menu główne” jak w podglądzie: Sklep (z kategoriami: %s), Serwis, Opinie, Social media, O firmie, Kontakt.', 'witryna' ),
 			$categories ? html_entity_decode( implode( ', ', $categories ), ENT_QUOTES, 'UTF-8' ) : __( 'na razie żadna kategoria nie ma produktów', 'witryna' )
 		),
-		'notes'   => array( __( 'Menu powstaje jednorazowo. Kategorie, w których produkty pojawią się później, dodasz w Edytorze.', 'witryna' ) ),
+		'notes'   => array( __( 'Gdy później produkty pojawią się w kolejnych kategoriach, wróć tutaj: ten krok dopisze te kategorie do menu.', 'witryna' ) ),
 		'links'   => array(
 			array(
 				'url'   => add_query_arg( 'p', '/navigation', admin_url( 'site-editor.php' ) ),
@@ -1646,6 +1909,26 @@ function witryna_setup_menu_row() {
 		$row['current'] = sprintf( __( 'Jest menu „%s”.', 'witryna' ), $existing->post_title );
 		$row['notes']   = array();
 		$row['links']   = witryna_setup_menu_links( $existing->ID );
+		if ( null === $completion['submenu'] ) {
+			/* translators: %s: menu name. */
+			$row['current'] = sprintf( __( 'Jest menu „%s”, ale nie ma w nim podmenu „Sklep”. Kategorie sklepu dodaj do menu w Edytorze.', 'witryna' ), $existing->post_title );
+		} elseif ( $completion['missing'] ) {
+			$missing        = html_entity_decode( implode( ', ', wp_list_pluck( $completion['missing'], 'name' ) ), ENT_QUOTES, 'UTF-8' );
+			$row['state']   = 'todo';
+			$row['checked'] = true;
+			/* translators: 1: menu name, 2: list of product categories. */
+			$row['current'] = sprintf( __( 'Jest menu „%1$s”. W podmenu „Sklep” brakuje kategorii: %2$s.', 'witryna' ), $existing->post_title, $missing );
+			/* translators: %s: list of product categories. */
+			$row['action']  = sprintf( __( 'Dopisze do podmenu „Sklep” kategorie, które mają już produkty: %s. Reszta menu zostanie bez zmian.', 'witryna' ), $missing );
+			if ( witryna_setup_plain_permalinks() ) {
+				$row['checked'] = false;
+				$row['notes'][] = __( 'Bezpośrednie odnośniki są ustawione na „Prosty”, więc ten krok nie jest zaznaczony. Najpierw wybierz „Nazwa wpisu” (Ustawienia → Bezpośrednie odnośniki), a potem uzupełnij menu – linki zapisane teraz miałyby postać ?product_cat=… zamiast zwykłych adresów kategorii.', 'witryna' );
+				$row['links'][] = array(
+					'url'   => admin_url( 'options-permalink.php' ),
+					'label' => __( 'Ustawienia → Bezpośrednie odnośniki', 'witryna' ),
+				);
+			}
+		}
 		if ( $ref && (int) $existing->ID !== $ref ) {
 			$row['current'] .= ' ' . witryna_setup_header_ref_hint( $ref, $existing->post_title );
 		}
@@ -2250,7 +2533,7 @@ function witryna_store_setup_render() {
 		witryna_store_setup_print_results( $results );
 	}
 
-	echo '<p>' . esc_html__( 'To narzędzie uzupełnia sklep o to, co jest w podglądzie motywu: strony, menu, stronę główną i podstawowe dane sklepu. Niczego nie usuwa – przykładowe treści WordPressa przenosi do kosza tylko wtedy, gdy zaznaczysz ten krok. Zaznaczone są kroki, które dodają brakujące rzeczy albo zmieniają ustawienia różniące się od podglądu, więc przed kliknięciem porównaj kolumny „Co się stanie” i „Stan obecny”. Narzędzie możesz uruchomić ponownie: to, co jest gotowe, zostaje bez zmian.', 'witryna' ) . '</p>';
+	echo '<p>' . esc_html__( 'To narzędzie uzupełnia sklep o to, co jest w podglądzie motywu: strony, menu, stronę główną i podstawowe dane sklepu. Niczego nie usuwa – przykładowe treści WordPressa przenosi do kosza tylko wtedy, gdy zaznaczysz ten krok. Zaznaczone są kroki, które dodają brakujące rzeczy albo zmieniają ustawienia różniące się od podglądu, więc przed kliknięciem porównaj kolumny „Co się stanie” i „Stan obecny”. Narzędzie możesz uruchomić ponownie: to, co jest gotowe, zostaje bez zmian. Gdy produkty pojawią się w nowych kategoriach, ponowne uruchomienie dopisze te kategorie do podmenu „Sklep”.', 'witryna' ) . '</p>';
 
 	// The submit button is disabled after the first click, so a double click
 	// does not send the form twice (the handler also takes a lock).
