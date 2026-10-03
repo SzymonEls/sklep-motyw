@@ -17,16 +17,20 @@ require_once ABSPATH . 'wp-admin/includes/file.php';
 require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/image.php';
 
+// Pages, menu, titles and the shared options come from the theme, so the
+// preview matches what Wygląd → Ustaw sklep sets up on a live shop.
+if ( ! function_exists( 'witryna_setup_pages' ) ) {
+	require_once get_template_directory() . '/inc/store-setup.php';
+}
+
 /* ---------------------------------------------------------------------------
- * Store settings (Poland, PLN).
+ * Store settings (Poland, PLN). Site title, tagline, address and reviews are
+ * shared with the theme: witryna_setup_site_options().
  * ------------------------------------------------------------------------ */
+foreach ( array_keys( witryna_setup_site_options() ) as $witryna_group ) {
+	witryna_setup_apply_options( $witryna_group );
+}
 $witryna_options = array(
-	'blogname'                                 => 'Klinika Trawnika',
-	'blogdescription'                          => 'Autoryzowany dealer STIHL – sklep i serwis',
-	'woocommerce_default_country'              => 'PL:',
-	'woocommerce_store_address'                => 'ul. Miła 1',
-	'woocommerce_store_city'                   => 'Czernica',
-	'woocommerce_store_postcode'               => '55-003',
 	'woocommerce_currency'                     => 'PLN',
 	'woocommerce_currency_pos'                 => 'right_space',
 	'woocommerce_price_thousand_sep'           => ' ',
@@ -34,10 +38,6 @@ $witryna_options = array(
 	'woocommerce_price_num_decimals'           => 2,
 	'woocommerce_weight_unit'                  => 'kg',
 	'woocommerce_dimension_unit'               => 'cm',
-	'woocommerce_enable_reviews'               => 'yes',
-	'woocommerce_review_rating_verification_required' => 'yes',
-	'woocommerce_review_rating_verification_label' => 'yes',
-	'woocommerce_enable_review_rating'         => 'yes',
 	'woocommerce_calc_taxes'                   => 'no',
 	'woocommerce_coming_soon'                  => 'no',
 	'woocommerce_store_pages_only'             => 'no',
@@ -204,119 +204,30 @@ foreach ( $witryna_catalog as $witryna_i => $witryna_item ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Pages.
+ * Pages, reading settings, WooCommerce page titles, blog posts and the menu,
+ * shared with the theme (inc/store-setup.php).
  * ------------------------------------------------------------------------ */
-function witryna_demo_page( $title, $slug, $content = '', $template = '' ) {
-	$existing = get_page_by_path( $slug );
-	$id       = $existing ? $existing->ID : wp_insert_post(
-		array(
-			'post_type'    => 'page',
-			'post_status'  => 'publish',
-			'post_title'   => $title,
-			'post_name'    => $slug,
-			'post_content' => $content,
-		)
-	);
-	if ( $template ) {
-		update_post_meta( $id, '_wp_page_template', $template );
-	}
-	return $id;
+witryna_setup_apply_pages();
+witryna_setup_apply_front_page();
+$witryna_page_ids = witryna_setup_page_ids();
+if ( isset( $witryna_page_ids['regulamin'] ) ) {
+	update_option( 'woocommerce_terms_page_id', $witryna_page_ids['regulamin'] );
 }
-
-$witryna_home  = witryna_demo_page( 'Strona główna', 'strona-glowna' );
-$witryna_blog  = witryna_demo_page( 'Blog', 'blog' );
-// These slugs have their own templates (templates/page-<slug>.html).
-$witryna_service = witryna_demo_page( 'Serwis', 'serwis' );
-$witryna_reviews = witryna_demo_page( 'Opinie', 'opinie' );
-$witryna_social  = witryna_demo_page( 'Social media', 'social-media' );
-$witryna_about   = witryna_demo_page( 'O firmie', 'o-firmie' );
-$witryna_contact = witryna_demo_page( 'Kontakt', 'kontakt' );
-$witryna_terms = witryna_demo_page( 'Regulamin', 'regulamin', '<!-- wp:paragraph --><p>Tu znajdzie się regulamin sklepu internetowego.</p><!-- /wp:paragraph -->' );
-update_option( 'show_on_front', 'page' );
-update_option( 'page_on_front', $witryna_home );
-update_option( 'page_for_posts', $witryna_blog );
-update_option( 'woocommerce_terms_page_id', $witryna_terms );
 $witryna_privacy = (int) get_option( 'wp_page_for_privacy_policy' );
 if ( $witryna_privacy ) {
 	wp_update_post( array( 'ID' => $witryna_privacy, 'post_status' => 'publish', 'post_title' => 'Polityka prywatności' ) );
 }
-wp_update_post( array( 'ID' => wc_get_page_id( 'shop' ), 'post_title' => 'Sklep' ) );
-wp_update_post( array( 'ID' => wc_get_page_id( 'cart' ), 'post_title' => 'Koszyk' ) );
-wp_update_post( array( 'ID' => wc_get_page_id( 'checkout' ), 'post_title' => 'Zamówienie' ) );
-wp_update_post( array( 'ID' => wc_get_page_id( 'myaccount' ), 'post_title' => 'Moje konto' ) );
-
-/* ---------------------------------------------------------------------------
- * Blog posts.
- * ------------------------------------------------------------------------ */
-$witryna_posts = array(
-	array(
-		'Przegląd kosiarki przed sezonem: co sprawdzić',
-		'Poradniki',
-		'Kosiarki',
-		'Kilka prostych czynności, dzięki którym kosiarka odpali bez problemu i równo skosi trawnik przez cały sezon.',
-		'<!-- wp:paragraph --><p>Zanim pierwszy raz w sezonie wyjedziesz kosiarką na trawnik, warto poświęcić jej pół godziny. Większość usterek, z którymi kosiarki trafiają do serwisu wiosną, wynika z zaniedbań po zimie.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Kosiarka spalinowa</h2><!-- /wp:heading --><!-- wp:list --><ul class="wp-block-list"><li>Wymień olej silnikowy i sprawdź jego poziom na płaskim podłożu.</li><li>Oczyść lub wymień filtr powietrza.</li><li>Sprawdź świecę zapłonową.</li><li>Zatankuj świeże paliwo. Stara benzyna to najczęstsza przyczyna problemów z rozruchem.</li></ul><!-- /wp:list --><!-- wp:heading --><h2 class="wp-block-heading">Każda kosiarka</h2><!-- /wp:heading --><!-- wp:list --><ul class="wp-block-list"><li>Naostrz albo wymień nóż. Tępy nóż szarpie trawę i zostawia brązowe końcówki.</li><li>Oczyść obudowę od spodu z zaschniętej trawy.</li><li>Sprawdź kosz, koła i linkę hamulca noża.</li></ul><!-- /wp:list --><!-- wp:paragraph --><p>Nie masz czasu albo narzędzi? Przegląd sezonowy zrobimy w naszym serwisie w Czernicy.</p><!-- /wp:paragraph -->',
-	),
-	array(
-		'Jak dobrać pilarkę do swoich potrzeb',
-		'Poradniki',
-		'Pilarki',
-		'Akumulatorowa czy spalinowa, jaka prowadnica i moc? Podpowiadamy, na co zwrócić uwagę przy wyborze pilarki.',
-		'<!-- wp:paragraph --><p>Dobra pilarka to taka, która pasuje do pracy, jaką chcesz wykonać. Do przycinania gałęzi w ogrodzie potrzebujesz innego sprzętu niż do cięcia drewna na opał.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Akumulatorowa</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Cicha, lekka i gotowa do pracy po naciśnięciu przycisku. Sprawdzi się przy przycinaniu drzew i krzewów, pracach przy domu i w miejscach, gdzie liczy się niski hałas.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Spalinowa</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Więcej mocy i dowolnie długa praca. To dobry wybór do cięcia drewna opałowego, ścinania drzew i prac na działce bez dostępu do prądu.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Długość prowadnicy</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Prowadnica powinna być dłuższa niż średnica drewna, które najczęściej tniesz. Do ogrodu zwykle wystarczy 30–35 cm, do drewna opałowego 35–40 cm.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Przyjedź do sklepu, a pomożemy dobrać model i pokażemy, jak bezpiecznie z niego korzystać.</p><!-- /wp:paragraph -->',
-	),
-	array(
-		'Robot koszący iMOW: na jaki trawnik?',
-		'Poradniki',
-		'Roboty koszące',
-		'Sprawdź, czy Twój ogród nadaje się dla robota koszącego i jak dobrać model do powierzchni trawnika.',
-		'<!-- wp:paragraph --><p>Robot koszący kosi codziennie po trochu, więc trawnik jest gęsty i zawsze równo przycięty, a Ty nie musisz o tym myśleć.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Powierzchnia i nachylenie</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Każdy model iMOW ma podaną maksymalną powierzchnię trawnika i nachylenie terenu. Wybierz model z zapasem, jeśli ogród ma dużo zakamarków albo wąskich przejść.</p><!-- /wp:paragraph --><!-- wp:heading --><h2 class="wp-block-heading">Przygotowanie ogrodu</h2><!-- /wp:heading --><!-- wp:list --><ul class="wp-block-list"><li>Zaplanuj miejsce na stację dokującą z dostępem do prądu.</li><li>Usuń z trawnika kamienie, gałęzie i zabawki.</li><li>Zastanów się, gdzie robot ma nie wjeżdżać: rabaty, oczko wodne, warzywnik.</li></ul><!-- /wp:list --><!-- wp:paragraph --><p>Pomagamy dobrać robota do ogrodu i zajmujemy się jego montażem.</p><!-- /wp:paragraph -->',
-	),
-);
-foreach ( $witryna_posts as $witryna_i => list( $witryna_title, $witryna_category, $witryna_product_cat, $witryna_excerpt, $witryna_content ) ) {
-	$witryna_cat = term_exists( $witryna_category, 'category' );
-	if ( ! $witryna_cat ) {
-		$witryna_cat = wp_insert_term( $witryna_category, 'category' );
-	}
-	$witryna_post = wp_insert_post(
-		array(
-			'post_type'     => 'post',
-			'post_status'   => 'publish',
-			'post_title'    => $witryna_title,
-			'post_excerpt'  => $witryna_excerpt,
-			'post_date'     => gmdate( 'Y-m-d H:i:s', time() - ( $witryna_i + 1 ) * 5 * DAY_IN_SECONDS ),
-			'post_category' => array( (int) $witryna_cat['term_id'] ),
-			'post_content'  => '<!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">' . $witryna_excerpt . '</p><!-- /wp:paragraph -->' . $witryna_content,
-		)
-	);
-	if ( isset( $witryna_cat_ids[ $witryna_product_cat ] ) ) {
-		$witryna_thumbnail = (int) get_term_meta( $witryna_cat_ids[ $witryna_product_cat ], 'thumbnail_id', true );
-		if ( $witryna_thumbnail ) {
-			set_post_thumbnail( $witryna_post, $witryna_thumbnail );
-		}
-	}
-}
-
-/* ---------------------------------------------------------------------------
- * Navigation menu.
- * ------------------------------------------------------------------------ */
-$witryna_shop_url = get_permalink( wc_get_page_id( 'shop' ) );
-$witryna_links    = '';
+witryna_setup_apply_wc_titles();
+witryna_setup_apply_blog_posts();
+// The preview lists the categories in the order of the catalog (the live
+// tool sorts them by name).
+$witryna_top_cats = array();
 foreach ( $witryna_cat_ids as $witryna_key => $witryna_id ) {
 	if ( false === strpos( $witryna_key, '>' ) ) {
-		$witryna_links .= sprintf( '<!-- wp:navigation-link {"label":"%s","type":"product_cat","id":%d,"url":"%s","kind":"taxonomy"} /-->', esc_attr( $witryna_key ), $witryna_id, esc_url( get_term_link( $witryna_id, 'product_cat' ) ) );
+		$witryna_top_cats[] = $witryna_id;
 	}
 }
-$witryna_menu = sprintf( '<!-- wp:navigation-submenu {"label":"Sklep","url":"%1$s","kind":"custom"} -->%2$s<!-- /wp:navigation-submenu -->', esc_url( $witryna_shop_url ), $witryna_links );
-foreach ( array( 'Serwis' => $witryna_service, 'Opinie' => $witryna_reviews, 'Social media' => $witryna_social, 'O firmie' => $witryna_about, 'Kontakt' => $witryna_contact ) as $witryna_label => $witryna_page ) {
-	$witryna_menu .= sprintf( '<!-- wp:navigation-link {"label":"%s","type":"page","id":%d,"url":"%s","kind":"post-type"} /-->', esc_attr( $witryna_label ), $witryna_page, esc_url( get_permalink( $witryna_page ) ) );
-}
-wp_insert_post(
-	array(
-		'post_type'    => 'wp_navigation',
-		'post_status'  => 'publish',
-		'post_title'   => 'Menu główne',
-		'post_content' => $witryna_menu,
-	)
-);
+witryna_setup_apply_menu( $witryna_top_cats );
 
 /* ---------------------------------------------------------------------------
  * Shipping and payments.

@@ -60,6 +60,37 @@ npm run build
 ```
 Tworzy `dist/witryna.zip` (folder `witryna/` z samymi plikami motywu).
 
+## Ustaw sklep (po instalacji na nowym serwerze)
+
+Po wgraniu i włączeniu motywu na nowym serwerze wejdź w **Wygląd → Ustaw sklep**. Ekran porównuje
+sklep z lokalnym podglądem i pokazuje w tabeli, co zrobi każdy krok i jaki jest stan obecny.
+Przed pierwszym uruchomieniem na działającym sklepie zrób kopię zapasową bazy danych (np. w panelu
+hostingu).
+
+- tworzy brakujące strony (Strona główna, Blog, Serwis, Opinie, Social media, O firmie, Kontakt,
+  Regulamin), ustawia stronę główną i blog, menu „Menu główne” (Sklep z kategoriami, które mają
+  produkty, i strony), nazwę i opis witryny, adres sklepu, opinie tylko od zweryfikowanych klientów
+  oraz polskie tytuły stron WooCommerce,
+- domyślnie zaznaczone są kroki, które dodają brakujące rzeczy albo zmieniają ustawienia różniące
+  się od podglądu: istniejąca strona (także szkic lub strona w koszu), własne menu, własna nazwa
+  witryny i wpisany adres zostają bez zmian; tytuły stron WooCommerce i ustawienia opinii są
+  zaznaczone, gdy różnią się od podglądu, a nie zostały zmienione ręcznie – sprawdź je przed
+  kliknięciem; poradniki z podglądu i przeniesienie przykładowych treści WordPressa do kosza trzeba
+  zaznaczyć samemu,
+- strona „Regulamin” powstaje jako szkic z tymczasowym tekstem – wklej regulamin, opublikuj stronę
+  i wybierz ją w WooCommerce → Ustawienia → Zaawansowane,
+- menu najlepiej tworzyć po ustawieniu bezpośrednich odnośników na „Nazwa wpisu” – przy „Prosty”
+  ten krok nie jest zaznaczony,
+- nigdy nie zmienia produktów, kategorii, płatności (PayU), wysyłki, trybu „Wkrótce dostępny”
+  ani bezpośrednich odnośników – tylko o nich przypomina.
+
+Po kliknięciu **Zastosuj zaznaczone** ekran pokazuje wynik z linkami. Narzędzie można uruchomić
+ponownie: to, co jest gotowe, zostaje bez zmian. Dopóki brakuje stron z gotowym układem lub menu,
+na Kokpicie i ekranie Motywy widać przypomnienie (można je ukryć). Strony, menu i ustawienia są
+zdefiniowane w `inc/store-setup.php` i z tych samych funkcji korzysta `dev/demo/setup.php`, więc
+podgląd i sklep się nie rozjadą (w podglądzie kategorie w menu są w kolejności katalogu, w sklepie
+alfabetycznie).
+
 ## Co zawiera
 - `theme.json` z paletą, płynną typografią, odstępami i zaokrągleniami; 5 wariantów stylu
   (domyślny, Night, Atelier, Forest, Contrast) i 4 style sekcji.
