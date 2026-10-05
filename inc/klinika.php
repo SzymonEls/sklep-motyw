@@ -288,7 +288,59 @@ function witryna_hero_sanitize_dim( $value ) {
 }
 
 /**
- * Registers the home page hero photo settings in the Customizer.
+ * Returns the tabs that can have a photo behind their first section.
+ *
+ * "home" is the home page and "shop" the shop with its categories, the other
+ * keys are slugs of the pages with their own layout.
+ *
+ * @return array<string, string> Tab => label.
+ */
+function witryna_hero_tabs() {
+	return array(
+		'home'         => __( 'Strona główna', 'witryna' ),
+		'shop'         => __( 'Sklep i kategorie', 'witryna' ),
+		'serwis'       => __( 'Serwis', 'witryna' ),
+		'opinie'       => __( 'Opinie', 'witryna' ),
+		'social-media' => __( 'Social media', 'witryna' ),
+		'o-firmie'     => __( 'O firmie', 'witryna' ),
+		'kontakt'      => __( 'Kontakt', 'witryna' ),
+	);
+}
+
+/**
+ * Returns the name of the theme mod with the photo of a tab.
+ *
+ * The home page keeps the name it had before the other tabs got photos, so
+ * a photo chosen earlier stays.
+ *
+ * @param string $tab Tab, see witryna_hero_tabs().
+ * @return string
+ */
+function witryna_hero_setting( $tab ) {
+	return 'home' === $tab ? 'witryna_hero_image' : 'witryna_hero_image_' . str_replace( '-', '_', $tab );
+}
+
+/**
+ * Returns the address of a tab, to show it in the Customizer preview.
+ *
+ * @param string $tab Tab, see witryna_hero_tabs().
+ * @return string Empty when the tab has no page.
+ */
+function witryna_hero_tab_url( $tab ) {
+	if ( 'home' === $tab ) {
+		return home_url( '/' );
+	}
+
+	if ( 'shop' === $tab ) {
+		return function_exists( 'wc_get_page_id' ) && wc_get_page_id( 'shop' ) > 0 ? get_permalink( wc_get_page_id( 'shop' ) ) : '';
+	}
+
+	$page = get_page_by_path( $tab );
+	return $page ? get_permalink( $page ) : '';
+}
+
+/**
+ * Registers the hero photo settings in the Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Customizer instance.
  */
@@ -296,30 +348,33 @@ function witryna_hero_customize( $wp_customize ) {
 	$wp_customize->add_section(
 		'witryna_hero',
 		array(
-			'title'       => __( 'Zdjęcie na stronie głównej', 'witryna' ),
-			'description' => __( 'Zdjęcie w tle pierwszej sekcji strony głównej, pod napisem i listą kategorii. Najlepiej poziome, co najmniej 1920 px szerokości. Bez zdjęcia sekcja ma grafitowe tło.', 'witryna' ),
+			'title'       => __( 'Zdjęcia w tle', 'witryna' ),
+			'description' => __( 'Zdjęcie w tle pierwszej sekcji zakładki, pod napisem. W sklepie pojawia się za tytułem, także na stronach kategorii. Najlepiej poziome, co najmniej 1920 px szerokości. Bez zdjęcia sekcja wygląda jak dotąd: na stronach jest grafitowa, w sklepie jasna.', 'witryna' ),
 			'priority'    => 155,
 		)
 	);
 
-	$wp_customize->add_setting(
-		'witryna_hero_image',
-		array(
-			'default'           => 0,
-			'sanitize_callback' => 'absint',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Media_Control(
-			$wp_customize,
-			'witryna_hero_image',
+	foreach ( witryna_hero_tabs() as $tab => $label ) {
+		$setting = witryna_hero_setting( $tab );
+		$wp_customize->add_setting(
+			$setting,
 			array(
-				'label'     => __( 'Zdjęcie w tle', 'witryna' ),
-				'section'   => 'witryna_hero',
-				'mime_type' => 'image',
+				'default'           => 0,
+				'sanitize_callback' => 'absint',
 			)
-		)
-	);
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Media_Control(
+				$wp_customize,
+				$setting,
+				array(
+					'label'     => $label,
+					'section'   => 'witryna_hero',
+					'mime_type' => 'image',
+				)
+			)
+		);
+	}
 
 	$wp_customize->add_setting(
 		'witryna_hero_dim',
@@ -331,7 +386,7 @@ function witryna_hero_customize( $wp_customize ) {
 	$wp_customize->add_control(
 		'witryna_hero_dim',
 		array(
-			'label'       => __( 'Przyciemnienie zdjęcia', 'witryna' ),
+			'label'       => __( 'Przyciemnienie zdjęć', 'witryna' ),
 			'description' => __( 'Mocniejsze przyciemnienie poprawia czytelność białego tekstu.', 'witryna' ),
 			'section'     => 'witryna_hero',
 			'type'        => 'range',
@@ -346,18 +401,79 @@ function witryna_hero_customize( $wp_customize ) {
 add_action( 'customize_register', 'witryna_hero_customize' );
 
 /**
- * Puts the photo chosen in the Customizer behind the home page hero.
+ * Opens the matching tab in the Customizer preview when its photo is changed.
  *
- * Works on the rendered block, so it also applies after the home page has
- * been edited in the site editor, as long as the hero keeps its class.
+ * Otherwise a photo chosen for, say, the service page would not be visible
+ * until someone navigates there in the preview.
+ */
+function witryna_hero_customize_preview_links() {
+	$urls = array();
+	foreach ( array_keys( witryna_hero_tabs() ) as $tab ) {
+		$url = witryna_hero_tab_url( $tab );
+		if ( $url ) {
+			$urls[ witryna_hero_setting( $tab ) ] = $url;
+		}
+	}
+
+	wp_add_inline_script(
+		'customize-controls',
+		'wp.customize.bind( "ready", function () {' .
+			'var urls = ' . wp_json_encode( $urls ) . ';' .
+			'Object.keys( urls ).forEach( function ( id ) {' .
+				'wp.customize( id, function ( setting ) {' .
+					'setting.bind( function () { wp.customize.previewer.previewUrl.set( urls[ id ] ); } );' .
+				'} );' .
+			'} );' .
+		'} );'
+	);
+}
+add_action( 'customize_controls_enqueue_scripts', 'witryna_hero_customize_preview_links' );
+
+/**
+ * Returns the tab whose photo belongs behind a rendered group block.
+ *
+ * The home page hero, the heroes of the pages with their own layout and the
+ * shop header are recognised by their classes. A page hero takes the photo
+ * of the page it is shown on.
+ *
+ * @param array $block Block.
+ * @return string Tab, see witryna_hero_tabs(), or an empty string.
+ */
+function witryna_hero_block_tab( $block ) {
+	$classes = preg_split( '/\s+/', $block['attrs']['className'] ?? '', -1, PREG_SPLIT_NO_EMPTY );
+
+	if ( in_array( 'witryna-hero--tools', $classes, true ) ) {
+		return 'home';
+	}
+
+	if ( in_array( 'witryna-shop__header', $classes, true ) ) {
+		return function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) && ! is_search() ? 'shop' : '';
+	}
+
+	if ( in_array( 'witryna-hero--page', $classes, true ) && is_page() ) {
+		$slug = get_post_field( 'post_name', get_queried_object_id() );
+		if ( ! in_array( $slug, array( 'home', 'shop' ), true ) && isset( witryna_hero_tabs()[ $slug ] ) ) {
+			return $slug;
+		}
+	}
+
+	return '';
+}
+
+/**
+ * Puts the photo chosen in the Customizer behind the first section of a tab.
+ *
+ * Works on the rendered block, so it also applies after a template has been
+ * edited in the site editor, as long as the section keeps its class.
  *
  * @param string $block_content Block HTML.
  * @param array  $block         Block.
  * @return string
  */
 function witryna_hero_photo( $block_content, $block ) {
-	$image_id = absint( get_theme_mod( 'witryna_hero_image' ) );
-	if ( ! $image_id || ! preg_match( '/(^|\s)witryna-hero--tools(\s|$)/', $block['attrs']['className'] ?? '' ) ) {
+	$tab      = witryna_hero_block_tab( $block );
+	$image_id = $tab ? absint( get_theme_mod( witryna_hero_setting( $tab ) ) ) : 0;
+	if ( ! $image_id ) {
 		return $block_content;
 	}
 
@@ -385,6 +501,12 @@ function witryna_hero_photo( $block_content, $block ) {
 	$style = $tags->get_attribute( 'style' );
 	$tags->add_class( 'has-witryna-photo' );
 	$tags->set_attribute( 'style', '--witryna-hero-dim:' . $dim . ';' . ( is_string( $style ) ? $style : '' ) );
+
+	// The shop header becomes a full-width band, like the heroes of the other tabs.
+	if ( 'shop' === $tab ) {
+		$tags->remove_class( 'alignwide' );
+		$tags->add_class( 'alignfull' );
+	}
 
 	return preg_replace_callback(
 		'/^\s*<[^>]+>/',

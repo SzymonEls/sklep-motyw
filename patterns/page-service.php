@@ -36,8 +36,8 @@ $witryna_mail_subject = __( 'Zgłoszenie serwisowe', 'witryna' );
 $witryna_mail_body    = __( "Imię i nazwisko:\nTelefon:\nRodzaj sprzętu:\nMarka i model:\nOpis usterki:\nCzy potrzebny odbiór sprzętu (tak/nie):\nAdres odbioru:\n", 'witryna' );
 $witryna_mail_href    = 'mailto:' . $witryna_info['email'] . '?subject=' . rawurlencode( $witryna_mail_subject ) . '&body=' . rawurlencode( $witryna_mail_body );
 ?>
-<!-- wp:group {"align":"full","className":"is-style-section-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull is-style-section-dark" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
+<!-- wp:group {"align":"full","className":"witryna-hero witryna-hero--page is-style-section-dark","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull witryna-hero witryna-hero--page is-style-section-dark" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
 <div class="wp-block-group alignwide"><!-- wp:paragraph {"className":"is-style-eyebrow witryna-hero__eyebrow"} -->
 <p class="is-style-eyebrow witryna-hero__eyebrow"><?php esc_html_e( 'Serwis sprzętu ogrodowego', 'witryna' ); ?></p>
 <!-- /wp:paragraph -->

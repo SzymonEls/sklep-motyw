@@ -280,6 +280,41 @@
 	margin: 0;
 }
 
+/* Shop header with a photo (Customizer): a dark full-width band, like the page heroes. */
+.witryna-shop__header.has-witryna-photo {
+	background-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+	margin-block-start: calc(var(--wp--preset--spacing--30) * -1);
+	padding: var(--wp--preset--spacing--60) var(--wp--style--root--padding-right) var(--wp--preset--spacing--60) var(--wp--style--root--padding-left);
+}
+
+.witryna-shop__header.has-witryna-photo > :not(.witryna-hero__photo) {
+	margin-inline: auto;
+	max-width: var(--wp--style--global--wide-size);
+}
+
+.witryna-shop__header.has-witryna-photo .woocommerce-breadcrumb,
+.witryna-shop__header.has-witryna-photo .wp-block-term-description {
+	color: color-mix(in srgb, var(--wp--preset--color--base) 75%, transparent);
+}
+
+.witryna-shop__header.has-witryna-photo .woocommerce-breadcrumb a:hover {
+	color: var(--wp--preset--color--base);
+}
+
+.witryna-shop__header.has-witryna-photo .wp-block-term-name a {
+	-webkit-backdrop-filter: blur(12px);
+	backdrop-filter: blur(12px);
+	background: color-mix(in srgb, var(--wp--preset--color--contrast) 55%, transparent);
+	border-color: color-mix(in srgb, var(--wp--preset--color--base) 30%, transparent);
+}
+
+.witryna-shop__header.has-witryna-photo .wp-block-term-name a:hover {
+	background-color: var(--wp--preset--color--base);
+	border-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+
 /* Category pills under the archive title. */
 .witryna-category-pills .wp-block-term-template {
 	gap: 0.5rem;

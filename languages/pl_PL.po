@@ -580,23 +580,47 @@ msgstr ""
 msgid "Zaznacz, gdy polityka prywatności (i baner cookies, jeśli jest) obejmuje Mapy Google. Bez tego opinie wczytają się po kliknięciu przycisku."
 msgstr ""
 
-#: inc/klinika.php:299
-msgid "Zdjęcie na stronie głównej"
-msgstr ""
-
 #: inc/klinika.php:300
-msgid "Zdjęcie w tle pierwszej sekcji strony głównej, pod napisem i listą kategorii. Najlepiej poziome, co najmniej 1920 px szerokości. Bez zdjęcia sekcja ma grafitowe tło."
+msgid "Strona główna"
 msgstr ""
 
-#: inc/klinika.php:317
-msgid "Zdjęcie w tle"
+#: inc/klinika.php:301
+msgid "Sklep i kategorie"
 msgstr ""
 
-#: inc/klinika.php:334
-msgid "Przyciemnienie zdjęcia"
+#: inc/klinika.php:302 patterns/footer.php:54 patterns/promo-split.php:32
+msgid "Serwis"
 msgstr ""
 
-#: inc/klinika.php:335
+#: inc/klinika.php:303 patterns/testimonials.php:18
+msgid "Opinie"
+msgstr ""
+
+#: inc/klinika.php:304 patterns/footer.php:58 patterns/page-social.php:20
+msgid "Social media"
+msgstr ""
+
+#: inc/klinika.php:305 patterns/page-about.php:19
+msgid "O firmie"
+msgstr ""
+
+#: inc/klinika.php:306 patterns/page-contact.php:20
+msgid "Kontakt"
+msgstr ""
+
+#: inc/klinika.php:351
+msgid "Zdjęcia w tle"
+msgstr ""
+
+#: inc/klinika.php:352
+msgid "Zdjęcie w tle pierwszej sekcji zakładki, pod napisem. W sklepie pojawia się za tytułem, także na stronach kategorii. Najlepiej poziome, co najmniej 1920 px szerokości. Bez zdjęcia sekcja wygląda jak dotąd: na stronach jest grafitowa, w sklepie jasna."
+msgstr ""
+
+#: inc/klinika.php:389
+msgid "Przyciemnienie zdjęć"
+msgstr ""
+
+#: inc/klinika.php:390
 msgid "Mocniejsze przyciemnienie poprawia czytelność białego tekstu."
 msgstr ""
 
@@ -1636,16 +1660,8 @@ msgstr "Najwyżej oceniane"
 msgid "Obsługa klienta"
 msgstr ""
 
-#: patterns/footer.php:54 patterns/promo-split.php:32
-msgid "Serwis"
-msgstr ""
-
 #: patterns/footer.php:56 patterns/page-reviews.php:20
 msgid "Opinie klientów"
-msgstr ""
-
-#: patterns/footer.php:58 patterns/page-social.php:20
-msgid "Social media"
 msgstr ""
 
 #: patterns/footer.php:64
@@ -2048,10 +2064,6 @@ msgctxt "Pattern description"
 msgid "About page with an introduction, store facts, benefits and store visit details."
 msgstr ""
 
-#: patterns/page-about.php:19
-msgid "O firmie"
-msgstr ""
-
 #: patterns/page-about.php:23
 msgid "Sklep i serwis sprzętu ogrodowego w Czernicy"
 msgstr ""
@@ -2068,10 +2080,6 @@ msgstr "Strona kontaktowa"
 #: patterns/page-contact.php
 msgctxt "Pattern description"
 msgid "Contact page with address and map link, opening hours, phone and e-mail, company details and frequently asked questions."
-msgstr ""
-
-#: patterns/page-contact.php:20
-msgid "Kontakt"
 msgstr ""
 
 #: patterns/page-contact.php:24
@@ -2473,10 +2481,6 @@ msgstr "Opinie klientów"
 #: patterns/testimonials.php
 msgctxt "Pattern description"
 msgid "Google reviews (shown by Google) and the newest shop reviews with any rating, with a note on how reviews are verified."
-msgstr ""
-
-#: patterns/testimonials.php:18
-msgid "Opinie"
 msgstr ""
 
 #: patterns/testimonials.php:22
