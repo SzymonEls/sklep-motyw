@@ -426,6 +426,54 @@ msgstr ""
 msgid "Jak weryfikujemy opinie"
 msgstr ""
 
+#: inc/admin-menu.php:167
+msgid "Zamówienia"
+msgstr ""
+
+#: inc/admin-menu.php:183
+msgid "Przesyłki"
+msgstr ""
+
+#: inc/admin-menu.php:199
+msgid "Kupony"
+msgstr ""
+
+#: inc/admin-menu.php:207
+msgid "Statystyki"
+msgstr ""
+
+#: inc/admin-menu.php:234
+msgid "Inne treści"
+msgstr ""
+
+#: inc/admin-menu.php:254
+msgid "Płatności"
+msgstr ""
+
+#: inc/admin-menu.php:255
+msgid "PayU"
+msgstr ""
+
+#: inc/admin-menu.php:256
+msgid "Wysyłka"
+msgstr ""
+
+#: inc/admin-menu.php:257
+msgid "InPost"
+msgstr ""
+
+#: inc/admin-menu.php:258
+msgid "InPost – produkty"
+msgstr ""
+
+#: inc/admin-menu.php:259
+msgid "WooCommerce"
+msgstr ""
+
+#: inc/admin-menu.php:285
+msgid "Ustawienia"
+msgstr ""
+
 #: inc/block-styles.php:20 inc/block-styles.php:23
 msgctxt "block style"
 msgid "Eyebrow"
@@ -1420,7 +1468,7 @@ msgstr ""
 
 #. translators: %s: list of missing pages and the menu.
 #: inc/store-setup.php:2731
-msgid "Motyw: w sklepie brakuje stron lub menu z podglądu (%s). Sprawdź i dodaj je na ekranie Wygląd → Ustaw sklep."
+msgid "Motyw: w sklepie brakuje stron lub menu z podglądu (%s). Sprawdź i dodaj je na ekranie Ustawienia → Ustaw sklep."
 msgstr ""
 
 #: inc/store-setup.php:2735

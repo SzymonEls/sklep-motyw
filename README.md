@@ -69,7 +69,7 @@ Tworzy `dist/witryna.zip` (folder `witryna/` z samymi plikami motywu).
 
 ## Ustaw sklep (po instalacji na nowym serwerze)
 
-Po wgraniu i włączeniu motywu na nowym serwerze wejdź w **Wygląd → Ustaw sklep**. Ekran porównuje
+Po wgraniu i włączeniu motywu na nowym serwerze wejdź w **Ustawienia → Ustaw sklep**. Ekran porównuje
 sklep z lokalnym podglądem i pokazuje w tabeli, co zrobi każdy krok i jaki jest stan obecny.
 Przed pierwszym uruchomieniem na działającym sklepie zrób kopię zapasową bazy danych (np. w panelu
 hostingu).

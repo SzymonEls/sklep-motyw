@@ -18,7 +18,7 @@ require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/image.php';
 
 // Pages, menu, titles and the shared options come from the theme, so the
-// preview matches what Wygląd → Ustaw sklep sets up on a live shop.
+// preview matches what Ustawienia → Ustaw sklep sets up on a live shop.
 if ( ! function_exists( 'witryna_setup_pages' ) ) {
 	require_once get_template_directory() . '/inc/store-setup.php';
 }

@@ -4,7 +4,7 @@
  *
  * Pages, the main menu, the reading settings, titles and a few store options
  * are defined here once. They are used by the admin screen
- * (Wygląd → Ustaw sklep) and by dev/demo/setup.php, so the preview and the
+ * (Ustawienia → Ustaw sklep) and by dev/demo/setup.php, so the preview and the
  * live shop cannot drift apart. Products, categories, payments and shipping
  * are never touched, and every step can safely run more than once.
  *
@@ -1672,7 +1672,7 @@ function witryna_setup_apply( $pages, $steps ) {
 }
 
 /* ---------------------------------------------------------------------------
- * Admin screen: Wygląd → Ustaw sklep.
+ * Admin screen: Ustawienia → Ustaw sklep.
  * ------------------------------------------------------------------------ */
 
 /**
@@ -2416,10 +2416,10 @@ function witryna_setup_info() {
 }
 
 /**
- * Adds the screen to the Appearance menu.
+ * Adds the screen to the Settings menu.
  */
 function witryna_store_setup_menu() {
-	add_theme_page(
+	add_options_page(
 		__( 'Ustaw sklep jak w podglądzie', 'witryna' ),
 		__( 'Ustaw sklep', 'witryna' ),
 		'manage_options',
@@ -2664,7 +2664,7 @@ function witryna_store_setup_handle() {
 	}
 	set_transient( witryna_store_setup_transient(), $results, 10 * MINUTE_IN_SECONDS );
 
-	wp_safe_redirect( admin_url( 'themes.php?page=witryna-store-setup' ) );
+	wp_safe_redirect( admin_url( 'options-general.php?page=witryna-store-setup' ) );
 	exit;
 }
 add_action( 'admin_post_witryna_store_setup', 'witryna_store_setup_handle' );
@@ -2728,8 +2728,8 @@ function witryna_store_setup_notice() {
 	printf(
 		'<div class="notice notice-info"><p>%1$s</p><p><a class="button button-primary" href="%2$s">%3$s</a> <a class="button-link" href="%4$s">%5$s</a></p></div>',
 		/* translators: %s: list of missing pages and the menu. */
-		esc_html( sprintf( __( 'Motyw: w sklepie brakuje stron lub menu z podglądu (%s). Sprawdź i dodaj je na ekranie Wygląd → Ustaw sklep.', 'witryna' ), implode( ', ', $missing ) ) ),
-		esc_url( admin_url( 'themes.php?page=witryna-store-setup' ) ),
+		esc_html( sprintf( __( 'Motyw: w sklepie brakuje stron lub menu z podglądu (%s). Sprawdź i dodaj je na ekranie Ustawienia → Ustaw sklep.', 'witryna' ), implode( ', ', $missing ) ) ),
+		esc_url( admin_url( 'options-general.php?page=witryna-store-setup' ) ),
 		esc_html__( 'Ustaw sklep', 'witryna' ),
 		esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=witryna_store_setup_dismiss' ), 'witryna_store_setup_dismiss' ) ),
 		esc_html__( 'Nie pokazuj więcej', 'witryna' )
