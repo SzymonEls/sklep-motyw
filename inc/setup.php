@@ -120,3 +120,29 @@ function witryna_copyright_binding() {
 		esc_html( get_bloginfo( 'name' ) )
 	);
 }
+
+/**
+ * Prints the browser toolbar color so mobile address bars match the dark top bar.
+ *
+ * Uses the active "contrast" palette color, so style variations and
+ * Site Editor color changes are followed automatically.
+ */
+function witryna_theme_color_meta() {
+	$color   = '#1B1E21';
+	$palette = wp_get_global_settings( array( 'color', 'palette' ) );
+
+	foreach ( array( 'custom', 'theme' ) as $origin ) {
+		foreach ( (array) ( $palette[ $origin ] ?? array() ) as $entry ) {
+			if ( isset( $entry['slug'], $entry['color'] ) && 'contrast' === $entry['slug'] ) {
+				$color = $entry['color'];
+				break 2;
+			}
+		}
+	}
+
+	$color = sanitize_hex_color( $color );
+	if ( $color ) {
+		printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( $color ) );
+	}
+}
+add_action( 'wp_head', 'witryna_theme_color_meta', 2 );
